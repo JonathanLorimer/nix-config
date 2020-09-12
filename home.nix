@@ -8,9 +8,9 @@ let
     exec systemctl --user start sway.service
   '';
   colours = import ./nord.nix { inherit lib; };
+  modifier = "Mod4";
 in {
   programs.sway.enable = true;
-  programs.fish.enable = true;
 
   users.users.jonathanl = {
     isNormalUser = true;
@@ -30,6 +30,7 @@ in {
       kanshi
       rofi
       wl-clipboard
+      wf-recorder
       start-sway
       bemenu
       alacritty
@@ -41,6 +42,8 @@ in {
       ripgrep
       ranger
       bat
+      grim
+
     ];
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -242,7 +245,7 @@ in {
       zsh = {
         enable = true;
         dotDir = ".config/zsh";
-	enableAutosuggestions = true;
+				enableAutosuggestions = true;
         enableCompletion = true;
         shellAliases = {
           ll = "ls -l";
@@ -285,7 +288,7 @@ in {
           height = 40;
           modules-left = [ "sway/workspaces" "sway/mode" ];
           modules-center = [ "sway/window" ];
-          modules-right = [ "clock" ];
+          modules-right = [ "clock" "battery" ];
           "sway/window" = {
             format = "{}";
             max-length = 50;
@@ -303,7 +306,7 @@ in {
           * {
             border: none;
             border-radius: 0;
-            font-family: 'Source Code Pro', 'Font Awesome 5';
+            font-family: 'Iosevka';
             font-size: 20px;
             min-height: 0;
           }
@@ -343,10 +346,11 @@ in {
           inner = 5;
           outer = 5;
         };
-        terminal = "termite";
+        terminal = "alacritty";
+        inherit modifier;
         input = {
           "*" = {
-            repeat_delay = "180";
+            repeat_delay = "200";
             repeat_rate = "35";
             xkb_layout = "us";
             xkb_options = "caps:escape";
@@ -358,12 +362,35 @@ in {
           };
         };
         keybindings = {
-          "Mod4+t" = "exec alacritty";
-          "Mod4+b" = "exec chromium";
-          "Mod4+q" = "kill";
-          "Mod4+n" = "exec makoctl dismiss";
-          "Mod4+w" = "exec rofi  --show run | xargs swaymsg exec --";
+          "${modifier}+t" = "exec alacritty";
+          "${modifier}+b" = "exec chromium";
+          "${modifier}+q" = "kill";
+          "${modifier}+n" = "exec makoctl dismiss";
+          "${modifier}+w" = "exec rofi  --show run | xargs swaymsg exec --";
+          "${modifier}+f" = "fullscreen";
+
+					# Workspace Commands
+					"${modifier}+1" = "workspace number 1";
+          "${modifier}+2" = "workspace number 2";
+					"${modifier}+3" = "workspace number 3";
+					"${modifier}+4" = "workspace number 4";
+					"${modifier}+5" = "workspace number 5";
+					"${modifier}+6" = "workspace number 6";
+					"${modifier}+7" = "workspace number 7";
+					"${modifier}+8" = "workspace number 8";
+					"${modifier}+9" = "workspace number 9";
+
+					"${modifier}+Shift+1" = "move container to workspace number 1, workspace number 1";
+					"${modifier}+Shift+2" = "move container to workspace number 2, workspace number 2";
+					"${modifier}+Shift+3" = "move container to workspace number 3, workspace number 3";
+					"${modifier}+Shift+4" = "move container to workspace number 4, workspace number 4";
+					"${modifier}+Shift+5" = "move container to workspace number 5, workspace number 5";
+					"${modifier}+Shift+6" = "move container to workspace number 6, workspace number 6";
+					"${modifier}+Shift+7" = "move container to workspace number 7, workspace number 7";
+					"${modifier}+Shift+8" = "move container to workspace number 8, workspace number 8";
+					"${modifier}+Shift+9" = "move container to workspace number 9, workspace number 9";
         };
+				workspaceAutoBackAndForth = true;
         bars = [];
         startup = [
           { command = "exec systemctl --user restart waybar.service";
