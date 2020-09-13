@@ -243,7 +243,7 @@ in {
           Host *
             AddKeysToAgent yes
             User jonathanl
-            IdentityFiel ~/.ssh/id_rsa
+            IdentityFile ~/.ssh/id_rsa
         '';
       };
 
