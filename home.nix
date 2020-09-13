@@ -14,7 +14,7 @@ in {
 
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "audio" "video" "sway" ];
     shell = pkgs.zsh;
   };
   fonts.fonts = with pkgs; [
@@ -43,7 +43,6 @@ in {
       ranger
       bat
       grim
-
     ];
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -238,6 +237,16 @@ in {
         userName = "Jonathan Lorimer";
         userEmail = "jonathan_lorimer@mac.com";
       };
+      ssh = {
+        enable = true;
+        extraConfig = ''
+          Host *
+            AddKeysToAgent yes
+            User jonathanl
+            IdentityFiel ~/.ssh/id_rsa
+        '';
+      };
+
       direnv = {
         enable = true;
         enableZshIntegration = true;
@@ -252,8 +261,8 @@ in {
           "l." = "ls -lah";
           cfghome = "nvim $HOME/.config/nixpkgs/home.nix";
           cfgnix = "nvim $HOME/.config/nixpkgs";
-          "nix-src" = "sudo nixos-rebuild switch";
-          "home-src" = "sudo home-manager switch";
+          "nrs" = "sudo nixos-rebuild switch";
+          "hs" = "sudo home-manager switch";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
@@ -288,7 +297,7 @@ in {
           height = 40;
           modules-left = [ "sway/workspaces" "sway/mode" ];
           modules-center = [ "sway/window" ];
-          modules-right = [ "clock" "battery" ];
+          modules-right = [ "pulseaudio" "network" "battery" "clock" ];
           "sway/window" = {
             format = "{}";
             max-length = 50;
@@ -296,10 +305,52 @@ in {
            "sway/mode" = {
             format = "{}";
           };
+
+          network = {
+            format = "{ifname} 直";
+            format-wifi = "{essid}({signalStrength}) 直";
+            tooltip-format = "{ifname}";
+            tooltip-format-wifi = "{ifname}";
+            format-disconnecetd = " 睊";
+          };
+
+          pulseaudio = {
+            format-icons = {
+              default = "蓼";
+              speaker = "蓼";
+              headphone = "";
+              hands-free = "";
+              headset = "";
+            };
+            format = "{volume} {icon}";
+            format-muted = "{volume} {icon}";
+            format-bluetooth = "{volume} {icon}";
+          };
+
+          battery = {
+            format-icons = {
+              warning = "";
+              verylow = "";
+              low = "";
+              medium = "";
+              high = "";
+              full = "";
+            };
+            states = {
+              warning = 10;
+              verylow = 20;
+              low = 40;
+              medium = 60;
+              high = 80;
+              full = 100;
+            };
+            format = "{capacity}% {icon}";
+          };
+
           clock = {
-            format = "{:%H:%M}";
+            format = "{:%H:%M} ";
             tooltip-format = "{:%Y-%m-%d | %H:%M}";
-            format-alt = "{:%Y-%m-%d}";
+            format-alt = "{:%Y-%m-%d} ";
           };
         }];
         style = ''
@@ -311,30 +362,62 @@ in {
             min-height: 0;
           }
           window#waybar {
-            background: ${colours.background};
-            border-bottom: 3px solid ${colours.colour8};
+            background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.3};
             color: ${colours.foreground};
+            padding: 0px 6px;
           }
-          window#waybar.hidden {
-            opacity: 0.0;
-          }
+
           #workspaces button {
             padding: 0 5px;
             background: transparent;
             color: ${colours.foreground};
-            border-bottom: 3px solid transparent;
+            border-top: 2px solid transparent;
           }
           #workspaces button.focused {
-            background: ${colours.colour8};
-            border-bottom: 3px solid ${colours.background};
+            color: ${colours.colour5};
+            background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.7};
+            border-top: 2px solid ${colours.colour5};
           }
           #workspaces button.urgent {
             background-color: ${colours.colour9};
           }
-          #clock, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #mode, #idle_inhibitor {
+
+          #clock,
+          #battery,
+          #cpu,
+          #memory,
+          #temperature,
+          #backlight,
+          #network,
+          #pulseaudio,
+          #mode,
+          #idle_inhibitor {
             padding: 0 10px;
             margin: 0 5px;
           }
+
+          @keyframes blink {
+            to {
+              background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.7}
+            }
+          }
+
+          #battery.warning:not(.charging) {
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+
+          #battery.warning,
+          #battery.verylow  { color: ${colours.colour1}; }
+
+          #battery.low,
+          #battery.medium { color: ${colours.colour3}; }
+
+          #battery.high
+          #battery.full  { color: ${colours.colour2}; }
         '';
       };
     };
