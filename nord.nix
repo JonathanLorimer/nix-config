@@ -40,8 +40,7 @@ with rec {
     in
     if length chars == 6 then
       { red = hex-pair-at 0; green = hex-pair-at 2; blue = hex-pair-at 4; }
-    else
-      throw "no parse in rgb function";
+    else throw "no parse in rgb functionr ";
   hex = rgb: "#" + int-to-hex-pair rgb.red + int-to-hex-pair rgb.green + int-to-hex-pair rgb.blue;
   css = rgb: a: "rgba(${toString rgb.red}, ${toString rgb.green}, ${toString rgb.blue}, ${toJSON a})";
   rgb-to-hsv = rgb:

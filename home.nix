@@ -281,6 +281,7 @@ in {
         settings = {
           add_newline = false;
           character.symbol = "λ";
+          git_branch.symbol = " ";
         };
       };
       htop.enable = true;
@@ -347,9 +348,7 @@ in {
             format = "{capacity}% {icon}";
           };
 
-          clock = {
-            format = "{:%H:%M} ";
-            tooltip-format = "{:%Y-%m-%d | %H:%M}";
+          clock = { format = "{:%H:%M} "; tooltip-format = "{:%Y-%m-%d | %H:%M}";
             format-alt = "{:%Y-%m-%d} ";
           };
         }];
@@ -453,6 +452,11 @@ in {
           "${modifier}+f" = "fullscreen";
 
 					# Workspace Commands
+					"${modifier}+h" = "focus left";
+          "${modifier}+j" = "focus down";
+					"${modifier}+k" = "focus up";
+					"${modifier}+l" = "focus right";
+
 					"${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
 					"${modifier}+3" = "workspace number 3";
