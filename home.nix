@@ -449,6 +449,7 @@ in {
           "${modifier}+Shift+p" = "exec amixer set Master 5%+";
           "${modifier}+o" = "exec light -U 5.00";
           "${modifier}+p" = "exec light -A 5.00";
+
           # Shortcuts
           "${modifier}+t" = "exec alacritty";
           "${modifier}+b" = "exec chromium";
@@ -462,6 +463,9 @@ in {
           "${modifier}+j" = "focus down";
 					"${modifier}+k" = "focus up";
 					"${modifier}+l" = "focus right";
+
+					"${modifier}+v" = "split vertical";
+					"${modifier}+z" = "split horizontal";
 
 					"${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
