@@ -295,7 +295,7 @@ in {
         settings = builtins.toJSON [{
           layer = "bottom";
           position = "top";
-          height = 40;
+          height = 30;
           modules-left = [ "sway/workspaces" "sway/mode" ];
           modules-center = [ "sway/window" ];
           modules-right = [ "pulseaudio" "network" "battery" "clock" ];
@@ -444,6 +444,12 @@ in {
           };
         };
         keybindings = {
+          # Controls
+          "${modifier}+Shift+o" = "exec amixer set Master 5%-";
+          "${modifier}+Shift+p" = "exec amixer set Master 5%+";
+          "${modifier}+o" = "exec light -U 5.00";
+          "${modifier}+p" = "exec light -A 5.00";
+          # Shortcuts
           "${modifier}+t" = "exec alacritty";
           "${modifier}+b" = "exec chromium";
           "${modifier}+q" = "kill";
