@@ -236,6 +236,7 @@ in {
         enable = true;
         userName = "Jonathan Lorimer";
         userEmail = "jonathan_lorimer@mac.com";
+        extraConfig.pull.rebase = true;
       };
       ssh = {
         enable = true;
