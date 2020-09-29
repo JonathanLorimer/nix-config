@@ -8,6 +8,7 @@ let
     exec systemctl --user start sway.service
   '';
   colours = import ./nord.nix { inherit lib; };
+  customPackages = import ./programs/nvim/plugins.nix { inherit pkgs; };
   modifier = "Mod4";
 in {
   programs.sway.enable = true;
@@ -195,21 +196,22 @@ in {
       neovim = {
         enable = true;
 	      extraConfig = builtins.readFile ./programs/nvim/init.vim;
-        plugins = with pkgs.vimPlugins; [
+        plugins = with pkgs.vimPlugins; with customPackages; [
           # General
-          vim-markdown
           fzfWrapper
           fzf-vim
           vim-rooter
           ranger-vim
           bclose-vim
-          vim-airline
-          vim-airline-themes
           vim-surround
           vim-commentary
           syntastic
           vim-which-key
           tagbar
+
+          # Themeing
+          vim-airline
+          custom-vim-airline-themes
           nord-vim
 
           # Git
@@ -220,6 +222,9 @@ in {
 
           # LSP
           coc-nvim
+
+          # Markdown
+          vim-markdown
 
           # Nix
           vim-nix

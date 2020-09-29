@@ -27,7 +27,7 @@ let g:which_key_map['w'] = [ ':retab<CR>'                          , 'tabs -> sp
 
 let g:which_key_map.r = {
       \ 'name': '+ranger',
-      \ 't' : [':RangerTab'  , 'new tab'],
+      \ 't' : [':RangerTab'         , 'new tab'],
       \ 'f' : [':RangerEdit'        , 'find'   ],
       \ }
 
@@ -40,9 +40,10 @@ let g:which_key_map.z = {
 
 let g:which_key_map.g = {
       \ 'name': '+git',
-      \ 'j' : ['<plug>(signify-next-hunk)'    , 'hunk down' ],
-      \ 'k' : ['<plug>(signify-prev-hunk)'    , 'hunk up'   ],
-      \ 'h' : [':SignifyToggleHighlight<CR>'  , 'highlight' ],
+      \ 'j' : ['<plug>(signify-next-hunk)'    , 'hunk down'  ],
+      \ 'k' : ['<plug>(signify-prev-hunk)'    , 'hunk up'    ],
+      \ '2' : [':Gdiffsplit<CR>'              , '2 way merge'],
+      \ '3' : [':Gdiffsplit!<CR>'             , '3 way merge'],
       \ }
 
 " Misc

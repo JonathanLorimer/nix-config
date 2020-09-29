@@ -23,6 +23,10 @@ set smarttab
 set smartindent
 set autoindent
 
+" Search
+set inccommand=nosplit
+
+"General
 set number
 set rnu
 autocmd BufWritePre * %s/\s\+$//e
