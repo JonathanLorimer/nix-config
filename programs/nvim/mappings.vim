@@ -44,6 +44,7 @@ let g:which_key_map.g = {
       \ 'k' : ['<plug>(signify-prev-hunk)'    , 'hunk up'    ],
       \ '2' : [':Gdiffsplit<CR>'              , '2 way merge'],
       \ '3' : [':Gdiffsplit!<CR>'             , '3 way merge'],
+      \ 'b' : [':Gblame<CR>'                  , 'blame'      ],
       \ }
 
 " Misc
