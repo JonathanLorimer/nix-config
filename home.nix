@@ -24,26 +24,39 @@ in {
   home-manager.users.jonathanl = {
     imports = [ ./modules/waybar.nix ];
     home.packages = with pkgs; [
+      # WM
       xwayland
       waybar
       sway
-      mako
-      kanshi
-      rofi
-      wl-clipboard
-      wf-recorder
       start-sway
+
+      # Display
+      kanshi
+
+      # Notifications
+      mako
+
+      # Navigation
       bemenu
+
+      # Terminal
       alacritty
-      pfetch
       neofetch
       starship
-      nix-prefetch-git
-      nodejs
+
+      # Utils
       ripgrep
       ranger
       bat
       grim
+      wl-clipboard
+      wf-recorder
+      nix-prefetch-git
+      nodejs
+
+      # Pdf
+      zotero
+      zathura
     ];
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -461,8 +474,9 @@ in {
           "${modifier}+b" = "exec chromium";
           "${modifier}+q" = "kill";
           "${modifier}+n" = "exec makoctl dismiss";
-          "${modifier}+w" = "exec rofi  --show run | xargs swaymsg exec --";
           "${modifier}+f" = "fullscreen";
+					"${modifier}+z" = "exec zotero";
+          "${modifier}+m" = "bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
 
 					# Workspace Commands
 					"${modifier}+h" = "focus left";
@@ -470,8 +484,8 @@ in {
 					"${modifier}+k" = "focus up";
 					"${modifier}+l" = "focus right";
 
-					"${modifier}+v" = "split vertical";
-					"${modifier}+z" = "split horizontal";
+					"${modifier}+Shift+s" = "split vertical";
+					"${modifier}+s"       = "split horizontal";
 
 					"${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
