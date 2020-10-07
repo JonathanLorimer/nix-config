@@ -33,6 +33,8 @@ in {
       # Display
       kanshi
 
+      # Sound
+
       # Notifications
       mako
 
@@ -476,7 +478,7 @@ in {
           "${modifier}+n" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
 					"${modifier}+z" = "exec zotero";
-          "${modifier}+m" = "bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
+          "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
 
 					# Workspace Commands
 					"${modifier}+h" = "focus left";
