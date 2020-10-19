@@ -21,9 +21,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 let g:which_key_map['c'] = [ 'gcc'                                 , 'comment'       ]
-let g:which_key_map['h'] = [ 'gT'                                  , 'tab right'     ]
-let g:which_key_map['l'] = [ 'gt'                                  , 'tab left'      ]
-let g:which_key_map['w'] = [ ':retab<CR>'                          , 'tabs -> spaces']
+let g:which_key_map['h'] = [ 'gT'                                  , 'tab left'      ]
+let g:which_key_map['l'] = [ 'gt'                                  , 'tab right'     ]
+
 
 let g:which_key_map.r = {
       \ 'name': '+ranger',
@@ -50,8 +50,18 @@ let g:which_key_map.g = {
 " Misc
 nnoremap <leader>t ITODO(jonathan):<ESC>:Commentary<CR>f:a<Space>
 let g:which_key_map.t = 'todo'
+
 nnoremap <leader>f :Rg<CR>
 let g:which_key_map.f = 'ripgrep'
+
+nnoremap <leader>H :-tabmove<CR>
+let g:which_key_map.H = 'move tab left'
+
+nnoremap <leader>L :+tabmove<CR>
+let g:which_key_map.L = 'move tab right'
+
+nnoremap <leader>w :retab<CR>
+let g:which_key_map.w = 'tabs -> spaces'
 
 au filetype haskell nnoremap <silent> <leader>p :let a='{-# LANGUAGE  #-}'\|put! = a <cr> l11 <Insert>
 let g:which_key_map.p = 'add pragma'
