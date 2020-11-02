@@ -27,8 +27,10 @@ let g:which_key_map['l'] = [ 'gt'                                  , 'tab right'
 
 let g:which_key_map.r = {
       \ 'name': '+ranger',
-      \ 't' : [':RangerTab'         , 'new tab'],
-      \ 'f' : [':RangerEdit'        , 'find'   ],
+      \ 't' : [':RangerTab'          , 'new tab'          ],
+      \ 'f' : [':RangerEdit'         , 'find'             ],
+      \ 'v' : [':RangerVSplit'       , 'vertical split'   ],
+      \ 'h' : [':RangerSplit'        , 'horizontal split' ],
       \ }
 
 let g:which_key_map.z = {

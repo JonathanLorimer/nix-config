@@ -35,6 +35,8 @@ in {
 
       # Sound
 
+      # Video
+
       # Notifications
       mako
 
@@ -45,9 +47,11 @@ in {
       alacritty
       neofetch
       starship
+      asciinema
 
       # Utils
       ripgrep
+      ruplacer
       ranger
       bat
       grim
@@ -56,7 +60,8 @@ in {
       nix-prefetch-git
       nodejs
 
-      # Pdf
+      # Knowledge Management
+      obsidian
       zotero
       zathura
     ];
