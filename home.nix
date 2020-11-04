@@ -48,6 +48,7 @@ in {
       neofetch
       starship
       asciinema
+      tmate
 
       # Utils
       ripgrep
