@@ -252,6 +252,7 @@ in {
 
           # Haskell
           haskell-vim
+          vim-syntax-shakespeare
 
           # Typescript
           typescript-vim
@@ -313,6 +314,7 @@ in {
       };
       htop.enable = true;
       chromium.enable = true;
+      firefox.enable = true;
       rofi.enable = true;
     };
 
