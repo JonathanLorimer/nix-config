@@ -67,13 +67,13 @@ in {
       host all all 127.0.0.1/32 trust
       host all all ::1/128 trust
     '';
-    extraConfig = ''
-      timezone = 'UTC'
-      shared_buffers = 128MB
-      fsync = off
-      synchronous_commit = off
-      full_page_writes = off
-    '';
+    settings = {
+      timezone = "UTC";
+      shared_buffers = 128;
+      fsync = false;
+      synchronous_commit = false;
+      full_page_writes = false;
+    };
   };
 
   # Enable sound.
@@ -91,7 +91,9 @@ in {
   boot.blacklistedKernelModules = [ "snd_pcsp" ];
 
   # System Version
-  system.stateVersion = "20.03";
+  system.stateVersion = "20.09";
 
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 }
 
