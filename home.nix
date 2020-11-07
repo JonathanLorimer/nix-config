@@ -343,11 +343,6 @@ in {
     };
 
     services = {
-      gpg-agent = {
-        enable = true;
-        enableSshSupport = true;
-        defaultCacheTtlSsh = 24 * 60 * 60;
-      };
       waybar = {
         enable = true;
         settings = builtins.toJSON [{
