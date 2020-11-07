@@ -77,6 +77,7 @@ in {
   };
 
   # Enable sound.
+  nixpkgs.config.pulseaudio;
   sound.enable = true;
   hardware.bluetooth.enable = true;
   hardware.pulseaudio.enable = true;

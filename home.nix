@@ -511,7 +511,7 @@ in {
           "${modifier}+f" = "fullscreen";
 					"${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
-					"${modifier}+Control+i" = "exec ${swaylock-command}";
+					"${modifier}+Control+l" = "exec ${swaylock-command}";
 
 					# Workspace Commands
 					"${modifier}+h" = "focus left";
@@ -548,14 +548,14 @@ in {
           { command = "exec systemctl --user restart waybar.service";
             always = true;
           }
-          { command = ''
-              swayidle -w \
-                timeout 300 '${swaylock-command}' \
-                timeout 600 'swaymsg "output * dpms off"' \
-                      resume 'swaymsg "output * dpms on"' \
-            '';
-            always = false;
-          }
+          # { command = ''
+          #     swayidle -w \
+          #       timeout 300 '${swaylock-command}' \
+          #       timeout 600 'swaymsg "output * dpms off"' \
+          #             resume 'swaymsg "output * dpms on"' \
+          #   '';
+          #   always = false;
+          # }
         ];
       };
     };
