@@ -10,6 +10,30 @@ let
   colours = import ./nord.nix { inherit lib; };
   customPackages = import ./programs/nvim/plugins.nix { inherit pkgs; };
   modifier = "Mod4";
+	swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
+	swaylock-config = lib.cli.toGNUCommandLineShell {} {
+		screenshots = true;
+		clock = true;
+		indicator = true;
+		show-failed-attempts = true;
+		ignore-empty-password = true;
+		grace = 2;
+		effect-blur = "7x5";
+		effect-vignette = "0.6:0.6";
+		ring-color = colours.colour4;
+		ring-ver-color = colours.colour2;
+		ring-wrong-color = colours.colour1;
+		key-hl-color = colours.colour3;
+		line-color = "00000000";
+		line-ver-color = "00000000";
+		line-wrong-color = "00000000";
+		inside-color = "00000000";
+		inside-ver-color = "00000000";
+		inside-wrong-color = "00000000";
+		separator-color = "00000000";
+		text-color = colours.foreground;
+	};
+	swaylock-command = "swaylock ${swaylock-config}";
 in {
   programs.sway.enable = true;
 
@@ -29,6 +53,7 @@ in {
       waybar
       sway
       start-sway
+      swaylock-effects
 
       # Display
       kanshi
@@ -252,7 +277,6 @@ in {
 
           # Haskell
           haskell-vim
-          vim-syntax-shakespeare
 
           # Typescript
           typescript-vim
@@ -319,6 +343,11 @@ in {
     };
 
     services = {
+      gpg-agent = {
+        enable = true;
+        enableSshSupport = true;
+        defaultCacheTtlSsh = 24 * 60 * 60;
+      };
       waybar = {
         enable = true;
         settings = builtins.toJSON [{
@@ -487,6 +516,7 @@ in {
           "${modifier}+f" = "fullscreen";
 					"${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
+					"${modifier}+Control+i" = "exec ${swaylock-command}";
 
 					# Workspace Commands
 					"${modifier}+h" = "focus left";
@@ -522,6 +552,14 @@ in {
         startup = [
           { command = "exec systemctl --user restart waybar.service";
             always = true;
+          }
+          { command = ''
+              swayidle -w \
+                timeout 300 '${swaylock-command}' \
+                timeout 600 'swaymsg "output * dpms off"' \
+                      resume 'swaymsg "output * dpms on"' \
+            '';
+            always = false;
           }
         ];
       };
