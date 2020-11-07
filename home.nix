@@ -17,7 +17,6 @@ let
 		indicator = true;
 		show-failed-attempts = true;
 		ignore-empty-password = true;
-		grace = 2;
 		effect-blur = "7x5";
 		effect-vignette = "0.6:0.6";
 		ring-color = colours.colour4;

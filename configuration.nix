@@ -40,6 +40,7 @@ in {
 
   # Nixpkgs
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.pulseaudio = true;
 
   # Enable Light
   programs.light.enable = true;
@@ -77,7 +78,6 @@ in {
   };
 
   # Enable sound.
-  nixpkgs.config.pulseaudio;
   sound.enable = true;
   hardware.bluetooth.enable = true;
   hardware.pulseaudio.enable = true;
