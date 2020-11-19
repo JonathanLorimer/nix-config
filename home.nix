@@ -356,7 +356,8 @@ in {
 
       waybar = {
         enable = true;
-        settings = builtins.toJSON waybar-config;
+        settings = builtins.toJSON waybar-config.settings;
+        style = waybar-config.styles;
       };
     };
     wayland.windowManager.sway = {
