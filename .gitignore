@@ -1,1 +1,10 @@
 secrets.nix
+ca.crt
+jonathanlorimer.crt
+jonathanlorimer.key
+vpn.mercury.com.ovpn
+
+*/**/ca.crt
+*/**/jonathanlorimer.crt
+*/**/jonathanlorimer.key
+*/**/vpn.mercury.com.ovpn

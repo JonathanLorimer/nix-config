@@ -11,6 +11,8 @@ call matchadd('ColorColumn', '\%81v', 120)
 
 "Color Theme
 colorscheme nord
+"make background transparent
+" hi Normal ctermbg=NONE guibg=NONE
 
 "Airline Theme
 let g:airline_theme='nord_minimal'

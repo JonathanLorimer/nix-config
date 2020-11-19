@@ -33,6 +33,7 @@ let
 		text-color = colours.foreground;
 	};
 	swaylock-command = "swaylock ${swaylock-config}";
+  waybar-config = import ./modules/waybar/config.nix;
 in {
   programs.sway.enable = true;
 
@@ -43,23 +44,34 @@ in {
   };
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["Iosevka"]; })
+    font-awesome
   ];
   home-manager.users.jonathanl = {
-    imports = [ ./modules/waybar.nix ];
+    imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
-      # WM
+      # Wayland
       xwayland
       waybar
       sway
       start-sway
       swaylock-effects
 
+      # Messaging
+      keybase
+      keybase-gui
+
+      # Network
+      openvpn
+      openssl
+
       # Display
       kanshi
 
       # Sound
+      pavucontrol
 
       # Video
+      vlc
 
       # Notifications
       mako
@@ -221,7 +233,7 @@ in {
               white = colours.colour15;
             };
           };
-          background_opacity = .8;
+          background_opacity = 0.8;
           selection.save_to_clipboard = true;
           cursor.style = "Block";
           cursor.unfocused_hollow = true;
@@ -340,142 +352,17 @@ in {
       firefox.enable = true;
       rofi.enable = true;
     };
-
     services = {
+
       waybar = {
         enable = true;
-        settings = builtins.toJSON [{
-          layer = "bottom";
-          position = "top";
-          height = 30;
-          modules-left = [ "sway/workspaces" "sway/mode" ];
-          modules-center = [ "sway/window" ];
-          modules-right = [ "pulseaudio" "network" "battery" "clock" ];
-          "sway/window" = {
-            format = "{}";
-            max-length = 50;
-          };
-           "sway/mode" = {
-            format = "{}";
-          };
-
-          network = {
-            format = "{ifname} 直";
-            format-wifi = "{essid}({signalStrength}) 直";
-            tooltip-format = "{ifname}";
-            tooltip-format-wifi = "{ifname}";
-            format-disconnecetd = " 睊";
-          };
-
-          pulseaudio = {
-            format-icons = {
-              default = "蓼";
-              speaker = "蓼";
-              headphone = "";
-              hands-free = "";
-              headset = "";
-            };
-            format = "{volume} {icon}";
-            format-muted = "{volume} {icon}";
-            format-bluetooth = "{volume} {icon}";
-          };
-
-          battery = {
-            format-icons = {
-              warning = "";
-              verylow = "";
-              low = "";
-              medium = "";
-              high = "";
-              full = "";
-            };
-            states = {
-              warning = 10;
-              verylow = 20;
-              low = 40;
-              medium = 60;
-              high = 80;
-              full = 100;
-            };
-            format = "{capacity}% {icon}";
-          };
-
-          clock = { format = "{:%H:%M} "; tooltip-format = "{:%Y-%m-%d | %H:%M}";
-            format-alt = "{:%Y-%m-%d} ";
-          };
-        }];
-        style = ''
-          * {
-            border: none;
-            border-radius: 0;
-            font-family: 'Iosevka';
-            font-size: 20px;
-            min-height: 0;
-          }
-          window#waybar {
-            background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.3};
-            color: ${colours.foreground};
-            padding: 0px 6px;
-          }
-
-          #workspaces button {
-            padding: 0 5px;
-            background: transparent;
-            color: ${colours.foreground};
-            border-top: 2px solid transparent;
-          }
-          #workspaces button.focused {
-            color: ${colours.colour5};
-            background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.7};
-            border-top: 2px solid ${colours.colour5};
-          }
-          #workspaces button.urgent {
-            background-color: ${colours.colour9};
-          }
-
-          #clock,
-          #battery,
-          #cpu,
-          #memory,
-          #temperature,
-          #backlight,
-          #network,
-          #pulseaudio,
-          #mode,
-          #idle_inhibitor {
-            padding: 0 10px;
-            margin: 0 5px;
-          }
-
-          @keyframes blink {
-            to {
-              background: ${colours.css (colours.rgb (lib.strings.removePrefix "#" colours.colour8)) 0.7}
-            }
-          }
-
-          #battery.warning:not(.charging) {
-            animation-name: blink;
-            animation-duration: 0.5s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-          }
-
-          #battery.warning,
-          #battery.verylow  { color: ${colours.colour1}; }
-
-          #battery.low,
-          #battery.medium { color: ${colours.colour3}; }
-
-          #battery.high
-          #battery.full  { color: ${colours.colour2}; }
-        '';
+        settings = builtins.toJSON waybar-config;
       };
     };
     wayland.windowManager.sway = {
       enable = true;
       config = {
-        fonts = [ "Iosevka" ];
+        fonts = [ "Iosevka" "Font Awesome 5 Free" ];
         gaps = {
           inner = 5;
           outer = 5;
@@ -497,10 +384,12 @@ in {
         };
         keybindings = {
           # Controls
-          "${modifier}+Shift+o" = "exec amixer set Master 5%-";
-          "${modifier}+Shift+p" = "exec amixer set Master 5%+";
+          "${modifier}+Control+o" = "exec amixer set Master 5%-";
+          "${modifier}+Control+p" = "exec amixer set Master 5%+";
           "${modifier}+o" = "exec light -U 5.00";
           "${modifier}+p" = "exec light -A 5.00";
+          "${modifier}+Control+l" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 100";
+          "${modifier}+Control+k" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 0";
 
           # Shortcuts
           "${modifier}+t" = "exec alacritty";
@@ -510,13 +399,17 @@ in {
           "${modifier}+f" = "fullscreen";
 					"${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
-					"${modifier}+Control+l" = "exec ${swaylock-command}";
+					"${modifier}+Escape" = "exec ${swaylock-command}";
 
 					# Workspace Commands
 					"${modifier}+h" = "focus left";
+					"${modifier}+Shift+h" = "move left";
           "${modifier}+j" = "focus down";
+          "${modifier}+Shift+j" = "focus down";
 					"${modifier}+k" = "focus up";
+					"${modifier}+Shift+k" = "move up";
 					"${modifier}+l" = "focus right";
+					"${modifier}+Shift+l" = "move right";
 
 					"${modifier}+Shift+s" = "split vertical";
 					"${modifier}+s"       = "split horizontal";
