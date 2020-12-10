@@ -20,7 +20,6 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-let g:which_key_map['c'] = [ 'gcc'                                 , 'comment'       ]
 let g:which_key_map['h'] = [ 'gT'                                  , 'tab left'      ]
 let g:which_key_map['l'] = [ 'gt'                                  , 'tab right'     ]
 
@@ -49,6 +48,19 @@ let g:which_key_map.g = {
       \ 'b' : [':Gblame<CR>'                  , 'blame'      ],
       \ }
 
+let g:which_key_map.c = {
+      \ 'name': '+Coc',
+      \ 'k' : ['<Plug>(coc-diagnostic-prev)'          , 'previous diagnostic'  ],
+      \ 'j' : ['<Plug>(coc-diagnostic-next)'          , 'next diagnostic'      ],
+      \ 'd' : ['<Plug>(coc-definition)'               , 'goto definition'      ],
+      \ 't' : ['<Plug>(coc-type-definition)'          , 'goto type definition' ],
+      \ 'i' : ['<Plug>(coc-implementation)'           , 'goto implementation'  ],
+      \ 'r' : ['<Plug>(coc-references)'               , 'goto reference'       ],
+      \ 'f' : ['Plug>(coc-format-selected)'           , 'format'               ],
+      \ }
+
+nnoremap <leader>ch :call <SID>show_documentation()<CR>
+let g:which_key_map.c.h = 'show documentation'
 " Misc
 nnoremap <leader>t ITODO(jonathan):<ESC>:Commentary<CR>f:a<Space>
 let g:which_key_map.t = 'todo'
@@ -81,6 +93,33 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" Coc
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " Tabs
 " nnoremap <leader>h gT

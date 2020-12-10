@@ -72,7 +72,6 @@ let g:fzg_buffers_jump = 1
 let g:fzf_tags_command = 'ctags -R'
 
 " Haskell
-
 let g:haskell_indent_do = 3
 let g:haskell_indent_if = 3
 let g:haskell_indent_in = 1
@@ -86,4 +85,7 @@ autocmd FileType haskell setlocal commentstring=--\ %s
 "Javascript/Typescript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+
+"Coc
+autocmd CursorHold * silent call CocActionAsync('highlight')
 

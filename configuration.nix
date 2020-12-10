@@ -17,6 +17,7 @@ in {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = "1048576";
 
   # Networking
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -29,6 +30,9 @@ in {
     };
     deCrom = {
       psk = secrets.network.deCrom;
+    };
+    "Lonre-5G" = {
+      psk = secrets.network.Lorne-5G;
     };
   };
 

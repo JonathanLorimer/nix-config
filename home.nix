@@ -84,7 +84,6 @@ in {
       neofetch
       starship
       asciinema
-      tmate
 
       # Utils
       ripgrep
@@ -96,11 +95,14 @@ in {
       wf-recorder
       nix-prefetch-git
       nodejs
+      yarn
 
       # Knowledge Management
       obsidian
       zotero
       zathura
+      tectonic
+      texlive.combined.scheme-full
     ];
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -282,6 +284,17 @@ in {
 
           # Markdown
           vim-markdown
+
+          # Tex
+          { plugin = vimtex;
+            config = ''
+              let g:tex_flavor='latex'
+              let g:vimtex_view_method='zathura'
+              let g:vimtex_quickfix_mode=0
+              set conceallevel=1
+              let g:tex_conceal='abdmg'
+            '';
+          }
 
           # Nix
           vim-nix
