@@ -79,6 +79,10 @@ in {
       # Navigation
       bemenu
 
+      # Brosers
+      firefox-wayland
+      brave
+
       # Terminal
       alacritty
       neofetch
@@ -96,6 +100,11 @@ in {
       nix-prefetch-git
       nodejs
       yarn
+      exa
+      procs
+      tokei
+      ytop
+      bandwhich
 
       # Knowledge Management
       obsidian
@@ -333,8 +342,11 @@ in {
 				enableAutosuggestions = true;
         enableCompletion = true;
         shellAliases = {
-          ll = "ls -l";
-          "l." = "ls -lah";
+          ll = "exa -l";
+          l = "exa -lah";
+          ls = "exa";
+          t = "ytop";
+          tm = "ytop -m";
           cfghome = "nvim $HOME/.config/nixpkgs/home.nix";
           cfgnix = "nvim $HOME/.config/nixpkgs";
           "nrs" = "sudo nixos-rebuild switch";
@@ -361,8 +373,6 @@ in {
         };
       };
       htop.enable = true;
-      chromium.enable = true;
-      firefox.enable = true;
       rofi.enable = true;
     };
     services = {
@@ -407,7 +417,7 @@ in {
 
           # Shortcuts
           "${modifier}+t" = "exec alacritty";
-          "${modifier}+b" = "exec chromium";
+          "${modifier}+b" = "exec brave";
           "${modifier}+q" = "kill";
           "${modifier}+n" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
