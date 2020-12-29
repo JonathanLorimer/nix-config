@@ -79,9 +79,15 @@ in {
       # Navigation
       bemenu
 
-      # Brosers
+      # Browsers
       firefox-wayland
       brave
+
+      # Accounting
+      hledger
+
+      # Programming
+      idris2
 
       # Terminal
       alacritty
@@ -112,6 +118,8 @@ in {
       zathura
       tectonic
       texlive.combined.scheme-full
+      elementary-planner
+
     ];
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -310,6 +318,9 @@ in {
 
           # Haskell
           haskell-vim
+
+          # Idris
+          idris2-vim
 
           # Typescript
           typescript-vim

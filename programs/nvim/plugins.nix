@@ -10,4 +10,13 @@
       sha256 = "0f1fwa3rhbpwcncmkiw8qdlai3sn7q6fs3h3g0z01szih6rmkzjb";
     };
   };
+  idris2-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "idris2-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "edwinb";
+      repo = "idris2-vim";
+      rev = "099129e08c89d9526ad092b7980afa355ddaa24c";
+      sha256 = "1gip64ni2wdd5v4crl64f20pbrx24dmr3ci7w5c9da9hs85x1p29";
+    };
+  };
 }
