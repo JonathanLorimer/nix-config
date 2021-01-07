@@ -87,13 +87,16 @@ in {
       hledger
 
       # Programming
+      stack
       idris2
+      exercism
 
       # Terminal
       alacritty
       neofetch
       starship
       asciinema
+      rlwrap
 
       # Utils
       ripgrep

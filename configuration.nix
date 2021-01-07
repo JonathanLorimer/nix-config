@@ -31,7 +31,7 @@ in {
     deCrom = {
       psk = secrets.network.deCrom;
     };
-    "Lonre-5G" = {
+    "Lorne-5G" = {
       psk = secrets.network.Lorne-5G;
     };
   };
