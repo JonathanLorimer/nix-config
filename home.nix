@@ -102,7 +102,6 @@ in {
       ripgrep
       ruplacer
       ranger
-      bat
       grim
       wl-clipboard
       wf-recorder
@@ -114,6 +113,7 @@ in {
       tokei
       ytop
       bandwhich
+      highlight
 
       # Knowledge Management
       obsidian
@@ -334,7 +334,27 @@ in {
         enable = true;
         userName = "Jonathan Lorimer";
         userEmail = "jonathan_lorimer@mac.com";
-        extraConfig.pull.rebase = true;
+        extraConfig = {
+          pull.rebase = true;
+          merge = {
+            tool = "vimdiff";
+            conflictstyle = "diff3";
+            prompt = false;
+            keepBackup = false;
+          };
+          "mergetool \"vimdiff\"" = {
+            cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
+          };
+        };
+        delta = {
+          enable = true;
+          options = {
+            line-numbers = true;
+            side-by-side = true;
+            syntax-theme = "Nord";
+          };
+        };
+
       };
       ssh = {
         enable = true;
@@ -388,6 +408,10 @@ in {
       };
       htop.enable = true;
       rofi.enable = true;
+      bat = {
+        enable = true;
+        config.theme = "Nord";
+      };
     };
     services = {
 
