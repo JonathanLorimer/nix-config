@@ -6,8 +6,6 @@ endif
 syntax enable
 set t_Co=256
 set noshowmode
-highlight ColorColumn ctermbg=red
-call matchadd('ColorColumn', '\%81v', 120)
 
 "Color Theme
 colorscheme nord

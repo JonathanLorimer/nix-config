@@ -11,8 +11,7 @@ let g:ranger_replace_netrw = 1 "open ranger when vim open a directory
 let g:ranger_map_keys = 0
 
 " Highlight 81st column
-highlight ColorColumn ctermbg=red
-call matchadd('ColorColumn', '\%81v', 100)
+set colorcolumn=121
 
 " Tab Stuff
 set expandtab
@@ -24,17 +23,33 @@ set smartindent
 set autoindent
 
 " Search
+set hlsearch
+set incsearch
 set inccommand=nosplit
 
 "General
-set number
-set rnu
-autocmd BufWritePre * %s/\s\+$//e
+set scrolloff=8
 set nocompatible
 set backspace=indent,eol,start
 filetype plugin indent on
 
-" Plugins
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+augroup BASE_GROUP
+  autocmd!
+  autocmd BufWritePre * :call TrimWhitespace()
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+  autocmd FileType haskell setlocal commentstring=--\ %s
+
+  au BufNewFile,BufRead *.ts setlocal filetype=typescript
+  au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " FZF
 let g:fzf_colors =
@@ -80,12 +95,4 @@ let g:haskell_indent_case = 2
 let g:haskell_indent_where = 6
 let g:yesod_handlers_directories = ['src']
 
-autocmd FileType haskell setlocal commentstring=--\ %s
-
-"Javascript/Typescript
-au BufNewFile,BufRead *.ts setlocal filetype=typescript
-au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-
-"Coc
-autocmd CursorHold * silent call CocActionAsync('highlight')
 

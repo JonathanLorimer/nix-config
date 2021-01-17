@@ -34,6 +34,9 @@ in {
     "Lorne-5G" = {
       psk = secrets.network.Lorne-5G;
     };
+    "House" = {
+      psk = secrets.network.House;
+    };
   };
 
   # Set your time zone.

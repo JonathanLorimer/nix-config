@@ -20,9 +20,8 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-let g:which_key_map['h'] = [ 'gT'                                  , 'tab left'      ]
-let g:which_key_map['l'] = [ 'gt'                                  , 'tab right'     ]
-
+let g:which_key_map['h'] = [ 'gT'   , 'tab left'     ]
+let g:which_key_map['l'] = [ 'gt'   , 'tab right'    ]
 
 let g:which_key_map.r = {
       \ 'name': '+ranger',
@@ -76,9 +75,15 @@ let g:which_key_map.L = 'move tab right'
 
 nnoremap <leader>w :retab<CR>
 let g:which_key_map.w = 'tabs -> spaces'
++
+nnoremap <leader>yy "+y
+nnoremap <leader>yp "+p
+vnoremap <leader>dp "_dP
+vnoremap <leader>y  "+y
 
 au filetype haskell nnoremap <silent> <leader>p :let a='{-# LANGUAGE  #-}'\|put! = a <cr> l11 <Insert>
 let g:which_key_map.p = 'add pragma'
+
 " Arrow Keys
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
@@ -120,23 +125,4 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-
-" Tabs
-" nnoremap <leader>h gT
-" nnoremap <leader>l gt
-" nnoremap <leader>tt :RangerNewTab<CR>
-
-" FZF
-" nnoremap <leader>rg :Rg<CR>
-" nnoremap <leader>zt :Tags<CR>
-" nnoremap <leader>zf :Files<CR>
-" nnoremap <leader>zb :Buffers<CR>
-
-" Tagbar
-" nnoremap <leader>tg :TagbarToggle<CR>
-
-" Signify
-" nmap <leader>gj <plug>(signify-next-hunk)
-" nmap <leader>gk <plug>(signify-prev-hunk)
-" nmap <leader>gh :SignifyToggleHighlight<CR>
 

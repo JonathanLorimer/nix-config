@@ -259,7 +259,7 @@ in {
           selection.save_to_clipboard = true;
           cursor.style = "Block";
           cursor.unfocused_hollow = true;
-          url.launcher.program = "chromium";
+          url.launcher.program = "brave";
         };
       };
       mako = {
@@ -277,16 +277,31 @@ in {
 	      extraConfig = builtins.readFile ./programs/nvim/init.vim;
         plugins = with pkgs.vimPlugins; with customPackages; [
           # General
-          fzfWrapper
-          fzf-vim
+          syntastic
+          tagbar
+          vim-commentary
           vim-rooter
+          vim-startuptime
+          vim-surround
+          vim-which-key
+
+          # Navigation
           ranger-vim
           bclose-vim
-          vim-surround
-          vim-commentary
-          syntastic
-          vim-which-key
-          tagbar
+          fzfWrapper
+          fzf-vim
+
+          # Search
+          { plugin = vim-cool;
+            config = ''
+              let g:CoolTotalMatches = 1
+            '';
+          }
+          { plugin = vim-sneak;
+            config = ''
+              let g:sneak#label=1
+            '';
+          }
 
           # Themeing
           vim-airline
@@ -299,13 +314,9 @@ in {
           vim-rhubarb
           gv-vim
 
-          # LSP
+          # Language Support
           coc-nvim
-
-          # Markdown
           vim-markdown
-
-          # Tex
           { plugin = vimtex;
             config = ''
               let g:tex_flavor='latex'
@@ -315,17 +326,9 @@ in {
               let g:tex_conceal='abdmg'
             '';
           }
-
-          # Nix
           vim-nix
-
-          # Haskell
           haskell-vim
-
-          # Idris
           idris2-vim
-
-          # Typescript
           typescript-vim
           vim-tsx
         ];

@@ -19,4 +19,13 @@
       sha256 = "1gip64ni2wdd5v4crl64f20pbrx24dmr3ci7w5c9da9hs85x1p29";
     };
   };
+  vim-startuptime = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-startuptime";
+    src = pkgs.fetchFromGitHub {
+      owner = "dstein64";
+      repo = "vim-startuptime";
+      rev = "37ab78eb837e3004e3cfb3a8e5ed8f8740f27f13";
+      sha256 = "0x3h47hdbg2gp0ahf0ixkj3nks7qbnm25bmd7hq9k3c7b6912b5a";
+    };
+  };
 }
