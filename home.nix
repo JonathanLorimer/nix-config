@@ -8,7 +8,10 @@ let
     exec systemctl --user start sway.service
   '';
   colours = import ./nord.nix { inherit lib; };
-  customPackages = import ./programs/nvim/plugins.nix { inherit pkgs; };
+  vimPluginsOverrides = import ./programs/nvim/plugins.nix {
+    buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
+    inherit (pkgs) fetchFromGitHub;
+  };
   modifier = "Mod4";
 	swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
 	swaylock-config = lib.cli.toGNUCommandLineShell {} {
@@ -275,13 +278,12 @@ in {
       neovim = {
         enable = true;
 	      extraConfig = builtins.readFile ./programs/nvim/init.vim;
-        plugins = with pkgs.vimPlugins; with customPackages; [
+        plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
           # General
           syntastic
           tagbar
           vim-commentary
           vim-rooter
-          vim-startuptime
           vim-surround
           vim-which-key
 
@@ -305,7 +307,7 @@ in {
 
           # Themeing
           vim-airline
-          custom-vim-airline-themes
+          vim-airline-themes
           nord-vim
 
           # Git
