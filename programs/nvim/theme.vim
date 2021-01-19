@@ -14,7 +14,6 @@ colorscheme nord
 
 "Airline Theme
 let g:airline_theme='nord_minimal'
-" let g:airline_theme='nord'
 
 " Enable extensions
 let g:airline_extensions = ['branch', 'hunks']
@@ -66,13 +65,6 @@ function! AirlineInit()
   let g:airline_section_z = airline#section#create(['linenr'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-
-"Airline Theme
-" let g:airline_theme='nord'
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-" let g:airline_section_z = '%3p%% %3l/%L:%3v'
 
 " Custom Highlighting
 hi SignifySignAdd guifg=#99c794

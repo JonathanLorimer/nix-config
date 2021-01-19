@@ -302,6 +302,8 @@ in {
           { plugin = vim-sneak;
             config = ''
               let g:sneak#label=1
+              highlight Sneak guifg=#ECEFF4 guibg=#D08770 ctermfg=Black ctermbg=DarkRed
+              highlight SneakScope guifg=#D08770 guibg=#EBCB8B ctermfg=DarkRed ctermbg=Yellow
             '';
           }
 
