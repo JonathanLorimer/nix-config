@@ -28,6 +28,11 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Custom setup that removes filetype/whitespace from default vim airline bar
 let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
 
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'x': 30,
+    \ }
+
+
 " Customize vim airline per filetype
 let g:airline_filetype_overrides = {
   \ 'list': [ '%y', '%l/%L'],
@@ -61,7 +66,7 @@ function! AirlineInit()
   let g:airline_section_a = airline#section#create(['mode'])
   let g:airline_section_b = airline#section#create(['branch'])
   let g:airline_section_c = airline#section#create(['hunks'])
-  let g:airline_section_x = airline#section#create(['%f'])
+  let g:airline_section_x = airline#section#create(['file'])
   let g:airline_section_z = airline#section#create(['linenr'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()

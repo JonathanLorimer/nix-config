@@ -93,6 +93,7 @@ in {
       stack
       idris2
       exercism
+      pgcli
 
       # Terminal
       alacritty
@@ -332,6 +333,7 @@ in {
           }
           vim-nix
           haskell-vim
+          yesod-routes
           idris2-vim
           typescript-vim
           vim-tsx
