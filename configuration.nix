@@ -1,18 +1,37 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 let secrets = import /home/jonathanl/.config/nixpkgs/secrets.nix;
 in {
   imports =
-    [ # Include the results of the hardware scan.
-      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/x1/7th-gen"
-      <home-manager/nixos>
+    [
+      # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      /home/jonathanl/.config/nixpkgs/home.nix
+
+      # Mercury VPN
       /home/jonathanl/.config/nixpkgs/vpn/default.nix
     ];
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    trustedUsers = [ "jonathanl" "root" ];
+    binaryCaches = [ "https://cache.nixos.org" "https://cache.mercury.com" ];
+    binaryCachePublicKeys = [ "cache.mercury.com:yhfFlgvqtv0cAxzflJ0aZW3mbulx4+5EOZm6k3oML+I=" ];
+   };
+
+  programs.sway.enable = true;
+
+  users.users.jonathanl = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "audio" "video" "sway" ];
+    shell = pkgs.zsh;
+  };
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = ["Iosevka"]; })
+    font-awesome
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

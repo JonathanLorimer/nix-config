@@ -38,20 +38,9 @@ let
 	swaylock-command = "swaylock ${swaylock-config}";
   waybar-config = import ./modules/waybar/config.nix;
 in {
-  programs.sway.enable = true;
-
-  users.users.jonathanl = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" ];
-    shell = pkgs.zsh;
-  };
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["Iosevka"]; })
-    font-awesome
-  ];
-  home-manager.users.jonathanl = {
     imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
+      hello
       # Wayland
       xwayland
       waybar
@@ -109,6 +98,7 @@ in {
       starship
       asciinema
       rlwrap
+      neovim-nightly
 
       # Utils
       ripgrep
@@ -528,5 +518,4 @@ in {
         ];
       };
     };
-  };
 }
