@@ -116,6 +116,18 @@
         "type": "github"
       }
     },
+    "networks": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DnQHtYesj36TZuLvoCetXlP/GWbaw88kmWTt6SqBUHM=",
+        "path": "/home/jonathanl/.config/nixpkgs/networks.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonathanl/.config/nixpkgs/networks.nix",
+        "type": "path"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1611383797,
@@ -199,22 +211,10 @@
         "hardware-config": "hardware-config",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "networks": "networks",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "secrets": "secrets",
         "vpn": "vpn"
-      }
-    },
-    "secrets": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-cZGS+Y1zhnLPsdOnXDcMTy2enGekGoAVBhJLgqCXv5s=",
-        "path": "/home/jonathanl/.config/nixpkgs/secrets.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/jonathanl/.config/nixpkgs/secrets.nix",
-        "type": "path"
       }
     },
     "vpn": {

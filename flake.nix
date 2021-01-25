@@ -13,8 +13,8 @@
       url = "/home/jonathanl/.config/nixpkgs/vpn/default.nix";
       flake = false;
     };
-    secrets = {
-      url = "/home/jonathanl/.config/nixpkgs/secrets.nix";
+    networks = {
+      url = "/home/jonathanl/.config/nixpkgs/networks.nix";
       flake = false;
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -27,14 +27,14 @@
     , neovim-nightly-overlay
     , hardware-config
     , vpn
-    , secrets
+    , networks
     , ...
     }: {
     nixosConfigurations = {
       bellerophon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          secrets
+          networks
           ./configuration.nix
 
           # Mercury VPN
@@ -43,6 +43,7 @@
           # Hardware
           hardware-config
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+          nixpkgs.nixosModules.notDetected
 
           # Overlay
           ({ pkgs, ... }: {
