@@ -34,10 +34,11 @@
       bellerophon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          networks
+          # Config
           ./configuration.nix
 
-          # Mercury VPN
+          # Network Config
+          networks
           vpn
 
           # Hardware
