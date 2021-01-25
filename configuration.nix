@@ -1,15 +1,5 @@
-{ config, pkgs, ... }:
-let secrets = import /home/jonathanl/.config/nixpkgs/secrets.nix;
-in {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-
-      # Mercury VPN
-      /home/jonathanl/.config/nixpkgs/vpn/default.nix
-    ];
-
+{ config, pkgs, secrets, ... }:
+{
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -64,7 +54,6 @@ in {
   ];
 
   # Nixpkgs
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.pulseaudio = true;
 
   # Enable Light
