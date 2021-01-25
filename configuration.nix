@@ -28,9 +28,6 @@ in {
     "deCrom-5G" = {
       psk = secrets.network.deCrom-5G;
     };
-    deCrom = {
-      psk = secrets.network.deCrom;
-    };
     "Lorne-5G" = {
       psk = secrets.network.Lorne-5G;
     };
