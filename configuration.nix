@@ -1,5 +1,11 @@
 { config, pkgs, secrets, ... }:
 {
+  imports =
+      [
+        ./hardware-configuration.nix
+        ./vpn/default.nix
+        ./networks.nix
+      ];
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''

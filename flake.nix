@@ -5,18 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    hardware-config = {
-      url = "/home/jonathanl/.config/nixpkgs/hardware-configuration.nix";
-      flake = false;
-    };
-    vpn = {
-      url = "/home/jonathanl/.config/nixpkgs/vpn/default.nix";
-      flake = false;
-    };
-    networks = {
-      url = "/home/jonathanl/.config/nixpkgs/networks.nix";
-      flake = false;
-    };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -25,9 +13,6 @@
     , nixpkgs
     , nixos-hardware
     , neovim-nightly-overlay
-    , hardware-config
-    , vpn
-    , networks
     , ...
     }: {
     nixosConfigurations = {
@@ -37,12 +22,7 @@
           # Config
           ./configuration.nix
 
-          # Network Config
-          networks
-          vpn
-
           # Hardware
-          hardware-config
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           nixpkgs.nixosModules.notDetected
 
@@ -59,6 +39,7 @@
             home-manager.users.jonathanl = import ./home.nix;
           }
         ];
+        # specialArgs = {inherit vpn hardware-config networks;};
       };
     };
   };
