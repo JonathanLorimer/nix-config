@@ -1,3 +1,4 @@
+{...}:
 {
 	services.openvpn.servers = {
 		mercury = {
