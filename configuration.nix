@@ -3,16 +3,11 @@
   imports =
       [
         ./hardware-configuration.nix
-        # ./vpn/default.nix
+        ./vpn/default.nix
         ./networks.nix
       ];
 
-  sops.defaultSopsFile = ./secrets.json;
-  sops.secrets.networks = {
-    deCrom-5G.owner = config.users.users.jonathanl.name;
-    # Lorne-5G.owner = config.users.users.jonathanl.name;
-    # House.owner = config.users.users.jonathanl.name;
-  };
+  sops.defaultSopsFile = ./sops/secrets.yaml;
 
   nix = {
     package = pkgs.nixFlakes;
@@ -28,7 +23,7 @@
 
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" config.users.groups.keys.name];
+    extraGroups = [ "wheel" "audio" "video" "sway" ];
     shell = pkgs.zsh;
   };
 

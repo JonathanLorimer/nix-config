@@ -1,4 +1,10 @@
+{config, ...}:
 {
+  sops.secrets = {
+    mercury-vpn-ca.owner = config.users.users.jonathanl.name;
+    mercury-vpn-crt.owner = config.users.users.jonathanl.name;
+    mercury-vpn-key.owner = config.users.users.jonathanl.name;
+  };
 	services.openvpn.servers = {
 		mercury = {
 			autoStart = false;
@@ -13,9 +19,9 @@
 				pull
 				auth-user-pass
 				tls-client
-				ca ${./ca.crt}
-				cert ${./jonathanlorimer.crt}
-				key ${./jonathanlorimer.key}
+				ca ${config.sops.secrets.mercury-vpn-ca.path}
+				cert ${config.sops.secrets.mercury-vpn-cert.path}
+				key ${config.sops.secrets.mercury-vpn-key.path}
 				remote-cert-tls server
 				auth-nocache
 				reneg-sec 0

@@ -8,6 +8,12 @@ let
   }) {};
 in
 mkShell {
-  sopsPGPKeys = [./users/jonathanl.asc ];
-  nativeBuildInputs = [ sops-nix.sops-pgp-hook sops-nix.ssh-to-pgp ];
+  sopsPGPKeys = [./jonathanl.asc ];
+  nativeBuildInputs = [
+    sops-nix.sops-pgp-hook
+
+    # This is for editing the sops, but allows an individual to generate
+    # a gpg key from an ssh key in the shell.
+    sops-nix.ssh-to-pgp
+  ];
 }
