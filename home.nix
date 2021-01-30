@@ -64,6 +64,8 @@ in {
       keybase-gui
 
       # Network
+      wireshark-cli
+      termshark
       openvpn
       openssl
 
@@ -89,6 +91,9 @@ in {
       # Accounting
       hledger
 
+      # Security
+      gnupg
+
       # Programming
       ctags
       haskellPackages.hasktags
@@ -96,6 +101,8 @@ in {
       idris2
       exercism
       pgcli
+      nodejs
+      yarn
 
       # Terminal
       alacritty
@@ -112,8 +119,6 @@ in {
       wl-clipboard
       wf-recorder
       nix-prefetch-git
-      nodejs
-      yarn
       exa
       procs
       tokei
