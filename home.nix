@@ -92,7 +92,6 @@ in {
       hledger
 
       # Security
-      gnupg
 
       # Programming
       ctags
