@@ -44,7 +44,6 @@
             home-manager.users.jonathanl = import ./home.nix;
           }
         ];
-        # specialArgs = {inherit vpn hardware-config networks;};
       };
     };
   };

@@ -1,11 +1,14 @@
-{ config, pkgs, secrets, ... }:
+{ config, pkgs, ... }:
 {
   imports =
       [
         ./hardware-configuration.nix
-        ./vpn/default.nix
+        # ./vpn/default.nix
         ./networks.nix
       ];
+
+  sops.defaultSopsFile = ./secrets.json;
+
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
