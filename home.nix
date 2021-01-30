@@ -90,6 +90,8 @@ in {
       hledger
 
       # Programming
+      ctags
+      haskellPackages.hasktags
       stack
       idris2
       exercism
