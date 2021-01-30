@@ -111,7 +111,6 @@ in {
       exa
       procs
       tokei
-      ytop
       bandwhich
       highlight
 
@@ -384,8 +383,6 @@ in {
           ll = "exa -l";
           l = "exa -lah";
           ls = "exa";
-          t = "ytop";
-          tm = "ytop -m";
           cfghome = "nvim $HOME/.config/nixpkgs/home.nix";
           cfgnix = "nvim $HOME/.config/nixpkgs";
           "nrs" = "sudo nixos-rebuild switch";

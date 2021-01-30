@@ -1,5 +1,4 @@
 secrets.nix
-networks.nix
 ca.crt
 jonathanlorimer.crt
 jonathanlorimer.key

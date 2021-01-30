@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.url = "github:Mic92/sops-nix";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -32,8 +32,11 @@
           nixpkgs.nixosModules.notDetected
 
           # Overlay
-          ({ pkgs, ... }: {
+          ({ pkgs, lib, ... }: {
             nixpkgs.overlays = [neovim-nightly-overlay.overlay];
+            nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+              "obsidian"
+            ];
           })
 
           # Home Manager
