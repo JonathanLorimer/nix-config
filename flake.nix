@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -13,6 +14,7 @@
     , nixpkgs
     , nixos-hardware
     , neovim-nightly-overlay
+    , sops-nix
     , ...
     }: {
     nixosConfigurations = {
@@ -21,6 +23,9 @@
         modules = [
           # Config
           ./configuration.nix
+
+          # Secrets
+          sops-nix.nixosModules.sops
 
           # Hardware
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
