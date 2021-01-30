@@ -8,7 +8,10 @@ let
   }) {};
 in
 mkShell {
-  sopsPGPKeys = [./jonathanl.asc ];
+  sopsPGPKeys = [
+    ./jonathanl.asc
+    ./bellerophon.asc
+  ];
   nativeBuildInputs = [
     sops-nix.sops-pgp-hook
 

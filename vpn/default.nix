@@ -2,7 +2,7 @@
 {
   sops.secrets = {
     mercury-vpn-ca.owner = config.users.users.jonathanl.name;
-    mercury-vpn-crt.owner = config.users.users.jonathanl.name;
+    mercury-vpn-cert.owner = config.users.users.jonathanl.name;
     mercury-vpn-key.owner = config.users.users.jonathanl.name;
   };
 	services.openvpn.servers = {
