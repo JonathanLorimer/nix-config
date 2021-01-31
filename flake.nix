@@ -31,9 +31,14 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           nixpkgs.nixosModules.notDetected
 
-          # Overlay
+          # Overrides
           ({ pkgs, lib, ... }: {
-            nixpkgs.overlays = [neovim-nightly-overlay.overlay];
+            nixpkgs.overlays = [
+              neovim-nightly-overlay.overlay
+              (self: super: {
+                neovim-unwrapped = super.neovim-nightly;
+              })
+            ];
             nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
               "obsidian"
             ];

@@ -84,6 +84,7 @@ in {
       # Programming
       ctags
       haskellPackages.hasktags
+      nodePackages.typescript-language-server
       rnix-lsp
       stack
       idris2
@@ -97,7 +98,6 @@ in {
       neofetch
       asciinema
       rlwrap
-      neovim-nightly
 
       # Utils
       ripgrep
@@ -315,6 +315,7 @@ in {
           # Language Support
           nvim-lspconfig
           completion-nvim
+          nvim-treesitter
           vim-markdown
           { plugin = vimtex;
             config = ''
