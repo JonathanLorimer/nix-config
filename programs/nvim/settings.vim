@@ -41,14 +41,13 @@ endfun
 
 augroup BASE_GROUP
   autocmd!
+  autocmd BufEnter * lua require'completion'.on_attach()
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
   autocmd FileType haskell setlocal commentstring=--\ %s
 
   au BufNewFile,BufRead *.ts setlocal filetype=typescript
   au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-
-  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
 " FZF

@@ -40,7 +40,6 @@ let
 in {
     imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
-      hello
       # Wayland
       xwayland
       waybar
@@ -85,6 +84,7 @@ in {
       # Programming
       ctags
       haskellPackages.hasktags
+      rnix-lsp
       stack
       idris2
       exercism
@@ -95,7 +95,6 @@ in {
       # Terminal
       alacritty
       neofetch
-      starship
       asciinema
       rlwrap
       neovim-nightly
@@ -281,7 +280,6 @@ in {
           vim-commentary
           vim-rooter
           vim-surround
-          vim-which-key
 
           # Navigation
           ranger-vim
@@ -315,7 +313,8 @@ in {
           gv-vim
 
           # Language Support
-          coc-nvim
+          nvim-lspconfig
+          completion-nvim
           vim-markdown
           { plugin = vimtex;
             config = ''
@@ -404,7 +403,8 @@ in {
         enableZshIntegration = true;
         settings = {
           add_newline = false;
-          character.symbol = "λ";
+          character.success_symbol = "[λ](bold green)";
+          character.error_symbol = "[](bold red)";
           git_branch.symbol = " ";
         };
       };
