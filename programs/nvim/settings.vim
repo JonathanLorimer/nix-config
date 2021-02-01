@@ -50,6 +50,9 @@ augroup BASE_GROUP
   au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 augroup END
 
+" Lsp
+set updatetime=800
+
 " Completion
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
