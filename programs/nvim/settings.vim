@@ -50,6 +50,10 @@ augroup BASE_GROUP
   au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 augroup END
 
+" Completion
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
 " FZF
 let g:fzf_colors =
   \ { 'fg':      ['fg', 'Normal'],

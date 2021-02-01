@@ -38,6 +38,17 @@
               (self: super: {
                 neovim-unwrapped = super.neovim-nightly;
               })
+              (self: super: {
+                haskell-language-server =
+                  super.haskell-language-server.override {
+                    supportedGhcVersions = [
+                      "865"
+                      "883"
+                      # "884"
+                      "8102"
+                    ];
+                  };
+              })
             ];
             nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
               "obsidian"

@@ -86,6 +86,7 @@ in {
       haskellPackages.hasktags
       nodePackages.typescript-language-server
       rnix-lsp
+      haskell-language-server
       stack
       idris2
       exercism

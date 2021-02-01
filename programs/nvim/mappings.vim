@@ -31,6 +31,11 @@ vnoremap <leader>y  "+y
 
 au filetype haskell nnoremap <silent> <leader>p :let a='{-# LANGUAGE  #-}'\|put! = a <cr> l11 <Insert>
 
+" Auto Completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
 " Arrow Keys
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
