@@ -1,12 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports =
-      [
-        ./hardware-configuration.nix
-        ./vpn/default.nix
-        ./networks.nix
-      ];
-
   sops.defaultSopsFile = ./sops/secrets.yaml;
 
   nix = {

@@ -23,6 +23,9 @@
         modules = [
           # Config
           ./configuration.nix
+          ./hardware-configuration.nix
+          ./vpn.nix
+          ./networks.nix
 
           # Secrets
           sops-nix.nixosModules.sops
