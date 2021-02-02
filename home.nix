@@ -101,10 +101,12 @@ in {
       rlwrap
 
       # Utils
+      jq
       ripgrep
       ruplacer
       ranger
       grim
+      slurp
       wl-clipboard
       wf-recorder
       nix-prefetch-git
@@ -466,6 +468,8 @@ in {
           "${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
           "${modifier}+Escape" = "exec ${swaylock-command}";
+          "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
+          "${modifier}+Shift+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -g $(slurp)";
 
           # Workspace Commands
           "${modifier}+h" = "focus left";
