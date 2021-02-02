@@ -15,7 +15,7 @@ mkShell {
   nativeBuildInputs = [
     sops-nix.sops-pgp-hook
 
-    # This is'nt for editing the sops, but allows an individual to generate
+    # This isn't for editing the sops, but allows an individual to generate
     # a pgp key from an ssh key in the shell.
     sops-nix.ssh-to-pgp
   ];
