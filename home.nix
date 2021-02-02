@@ -13,29 +13,29 @@ let
     inherit (pkgs) fetchFromGitHub;
   };
   modifier = "Mod4";
-	swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
-	swaylock-config = lib.cli.toGNUCommandLineShell {} {
-		screenshots = true;
-		clock = true;
-		indicator = true;
-		show-failed-attempts = true;
-		ignore-empty-password = true;
-		effect-blur = "7x5";
-		effect-vignette = "0.6:0.6";
-		ring-color = colours.colour4;
-		ring-ver-color = colours.colour2;
-		ring-wrong-color = colours.colour1;
-		key-hl-color = colours.colour3;
-		line-color = "00000000";
-		line-ver-color = "00000000";
-		line-wrong-color = "00000000";
-		inside-color = "00000000";
-		inside-ver-color = "00000000";
-		inside-wrong-color = "00000000";
-		separator-color = "00000000";
-		text-color = colours.foreground;
-	};
-	swaylock-command = "swaylock ${swaylock-config}";
+  swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
+  swaylock-config = lib.cli.toGNUCommandLineShell {} {
+    screenshots = true;
+    clock = true;
+    indicator = true;
+    show-failed-attempts = true;
+    ignore-empty-password = true;
+    effect-blur = "7x5";
+    effect-vignette = "0.6:0.6";
+    ring-color = colours.colour4;
+    ring-ver-color = colours.colour2;
+    ring-wrong-color = colours.colour1;
+    key-hl-color = colours.colour3;
+    line-color = "00000000";
+    line-ver-color = "00000000";
+    line-wrong-color = "00000000";
+    inside-color = "00000000";
+    inside-ver-color = "00000000";
+    inside-wrong-color = "00000000";
+    separator-color = "00000000";
+    text-color = colours.foreground;
+  };
+  swaylock-command = "swaylock ${swaylock-config}";
   waybar-config = import ./modules/waybar/config.nix;
 in {
     imports = [./modules/waybar/waybar.nix];
@@ -273,7 +273,7 @@ in {
       };
       neovim = {
         enable = true;
-	      extraConfig = builtins.readFile ./programs/nvim/init.vim;
+        extraConfig = builtins.readFile ./programs/nvim/init.vim;
         plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
           # General
           syntastic
@@ -378,7 +378,7 @@ in {
       zsh = {
         enable = true;
         dotDir = ".config/zsh";
-				enableAutosuggestions = true;
+        enableAutosuggestions = true;
         enableCompletion = true;
         shellAliases = {
           ll = "exa -l";
@@ -463,44 +463,44 @@ in {
           "${modifier}+q" = "kill";
           "${modifier}+n" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
-					"${modifier}+z" = "exec zotero";
+          "${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
-					"${modifier}+Escape" = "exec ${swaylock-command}";
+          "${modifier}+Escape" = "exec ${swaylock-command}";
 
-					# Workspace Commands
-					"${modifier}+h" = "focus left";
-					"${modifier}+Shift+h" = "move left";
+          # Workspace Commands
+          "${modifier}+h" = "focus left";
+          "${modifier}+Shift+h" = "move left";
           "${modifier}+j" = "focus down";
           "${modifier}+Shift+j" = "focus down";
-					"${modifier}+k" = "focus up";
-					"${modifier}+Shift+k" = "move up";
-					"${modifier}+l" = "focus right";
-					"${modifier}+Shift+l" = "move right";
+          "${modifier}+k" = "focus up";
+          "${modifier}+Shift+k" = "move up";
+          "${modifier}+l" = "focus right";
+          "${modifier}+Shift+l" = "move right";
 
-					"${modifier}+Shift+s" = "split vertical";
-					"${modifier}+s"       = "split horizontal";
+          "${modifier}+Shift+s" = "split vertical";
+          "${modifier}+s"       = "split horizontal";
 
-					"${modifier}+1" = "workspace number 1";
+          "${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
-					"${modifier}+3" = "workspace number 3";
-					"${modifier}+4" = "workspace number 4";
-					"${modifier}+5" = "workspace number 5";
-					"${modifier}+6" = "workspace number 6";
-					"${modifier}+7" = "workspace number 7";
-					"${modifier}+8" = "workspace number 8";
-					"${modifier}+9" = "workspace number 9";
+          "${modifier}+3" = "workspace number 3";
+          "${modifier}+4" = "workspace number 4";
+          "${modifier}+5" = "workspace number 5";
+          "${modifier}+6" = "workspace number 6";
+          "${modifier}+7" = "workspace number 7";
+          "${modifier}+8" = "workspace number 8";
+          "${modifier}+9" = "workspace number 9";
 
-					"${modifier}+Shift+1" = "move container to workspace number 1, workspace number 1";
-					"${modifier}+Shift+2" = "move container to workspace number 2, workspace number 2";
-					"${modifier}+Shift+3" = "move container to workspace number 3, workspace number 3";
-					"${modifier}+Shift+4" = "move container to workspace number 4, workspace number 4";
-					"${modifier}+Shift+5" = "move container to workspace number 5, workspace number 5";
-					"${modifier}+Shift+6" = "move container to workspace number 6, workspace number 6";
-					"${modifier}+Shift+7" = "move container to workspace number 7, workspace number 7";
-					"${modifier}+Shift+8" = "move container to workspace number 8, workspace number 8";
-					"${modifier}+Shift+9" = "move container to workspace number 9, workspace number 9";
+          "${modifier}+Shift+1" = "move container to workspace number 1, workspace number 1";
+          "${modifier}+Shift+2" = "move container to workspace number 2, workspace number 2";
+          "${modifier}+Shift+3" = "move container to workspace number 3, workspace number 3";
+          "${modifier}+Shift+4" = "move container to workspace number 4, workspace number 4";
+          "${modifier}+Shift+5" = "move container to workspace number 5, workspace number 5";
+          "${modifier}+Shift+6" = "move container to workspace number 6, workspace number 6";
+          "${modifier}+Shift+7" = "move container to workspace number 7, workspace number 7";
+          "${modifier}+Shift+8" = "move container to workspace number 8, workspace number 8";
+          "${modifier}+Shift+9" = "move container to workspace number 9, workspace number 9";
         };
-				workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = true;
         bars = [];
         startup = [
           { command = "exec systemctl --user restart waybar.service";
