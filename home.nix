@@ -82,8 +82,8 @@ in {
       # Security
 
       # Programming
-      ctags
       haskellPackages.hasktags
+      universal-ctags
       nodePackages.typescript-language-server
       rnix-lsp
       haskell-language-server
@@ -279,16 +279,18 @@ in {
         plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
           # General
           syntastic
-          tagbar
           vim-commentary
-          vim-rooter
+          { plugin = vim-rooter;
+            config = ''
+              let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
+            '';
+          }
           vim-surround
 
           # Navigation
-          ranger-vim
-          bclose-vim
-          fzfWrapper
-          fzf-vim
+          telescope-nvim
+          plenary-nvim
+          popup-nvim
 
           # Search
           { plugin = vim-cool;
@@ -342,6 +344,7 @@ in {
         userName = "Jonathan Lorimer";
         userEmail = "jonathan_lorimer@mac.com";
         extraConfig = {
+          init.defaultBranch = "main";
           pull.rebase = true;
           merge = {
             tool = "vimdiff";
@@ -420,7 +423,6 @@ in {
       };
     };
     services = {
-
       waybar = {
         enable = true;
         settings = builtins.toJSON waybar-config.settings;

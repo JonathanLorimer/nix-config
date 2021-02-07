@@ -29,6 +29,14 @@ local on_attach = function(client, bufnr)
   end
 
   -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.show_line_diagnostics then
+    vim.api.nvim_exec([[
+      augroup lsp_document_show_line_diagnostics
+        autocmd!
+        autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
+      augroup END
+    ]], false)
+  end
   if client.resolved_capabilities.hover then
     vim.api.nvim_exec([[
       augroup lsp_document_hover

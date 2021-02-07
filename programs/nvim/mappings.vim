@@ -1,19 +1,18 @@
 
-" Navigation
-nnoremap <leader>rt :RangerTab<CR>
-nnoremap <leader>rf :RangerEdit<CR>
-nnoremap <leader>rv :RangerVSplit<CR>
-nnoremap <leader>rh :RangerSplit<CR>
-
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fr :Rg<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>ft <cmd>lua require('telescope.builtin').tags()<cr>
+nnoremap <leader>fT <cmd>lua require('telescope.builtin').tags()<cr>
+nnoremap <leader>fq <cmd>lua require('telescope.builtin').quickfix()<cr>
 
 " Git
-"
 nnoremap <leader>gj <plug>(signify-next-hunk)
 nnoremap <leader>gk <plug>(signify-prev-hunk)
 nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gtb <cmd>lua require('telescope.builtin').git_branches()<cr>
+nnoremap <leader>gts <cmd>lua require('telescope.builtin').git_status()<cr>
 
 " Misc
 nnoremap <leader>t ITODO(jonathan):<ESC>:Commentary<CR>f:a<Space>
