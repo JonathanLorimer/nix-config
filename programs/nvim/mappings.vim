@@ -28,12 +28,11 @@ nnoremap <leader>p "+p
 vnoremap <leader>d "_dP
 vnoremap <leader>y  "+y
 
-au filetype haskell nnoremap <silent> <leader>p :let a='{-# LANGUAGE  #-}'\|put! = a <cr> l11 <Insert>
-
 " Auto Completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
+imap <expr><TAB> v:lua.tab_complete()
+smap <expr><TAB> v:lua.tab_complete()
+imap <expr><S-TAB> v:lua.s_tab_complete()
+smap <expr><S-TAB> v:lua.s_tab_complete()
 
 " Arrow Keys
 nnoremap <S-Up> :m-2<CR>

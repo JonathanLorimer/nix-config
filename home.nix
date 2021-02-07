@@ -286,6 +286,8 @@ in {
             '';
           }
           vim-surround
+          vim-vsnip
+          vim-vsnip-integ
 
           # Navigation
           telescope-nvim
@@ -314,23 +316,31 @@ in {
           # Git
           vim-fugitive
           vim-signify
-          vim-rhubarb
-          gv-vim
 
           # Language Support
           nvim-lspconfig
-          completion-nvim
-          nvim-treesitter
-          vim-markdown
-          { plugin = vimtex;
+          { plugin = completion-nvim;
             config = ''
-              let g:tex_flavor='latex'
-              let g:vimtex_view_method='zathura'
-              let g:vimtex_quickfix_mode=0
-              set conceallevel=1
-              let g:tex_conceal='abdmg'
+              let g:completion_enable_snippet = 'vim-vsnip'
+              let g:completion_chain_complete_list = [
+                  \{'complete_items': ['lsp', 'snippet', 'path', 'buffers']},
+                  \{'mode': '<c-p>'},
+                  \{'mode': '<c-n>'}
+              \]
+              let g:completion_items_priority = {
+                  \'Function': 7,
+                  \'Snippet': 5,
+                  \'vim-vsnip': 5,
+                  \'File': 2,
+                  \'Folder': 1,
+                  \'Path': 1,
+                  \'Buffers': 0
+              \}
             '';
           }
+          completion-buffers
+          nvim-treesitter
+          vim-markdown
           vim-nix
           haskell-vim
           yesod-routes
@@ -389,10 +399,9 @@ in {
           ll = "exa -l";
           l = "exa -lah";
           ls = "exa";
-          cfghome = "nvim $HOME/.config/nixpkgs/home.nix";
-          cfgnix = "nvim $HOME/.config/nixpkgs";
-          "nrs" = "sudo nixos-rebuild switch";
-          "hs" = "sudo home-manager switch";
+          cfg = "nvim $HOME/.config/nixpkgs/home.nix";
+          n = "nvim";
+          ns = "nvim $(fzf)";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
