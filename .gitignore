@@ -1,4 +1,5 @@
 secrets.nix
+pritunl.ovpn
 ca.crt
 jonathanlorimer.crt
 jonathanlorimer.key

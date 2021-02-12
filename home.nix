@@ -82,6 +82,7 @@ in {
       # Security
 
       # Programming
+      awscli
       haskellPackages.hasktags
       universal-ctags
       nodePackages.typescript-language-server
@@ -402,6 +403,7 @@ in {
           cfg = "nvim $HOME/.config/nixpkgs/home.nix";
           n = "nvim";
           ns = "nvim $(fzf)";
+          nixz = "nix-shell --command zsh";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
@@ -480,7 +482,7 @@ in {
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
           "${modifier}+Escape" = "exec ${swaylock-command}";
           "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
-          "${modifier}+Shift+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -g $(slurp)";
+          "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
 
           # Workspace Commands
           "${modifier}+h" = "focus left";

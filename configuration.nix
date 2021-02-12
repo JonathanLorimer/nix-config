@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   sops.defaultSopsFile = ./sops/secrets.yaml;
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -96,6 +95,18 @@
       full_page_writes = false;
     };
   };
+
+  # Pritunl
+  # services.openvpn.servers = {
+  #   pritunl = {
+  #     autoStart = false;
+  #     updateResolvConf = true;
+  #     config = ./pritunl.ovpn;
+  #   };
+  # };
+
+  # Yubikey
+  services.udev.packages = [ pkgs.yubikey-personalization ];
 
   # Enable sound.
   sound.enable = true;
