@@ -83,6 +83,7 @@ in {
 
       # Programming
       awscli
+      aws-mfa
       haskellPackages.hasktags
       universal-ctags
       nodePackages.typescript-language-server
