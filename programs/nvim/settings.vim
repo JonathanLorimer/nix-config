@@ -22,7 +22,6 @@ set autoindent
 set hlsearch
 set incsearch
 set inccommand=nosplit
-
 "General
 set scrolloff=8
 set nocompatible
@@ -118,4 +117,3 @@ let g:tagbar_type_haskell = {
         \ 'instance' : 'ft'
     \ }
 \ }
-
