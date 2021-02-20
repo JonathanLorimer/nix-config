@@ -34,17 +34,6 @@
 
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = true;
-  networking.wireless.networks = {
-    "deCrom-5G" = {
-      psk = secrets.network.deCrom-5G;
-    };
-    "Lorne-5G" = {
-      psk = secrets.network.Lorne-5G;
-    };
-    "House" = {
-      psk = secrets.network.House;
-    };
-  };
 
   # Set your time zone.
   time.timeZone = "Canada/Eastern";
@@ -65,17 +54,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Nix Configuration
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    trustedUsers = [ "jonathanl" "root" ];
-    binaryCaches = [ "https://cache.nixos.org" "https://cache.mercury.com" ];
-    binaryCachePublicKeys = [ "cache.mercury.com:yhfFlgvqtv0cAxzflJ0aZW3mbulx4+5EOZm6k3oML+I=" ];
-  };
 
   # Postgres
   services.postgresql = {
