@@ -35,7 +35,7 @@
           nixpkgs.nixosModules.notDetected
 
           # Overrides
-          ({ pkgs, lib, ... }: {
+          ({ pkgs, ... }: {
             nixpkgs.overlays = [
               neovim-nightly-overlay.overlay
               (self: super: {
@@ -54,7 +54,7 @@
                   };
               })
             ];
-            nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+            nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
               "obsidian"
             ];
           })

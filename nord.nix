@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ pkgs, ... }:
 with builtins;
-with lib;
+with pkgs.lib;
 with rec {
   toFloat = int: fromJSON "${toString int}.0";
   floor = f:
