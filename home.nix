@@ -86,15 +86,17 @@ in {
       aws-mfa
       haskellPackages.hasktags
       universal-ctags
-      nodePackages.typescript-language-server
-      rnix-lsp
-      haskell-language-server
       stack
       idris2
       exercism
       pgcli
       nodejs
       yarn
+
+      # LSP
+      nodePackages.typescript-language-server
+      rnix-lsp
+      haskell-language-server
 
       # Terminal
       alacritty
@@ -320,6 +322,7 @@ in {
           vim-signify
 
           # Language Support
+          tagbar
           nvim-lspconfig
           { plugin = completion-nvim;
             config = ''
