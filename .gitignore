@@ -1,9 +1,10 @@
 secrets.nix
-networks.nix
+pritunl.ovpn
 ca.crt
 jonathanlorimer.crt
 jonathanlorimer.key
 vpn.mercury.com.ovpn
+pritunl.ovpn
 
 */**/ca.crt
 */**/jonathanlorimer.crt

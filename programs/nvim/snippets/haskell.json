@@ -1,0 +1,33 @@
+{
+  "Import module": {
+    "prefix": "im",
+    "description": "Import module",
+    "body": ["import $0"]
+  },
+  "Import qualified module": {
+    "prefix": "imq",
+    "description": "Import qualified module",
+    "body": ["import qualified $1 as $0"]
+  },
+  "Language pragma": {
+    "prefix": "lang",
+    "description": "Add a language extension",
+    "body": ["{-# LANGUAGE $0 #-}"]
+  },
+  "Typeclass definition": {
+    "prefix": "class",
+    "description": "Add a typeclass definition",
+    "body": [
+      "class $1 where",
+      "\t$0"
+    ]
+  },
+  "Typeclass instance": {
+    "prefix": "inst",
+    "description": "Add a typeclass instance",
+    "body": [
+      "instance $1 where",
+      "\t$0"
+    ]
+  }
+}

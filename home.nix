@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 let
   start-sway = pkgs.writeShellScriptBin "start-sway" ''
@@ -7,49 +7,37 @@ let
     # then start the service
     exec systemctl --user start sway.service
   '';
-  colours = import ./nord.nix { inherit lib; };
+  colours = import ./nord.nix { inherit pkgs; };
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
     inherit (pkgs) fetchFromGitHub;
   };
   modifier = "Mod4";
-	swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
-	swaylock-config = lib.cli.toGNUCommandLineShell {} {
-		screenshots = true;
-		clock = true;
-		indicator = true;
-		show-failed-attempts = true;
-		ignore-empty-password = true;
-		effect-blur = "7x5";
-		effect-vignette = "0.6:0.6";
-		ring-color = colours.colour4;
-		ring-ver-color = colours.colour2;
-		ring-wrong-color = colours.colour1;
-		key-hl-color = colours.colour3;
-		line-color = "00000000";
-		line-ver-color = "00000000";
-		line-wrong-color = "00000000";
-		inside-color = "00000000";
-		inside-ver-color = "00000000";
-		inside-wrong-color = "00000000";
-		separator-color = "00000000";
-		text-color = colours.foreground;
-	};
-	swaylock-command = "swaylock ${swaylock-config}";
+  swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
+  swaylock-config = pkgs.lib.cli.toGNUCommandLineShell {} {
+    screenshots = true;
+    clock = true;
+    indicator = true;
+    show-failed-attempts = true;
+    ignore-empty-password = true;
+    effect-blur = "7x5";
+    effect-vignette = "0.6:0.6";
+    ring-color = colours.colour4;
+    ring-ver-color = colours.colour2;
+    ring-wrong-color = colours.colour1;
+    key-hl-color = colours.colour3;
+    line-color = "00000000";
+    line-ver-color = "00000000";
+    line-wrong-color = "00000000";
+    inside-color = "00000000";
+    inside-ver-color = "00000000";
+    inside-wrong-color = "00000000";
+    separator-color = "00000000";
+    text-color = colours.foreground;
+  };
+  swaylock-command = "swaylock ${swaylock-config}";
   waybar-config = import ./modules/waybar/config.nix;
 in {
-  programs.sway.enable = true;
-
-  users.users.jonathanl = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" ];
-    shell = pkgs.zsh;
-  };
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["Iosevka"]; })
-    font-awesome
-  ];
-  home-manager.users.jonathanl = {
     imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
       # Wayland
@@ -94,8 +82,10 @@ in {
       # Security
 
       # Programming
-      ctags
+      awscli
+      aws-mfa
       haskellPackages.hasktags
+      universal-ctags
       stack
       idris2
       exercism
@@ -103,25 +93,30 @@ in {
       nodejs
       yarn
 
+      # LSP
+      nodePackages.typescript-language-server
+      rnix-lsp
+      haskell-language-server
+
       # Terminal
       alacritty
       neofetch
-      starship
       asciinema
       rlwrap
 
       # Utils
+      jq
       ripgrep
       ruplacer
       ranger
       grim
+      slurp
       wl-clipboard
       wf-recorder
       nix-prefetch-git
       exa
       procs
       tokei
-      ytop
       bandwhich
       highlight
 
@@ -284,21 +279,24 @@ in {
       };
       neovim = {
         enable = true;
-	      extraConfig = builtins.readFile ./programs/nvim/init.vim;
+        extraConfig = builtins.readFile ./programs/nvim/init.vim;
         plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
           # General
           syntastic
-          tagbar
           vim-commentary
-          vim-rooter
+          { plugin = vim-rooter;
+            config = ''
+              let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
+            '';
+          }
           vim-surround
-          vim-which-key
+          vim-vsnip
+          vim-vsnip-integ
 
           # Navigation
-          ranger-vim
-          bclose-vim
-          fzfWrapper
-          fzf-vim
+          telescope-nvim
+          plenary-nvim
+          popup-nvim
 
           # Search
           { plugin = vim-cool;
@@ -322,21 +320,32 @@ in {
           # Git
           vim-fugitive
           vim-signify
-          vim-rhubarb
-          gv-vim
 
           # Language Support
-          coc-nvim
-          vim-markdown
-          { plugin = vimtex;
+          tagbar
+          nvim-lspconfig
+          { plugin = completion-nvim;
             config = ''
-              let g:tex_flavor='latex'
-              let g:vimtex_view_method='zathura'
-              let g:vimtex_quickfix_mode=0
-              set conceallevel=1
-              let g:tex_conceal='abdmg'
+              let g:completion_enable_snippet = 'vim-vsnip'
+              let g:completion_chain_complete_list = [
+                  \{'complete_items': ['lsp', 'snippet', 'path', 'buffers']},
+                  \{'mode': '<c-p>'},
+                  \{'mode': '<c-n>'}
+              \]
+              let g:completion_items_priority = {
+                  \'Function': 7,
+                  \'Snippet': 5,
+                  \'vim-vsnip': 5,
+                  \'File': 2,
+                  \'Folder': 1,
+                  \'Path': 1,
+                  \'Buffers': 0
+              \}
             '';
           }
+          completion-buffers
+          nvim-treesitter
+          vim-markdown
           vim-nix
           haskell-vim
           yesod-routes
@@ -350,6 +359,7 @@ in {
         userName = "Jonathan Lorimer";
         userEmail = "jonathan_lorimer@mac.com";
         extraConfig = {
+          init.defaultBranch = "main";
           pull.rebase = true;
           merge = {
             tool = "vimdiff";
@@ -388,18 +398,16 @@ in {
       zsh = {
         enable = true;
         dotDir = ".config/zsh";
-				enableAutosuggestions = true;
+        enableAutosuggestions = true;
         enableCompletion = true;
         shellAliases = {
           ll = "exa -l";
           l = "exa -lah";
           ls = "exa";
-          t = "ytop";
-          tm = "ytop -m";
-          cfghome = "nvim $HOME/.config/nixpkgs/home.nix";
-          cfgnix = "nvim $HOME/.config/nixpkgs";
-          "nrs" = "sudo nixos-rebuild switch";
-          "hs" = "sudo home-manager switch";
+          cfg = "nvim $HOME/.config/nixpkgs/home.nix";
+          n = "nvim";
+          ns = "nvim $(fzf)";
+          nixz = "nix-shell --command zsh";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
@@ -417,7 +425,8 @@ in {
         enableZshIntegration = true;
         settings = {
           add_newline = false;
-          character.symbol = "λ";
+          character.success_symbol = "[λ](bold green)";
+          character.error_symbol = "[](bold red)";
           git_branch.symbol = " ";
         };
       };
@@ -429,7 +438,6 @@ in {
       };
     };
     services = {
-
       waybar = {
         enable = true;
         settings = builtins.toJSON waybar-config.settings;
@@ -474,44 +482,46 @@ in {
           "${modifier}+q" = "kill";
           "${modifier}+n" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
-					"${modifier}+z" = "exec zotero";
+          "${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
-					"${modifier}+Escape" = "exec ${swaylock-command}";
+          "${modifier}+Escape" = "exec ${swaylock-command}";
+          "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
+          "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
 
-					# Workspace Commands
-					"${modifier}+h" = "focus left";
-					"${modifier}+Shift+h" = "move left";
+          # Workspace Commands
+          "${modifier}+h" = "focus left";
+          "${modifier}+Shift+h" = "move left";
           "${modifier}+j" = "focus down";
           "${modifier}+Shift+j" = "focus down";
-					"${modifier}+k" = "focus up";
-					"${modifier}+Shift+k" = "move up";
-					"${modifier}+l" = "focus right";
-					"${modifier}+Shift+l" = "move right";
+          "${modifier}+k" = "focus up";
+          "${modifier}+Shift+k" = "move up";
+          "${modifier}+l" = "focus right";
+          "${modifier}+Shift+l" = "move right";
 
-					"${modifier}+Shift+s" = "split vertical";
-					"${modifier}+s"       = "split horizontal";
+          "${modifier}+Shift+s" = "split vertical";
+          "${modifier}+s"       = "split horizontal";
 
-					"${modifier}+1" = "workspace number 1";
+          "${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
-					"${modifier}+3" = "workspace number 3";
-					"${modifier}+4" = "workspace number 4";
-					"${modifier}+5" = "workspace number 5";
-					"${modifier}+6" = "workspace number 6";
-					"${modifier}+7" = "workspace number 7";
-					"${modifier}+8" = "workspace number 8";
-					"${modifier}+9" = "workspace number 9";
+          "${modifier}+3" = "workspace number 3";
+          "${modifier}+4" = "workspace number 4";
+          "${modifier}+5" = "workspace number 5";
+          "${modifier}+6" = "workspace number 6";
+          "${modifier}+7" = "workspace number 7";
+          "${modifier}+8" = "workspace number 8";
+          "${modifier}+9" = "workspace number 9";
 
-					"${modifier}+Shift+1" = "move container to workspace number 1, workspace number 1";
-					"${modifier}+Shift+2" = "move container to workspace number 2, workspace number 2";
-					"${modifier}+Shift+3" = "move container to workspace number 3, workspace number 3";
-					"${modifier}+Shift+4" = "move container to workspace number 4, workspace number 4";
-					"${modifier}+Shift+5" = "move container to workspace number 5, workspace number 5";
-					"${modifier}+Shift+6" = "move container to workspace number 6, workspace number 6";
-					"${modifier}+Shift+7" = "move container to workspace number 7, workspace number 7";
-					"${modifier}+Shift+8" = "move container to workspace number 8, workspace number 8";
-					"${modifier}+Shift+9" = "move container to workspace number 9, workspace number 9";
+          "${modifier}+Shift+1" = "move container to workspace number 1, workspace number 1";
+          "${modifier}+Shift+2" = "move container to workspace number 2, workspace number 2";
+          "${modifier}+Shift+3" = "move container to workspace number 3, workspace number 3";
+          "${modifier}+Shift+4" = "move container to workspace number 4, workspace number 4";
+          "${modifier}+Shift+5" = "move container to workspace number 5, workspace number 5";
+          "${modifier}+Shift+6" = "move container to workspace number 6, workspace number 6";
+          "${modifier}+Shift+7" = "move container to workspace number 7, workspace number 7";
+          "${modifier}+Shift+8" = "move container to workspace number 8, workspace number 8";
+          "${modifier}+Shift+9" = "move container to workspace number 9, workspace number 9";
         };
-				workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = true;
         bars = [];
         startup = [
           { command = "exec systemctl --user restart waybar.service";
@@ -528,5 +538,4 @@ in {
         ];
       };
     };
-  };
 }
