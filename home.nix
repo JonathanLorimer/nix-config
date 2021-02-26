@@ -284,7 +284,9 @@ in {
           # General
           syntastic
           vim-commentary
-          { plugin = vim-rooter;
+
+          { # Description: helps determine the root of the project
+            plugin = vim-rooter;
             config = ''
               let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
             '';
@@ -296,11 +298,13 @@ in {
           # Navigation
           nvim-tree-lua
           telescope-nvim
-          plenary-nvim
-          popup-nvim
+          plenary-nvim    # required by telescope
+          popup-nvim      # required by telescope
 
           # Search
-          { plugin = vim-cool;
+          { # Description: disables search highlighting when done, re-enables it
+            # when you go back to searching.
+            plugin = vim-cool;
             config = ''
               let g:CoolTotalMatches = 1
             '';
@@ -323,8 +327,7 @@ in {
           vim-fugitive
           vim-signify
 
-          # Language Support
-          tagbar
+          # LSP
           nvim-lspconfig
           { plugin = completion-nvim;
             config = ''
@@ -346,7 +349,8 @@ in {
             '';
           }
           completion-buffers
-          nvim-treesitter
+
+          # Language Support
           vim-markdown
           vim-nix
           haskell-vim
