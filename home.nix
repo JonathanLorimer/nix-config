@@ -294,6 +294,7 @@ in {
           vim-vsnip-integ
 
           # Navigation
+          nvim-tree-lua
           telescope-nvim
           plenary-nvim
           popup-nvim
@@ -316,6 +317,7 @@ in {
           vim-airline
           vim-airline-themes
           nord-vim
+          nvim-web-devicons
 
           # Git
           vim-fugitive

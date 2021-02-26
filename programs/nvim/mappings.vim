@@ -48,3 +48,7 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" Tree Finder
+nnoremap <leader>tt :NvimTreeToggle<CR>
+nnoremap <leader>tr :NvimTreeRefresh<CR>
