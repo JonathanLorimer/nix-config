@@ -1,7 +1,5 @@
-if (has("termguicolors"))
-	set termguicolors
-  hi LineNr ctermbg=NONE guibg=NONE
-endif
+set termguicolors
+hi LineNr ctermbg=NONE guibg=NONE
 
 syntax enable
 set t_Co=256

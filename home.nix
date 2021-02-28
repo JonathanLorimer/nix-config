@@ -322,6 +322,7 @@ in {
           vim-airline-themes
           nord-vim
           nvim-web-devicons
+          nvim-colorizer
 
           # Git
           vim-fugitive

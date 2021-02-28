@@ -1,5 +1,14 @@
 {buildVimPlugin, fetchFromGitHub}:
 {
+  nvim-colorizer = buildVimPlugin {
+    name = "nvim-colorizer";
+    src = fetchFromGitHub {
+      owner = "norcalli";
+      repo = "nvim-colorizer.lua";
+      rev = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6";
+      sha256 = "0gvqdfkqf6k9q46r0vcc3nqa6w45gsvp8j4kya1bvi24vhifg2p9";
+    };
+  };
   idris2-vim = buildVimPlugin {
     name = "idris2-vim";
     src = fetchFromGitHub {
