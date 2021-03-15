@@ -1,5 +1,14 @@
 {buildVimPlugin, fetchFromGitHub}:
 {
+  kommentary = buildVimPlugin {
+    name = "kommentary";
+    src = fetchFromGitHub {
+      owner = "b3nj5m1n";
+      repo = "kommentary";
+      rev = "c2a9f34a11234e3478ff4133f0c03f895aafe30f";
+      sha256 = "0jqy7zklmc242scacs66r2h6mjd49d5f3srrnjqgk28ylap0qq6i";
+    };
+  };
   nvim-colorizer = buildVimPlugin {
     name = "nvim-colorizer";
     src = fetchFromGitHub {

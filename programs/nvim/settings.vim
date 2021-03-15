@@ -27,6 +27,8 @@ set inccommand=nosplit
 set scrolloff=8
 set nocompatible
 set backspace=indent,eol,start
+set nu
+set rnu
 filetype plugin indent on
 
 fun! TrimWhitespace()
