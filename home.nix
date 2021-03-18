@@ -94,6 +94,7 @@ in {
       nodejs
       yarn
       vscode
+      postman
 
       # LSP
       nodePackages.typescript-language-server

@@ -26,6 +26,7 @@
           ./hardware-configuration.nix
           ./vpn.nix
           ./networks.nix
+          ./monitoring.nix
 
           # Secrets
           sops-nix.nixosModules.sops
@@ -57,6 +58,8 @@
             nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
               "obsidian"
               "vscode"
+              "postman"
+              "mailspring"
             ];
           })
 
