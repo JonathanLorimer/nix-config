@@ -5,7 +5,7 @@
   #   firewall.allowedTCPPorts = config.networking.firewall.allowedTCPPorts ++ [
   #     3000  # mercury-web-backend
   #     9090  # prometheus
-  #     9093  # grafana
+  #     1010  # grafana
   #   ];
   #   useDHCP = true;
   # };
@@ -26,7 +26,7 @@
     grafana = {
       enable = true;
       domain = "grafana.mwb";
-      port = 9093;
+      port = 1010;
       addr = "127.0.0.1";
     };
   };
