@@ -40,6 +40,7 @@ require('vim.lsp.protocol').CompletionItemKind = {
   File = '',
   Folder = '',
 }
+
 -- LSP
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
@@ -63,13 +64,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>sk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>sj', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>sq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>sf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader>sf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
+  buf_set_keymap("n", "<leader>sf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.show_line_diagnostics then
@@ -85,10 +80,28 @@ end
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-  "tsserver",
-  "rnix",
-  -- "hls"
+  tsserver = {},
+  rnix = {},
+  hls = {
+    languageServerHaskell = {
+      formattingProvider = "ormolu",
+      formatOnImportOn = true,
+      completionSnippetOn = true,
+      hlintOn = true,
+      plugin = {
+        tactics = {
+          config = {
+            features = "QrfgehpgNyy/HfrQngnPba/ErsvarUbyr/XabjaZbabvq"
+          }
+        }
+      }
+    }
+  }
 }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+
+for lsp, settings in pairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    settings = settings
+  }
 end

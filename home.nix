@@ -95,6 +95,8 @@ in {
       yarn
       vscode
       postman
+      tlaplus
+      tlaplusToolbox
 
       # LSP
       nodePackages.typescript-language-server
