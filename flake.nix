@@ -46,9 +46,8 @@
                 haskell-language-server =
                   super.haskell-language-server.override {
                     supportedGhcVersions = [
-                      "865"
-                      "883"
-                      "8103"
+                      "884"
+                      "8104"
                     ];
                   };
               })
