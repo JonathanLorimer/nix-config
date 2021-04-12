@@ -381,8 +381,12 @@ in {
             prompt = false;
             keepBackup = false;
           };
+          mergetool = {
+            keepBackup = false;
+          };
           "mergetool \"vimdiff\"" = {
             cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
+            keepBackup = false;
           };
         };
         delta = {
