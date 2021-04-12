@@ -79,15 +79,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>sq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<leader>sf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.show_line_diagnostics then
-    vim.api.nvim_exec([[
-      augroup lsp_document_show_line_diagnostics
-        autocmd!
-        autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
-      augroup END
-    ]], false)
-  end
+  -- Setup hover augroup
+  vim.api.nvim_exec([[
+    augroup lsp_document_show_line_diagnostics
+      autocmd! * <buffer>
+      autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+  ]], false)
 end
 
 -- Use a loop to conveniently both setup defined servers

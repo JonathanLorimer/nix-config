@@ -61,6 +61,7 @@ set shortmess+=c
 let g:no_plugin_maps = 1
 
 " Signify
+let g:signify_priority = 1
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '_'
 let g:signify_sign_delete_first_line = '‾'
