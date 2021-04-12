@@ -339,7 +339,9 @@ in {
             config = ''
               let g:completion_enable_snippet = 'vim-vsnip'
               let g:completion_chain_complete_list = [
-                  \{'complete_items': ['lsp', 'snippet', 'path', 'buffers']},
+                  \{'complete_items': ['lsp', 'snippet']},
+                  \{'complete_items':  ['path'], 'triggered_only': ['/']},
+                  \{'complete_items': ['buffers']},
                   \{'mode': '<c-p>'},
                   \{'mode': '<c-n>'}
               \]

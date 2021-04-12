@@ -28,18 +28,6 @@ function s_tab_complete()
     end
 end
 
-vim.lsp.protocol.CompletionItemKind = {
-  Text = '',
-  Function = 'λ',
-  Variable = '',
-  Module = '',
-  Property = '',
-  Keyword = '',
-  Snippet = '﬌',
-  VSnip = '﬌',
-  File = '',
-  Folder = '',
-}
 
 -- LSP
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -55,6 +43,70 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     underline = true,
   }
 )
+
+-- Haskell
+-- TODO: eventually I want to transition this to a per LSP config, that uses the lua hooks
+-- rather than the global vim hooks. This is a nice candidate library for abstracting over
+-- the ugly stuff https://github.com/onsails/lspkind-nvim
+vim.g.completion_customize_lsp_label = {
+  Reference = ' [ref]',
+	Text = ' [tex]',
+	Function = 'λ [fun]', -- Any term
+	Constructor = '∈ [con]', -- Data & Type constructor
+	Struct = ' [hkt]', -- HKT
+	Variable = 'α [par]', -- Type parameter
+	Interface = '⇛ [cst]', -- Constraint
+	Class = '⇛ [cst]', -- Typeclass
+	Module = ' [mod]', -- Module
+	Keyword = ' [key]',
+	Snippet = '﬌ [snp]',
+	File = ' [fil]',
+	Folder = ' [fol]',
+	Method = '~Method',
+	Property = '~Property',
+	Unit = '~Unit',
+	Value = '~Value',
+	Enum = '~Enum',
+	Color = '~Color',
+	Reference = '~Ref',
+	EnumMember = '~EnumMember',
+	Constant = '~Constant',
+	Event = '~Event',
+	Operator = '~Operator',
+	TypeParameter = '~TypeParameter',
+	Field = '~Field',
+}
+
+--[[ vim.g.completion_customize_lsp_label = {
+  Method = ' [met]',
+  Reference = ' [ref]',
+	Text = ' [tex]',
+	Method = '',
+	Function = 'λ [fun]',
+	Constructor = 'C [con]',
+	Field = ' [fie]',
+	Variable = ' [var]',
+	Class = '',
+	Interface = '',
+	Module = ' [mod]',
+	Property = ' [prp]',
+	Unit = '() [uni]',
+	Value = '',
+	Enum = '∨ [enm]',
+	Keyword = ' [key]',
+	Snippet = '﬌ [snp]',
+	Color = '',
+	File = ' [fil]',
+	Reference = '',
+	Folder = ' [fol]',
+	EnumMember = '',
+	Constant = '',
+	Struct = ' [hkt]',
+	Event = '',
+	Operator = '',
+	TypeParameter = 'α [par]',
+} ]]
+
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
