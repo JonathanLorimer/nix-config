@@ -125,7 +125,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>st', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>srn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>srf', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>sd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>sd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({show_header = false})<CR>', opts)
   buf_set_keymap('n', '<leader>sk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>sj', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>sq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -135,7 +135,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_exec([[
     augroup lsp_document_show_line_diagnostics
       autocmd! * <buffer>
-      autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()
+      autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({show_header = false})
       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
     augroup END
   ]], false)

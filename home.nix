@@ -97,6 +97,7 @@ in {
       postman
       tlaplus
       tlaplusToolbox
+      cachix
 
       # LSP
       nodePackages.typescript-language-server
@@ -473,6 +474,7 @@ in {
         settings = builtins.toJSON waybar-config.settings;
         style = waybar-config.styles;
       };
+      blueman-applet.enable = true;
     };
     wayland.windowManager.sway = {
       enable = true;
