@@ -7,8 +7,17 @@
       experimental-features = nix-command flakes
     '';
     trustedUsers = [ "jonathanl" "root" ];
-    binaryCaches = [ "https://cache.nixos.org" "https://cache.mercury.com" ];
-    binaryCachePublicKeys = [ "cache.mercury.com:yhfFlgvqtv0cAxzflJ0aZW3mbulx4+5EOZm6k3oML+I=" ];
+    binaryCaches = [
+      "https://cache.nixos.org"
+      "https://cache.mercury.com"
+      "https://hydra.iohk.io"
+      "https://iohk.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "cache.mercury.com:yhfFlgvqtv0cAxzflJ0aZW3mbulx4+5EOZm6k3oML+I="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
+    ];
    };
 
   programs.sway.enable = true;
