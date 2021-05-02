@@ -146,6 +146,7 @@ end
 local servers = {
   tsserver = {},
   rnix = {},
+  purescriptls = {},
   hls = {
     languageServerHaskell = {
       formattingProvider = "ormolu",

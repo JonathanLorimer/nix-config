@@ -360,6 +360,7 @@ in {
           completion-buffers
 
           # Language Support
+          dhall-vim
           vim-markdown
           vim-nix
           haskell-vim
