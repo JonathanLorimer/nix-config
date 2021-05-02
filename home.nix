@@ -361,6 +361,7 @@ in {
 
           # Language Support
           dhall-vim
+          purescript-vim
           vim-markdown
           vim-nix
           haskell-vim
