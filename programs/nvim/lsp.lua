@@ -77,36 +77,6 @@ vim.g.completion_customize_lsp_label = {
 	Field = '~Field',
 }
 
---[[ vim.g.completion_customize_lsp_label = {
-  Method = ' [met]',
-  Reference = ' [ref]',
-	Text = ' [tex]',
-	Method = '',
-	Function = 'λ [fun]',
-	Constructor = 'C [con]',
-	Field = ' [fie]',
-	Variable = ' [var]',
-	Class = '',
-	Interface = '',
-	Module = ' [mod]',
-	Property = ' [prp]',
-	Unit = '() [uni]',
-	Value = '',
-	Enum = '∨ [enm]',
-	Keyword = ' [key]',
-	Snippet = '﬌ [snp]',
-	Color = '',
-	File = ' [fil]',
-	Reference = '',
-	Folder = ' [fol]',
-	EnumMember = '',
-	Constant = '',
-	Struct = ' [hkt]',
-	Event = '',
-	Operator = '',
-	TypeParameter = 'α [par]',
-} ]]
-
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -146,7 +116,7 @@ end
 local servers = {
   tsserver = {},
   rnix = {},
-  purescriptls = {},
+  -- purescriptls = {},
   hls = {
     languageServerHaskell = {
       formattingProvider = "ormolu",

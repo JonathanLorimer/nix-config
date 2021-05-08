@@ -63,6 +63,7 @@ in {
 
       # Sound
       pavucontrol
+      spotify-tui
 
       # Video
       vlc
