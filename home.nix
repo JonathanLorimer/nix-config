@@ -4,9 +4,14 @@ let
   start-sway = pkgs.writeShellScriptBin "start-sway" ''
     # first import environment variables from the login manager
     systemctl --user import-environment
+
     # then start the service
     exec systemctl --user start sway.service
+
+    # Start waybar
+    exec systemctl --user restart waybar.service
   '';
+  start-waybar = pkgs.writeShellScriptBin "start-sway" "exec systemctl --user restart waybar.service";
   colours = import ./nord.nix { inherit pkgs; };
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
@@ -454,6 +459,12 @@ in {
         enable = true;
         enableZshIntegration = true;
       };
+      skim = {
+        enable = true;
+        enableZshIntegration = true;
+        defaultOptions = [ "--prompt ⟫" "--ansi" "--preview 'bat --color=always {}'" ];
+        defaultCommand = "rg --files ";
+      };
       starship = {
         enable = true;
         enableZshIntegration = true;
@@ -478,6 +489,7 @@ in {
         style = waybar-config.styles;
       };
       blueman-applet.enable = true;
+      spotifyd.enable = true;
     };
     wayland.windowManager.sway = {
       enable = true;

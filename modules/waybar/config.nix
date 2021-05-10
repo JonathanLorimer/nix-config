@@ -37,7 +37,6 @@
     ## -------------------------------------------------------------------------
     ## Modules
     ## -------------------------------------------------------------------------
-
     "battery"= {
         "interval"= 1;
         "states"= {
@@ -89,7 +88,7 @@
     };
 
     "network"= {
-        "interval"= 5;
+        "interval"= 1;
         "format-wifi"= " {essid} ({signalStrength}%)"; ## Icon: wifi
         ##"format-ethernet"= " {ifname}: {ipaddr}/{cidr}"; ## Icon: ethernet
         "format-ethernet"= " {ifname}";
@@ -126,22 +125,22 @@
         };
     };
 
-    "pulseaudio"= {
-        "scroll-step"= 1;
-        "format"= "{icon} {volume}%";
-        "format-bluetooth"= "{icon} {volume}%";
-        "format-muted"= "";
-        "format-icons"= {
-            "headphones"= "";
-            "handsfree"= "";
-            "headset"= "";
-            "phone"= "";
-            "portable"= "";
-            "car"= "";
-            "default"= ["" ""];
-        };
-        "on-click"= "pavucontrol";
-    };
+    # "pulseaudio"= {
+    #     "scroll-step"= 1;
+    #     "format"= "{icon} {volume}%";
+    #     "format-bluetooth"= "{icon} {volume}%";
+    #     "format-muted"= "";
+    #     "format-icons"= {
+    #         "headphones"= "";
+    #         "handsfree"= "";
+    #         "headset"= "";
+    #         "phone"= "";
+    #         "portable"= "";
+    #         "car"= "";
+    #         "default"= ["" ""];
+    #     };
+    #     "on-click"= "pavucontrol";
+    # };
 
     "temperature"= {
         "critical-threshold"= 90;
@@ -213,6 +212,7 @@
         "tooltip"= false;
     };
 
+
   };
   styles = ''
       /* -----------------------------------------------------------------------------
@@ -265,24 +265,6 @@
       @define-color battery #88c0d0;
       @define-color date #2e3440;
       @define-color time #eceff4;
-
-      /* Gruvbox */
-      /* @define-color light #ebdbb2; */
-      /* @define-color dark #282828; */
-      /* @define-color warning #fabd2f; */
-      /* @define-color critical #cc241d; */
-      /* @define-color mode #a89984; */
-      /* @define-color workspaces #458588; */
-      /* @define-color workspacesfocused #83a598; */
-      /* @define-color sound #d3869b; */
-      /* @define-color network #b16286; */
-      /* @define-color memory #8ec07c; */
-      /* @define-color cpu #98971a; */
-      /* @define-color temp #b8bb26; */
-      /* @define-color layout #689d6a; */
-      /* @define-color battery #fabd2f; */
-      /* @define-color date #282828; */
-      /* @define-color time #ebdbb2; */
 
       /* Reset all styles */
       * {

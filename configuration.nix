@@ -24,7 +24,7 @@
 
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" ];
+    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
@@ -39,7 +39,9 @@
   boot.kernel.sysctl."fs.inotify.max_user_watches" = "1048576";
 
   # Networking
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = true;

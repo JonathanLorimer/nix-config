@@ -25,7 +25,6 @@
           ./configuration.nix
           ./hardware-configuration.nix
           ./vpn.nix
-          ./networks.nix
           ./monitoring.nix
 
           # Secrets
