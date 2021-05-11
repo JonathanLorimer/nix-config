@@ -433,8 +433,7 @@ in {
           ls = "exa";
           cfg = "nvim $HOME/.config/nixpkgs/home.nix";
           n = "nvim";
-          ns = "nvim $(fzf)";
-          nixz = "nix-shell --command zsh";
+          ns = "nvim $(sk)";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
