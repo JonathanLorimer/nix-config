@@ -15,7 +15,7 @@ nnoremap <leader>gtb <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>gts <cmd>lua require('telescope.builtin').git_status()<cr>
 
 " Misc
-nnoremap <leader>t ITODO(jonathan):<ESC>:Commentary<CR>f:a<Space>
+nnoremap <leader>to ITODO(jonathan):<ESC>:execute "normal \<Plug>kommentary_line_default"<CR>f:a<Space>
 nnoremap <leader>H :-tabmove<CR>
 nnoremap <leader>L :+tabmove<CR>
 nnoremap <leader>h gT

@@ -480,6 +480,10 @@ in {
         enable = true;
         config.theme = "Nord";
       };
+      broot = {
+        enable = true;
+        enableZshIntegration = true;
+      };
     };
     services = {
       waybar = {
