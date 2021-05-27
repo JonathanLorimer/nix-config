@@ -28,6 +28,9 @@ nnoremap <leader>p "+p
 vnoremap <leader>d "_dP
 vnoremap <leader>y  "+y
 
+nnoremap <leader>go :Goyo<CR>
+nnoremap <leader>gg :Goyo!<CR>
+
 " Auto Completion
 imap <expr><TAB> v:lua.tab_complete()
 smap <expr><TAB> v:lua.tab_complete()

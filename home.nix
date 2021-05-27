@@ -296,6 +296,7 @@ in {
           # General
           syntastic
           kommentary
+          goyo-vim
 
           { # Description: helps determine the root of the project
             plugin = vim-rooter;
