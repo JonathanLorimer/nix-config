@@ -407,7 +407,6 @@ in {
             syntax-theme = "Nord";
           };
         };
-
       };
       ssh = {
         enable = true;
@@ -418,7 +417,6 @@ in {
             IdentityFile ~/.ssh/id_rsa
         '';
       };
-
       direnv = {
         enable = true;
         enableZshIntegration = true;
@@ -484,6 +482,32 @@ in {
       broot = {
         enable = true;
         enableZshIntegration = true;
+      };
+      tmux = {
+        enable = true;
+        baseIndex = 1;
+        historyLimit = 5000;
+        plugins = with pkgs.tmuxPlugins; [
+          cpu
+          battery
+          nord
+        ];
+        shortcut = "a";
+        extraConfig = ''
+          # vim-like pane movement
+          bind -r k select-pane -U
+          bind -r j select-pane -D
+          bind -r h select-pane -L
+          bind -r l select-pane -R
+
+          # vim-like window movement
+          bind -r H previous-window
+          bind -r L next-window
+
+          # better pane splitting
+          bind -r v split-window
+          bind -r s split-window -h
+        '';
       };
     };
     services = {
