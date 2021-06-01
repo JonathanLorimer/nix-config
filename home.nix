@@ -493,7 +493,11 @@ in {
           nord
         ];
         shortcut = "a";
+        terminal = "alacritty";
         extraConfig = ''
+          # fix true color
+          set-option -ga terminal-overrides ",alacritty:Tc"
+
           # vim-like pane movement
           bind -r k select-pane -U
           bind -r j select-pane -D
