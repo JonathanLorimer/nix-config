@@ -11,6 +11,29 @@ let
     # Start waybar
     exec systemctl --user restart waybar.service
   '';
+  start-work = pkgs.writeShellScriptBin "start-work" ''
+    SESSION="Work"
+    WORKDIR="~/Mercury/mercury-web-backend"
+
+    eval $(ssh-agent)
+    ssh-add ~/.ssh/id_rsa
+
+    # sudo systemctl restart openvpn-mercury
+    tmux new-session -d -s "$SESSION"
+    tmux rename-window -t 1 'Editor'
+    tmux new-window -t "$SESSION:2" -n 'Shell'
+    tmux new-window -t "$SESSION:3" -n 'Server'
+
+    # Setup Editor
+    tmux split-window -h -p 30 -t "$SESSION:Editor"
+    tmux send-keys -t "$SESSION:Editor.1" "cd $WORKDIR; nix-shell --run 'nvim'" C-m
+    tmux send-keys -t "$SESSION:Editor.2" "cd $WORKDIR; nix-shell --run 'make ghcid'" C-m
+
+    # Setup Server
+    tmux send-keys -t "$SESSION:Server" "ssh -l jonathanl 2.mercury-web-backend.production.internal.mercury.com" C-m
+
+    tmux attach -t "$SESSION:Shell"
+  '';
   start-waybar = pkgs.writeShellScriptBin "start-sway" "exec systemctl --user restart waybar.service";
   colours = import ./nord.nix { inherit pkgs; };
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
@@ -49,7 +72,6 @@ in {
       xwayland
       waybar
       sway
-      start-sway
       swaylock-effects
 
       # Messaging
@@ -135,10 +157,10 @@ in {
       # Knowledge Management
       obsidian
       zotero
-      zathura
-      tectonic
-      texlive.combined.scheme-full
-      elementary-planner
+
+      # Scripts
+      start-work
+      start-sway
 
     ];
     home.sessionVariables = {
