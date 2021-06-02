@@ -495,6 +495,10 @@ in {
         shortcut = "a";
         terminal = "alacritty";
         extraConfig = ''
+          # speed up nvim normal mode
+          set -s escape-time 0
+          set -g status-interval 0
+
           # fix true color
           set-option -ga terminal-overrides ",alacritty:Tc"
 
