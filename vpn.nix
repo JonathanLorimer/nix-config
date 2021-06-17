@@ -4,8 +4,14 @@
     mercury-vpn-ca.owner = config.users.users.jonathanl.name;
     mercury-vpn-cert.owner = config.users.users.jonathanl.name;
     mercury-vpn-key.owner = config.users.users.jonathanl.name;
+    mercury-vpn-pritunl-config.owner = config.users.users.jonathanl.name;
   };
   services.openvpn.servers = {
+    pritunl = {
+      autoStart = false;
+      updateResolvConf = true;
+      config = "config ${config.sops.secrets.mercury-vpn-pritunl-config.path}";
+    };
     mercury = {
       autoStart = false;
       updateResolvConf = true;

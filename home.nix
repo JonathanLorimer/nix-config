@@ -98,19 +98,11 @@ in {
       termshark
       openvpn
       openssl
-
-      # Display
-      kanshi
+      bandwhich
 
       # Sound
       pavucontrol
       spotify-tui
-
-      # Video
-      vlc
-
-      # Notifications
-      mako
 
       # Navigation
       bemenu
@@ -118,11 +110,6 @@ in {
       # Browsers
       firefox-wayland
       brave
-
-      # Accounting
-      hledger
-
-      # Security
 
       # Programming
       awscli
@@ -140,6 +127,7 @@ in {
       tlaplus
       tlaplusToolbox
       cachix
+      nix-prefetch-git
 
       # LSP
       nodePackages.typescript-language-server
@@ -151,23 +139,30 @@ in {
       neofetch
       asciinema
       rlwrap
+      tmate
 
-      # Utils
+      # Unix Utils
       jq
       ripgrep
       ruplacer
-      ranger
+      exa
+      procs
+      dust
+      duf
+      tokei
+      tealdeer
+      hyperfine
+      xh
+      zoxide
       grim
+      highlight
+
+      # Sway Utils
       slurp
       wl-clipboard
       wf-recorder
-      nix-prefetch-git
-      exa
-      procs
-      tokei
-      bandwhich
-      highlight
-      tmate
+      mako
+      kanshi
 
       # Knowledge Management
       obsidian
@@ -466,6 +461,7 @@ in {
           ll = "exa -l";
           l = "exa -lah";
           ls = "exa";
+          lt = "exa --long --tree";
           cfg = "nvim $HOME/.config/nixpkgs/home.nix";
           n = "nvim";
           ns = "nvim $(sk)";
