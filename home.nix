@@ -578,7 +578,7 @@ in {
             repeat_delay = "200";
             repeat_rate = "35";
             xkb_layout = "us";
-            xkb_options = "caps:escape";
+            xkb_options = "caps:ctrl_modifier";
           };
         };
         output = {
