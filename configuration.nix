@@ -103,7 +103,6 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
-  services.blueman.enable = true;
 
   # set the correct sound card
   boot.extraModprobeConfig = ''

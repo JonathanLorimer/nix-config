@@ -16,10 +16,6 @@ let
     WORK_DIR_BE="~/Mercury/mercury-web-backend"
     WORK_DIR_FE="~/Mercury/mercury-web"
 
-    # Setup ssh-agent
-    eval $(ssh-agent)
-    ssh-add ~/.ssh/id_rsa
-
     # Re-connect to vpn
     sudo systemctl restart openvpn-mercury
 
@@ -49,7 +45,7 @@ let
     tmux attach -t "$SESSION:Shell"
   '';
   start-waybar = pkgs.writeShellScriptBin "start-sway" "exec systemctl --user restart waybar.service";
-  colours = import ./nord.nix { inherit pkgs; };
+  nord = import ./nord.nix;
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
     inherit (pkgs) fetchFromGitHub;
@@ -63,10 +59,10 @@ let
     ignore-empty-password = true;
     effect-blur = "7x5";
     effect-vignette = "0.6:0.6";
-    ring-color = colours.colour4;
-    ring-ver-color = colours.colour2;
-    ring-wrong-color = colours.colour1;
-    key-hl-color = colours.colour3;
+    ring-color = nord.colour4;
+    ring-ver-color = nord.colour2;
+    ring-wrong-color = nord.colour1;
+    key-hl-color = nord.colour3;
     line-color = "00000000";
     line-ver-color = "00000000";
     line-wrong-color = "00000000";
@@ -74,7 +70,7 @@ let
     inside-ver-color = "00000000";
     inside-wrong-color = "00000000";
     separator-color = "00000000";
-    text-color = colours.foreground;
+    text-color = nord.foreground;
   };
   swaylock-command = "swaylock ${swaylock-config}";
   waybar-config = import ./modules/waybar/config.nix;
@@ -271,29 +267,29 @@ in {
           };
           font.size = 13.0;
           colors = {
-            primary.background = colours.background;
-            primary.foreground = colours.foreground;
-            cursor.text = colours.cursorText;
-            cursor.cursor = colours.cursor;
+            primary.background = nord.background;
+            primary.foreground = nord.foreground;
+            cursor.text = nord.cursorText;
+            cursor.cursor = nord.cursor;
             normal = {
-              black = colours.colour0;
-              red = colours.colour1;
-              green = colours.colour2;
-              yellow = colours.colour3;
-              blue = colours.colour4;
-              magenta = colours.colour5;
-              cyan = colours.colour6;
-              white = colours.colour7;
+              black = nord.colour0;
+              red = nord.colour1;
+              green = nord.colour2;
+              yellow = nord.colour3;
+              blue = nord.colour4;
+              magenta = nord.colour5;
+              cyan = nord.colour6;
+              white = nord.colour7;
             };
             bright = {
-              black = colours.colour8;
-              red = colours.colour9;
-              green = colours.colour10;
-              yellow = colours.colour11;
-              blue = colours.colour12;
-              magenta = colours.colour13;
-              cyan = colours.colour14;
-              white = colours.colour15;
+              black = nord.colour8;
+              red = nord.colour9;
+              green = nord.colour10;
+              yellow = nord.colour11;
+              blue = nord.colour12;
+              magenta = nord.colour13;
+              cyan = nord.colour14;
+              white = nord.colour15;
             };
           };
           background_opacity = 0.8;
@@ -306,9 +302,9 @@ in {
       mako = {
         enable = true;
         anchor = "top-right";
-        backgroundColor = colours.background;
-        textColor = colours.foreground;
-        borderColor = colours.colour8;
+        backgroundColor = nord.background;
+        textColor = nord.foreground;
+        borderColor = nord.colour8;
         borderRadius = 5;
         borderSize = 2;
         font = "Iosevka 18";
@@ -514,7 +510,7 @@ in {
         plugins = with pkgs.tmuxPlugins; [
           cpu
           battery
-          nord
+          pkgs.tmuxPlugins.nord
         ];
         keyMode = "vi";
         shortcut = "a";
