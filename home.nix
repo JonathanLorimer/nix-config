@@ -237,6 +237,7 @@ in {
         Install = {
           WantedBy = [ "default.target" ];
         };
+      };
     };
 
     xdg.configFile."kanshi/config".text = ''
@@ -445,9 +446,9 @@ in {
         enable = true;
         extraConfig = ''
           Host *
-            AddKeysToAgent yes
             User jonathanl
             IdentityFile ~/.ssh/id_rsa
+            AddKeysToAgent yes
         '';
       };
       direnv = {

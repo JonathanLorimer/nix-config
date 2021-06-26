@@ -37,9 +37,9 @@ in
       Service = {
         ExecStart = "${cfg.package}/bin/waybar --config ${settings} --style ${style}";
       };
-      # Install = {
-      #  WantedBy = [ "graphical-session.target" ];
-      # };
+      Install = {
+       WantedBy = [ "graphical-session.target" ];
+      };
     };
   };
 }
