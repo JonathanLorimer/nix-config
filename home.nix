@@ -227,17 +227,6 @@ in {
           Restart = "always";
         };
       };
-      ssh-agent = {
-        Unit = { Description = "SSH key agent"; };
-        Service = {
-          Type = "simple";
-          Environment = "SSH_AUTH_SOCK=%t/ssh-agent.socket";
-          ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
     };
 
     xdg.configFile."kanshi/config".text = ''
@@ -473,7 +462,7 @@ in {
         history.ignoreDups = true;
         oh-my-zsh = {
           enable = true;
-          plugins = ["git" "sudo"];
+          plugins = ["git" "sudo" "ssh-agent"];
         };
         plugins = [
           {
