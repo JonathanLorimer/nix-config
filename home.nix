@@ -55,7 +55,6 @@ let
     inherit (pkgs) fetchFromGitHub;
   };
   modifier = "Mod4";
-  swaylock-effects = pkgs.callPackage ./programs/swaylock-effects.nix {};
   swaylock-config = pkgs.lib.cli.toGNUCommandLineShell {} {
     screenshots = true;
     clock = true;
@@ -94,11 +93,8 @@ in {
       mailspring
 
       # Network
-      wireshark-cli
-      termshark
       openvpn
       openssl
-      bandwhich
 
       # Sound
       pavucontrol
@@ -114,14 +110,10 @@ in {
       # Programming
       awscli
       aws-mfa
-      haskellPackages.hasktags
-      universal-ctags
       stack
       idris2
       exercism
       pgcli
-      nodejs
-      yarn
       vscode
       postman
       tlaplus
@@ -154,7 +146,6 @@ in {
       hyperfine
       xh
       zoxide
-      grim
       highlight
 
       # Sway Utils
@@ -163,6 +154,7 @@ in {
       wf-recorder
       mako
       kanshi
+      grim
 
       # Knowledge Management
       obsidian
@@ -235,6 +227,16 @@ in {
           Restart = "always";
         };
       };
+      ssh-agent = {
+        Unit = { Description = "SSH key agent"; };
+        Service = {
+          Type = "simple";
+          Environment = "SSH_AUTH_SOCK=%t/ssh-agent.socket";
+          ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
     };
 
     xdg.configFile."kanshi/config".text = ''
@@ -566,7 +568,11 @@ in {
     wayland.windowManager.sway = {
       enable = true;
       config = {
-        fonts = [ "Iosevka" "Font Awesome 5 Free" ];
+        fonts = {
+          names = [ "Iosevka" "Font Awesome 5 Free" ];
+          style = "Bold Semi-Condensed";
+          size = 11.0;
+        };
         gaps = {
           inner = 5;
           outer = 5;
