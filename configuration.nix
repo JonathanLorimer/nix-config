@@ -60,6 +60,7 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
     pkgs.vim
+    pkgs.linuxPackages.v4l2loopback
   ];
 
   # Nixpkgs
@@ -105,8 +106,17 @@
 
   # set the correct sound card
   boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1
     options snd slots=snd_hda_intel
   '';
+
+  boot.kernelModules = [
+    "v4l2loopback"
+  ];
+
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.v4l2loopback
+  ];
 
   boot.blacklistedKernelModules = [ "snd_pcsp" ];
 
