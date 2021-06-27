@@ -79,6 +79,8 @@ in {
     home.packages = with pkgs; [
       pinentry
       pinentry-curses
+      linuxPackages.v4l2loopback
+
       # Wayland
       xwayland
       waybar
