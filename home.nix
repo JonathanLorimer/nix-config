@@ -44,7 +44,7 @@ let
 
     tmux attach -t "$SESSION:Shell"
   '';
-  start-waybar = pkgs.writeShellScriptBin "start-sway" "exec systemctl --user restart waybar.service";
+  start-waybar = pkgs.writeShellScriptBin "start-waybar" "exec systemctl --user restart waybar.service";
   nord = import ./nord.nix;
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
@@ -77,6 +77,8 @@ let
 in {
     imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
+      pinentry
+      pinentry-curses
       # Wayland
       xwayland
       waybar
@@ -159,6 +161,7 @@ in {
       # Scripts
       start-work
       start-sway
+      start-waybar
 
     ];
     home.sessionVariables = {
@@ -436,6 +439,9 @@ in {
             AddKeysToAgent yes
         '';
       };
+      gpg = {
+        enable = true;
+      };
       direnv = {
         enable = true;
         enableZshIntegration = true;
@@ -494,14 +500,9 @@ in {
         };
       };
       htop.enable = true;
-      rofi.enable = true;
       bat = {
         enable = true;
         config.theme = "Nord";
-      };
-      broot = {
-        enable = true;
-        enableZshIntegration = true;
       };
       tmux = {
         enable = true;
@@ -540,6 +541,10 @@ in {
           bind -T copy-mode    C-c send -X copy-pipe-no-clear "wl-copy"
           bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "wl-copy"
         '';
+      };
+      obs-studio = {
+        enable = true;
+        plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
       };
     };
     services = {

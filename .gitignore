@@ -10,3 +10,5 @@ pritunl.ovpn
 */**/jonathanlorimer.crt
 */**/jonathanlorimer.key
 */**/vpn.mercury.com.ovpn
+
+*/**/secrets-unencrypted.yaml
