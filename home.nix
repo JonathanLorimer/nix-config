@@ -79,6 +79,8 @@ in {
     home.packages = with pkgs; [
       pinentry
       pinentry-curses
+      pipewire
+      xdg-desktop-portal-wlr
 
       # Wayland
       xwayland

@@ -52,7 +52,7 @@
   networking.networkmanager.wifi.backend = "iwd";
 
   networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.wlan0.useDHCP = true;
 
   # Set your time zone.
   time.timeZone = "Canada/Eastern";
