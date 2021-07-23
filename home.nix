@@ -91,7 +91,7 @@ in {
       # Messaging
       keybase
       keybase-gui
-      mailspring
+      zulip
 
       # Network
       openvpn
