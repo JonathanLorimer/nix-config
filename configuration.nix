@@ -47,6 +47,7 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["Iosevka"]; })
     font-awesome
+    pragmata-pro
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -85,7 +86,7 @@
 
   # Postgres
   services.postgresql = {
-    package = pkgs.postgresql_12;
+    package = pkgs.postgresql_13;
     enable = true;
     enableTCPIP = false;
     authentication = ''
@@ -93,6 +94,7 @@
       host all all 127.0.0.1/32 trust
       host all all ::1/128 trust
     '';
+    extraPlugins = [config.services.postgresql.package.pkgs.postgis];
     settings = {
       timezone = "UTC";
       shared_buffers = 128;
@@ -129,7 +131,7 @@
   boot.blacklistedKernelModules = [ "snd_pcsp" ];
 
   # System Version
-  system.stateVersion = "20.09";
+  system.stateVersion = "21.11";
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;

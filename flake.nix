@@ -38,17 +38,20 @@
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
               neovim-nightly-overlay.overlay
-              (self: super: {
-                neovim-unwrapped = super.neovim-nightly;
+              (final: prev: {
+                neovim-unwrapped = final.neovim-nightly;
               })
-              (self: super: {
+              (final: prev: {
                 haskell-language-server =
-                  super.haskell-language-server.override {
+                  prev.haskell-language-server.override {
                     supportedGhcVersions = [
                       "884"
                       "8104"
                     ];
                   };
+              })
+              (final: prev: {
+                pragmata-pro = final.callPackage ./pragmata-pro {};
               })
             ];
             nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [

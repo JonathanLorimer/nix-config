@@ -256,20 +256,20 @@ in {
           };
           scrolling.history = 10000;
           font.normal = {
-            family = "Iosevka";
-            style = "Medium";
+            family = "PragmataPro Mono";
+            style = "Regular";
           };
           font.bold = {
-            family = "Iosevka";
-            style = "Heavy";
+            family = "PragmataPro Mono";
+            style = "Bold";
           };
           font.italic = {
-            family = "Iosevka";
+            family = "PragmataPro Mono";
             style = "Italic";
           };
           font.bold_italic = {
-            family = "Iosevka";
-            style = "Heavy Italic";
+            family = "PragmataPro Mono";
+            style = "Bold Italic";
           };
           font.size = 13.0;
           colors = {
@@ -313,7 +313,7 @@ in {
         borderColor = nord.colour8;
         borderRadius = 5;
         borderSize = 2;
-        font = "Iosevka 18";
+        font = "PragmataPro Mono 18";
       };
       neovim = {
         enable = true;
@@ -462,6 +462,11 @@ in {
           cfg = "nvim $HOME/.config/nixpkgs/home.nix";
           n = "nvim";
           ns = "nvim $(sk)";
+          gs = "git status";
+          gc = "git commit";
+          ga = "git add";
+          gp = "git push";
+          gr = "git remote add";
         };
         history.expireDuplicatesFirst = true;
         history.ignoreDups = true;
@@ -469,18 +474,7 @@ in {
           enable = true;
           plugins = ["git" "sudo" "ssh-agent"];
         };
-        plugins = [
-          {
-            name = "zsh-nix-shell";
-            file = "nix-shell.plugin.zsh";
-            src = pkgs.fetchFromGitHub {
-              owner = "chisui";
-              repo = "zsh-nix-shell";
-              rev = "v0.1.0";
-              sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
-            };
-          }
-        ];
+        # plugins = [];
       };
       fzf = {
         enable = true;
@@ -563,8 +557,8 @@ in {
       enable = true;
       config = {
         fonts = {
-          names = [ "Iosevka" "Font Awesome 5 Free" ];
-          style = "Bold Semi-Condensed";
+          names = [ "PragmataPro Mono" "Iosevka" "Font Awesome 5 Free" ];
+          style = "Bold";
           size = 11.0;
         };
         gaps = {
@@ -602,7 +596,7 @@ in {
           "${modifier}+n" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
           "${modifier}+z" = "exec zotero";
-          "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn Iosevka --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
+          "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"PragmataPro Mono\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
           "${modifier}+Escape" = "exec ${swaylock-command}";
           "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
           "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
