@@ -34,7 +34,7 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           nixpkgs.nixosModules.notDetected
 
-          # Overrides
+          # Overlays
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
               neovim-nightly-overlay.overlay
@@ -50,7 +50,6 @@
               "obsidian"
               "vscode"
               "postman"
-              "mailspring"
             ];
           })
 
