@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  sops.defaultSopsFile = ./sops/secrets.yaml;
+  sops.defaultSopsFile = ../sops/secrets.yaml;
 
   programs = {
     sway.enable = true;

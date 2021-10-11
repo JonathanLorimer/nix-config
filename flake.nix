@@ -22,13 +22,13 @@
         system = "x86_64-linux";
         modules = [
           # Modules
-          ./configuration.nix
-          ./hardware-configuration.nix
-          ./vpn.nix
-          ./monitoring.nix
-          ./postgres.nix
-          ./nix.nix
-          ((import ./overlays.nix) neovim-nightly-overlay)
+          ./modules/base.nix
+          ./modules/hardware-configuration.nix
+          ./modules/vpn.nix
+          ./modules/monitoring.nix
+          ./modules/postgres.nix
+          ./modules/nix.nix
+          ((import ./modules/overlays.nix) neovim-nightly-overlay)
 
           # Secrets
           sops-nix.nixosModules.sops

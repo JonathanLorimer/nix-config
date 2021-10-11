@@ -16,7 +16,7 @@ neovim-nightly-overlay: { pkgs, ... }: {
 
     # get access to my :sick: font
     (final: prev: {
-      pragmata-pro = final.callPackage ./pragmata-pro {};
+      pragmata-pro = final.callPackage ../pragmata-pro {};
     })
   ];
 }

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # If you use a firewall you will need to enable these ports
   # networking = {
