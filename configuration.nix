@@ -1,34 +1,6 @@
 { config, pkgs, ... }:
 {
   sops.defaultSopsFile = ./sops/secrets.yaml;
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    trustedUsers = [ "jonathanl" "root" ];
-    binaryCaches = [
-      "https://cache.nixos.org"
-      "https://cache.mercury.com"
-      "https://hydra.iohk.io"
-      "https://iohk.cachix.org"
-      "https://nixpkgs-wayland.cachix.org"
-      "https://shajra.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://jonathanlorimer.cachix.org"
-      "https://pre-commit-hooks.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "cache.mercury.com:yhfFlgvqtv0cAxzflJ0aZW3mbulx4+5EOZm6k3oML+I="
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-      "shajra.cachix.org-1:V0x7Wjgd/mHGk2KQwzXv8iydfIgLupbnZKLSQt5hh9o="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "jonathanlorimer.cachix.org-1:SP8thQYURhXnzTx4W5c2hUbpbeWit1WKPv/rQuSyy+Y="
-      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-    ];
-   };
 
   programs = {
     sway.enable = true;
@@ -74,6 +46,12 @@
 
   # Nixpkgs
   nixpkgs.config.pulseaudio = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "discord"
+    "obsidian"
+    "vscode"
+    "postman"
+  ];
 
   # Enable Light
   programs.light.enable = true;
@@ -83,26 +61,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Postgres
-  services.postgresql = {
-    package = pkgs.postgresql_13;
-    enable = true;
-    enableTCPIP = false;
-    authentication = ''
-      local all all trust
-      host all all 127.0.0.1/32 trust
-      host all all ::1/128 trust
-    '';
-    extraPlugins = [config.services.postgresql.package.pkgs.postgis];
-    settings = {
-      timezone = "UTC";
-      shared_buffers = 128;
-      fsync = false;
-      synchronous_commit = false;
-      full_page_writes = false;
-    };
-  };
 
   # Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];

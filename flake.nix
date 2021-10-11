@@ -21,11 +21,14 @@
       bellerophon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          # Config
+          # Modules
           ./configuration.nix
           ./hardware-configuration.nix
           ./vpn.nix
           ./monitoring.nix
+          ./postgres.nix
+          ./nix.nix
+          ((import ./overlays.nix) neovim-nightly-overlay)
 
           # Secrets
           sops-nix.nixosModules.sops
@@ -34,32 +37,13 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           nixpkgs.nixosModules.notDetected
 
-          # Overlays
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [
-              neovim-nightly-overlay.overlay
-              (final: prev: {
-                neovim-unwrapped = final.neovim-nightly;
-              })
-              (final: prev: {
-                pragmata-pro = final.callPackage ./pragmata-pro {};
-              })
-            ];
-            nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-              "discord"
-              "obsidian"
-              "vscode"
-              "postman"
-            ];
-          })
-
           # Home Manager
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jonathanl = import ./home.nix;
-          }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jonathanl = import ./home.nix;
+            }
         ];
       };
     };
