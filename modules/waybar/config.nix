@@ -5,17 +5,12 @@
     height = 21;
 
     modules-left= [
-      "sway/mode"
       "sway/workspaces"
       "custom/arrow9"
       "sway/window"
     ];
 
-    #"modules-center"= [
-    #    "sway/window"
-    #];
-
-    "modules-right"= [
+    modules-right= [
         "custom/arrow1"
         "custom/alsa"
         "custom/arrow2"
@@ -37,182 +32,140 @@
     ## -------------------------------------------------------------------------
     ## Modules
     ## -------------------------------------------------------------------------
-    "battery"= {
-        "interval"= 1;
-        "states"= {
-            "warning"= 30;
-            "critical"= 15;
+    modules = {
+      battery = {
+        interval = 1;
+        states = {
+          warning = 30;
+          critical = 15;
         };
-        "format"= " {capacity}%"; ## Icon bolt
-        "format-discharging"= "{icon} {capacity}%";
-        "format-icons"= [
-            "" ## Icon= battery-full
-            "" ## Icon= battery-three-quarters
-            "" ## Icon= battery-half
-            "" ## Icon= battery-quarter
-            ""  ## Icon= battery-empty
+        format = " {capacity}%"; ## Icon bolt
+        format-discharging = "{icon} {capacity}%";
+        format-icons = [
+          "" ## Icon= battery-full
+          "" ## Icon= battery-three-quarters
+          "" ## Icon= battery-half
+          "" ## Icon= battery-quarter
+          ""  ## Icon= battery-empty
         ];
-        "tooltip"= false;
-    };
+        tooltip= false;
+      };
 
-    "clock#time"= {
-        "interval"= 10;
-        "format"= "{:%H:%M}";
-        "tooltip"= false;
-    };
+      "clock#time"= {
+        interval = 10;
+        format = "{:%H:%M}";
+        tooltip = false;
+      };
 
-    "clock#date"= {
-        "interval"= 20;
-        "format"= "{:%e %b %Y}"; ## Icon: calendar-alt
-        ##"tooltip-format"= "{:%e %B %Y}"
-        "tooltip"= false;
-    };
+      "clock#date" = {
+        interval = 20;
+        format = "{:%e %b %Y}"; ## Icon: calendar-alt
+        tooltip = false;
+      };
 
-    "cpu"= {
-        "interval"= 5;
-        "tooltip"= false;
-        "format"= " {usage}%"; ## Icon: microchip
-        "states"= {
-          "warning"= 70;
-          "critical"= 90;
+      cpu = {
+        interval = 5;
+        tooltip = false;
+        format = " {usage}%"; ## Icon: microchip
+        states = {
+          warning = 70;
+          critical = 90;
         };
-    };
+      };
 
-    "memory"= {
-        "interval"= 5;
-        "format"= " {}%"; ## Icon: memory
-        "states"= {
-            "warning"= 70;
-            "critical"= 90;
+      memory= {
+        interval = 5;
+        format = " {}%"; ## Icon: memory
+        states = {
+          warning = 70;
+          critical = 90;
         };
-    };
+      };
 
-    "network"= {
-        "interval"= 1;
-        "format-wifi"= " {essid} ({signalStrength}%)"; ## Icon: wifi
-        ##"format-ethernet"= " {ifname}: {ipaddr}/{cidr}"; ## Icon: ethernet
-        "format-ethernet"= " {ifname}";
-        "format-disconnected"= "Disconnected";
-        ##"tooltip-format"= "{ifname}: {ipaddr}";
-        "tooltip"= false;
-        ##"on-click"= "cmst"
-    };
+      network = {
+        interval = 1;
+        format-wifi = " {essid} ({signalStrength}%)"; ## Icon: wifi
+        format-ethernet = " {ifname}";
+        format-disconnected = "Disconnected";
+        tooltip-format = "{ifname}: {ipaddr}";
+        tooltip = true;
+      };
 
-    "sway/mode"= {
-        "format"= "<span style=\"italic\"> {}</span>"; ## Icon: expand-arrows-alt
-        "tooltip"= false;
-    };
+      "sway/window"= {
+        format = "{}";
+        max-length = 70;
+        tooltip = false;
+      };
 
-    "sway/window"= {
-      "format"= "{}";
-      "max-length"= 70;
-      "tooltip"= false;
-    };
-
-    "sway/workspaces"= {
-        "all-outputs"= false;
-        "disable-scroll"= false;
-        "format"= "{name}";
-        "format-icons"= {
-            "1=www"= "龜"; ## Icon: firefox-browser
-            "2=mail"= ""; ## Icon: mail
-            "3=editor"= ""; ## Icon: code
-            "4=terminals"= ""; ## Icon: terminal
-            "5=portal"= ""; ## Icon: terminal
-            "urgent"= "";
-            "focused"= "";
-            "default"= "";
-        };
-    };
-
-    # "pulseaudio"= {
-    #     "scroll-step"= 1;
-    #     "format"= "{icon} {volume}%";
-    #     "format-bluetooth"= "{icon} {volume}%";
-    #     "format-muted"= "";
-    #     "format-icons"= {
-    #         "headphones"= "";
-    #         "handsfree"= "";
-    #         "headset"= "";
-    #         "phone"= "";
-    #         "portable"= "";
-    #         "car"= "";
-    #         "default"= ["" ""];
-    #     };
-    #     "on-click"= "pavucontrol";
-    # };
-
-    "temperature"= {
-        "critical-threshold"= 90;
-        "interval"= 5;
-        ##"format"= "{icon} {temperatureC}°C";
-      "format"= "{icon} {temperatureC}°";
-        "format-icons"= [
-            "" ## Icon= temperature-empty
-            "" ## Icon= temperature-quarter
-            "" ## Icon= temperature-half
-            "" ## Icon= temperature-three-quarters
-            "" ## Icon= temperature-full
+      temperature= {
+        critical-threshold = 90;
+        interval = 5;
+        format = "{icon} {temperatureC}°";
+        format-icons = [
+          "" ## Icon= temperature-empty
+          "" ## Icon= temperature-quarter
+          "" ## Icon= temperature-half
+          "" ## Icon= temperature-three-quarters
+          "" ## Icon= temperature-full
         ];
-        "tooltip"= false;
+        tooltip = false;
+      };
+
+      "custom/alsa" = {
+        exec = "amixer get Master | sed -nre 's/.*\\[off\\].*/ muted/p; s/.*\\[(.*%)\\].*/ \\1/p'";
+        on-click = "amixer set Master toggle; pkill -x -RTMIN+11 waybar";
+        on-scroll-up = "amixer set Master 1+; pkill -x -RTMIN+11 waybar";
+        on-scroll-down = "amixer set Master 1-; pkill -x -RTMIN+11 waybar";
+        signal = 11;
+        interval = 10;
+        tooltip = false;
+      };
+
+      "custom/arrow1" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow2" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow3" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow4" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow5" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow6" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow7" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow8" = {
+        format = "";
+        tooltip = false;
+      };
+
+      "custom/arrow9" = {
+        format = "";
+        tooltip = false;
+      };
     };
-
-    "custom/alsa"= {
-        "exec"= "amixer get Master | sed -nre 's/.*\\[off\\].*/ muted/p; s/.*\\[(.*%)\\].*/ \\1/p'";
-        "on-click"= "amixer set Master toggle; pkill -x -RTMIN+11 waybar";
-        "on-scroll-up"= "amixer set Master 1+; pkill -x -RTMIN+11 waybar";
-        "on-scroll-down"= "amixer set Master 1-; pkill -x -RTMIN+11 waybar";
-        "signal"= 11;
-        "interval"= 10;
-        "tooltip"= false;
-    };
-
-    "custom/arrow1"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow2"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow3"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow4"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow5"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow6"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow7"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow8"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-    "custom/arrow9"= {
-        "format"= "";
-        "tooltip"= false;
-    };
-
-
   };
   styles = ''
       /* -----------------------------------------------------------------------------
@@ -253,18 +206,17 @@
       @define-color dark #2e3440;
       @define-color warning #ebcb8b;
       @define-color critical #d08770;
-      @define-color mode #4c566a;
       @define-color workspaces #5e81ac;
       @define-color workspacesfocused #81a1c1;
-      @define-color sound #d8dee9;
+      @define-color arrow #5e81ac;
+      @define-color sound #4c566a;
       @define-color network #4c566a;
-      @define-color memory #88c0d0;
+      @define-color memory #434c5e;
       @define-color cpu #434c5e;
-      @define-color temp #d8dee9;
-      @define-color layout #5e81ac;
-      @define-color battery #88c0d0;
+      @define-color temp #3B4252;
+      @define-color battery #3B4252;
       @define-color date #2e3440;
-      @define-color time #eceff4;
+      @define-color time #2e3440;
 
       /* Reset all styles */
       * {
@@ -290,7 +242,6 @@
       #cpu,
       #custom-layout,
       #memory,
-      #mode,
       #network,
       #pulseaudio,
       #temperature,
@@ -301,7 +252,6 @@
       }
 
       /* Each module that should blink */
-      #mode,
       #memory,
       #temperature,
       #battery {
@@ -319,7 +269,6 @@
       }
 
       /* Each critical that should blink */
-      #mode,
       #memory.critical,
       #temperature.critical,
       #battery.critical.discharging {
@@ -342,12 +291,6 @@
           animation-duration: 3s;
       }
 
-      /* And now modules themselves in their respective order */
-
-      #mode { /* Shown current Sway mode (resize etc.) */
-        color: @light;
-        background: @mode;
-      }
 
       /* Workspaces stuff */
       #workspaces button {
@@ -374,7 +317,7 @@
 
       #custom-alsa {
         background: @sound;
-        color: @dark;
+        color: @light;
       }
 
       #network {
@@ -384,7 +327,7 @@
 
       #memory {
           background: @memory;
-          color: @dark;
+          color: @light;
       }
 
       #cpu {
@@ -394,7 +337,7 @@
 
       #temperature {
           background: @temp;
-          color: @dark;
+          color: @light;
       }
 
       #custom-layout {
@@ -404,7 +347,7 @@
 
       #battery {
           background: @battery;
-          color: @dark;
+          color: @light;
       }
 
       #tray {
@@ -418,16 +361,7 @@
 
       #clock.time {
           background: @time;
-          color: @dark;
-      }
-
-      #pulseaudio { /* Unsused but kept for those who needs it */
-          background: @sound;
-          color: @dark
-      }
-
-      #pulseaudio.muted {
-          /* No styles */
+          color: @light;
       }
 
       #custom-arrow1 {
@@ -438,7 +372,7 @@
 
       #custom-arrow2 {
           font-size: 16px;
-          color: @network;
+          color: @arrow;
           background: @sound;
       }
 
@@ -450,7 +384,7 @@
 
       #custom-arrow4 {
           font-size: 16px;
-          color: @cpu;
+          color: @arrow;
           background: @memory;
       }
 
@@ -462,7 +396,7 @@
 
       #custom-arrow6 {
           font-size: 16px;
-          color: @battery;
+          color: @arrow;
           background: @temp;
       }
 
@@ -474,7 +408,7 @@
 
       #custom-arrow8 {
           font-size: 16px;
-          color: @time;
+          color: @arrow;
           background: @date;
       }
 

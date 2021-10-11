@@ -1,16 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  start-sway = pkgs.writeShellScriptBin "start-sway" ''
-    # first import environment variables from the login manager
-    systemctl --user import-environment
-
-    # then start the service
-    exec systemctl --user start sway.service
-
-    # Start waybar
-    exec systemctl --user restart waybar.service
-  '';
   start-work = pkgs.writeShellScriptBin "start-work" ''
     SESSION="Work"
     WORK_DIR_BE="~/Mercury/mercury-web-backend"
@@ -21,8 +11,7 @@ let
 
     # Establish sessions and windows
     tmux new-session -d -s "$SESSION"
-    tmux rename-window -t 1 'Editor BE'
-    tmux new-window -t "$SESSION:2" -n 'Shell'
+    tmux rename-window -t 1 'Editor BE' tmux new-window -t "$SESSION:2" -n 'Shell'
     tmux new-window -t "$SESSION:3" -n 'Server'
     tmux new-window -t "$SESSION:4" -n 'DB'
     tmux new-window -t "$SESSION:5" -n 'Editor FE'
@@ -82,8 +71,6 @@ in {
 
       # Wayland
       xwayland
-      waybar
-      sway
       swaylock-effects
 
       # Sway Utils
@@ -151,7 +138,6 @@ in {
 
       # Scripts
       start-work
-      start-sway
       start-waybar
 
     ];
@@ -172,6 +158,7 @@ in {
       };
     };
 
+    # I think mako requires dbus?
     systemd.user.services = {
       dbus = {
         Unit = {
@@ -186,44 +173,46 @@ in {
           Also = [ "dbus.socket" ];
         };
       };
-      sway = {
-        Unit = {
-          Description = "Sway - Wayland window manager";
-          Documentation = [ "man:sway(5)" ];
-          BindsTo = [ "graphical-session.target" ];
-          Wants = [ "graphical-session-pre.target" ];
-          After = [ "graphical-session-pre.target" ];
-        };
-        Service = {
-          Type = "simple";
-          ExecStart = "${pkgs.sway}/bin/sway";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-      };
-      kanshi = {
-        Unit = {
-          Description = "Kanshi dynamic display configuration";
-          PartOf = [ "graphical-session.target" ];
-        };
-        Install = {
-          WantBy = [ "graphical-session.target" ];
-        };
-        Service = {
-          Type = "simple";
-          ExecStart = "${pkgs.kanshi}/bin/kanshi";
-          RestartSec = 5;
-          Restart = "always";
-        };
-      };
+      # sway = {
+      #   Unit = {
+      #     Description = "Sway - Wayland window manager";
+      #     Documentation = [ "man:sway(5)" ];
+      #     BindsTo = [ "graphical-session.target" ];
+      #     Wants = [ "graphical-session-pre.target" ];
+      #     After = [ "graphical-session-pre.target" ];
+      #   };
+      #   Service = {
+      #     Type = "simple";
+      #     ExecStart = "${pkgs.sway}/bin/sway";
+      #     Restart = "on-failure";
+      #     RestartSec = 1;
+      #     TimeoutStopSec = 10;
+      #   };
+      # };
+      # kanshi = {
+      #   Unit = {
+      #     Description = "Kanshi dynamic display configuration";
+      #     PartOf = [ "graphical-session.target" ];
+      #   };
+      #   Install = {
+      #     WantedBy = [ "graphical-session.target" ];
+      #   };
+      #   Service = {
+      #     Type = "simple";
+      #     ExecStart = "${pkgs.kanshi}/bin/kanshi";
+      #     RestartSec = 5;
+      #     Restart = "always";
+      #   };
+      # };
     };
 
-    xdg.configFile."kanshi/config".text = ''
-      {
-        output eDP-1 mode 1920x1080 position 0,0
-      }
-    '';
+    # xdg.configFile = {
+    #   "kanshi/config".text = ''
+    #     {
+    #       output eDP-1 mode 1920x1080 position 0,0
+    #     }
+    #   '';
+    # };
 
     programs = {
       alacritty = {
@@ -465,10 +454,6 @@ in {
         };
         # plugins = [];
       };
-      fzf = {
-        enable = true;
-        enableZshIntegration = true;
-      };
       skim = {
         enable = true;
         enableZshIntegration = true;
@@ -533,33 +518,47 @@ in {
           set -g status-style fg=white,bg=default
 
           set -g status-left ${"''"}
-          set -g status-right ${"''"}
+          set -g status-right "#[bg=default] #[fg=magenta]#[fg=black]#[bg=magenta]λ #[fg=white]#[bg=brightblack] %a %d %b #[fg=magenta]%R#[fg=brightblack]#[bg=default]"
           set -g status-justify centre
           set -g status-position bottom
 
           set -g pane-active-border-style bg=default,fg=default
           set -g pane-border-style fg=default
 
-          set -g window-status-current-format "#[fg=cyan]#[fg=black]#[bg=cyan]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] #[bg=default] #[fg=magenta]#[fg=black]#[bg=magenta]λ #[fg=white]#[bg=brightblack] %a %d %b #[fg=magenta]%R#[fg=brightblack]#[bg=default] "
+          set -g window-status-current-format "#[fg=cyan]#[fg=black]#[bg=cyan]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] "
           set -g window-status-format "#[fg=magenta]#[fg=black]#[bg=magenta]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] "
         '';
       };
-    };
-    services = {
       waybar = {
         enable = true;
-        settings = builtins.toJSON waybar-config.settings;
+        settings = [waybar-config.settings];
         style = waybar-config.styles;
+        systemd.enable = true;
       };
+    };
+    services = {
       blueman-applet.enable = true;
       spotifyd.enable = true;
       gpg-agent = {
         enable = true;
         enableSshSupport = true;
       };
+      kanshi = {
+        enable = true;
+        profiles = {
+          home.outputs = [
+            {
+              criteria = "eDP-1";
+              mode = "1920x1080";
+              position = "0,0";
+            }
+          ];
+        };
+      };
     };
     wayland.windowManager.sway = {
       enable = true;
+      systemdIntegration = true;
       config = {
         fonts = {
           names = [ "PragmataPro Mono" "Iosevka" "Font Awesome 5 Free" ];
@@ -642,7 +641,10 @@ in {
         workspaceAutoBackAndForth = true;
         bars = [];
         startup = [
-          { command = "exec systemctl --user restart waybar.service";
+          { command = "exec systemctl --user start waybar.service";
+            always = true;
+          }
+          { command = "exec systemctl --user start kanshi.service";
             always = true;
           }
           # { command = ''
