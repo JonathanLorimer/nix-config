@@ -77,8 +77,6 @@ let
 in {
     imports = [./modules/waybar/waybar.nix];
     home.packages = with pkgs; [
-      pinentry
-      pinentry-curses
       pipewire
       xdg-desktop-portal-wlr
 
@@ -88,10 +86,15 @@ in {
       sway
       swaylock-effects
 
+      # Sway Utils
+      slurp
+      wl-clipboard
+      wf-recorder
+      grim
+
       # Messaging
       keybase
       keybase-gui
-      zulip
 
       # Network
       openvpn
@@ -114,11 +117,7 @@ in {
       stack
       idris2
       exercism
-      pgcli
       vscode
-      postman
-      tlaplus
-      tlaplusToolbox
       cachix
       nix-prefetch-git
 
@@ -134,28 +133,17 @@ in {
       rlwrap
       tmate
 
-      # Unix Utils
+      # Command Line Utils
       jq
       ripgrep
       ruplacer
       exa
-      procs
-      dust
       duf
       tokei
       tealdeer
       hyperfine
       xh
-      zoxide
       highlight
-
-      # Sway Utils
-      slurp
-      wl-clipboard
-      wf-recorder
-      mako
-      kanshi
-      grim
 
       # Knowledge Management
       obsidian
