@@ -20,7 +20,7 @@
     };
   };
   signing = {
-    key = "ED39 CDCE CFEE 3EC7 EAC8  F679 E2D2 A5D3 05AB F31E";
+    key = "FC71 14BD A311 3C17 05BA  2B67 708C 5C31 E69E D543";
     signByDefault = true;
   };
   delta = {
