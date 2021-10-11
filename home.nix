@@ -33,7 +33,6 @@ let
 
     tmux attach -t "$SESSION:Shell"
   '';
-  start-waybar = pkgs.writeShellScriptBin "start-waybar" "exec systemctl --user restart waybar.service";
   nord = import ./nord.nix;
   vimPluginsOverrides = import ./programs/nvim/plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
@@ -145,74 +144,6 @@ in {
       EDITOR = "nvim";
       TERMINAL = "alacritty";
     };
-
-    systemd.user.sockets.dbus = {
-      Unit = { Description = "D-Bus User Message Bus Socket"; };
-      Socket = {
-        ListenStream = "%t/bus";
-        ExecStartPost = "${pkgs.systemd}/bin/systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus";
-      };
-      Install = {
-        WantedBy = [ "sockets.target" ];
-        Also = [ "dbus.service" ];
-      };
-    };
-
-    # I think mako requires dbus?
-    systemd.user.services = {
-      dbus = {
-        Unit = {
-          Description = "D-Bus User Message Bus";
-          Requires = [ "dbus.socket" ];
-        };
-        Service = {
-          ExecStart = "${pkgs.dbus}/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation";
-          ExecReload = "${pkgs.dbus}/bin/dbus-send --print-reply --session --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig";
-        };
-        Install = {
-          Also = [ "dbus.socket" ];
-        };
-      };
-      # sway = {
-      #   Unit = {
-      #     Description = "Sway - Wayland window manager";
-      #     Documentation = [ "man:sway(5)" ];
-      #     BindsTo = [ "graphical-session.target" ];
-      #     Wants = [ "graphical-session-pre.target" ];
-      #     After = [ "graphical-session-pre.target" ];
-      #   };
-      #   Service = {
-      #     Type = "simple";
-      #     ExecStart = "${pkgs.sway}/bin/sway";
-      #     Restart = "on-failure";
-      #     RestartSec = 1;
-      #     TimeoutStopSec = 10;
-      #   };
-      # };
-      # kanshi = {
-      #   Unit = {
-      #     Description = "Kanshi dynamic display configuration";
-      #     PartOf = [ "graphical-session.target" ];
-      #   };
-      #   Install = {
-      #     WantedBy = [ "graphical-session.target" ];
-      #   };
-      #   Service = {
-      #     Type = "simple";
-      #     ExecStart = "${pkgs.kanshi}/bin/kanshi";
-      #     RestartSec = 5;
-      #     Restart = "always";
-      #   };
-      # };
-    };
-
-    # xdg.configFile = {
-    #   "kanshi/config".text = ''
-    #     {
-    #       output eDP-1 mode 1920x1080 position 0,0
-    #     }
-    #   '';
-    # };
 
     programs = {
       alacritty = {
@@ -452,7 +383,6 @@ in {
           enable = true;
           plugins = ["git" "sudo" "ssh-agent"];
         };
-        # plugins = [];
       };
       skim = {
         enable = true;
@@ -597,7 +527,7 @@ in {
           "${modifier}+t" = "exec alacritty";
           "${modifier}+b" = "exec brave";
           "${modifier}+q" = "kill";
-          "${modifier}+n" = "exec makoctl dismiss";
+          "${modifier}+d" = "exec makoctl dismiss";
           "${modifier}+f" = "fullscreen";
           "${modifier}+z" = "exec zotero";
           "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"PragmataPro Mono\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
@@ -641,12 +571,6 @@ in {
         workspaceAutoBackAndForth = true;
         bars = [];
         startup = [
-          { command = "exec systemctl --user start waybar.service";
-            always = true;
-          }
-          { command = "exec systemctl --user start kanshi.service";
-            always = true;
-          }
           # { command = ''
           #     swayidle -w \
           #       timeout 300 '${swaylock-command}' \
