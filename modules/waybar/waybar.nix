@@ -10,7 +10,6 @@ in
       package = mkOption {
         type = types.package;
         default = pkgs.waybar;
-        defaultText = literalExample "pkgs.waybar";
         description = "Waybar package to install.";
       };
       settings = mkOption {

@@ -42,15 +42,6 @@
                 neovim-unwrapped = final.neovim-nightly;
               })
               (final: prev: {
-                haskell-language-server =
-                  prev.haskell-language-server.override {
-                    supportedGhcVersions = [
-                      "884"
-                      "8104"
-                    ];
-                  };
-              })
-              (final: prev: {
                 pragmata-pro = final.callPackage ./pragmata-pro {};
               })
             ];
