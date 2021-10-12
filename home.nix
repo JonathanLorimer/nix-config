@@ -1,8 +1,6 @@
 { pkgs }:
 {
   packages = with pkgs; [
-    pipewire
-    xdg-desktop-portal-wlr
 
     # Wayland
     xwayland
@@ -78,5 +76,9 @@
   sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "alacritty";
+    RTC_USE_PIPEWIRE = "true";
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
   };
 }

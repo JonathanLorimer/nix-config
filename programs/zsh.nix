@@ -16,6 +16,8 @@
     ga = "git add";
     gp = "git push";
     gr = "git remote add";
+    wl = "nmcli d wifi list";
+    wc = "nmcli d wifi connect";
   };
   history.expireDuplicatesFirst = true;
   history.ignoreDups = true;

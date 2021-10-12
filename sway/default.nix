@@ -108,6 +108,14 @@ in
     workspaceAutoBackAndForth = true;
     bars = [];
     startup = [
+      {
+        command = "exec dbus-update-activation-environment WAYLAND_DISPLAY";
+        always = true;
+      }
+      {
+        command = "exec systemctl --user import-environment WAYLAND_DISPLAY";
+        always = true;
+      }
       # { command = ''
       #     swayidle -w \
       #       timeout 300 '${swaylock-command}' \

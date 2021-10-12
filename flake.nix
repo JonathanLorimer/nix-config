@@ -29,6 +29,7 @@
           ./modules/postgres.nix
           ./modules/nix.nix
           ((import ./modules/overlays.nix) neovim-nightly-overlay)
+          ./modules/xdg.nix
 
           # Secrets
           sops-nix.nixosModules.sops
