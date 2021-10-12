@@ -32,7 +32,7 @@
       family = "PragmataPro Mono";
       style = "Bold Italic";
     };
-    font.size = 13.0;
+    font.size = 12.0;
     colors = {
       primary.background = nord.background;
       primary.foreground = nord.foreground;

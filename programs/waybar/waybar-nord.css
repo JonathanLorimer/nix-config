@@ -189,7 +189,7 @@
 }
 
 #custom-arrow1 {
-  font-size: 20px;
+  font-size: 18px;
   color: @sound;
   background: transparent;
 }
@@ -201,7 +201,7 @@
 }
 
 #custom-arrow3 {
-  font-size: 20px;
+  font-size: 18px;
   color: @memory;
   background: @network;
 }
@@ -213,7 +213,7 @@
 }
 
 #custom-arrow5 {
-  font-size: 20px;
+  font-size: 18px;
   color: @temp;
   background: @cpu;
 }
@@ -225,7 +225,7 @@
 }
 
 #custom-arrow7 {
-  font-size: 20px;
+  font-size: 18px;
   color: @date;
   background: @battery;
 }
@@ -237,7 +237,7 @@
 }
 
 #custom-arrow9 {
-  font-size: 20px;
+  font-size: 18px;
   color: @workspaces;
   background: transparent;
 }
