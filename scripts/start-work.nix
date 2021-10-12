@@ -9,7 +9,8 @@ pkgs.writeShellScriptBin "start-work" ''
 
   # Establish sessions and windows
   tmux new-session -d -s "$SESSION"
-  tmux rename-window -t 1 'Editor BE' tmux new-window -t "$SESSION:2" -n 'Shell'
+  tmux rename-window -t 1 'Editor BE'
+  tmux new-window -t "$SESSION:2" -n 'Shell'
   tmux new-window -t "$SESSION:3" -n 'Server'
   tmux new-window -t "$SESSION:4" -n 'DB'
   tmux new-window -t "$SESSION:5" -n 'Editor FE'
