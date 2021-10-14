@@ -48,7 +48,7 @@ in
     };
     output = {
       "*" = {
-        bg = "${../backgrounds/MercuryNordTheme.png} fill";
+        bg = "${../backgrounds/hiromasaogura.png} fill";
       };
     };
     keybindings = {

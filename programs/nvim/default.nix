@@ -9,6 +9,7 @@ in
   enable = true;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
+
     # General
     syntastic
     kommentary
@@ -47,6 +48,7 @@ in
     }
 
     # Themeing
+    galaxyline-nvim
     vim-airline
     vim-airline-themes
     nord-vim
