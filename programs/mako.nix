@@ -2,9 +2,9 @@
 {
   enable = true;
   anchor = "top-right";
-  backgroundColor = nord.background;
-  textColor = nord.foreground;
-  borderColor = nord.colour8;
+  backgroundColor = nord.base00;
+  textColor = nord.base04;
+  borderColor = nord.base03;
   borderRadius = 5;
   borderSize = 2;
   font = "PragmataPro Mono 18";

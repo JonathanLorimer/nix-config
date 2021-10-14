@@ -1,4 +1,4 @@
-{pkgs, nord}:
+{pkgs, nord }:
 {
   alacritty = (import ./alacritty) {inherit pkgs nord; };
   bat.enable = true;

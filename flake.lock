@@ -93,6 +93,21 @@
         "type": "github"
       }
     },
+    "nix-colors": {
+      "locked": {
+        "lastModified": 1633318162,
+        "narHash": "sha256-rr6BMT4o66KWU9yXVv9W/yB/zMCVZC+zb4OvRftc/h8=",
+        "owner": "misterio77",
+        "repo": "nix-colors",
+        "rev": "182b4b8709b8ffe4e9774a4c5d6877bf6bb9a21c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "misterio77",
+        "repo": "nix-colors",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1624713701,
@@ -175,6 +190,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix"

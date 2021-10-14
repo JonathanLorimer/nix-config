@@ -7,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     sops-nix.url = "github:Mic92/sops-nix";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
@@ -15,6 +16,7 @@
     , nixos-hardware
     , neovim-nightly-overlay
     , sops-nix
+    , nix-colors
     , ...
     }: {
     nixosConfigurations = {
@@ -43,7 +45,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jonathanl = import ./jonathanl.nix;
+              home-manager.users.jonathanl = (import ./jonathanl.nix) { colours = nix-colors; };
             }
         ];
       };
