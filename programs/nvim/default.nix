@@ -39,18 +39,13 @@ in
         let g:CoolTotalMatches = 1
       '';
     }
-    { plugin = vim-sneak;
-      config = ''
-        let g:sneak#label=1
-        highlight Sneak guifg=#ECEFF4 guibg=#D08770 ctermfg=Black ctermbg=DarkRed
-        highlight SneakScope guifg=#D08770 guibg=#EBCB8B ctermfg=DarkRed ctermbg=Yellow
-      '';
-    }
+
+
+
 
     # Themeing
     galaxyline-nvim
-    vim-airline
-    vim-airline-themes
+    lsp-status-nvim
     nord-vim
     nvim-web-devicons
     nvim-colorizer
@@ -83,6 +78,14 @@ in
       '';
     }
     completion-buffers
+
+
+
+
+
+
+
+
 
     # Language Support
     dhall-vim

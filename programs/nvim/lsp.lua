@@ -1,3 +1,6 @@
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
+
 -- Snippets
 vim.g.vsnip_snippet_dir = '~/.config/nixpkgs/programs/nvim/snippets'
 
@@ -137,6 +140,7 @@ local servers = {
 for lsp, settings in pairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    settings = settings
+    settings = settings,
+    capabilities = lsp_status.capabilities,
   }
 end

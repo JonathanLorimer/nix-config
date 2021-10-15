@@ -49,8 +49,8 @@
     set -g pane-active-border-style bg=default,fg=default
     set -g pane-border-style fg=default
 
-    set -g window-status-current-format "#[fg=cyan]#[fg=black]#[bg=cyan]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] "
-    set -g window-status-format "#[fg=magenta]#[fg=black]#[bg=magenta]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default] "
+    set -g window-status-current-format "#[fg=cyan]█#[fg=black]#[bg=cyan]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default]█"
+    set -g window-status-format "#[fg=magenta]█#[fg=black]#[bg=magenta]#I #[bg=brightblack]#[fg=white] #W#[fg=brightblack]#[bg=default]█"
   '';
 }
 

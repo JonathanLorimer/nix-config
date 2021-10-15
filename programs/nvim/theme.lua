@@ -3,11 +3,8 @@ vim.cmd [[
   hi LineNr ctermbg=NONE guibg=NONE
   syntax enable
   colorscheme nord
+  hi SignifySignAdd guifg=#99c794
+  hi SignifySignDelete guifg=#ec5f67
+  hi SignifySignChange guifg=#c594c5
+  hi TelescopeMultiSelection guifg=#EBCB8B " multisections
 ]]
-
-local set = vim.opt
-local g = vim.g
-
-set.t_Co = 256
-set.nowshowmode = true
-
