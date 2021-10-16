@@ -57,8 +57,16 @@ end
 
 insert_left{
   Start = {
-    provider = function() return '   █' end,
-    highlight = {colors.dark_grey,}
+    provider = function() return '   ' end,
+    highlight = {colors.dark,colors.dark}
+  }
+}
+
+insert_left{
+  Space1 = {
+    provider = function() return ' ' end,
+    condition = in_git_repo,
+    highlight = {colors.dark_grey, colors.dark_grey},
   }
 }
 
@@ -118,8 +126,24 @@ insert_left{
 }
 
 insert_left{
+  Space2a = {
+    provider = function() return ' ' end,
+    condition = in_git_repo,
+    highlight = {colors.dark_grey, colors.dark_grey},
+  }
+}
+
+insert_left{
+  Space2b = {
+    provider = function() return ' ' end,
+    condition = function() return not in_git_repo() end,
+    highlight = {colors.grey, colors.grey},
+  }
+}
+
+insert_left{
   Sep1a = {
-    provider = function() return '█ ' end,
+    provider = function() return ' ' end,
     condition = in_git_repo,
     highlight = {colors.dark_grey,colors.grey},
   }
@@ -127,7 +151,7 @@ insert_left{
 
 insert_left{
   Sep1b = {
-    provider = function() return '█ ' end,
+    provider = function() return ' ' end,
     condition = function() return not in_git_repo() end,
     highlight = {colors.grey,colors.light_grey},
   }
@@ -150,8 +174,8 @@ insert_left {
 }
 
 insert_left{
-  Space2 = {
-    provider = function() return '   ' end,
+  Space3 = {
+    provider = function() return '  ' end,
     condition = in_git_repo,
     highlight = {colors.grey, colors.grey},
   }
@@ -186,7 +210,7 @@ insert_left {
 
 insert_left{
   Sep2 = {
-    provider = function() return '█ ' end,
+    provider = function() return ' ' end,
     condition = in_git_repo,
     highlight = {colors.grey, colors.light_grey},
   }
@@ -218,21 +242,37 @@ insert_left {
 --   },
 -- }
 
+insert_left{
+  Space4 = {
+    provider = function() return '  ' end,
+    condition = in_git_repo,
+    highlight = {colors.light_grey, colors.light_grey},
+  }
+}
 
 insert_left{
   Sep3 = {
-    provider = function() return '█ ' end,
+    provider = function() return ' ' end,
     highlight = {colors.light_grey, colors.dark},
   }
 }
 
 insert_right{
   SepR2 = {
-    provider = function() return ' █' end,
+    provider = function() return ' ' end,
     condition = buffer_not_empty,
     highlight = {colors.grey, colors.dark},
   }
 }
+
+insert_right{
+  SpaceR2 = {
+    provider = function() return '  ' end,
+    condition = buffer_not_empty,
+    highlight = {colors.grey, colors.grey},
+  }
+}
+
 insert_right{
   LineInfo = {
     provider = 'FileIcon',
@@ -250,7 +290,7 @@ insert_right{
 }
 insert_right{
   SepR1a = {
-    provider = function() return ' █' end,
+    provider = function() return ' ' end,
     condition = function() return not buffer_not_empty() end,
     highlight = {colors.dark_grey, colors.dark},
   }
@@ -258,9 +298,16 @@ insert_right{
 
 insert_right{
   SepR1b = {
-    provider = function() return ' █' end,
+    provider = function() return ' ' end,
     condition = buffer_not_empty,
     highlight = {colors.dark_grey, colors.grey},
+  }
+}
+
+insert_right{
+  SpaceR1 = {
+    provider = function() return '  ' end,
+    highlight = {colors.dark_grey, colors.dark_grey},
   }
 }
 
@@ -273,8 +320,15 @@ insert_right{
 }
 
 insert_right{
+  SpaceR = {
+    provider = function() return '  ' end,
+    highlight = {colors.dark_grey, colors.dark_grey},
+  }
+}
+
+insert_right{
   End = {
-    provider = function() return '█  ' end,
+    provider = function() return '  ' end,
     highlight = {colors.dark_grey,}
   }
 }
