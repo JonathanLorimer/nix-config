@@ -1,9 +1,23 @@
+require'nvim-web-devicons'.setup { default = true; }
+require'colorizer'.setup ({ '*'; }, { css = true; })
+require'telescope'.setup({
+  defaults = {
+    prompt_prefix = "🔍 ",
+    selection_caret = "👉 ",
+    layout_strategy = "flex",
+  };
+})
+require'kommentary.config'.configure_language("default", {
+  prefer_single_line_comments = true,
+  use_consistent_indentation = true,
+  ignore_whitespace = true
+})
+
 local cmd = vim.cmd
 local set = vim.opt
 local g = vim.g
 
 -- Rulers
-vim.g.mapleader = " "
 set.hidden = true
 set.pumheight = 10
 set.ruler = true
@@ -69,6 +83,5 @@ cmd [[
     au BufNewFile,BufRead *.ts setlocal filetype=typescript
     au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
   augroup END
-
 ]]
 

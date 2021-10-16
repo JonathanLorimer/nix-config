@@ -40,9 +40,6 @@ in
       '';
     }
 
-
-
-
     # Themeing
     galaxyline-nvim
     lsp-status-nvim
