@@ -37,6 +37,7 @@ in
     nord-vim
     nvim-web-devicons
     nvim-colorizer
+    luatab-nvim
 
     # Git
     vim-fugitive

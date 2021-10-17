@@ -54,4 +54,16 @@
       sha256 = "0fdywbv4b0z1kjnkx9vxzvc4cvjyp9mnyv4xi14zndwjgf1gmcwl";
     };
   };
+  luatab-nvim = buildVimPlugin {
+    name = "luatab-nvim";
+    preConfigure = ''
+      rm Makefile
+    '';
+    src = fetchFromGitHub {
+      owner = "alvarosevilla95";
+      repo = "luatab.nvim";
+      rev = "da6a8f709c2a9c133d232aa21147bcf25445a89d";
+      sha256 = "13w4ryqsl3lxxxcrb2dyc0h9kql4cmx0hbhxingrc1cncwgldnj9";
+    };
+  };
 }

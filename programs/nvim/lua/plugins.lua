@@ -5,3 +5,4 @@ require'kommentary.config'.configure_language("default", {
   use_consistent_indentation = true,
   ignore_whitespace = true
 })
+vim.o.tabline = '%!v:lua.require\'luatab\'.tabline()'
