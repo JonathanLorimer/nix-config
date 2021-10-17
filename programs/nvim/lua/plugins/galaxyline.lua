@@ -4,6 +4,14 @@ if not present1 then
     return
 end
 
+-- Makes galaxyline disappear for nvim-tree
+gl.short_line_list = { "NvimTree" }
+
+vim.api.nvim_exec(
+  "hi NvimTreeStatusLineNC guibg=#2E3440 guifg=#2E3440",
+  false
+)
+
 local gls = gl.section
 
 local colors = {

@@ -4,6 +4,7 @@ local g = vim.g
 
 -- Rulers
 vim.g.mapleader = " "
+set.nowrap = true
 set.hidden = true
 set.pumheight = 10
 set.ruler = true
