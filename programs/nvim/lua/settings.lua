@@ -1,21 +1,7 @@
-require'nvim-web-devicons'.setup { default = true; }
-require'colorizer'.setup ({ '*'; }, { css = true; })
-require'telescope'.setup({
-  defaults = {
-    prompt_prefix = "🔍 ",
-    selection_caret = "👉 ",
-    layout_strategy = "flex",
-  };
-})
-require'kommentary.config'.configure_language("default", {
-  prefer_single_line_comments = true,
-  use_consistent_indentation = true,
-  ignore_whitespace = true
-})
-
 local cmd = vim.cmd
 local set = vim.opt
 local g = vim.g
+local w = vim.wo
 
 -- Rulers
 set.hidden = true
@@ -39,6 +25,7 @@ set.incsearch = true
 set.inccommand = "nosplit"
 
 -- General
+w.wrap = false
 set.scrolloff = 8
 set.backspace = {"indent","eol","start" }
 set.nu = true
@@ -49,7 +36,7 @@ set.updatetime=800
 
 -- Completion
 set.inccommand = "nosplit"
-set.completeopt = { "menuone","noinsert","noselect" }
+set.completeopt = { "menu", "menuone","noselect" }
 set.shortmess = vim.o.shortmess .. "c"
 
 -- don't let plugins map leader bindings
@@ -71,8 +58,6 @@ cmd [[
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
   endfun
-
-  autocmd BufEnter * lua require'completion'.on_attach()
 
   augroup BASE_GROUP
     autocmd!

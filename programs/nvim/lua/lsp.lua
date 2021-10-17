@@ -1,37 +1,6 @@
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 
--- Snippets
-vim.g.vsnip_snippet_dir = '~/.config/nixpkgs/programs/nvim/snippets'
-
--- Completion
-local rt = function(codes)
-    return vim.api.nvim_replace_termcodes(codes, true, true, true)
-end
-
-local call = vim.api.nvim_call_function
-
-function tab_complete()
-    if vim.fn.pumvisible() == 1 then
-        return rt('<C-N>')
-    elseif call('vsnip#available', {1}) == 1 then
-        return rt('<Plug>(vsnip-expand-or-jump)')
-    else
-        return rt('<Tab>')
-    end
-end
-
-function s_tab_complete()
-    if vim.fn.pumvisible() == 1 then
-        return rt('<C-P>')
-    elseif call('vsnip#jumpable', {-1}) == 1 then
-        return rt('<Plug>(vsnip-jump-prev)')
-    else
-        return rt('<S-Tab>')
-    end
-end
-
-
 -- LSP
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -47,41 +16,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
--- Haskell
--- TODO: eventually I want to transition this to a per LSP config, that uses the lua hooks
--- rather than the global vim hooks. This is a nice candidate library for abstracting over
--- the ugly stuff https://github.com/onsails/lspkind-nvim
-vim.g.completion_customize_lsp_label = {
-  Reference = ' [ref]',
-	Text = ' [tex]',
-	Function = 'λ [fun]', -- Any term
-	Constructor = '∈ [con]', -- Data & Type constructor
-	Struct = ' [hkt]', -- HKT
-	Variable = 'α [par]', -- Type parameter
-	Interface = '⇛ [cst]', -- Constraint
-	Class = '⇛ [cst]', -- Typeclass
-	Module = ' [mod]', -- Module
-	Keyword = ' [key]',
-	Snippet = '﬌ [snp]',
-	File = ' [fil]',
-	Folder = ' [fol]',
-	Method = '~Method',
-	Property = '~Property',
-	Unit = '~Unit',
-	Value = '~Value',
-	Enum = '~Enum',
-	Color = '~Color',
-	Reference = '~Ref',
-	EnumMember = '~EnumMember',
-	Constant = '~Constant',
-	Event = '~Event',
-	Operator = '~Operator',
-	TypeParameter = '~TypeParameter',
-	Field = '~Field',
-}
-
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
+  print("in on attach")
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -119,7 +56,6 @@ end
 local servers = {
   tsserver = {},
   rnix = {},
-  -- purescriptls = {},
   hls = {
     languageServerHaskell = {
       formattingProvider = "ormolu",
@@ -137,10 +73,17 @@ local servers = {
   }
 }
 
+local cmp_lsp = require('cmp_nvim_lsp')
+
+-- Setup capabilities
+local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+for k,v in pairs(lsp_status.capabilities) do client_capabilities[k] = v end
+local capabilities = cmp_lsp.update_capabilities(client_capabilities)
+
 for lsp, settings in pairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     settings = settings,
-    capabilities = lsp_status.capabilities,
+    capabilities = capabilities,
   }
 end

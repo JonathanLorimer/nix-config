@@ -4,9 +4,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Todo
--- map('', '<leader>to', 'ITODO(jonathan):<ESC>:execute "normal \<Plug>kommentary_line_default"<CR>f:a<Space>')
-
 -- Tabs
 map('', '<leader>H', ':-tabmove<CR>')
 map('', '<leader>L', ':+tabmove<CR>')
@@ -22,12 +19,6 @@ map('v', '<leader>y', '"+y')
 
 -- Goyo
 map('', '<leader>go', ':Goyo<CR>')
-
--- Auto Completion
-map('i', '<expr><TAB>', 'v:lua.tab_complete()')
-map('s', '<expr><TAB>', 'v:lua.tab_complete()')
-map('i', '<expr><S-TAB>', 'v:lua.s_tab_complete()')
-map('s', '<expr><S-TAB>', 'v:lua.s_tab_complete()')
 
 -- Arrow Keys
 map('', '<S-Up>', ':m-2<CR>')

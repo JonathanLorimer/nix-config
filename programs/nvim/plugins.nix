@@ -36,4 +36,22 @@
       sha256 = "1pamk9qxdpqig876vlg822symyhy0lq5krhcfhmr3k9bac7cpwyn";
     };
   };
+  cmp-path = buildVimPlugin {
+    name = "cmp-path";
+    src = fetchFromGitHub {
+      owner = "hrsh7th";
+      repo = "cmp-path";
+      rev = "2b1d31fef79a4c0ff803f6230859faf76e4409f9";
+      sha256 = "1l3lyzgwlr7drxzig01by99vrgi7flvrnln3dmy14pg2x56lsbf3";
+    };
+  };
+  cmp-buffer = buildVimPlugin {
+    name = "cmp-buffer";
+    src = fetchFromGitHub {
+      owner = "hrsh7th";
+      repo = "cmp-buffer";
+      rev = "5dde5430757696be4169ad409210cf5088554ed6";
+      sha256 = "0fdywbv4b0z1kjnkx9vxzvc4cvjyp9mnyv4xi14zndwjgf1gmcwl";
+    };
+  };
 }

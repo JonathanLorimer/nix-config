@@ -14,16 +14,8 @@ in
     syntastic
     kommentary
     goyo-vim
-    vim-grammarous
-    { # Description: helps determine the root of the project
-      plugin = vim-rooter;
-      config = ''
-        let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
-      '';
-    }
+
     vim-surround
-    vim-vsnip
-    vim-vsnip-integ
 
     # Navigation
     nvim-tree-lua
@@ -42,7 +34,6 @@ in
 
     # Themeing
     galaxyline-nvim
-    lsp-status-nvim
     nord-vim
     nvim-web-devicons
     nvim-colorizer
@@ -52,37 +43,15 @@ in
     vim-signify
 
     # LSP
+    lsp-status-nvim
     nvim-lspconfig
-    { plugin = completion-nvim;
-      config = ''
-        let g:completion_enable_snippet = 'vim-vsnip'
-        let g:completion_chain_complete_list = [
-            \{'complete_items': ['lsp', 'snippet']},
-            \{'complete_items':  ['path'], 'triggered_only': ['/']},
-            \{'complete_items': ['buffers']},
-            \{'mode': '<c-p>'},
-            \{'mode': '<c-n>'}
-        \]
-        let g:completion_items_priority = {
-            \'Function': 7,
-            \'Snippet': 5,
-            \'vim-vsnip': 5,
-            \'File': 2,
-            \'Folder': 1,
-            \'Path': 1,
-            \'Buffers': 0
-        \}
-      '';
-    }
-    completion-buffers
 
-
-
-
-
-
-
-
+    # Completion
+    nvim-cmp
+    cmp-buffer
+    cmp-nvim-lsp
+    cmp-path
+    lspkind-nvim
 
     # Language Support
     dhall-vim
