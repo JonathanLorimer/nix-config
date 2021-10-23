@@ -66,4 +66,16 @@
       sha256 = "13w4ryqsl3lxxxcrb2dyc0h9kql4cmx0hbhxingrc1cncwgldnj9";
     };
   };
+  zenbones-nvim = buildVimPlugin {
+    name = "zenbones-nvim";
+    preConfigure = ''
+      rm makefile
+    '';
+    src = fetchFromGitHub {
+      owner = "mcchrish";
+      repo = "zenbones.nvim";
+      rev = "46acbfddfdb40273bcdfac8bdfd7bb6629bce287";
+      sha256 = "0mg90ij0mk9xv9lgbgbkz3mnkxjrf32asl9y36f21mc9a2awwqxj";
+    };
+  };
 }

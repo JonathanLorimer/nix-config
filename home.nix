@@ -1,7 +1,6 @@
 { pkgs }:
 {
   packages = with pkgs; [
-
     # Wayland
     xwayland
     swaylock-effects
@@ -32,6 +31,7 @@
     brave
 
     # Programming
+    gcc
     awscli
     aws-mfa
     stack

@@ -9,7 +9,7 @@ map('', '<leader>H', ':-tabmove<CR>')
 map('', '<leader>L', ':+tabmove<CR>')
 map('', '<leader>h', 'gT')
 map('', '<leader>l', 'gt')
-map('', '<leader>td', ':tab split')
+map('', '<leader>td', ':tab split<CR>')
 
 -- Yank
 map('', '<leader>yy', '"+y')

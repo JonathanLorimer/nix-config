@@ -9,12 +9,9 @@ in
   enable = true;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
-
-    # General
-    syntastic
+    # Utils
     kommentary
     goyo-vim
-
     vim-surround
 
     # Navigation
@@ -22,10 +19,11 @@ in
     telescope-nvim
     plenary-nvim    # required by telescope
     popup-nvim      # required by telescope
+    lightspeed-nvim
 
     # Search
-    { # Description: disables search highlighting when done, re-enables it
-      # when you go back to searching.
+    todo-comments-nvim
+    {
       plugin = vim-cool;
       config = ''
         let g:CoolTotalMatches = 1
@@ -33,15 +31,16 @@ in
     }
 
     # Themeing
+    lush-nvim
+    zenbones-nvim
+    nord-nvim
     galaxyline-nvim
-    nord-vim
     nvim-web-devicons
     nvim-colorizer
     luatab-nvim
 
     # Git
-    vim-fugitive
-    vim-signify
+    gitsigns-nvim
 
     # LSP
     lsp-status-nvim
@@ -55,15 +54,9 @@ in
     lspkind-nvim
 
     # Language Support
-    dhall-vim
-    purescript-vim
-    vim-markdown
-    vim-nix
-    haskell-vim
+    nvim-treesitter
     yesod-routes
     idris2-vim
-    typescript-vim
-    vim-tsx
   ];
 }
 
