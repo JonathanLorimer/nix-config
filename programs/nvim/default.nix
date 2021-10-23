@@ -55,6 +55,7 @@ in
 
     # Language Support
     nvim-treesitter
+    haskell-vim
     yesod-routes
     idris2-vim
   ];
