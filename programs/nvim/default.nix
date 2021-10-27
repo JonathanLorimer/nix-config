@@ -20,6 +20,12 @@ in
     plenary-nvim    # required by telescope
     popup-nvim      # required by telescope
     lightspeed-nvim
+    {
+      plugin = vim-rooter;
+      config = ''
+        let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
+      '';
+    }
 
     # Search
     todo-comments-nvim
@@ -54,6 +60,7 @@ in
     lspkind-nvim
 
     # Language Support
+    playground
     nvim-treesitter
     haskell-vim
     yesod-routes

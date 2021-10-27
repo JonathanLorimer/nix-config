@@ -71,11 +71,12 @@
     preConfigure = ''
       rm makefile
     '';
+    patches = [ ./patches/0001-make-types-bold.patch ];
     src = fetchFromGitHub {
-      owner = "mcchrish";
+      owner = "JonathanLorimer";
       repo = "zenbones.nvim";
-      rev = "46acbfddfdb40273bcdfac8bdfd7bb6629bce287";
-      sha256 = "0mg90ij0mk9xv9lgbgbkz3mnkxjrf32asl9y36f21mc9a2awwqxj";
+      rev = "cc4abbb091043c7f80de0bd01134b054517debeb";
+      sha256 = "1xhwc4500gzy87p9d4nzc9bd4lvg904m4rc9vrzh6zym7x43200c";
     };
   };
 }

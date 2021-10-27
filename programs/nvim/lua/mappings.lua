@@ -20,7 +20,7 @@ map('v', '<leader>y', '"+y')
 -- Goyo
 map('', '<leader>go', ':Goyo<CR>')
 
--- Arrow Keys
+-- NO CHEATING
 map('', '<S-Up>', ':m-2<CR>')
 map('i', '<S-Down>', ':m+<CR>')
 map('', '<S-Up>', '<Esc>:m-2<CR>')
@@ -34,3 +34,8 @@ map('i', '<Up>', '<Nop>')
 map('i', '<Down>', '<Nop>')
 map('i', '<Left>', '<Nop>')
 map('i', '<Right>', '<Nop>')
+
+map('n', 'h', "v:count ? 'h' : ''", { noremap = true, expr = true})
+map('n', 'j', "v:count ? 'j' : ''", { noremap = true, expr = true})
+map('n', 'k', "v:count ? 'k' : ''", { noremap = true, expr = true})
+map('n', 'l', "v:count ? 'l' : ''", { noremap = true, expr = true})
