@@ -10,6 +10,4 @@ set nowrap
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/tree-toggle.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/nvim-cmp.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/treesitter.lua
-
-
-" hi ColorColumn guifg=#2E3440 guibg=#2E3440
+:luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/kommentary.lua

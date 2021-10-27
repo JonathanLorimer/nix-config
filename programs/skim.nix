@@ -1,7 +1,7 @@
 {
   enable = true;
   enableZshIntegration = true;
-  defaultOptions = [ "--prompt ⟫" "--ansi" "--preview 'bat --color=always {}'" ];
+  defaultOptions = [ "--prompt λ" "--ansi" "--preview 'bat --color=always {}'" ];
   defaultCommand = "rg --files ";
 }
 

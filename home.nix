@@ -40,6 +40,7 @@
     vscode
     cachix
     nix-prefetch-git
+    gh
 
     # LSP
     nodePackages.typescript-language-server
@@ -69,9 +70,7 @@
     obsidian
     zotero
 
-    # Scripts
-    ((import ./scripts/start-work.nix) {inherit pkgs;})
-  ];
+  ] ++ ((import ./scripts) {inherit pkgs;});
 
   sessionVariables = {
     EDITOR = "nvim";
@@ -80,5 +79,7 @@
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
+    CODE_DIR = "$HOME/Code";
+    WORK_DIR = "$HOME/Mercury";
   };
 }
