@@ -1,4 +1,4 @@
-{ pkgs, nord }:
+{ pkgs, nord, term-env}:
 {
   enable = true;
   settings = {
@@ -8,8 +8,10 @@
         "echo; neofetch; echo; zsh"
       ];
     };
-    env.TERM = "alacritty";
-    env.EDITOR = "nvim";
+    env = {
+      TERM = "alacritty";
+      EDITOR = "nvim";
+    } // term-env;
     window = {
       padding.x = 4;
       padding.y = 4;

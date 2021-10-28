@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, scripts, env-vars}:
 {
   packages = with pkgs; [
     # Wayland
@@ -37,7 +37,6 @@
     stack
     idris2
     exercism
-    vscode
     cachix
     nix-prefetch-git
     gh
@@ -70,16 +69,12 @@
     obsidian
     zotero
 
-  ] ++ ((import ./scripts) {inherit pkgs;});
+  ] ++ scripts;
 
   sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "alacritty";
     RTC_USE_PIPEWIRE = "true";
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
-    CODE_DIR = "$HOME/Code";
-    WORK_DIR = "$HOME/Mercury";
-  };
+  } // env-vars;
 }

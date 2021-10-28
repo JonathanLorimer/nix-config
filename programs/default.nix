@@ -1,6 +1,6 @@
-{pkgs, nord }:
+{pkgs, nord, term-env}:
 {
-  alacritty = (import ./alacritty) {inherit pkgs nord; };
+  alacritty = (import ./alacritty) {inherit pkgs nord term-env; };
   bat.enable = true;
   bat.config.theme = "Nord";
   direnv.enable = true;
