@@ -30,8 +30,8 @@
     bind -r L next-window
 
     # better pane splitting
-    bind -r v split-window
-    bind -r s split-window -h
+    bind -r v split-window -c "#{pane_current_path}"
+    bind -r s split-window -h -c "#{pane_current_path}"
 
     bind -T copy-mode    C-c send -X copy-pipe-no-clear "wl-copy"
     bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "wl-copy"
