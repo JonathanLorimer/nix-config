@@ -5,7 +5,7 @@
 # neovim-nightly-overlay, which is an input from my flake. Therefore I need to
 # create a curried function, so I can use partial application to provide
 # neovim-nightly overlay from flake.nix and still get a nixos module function.
-neovim-nightly-overlay: { pkgs, ... }: {
+{ neovim-nightly-overlay }: { pkgs, ... }: {
   nixpkgs.overlays = [
     neovim-nightly-overlay.overlay
 

@@ -70,4 +70,13 @@
       sha256 = "1xhwc4500gzy87p9d4nzc9bd4lvg904m4rc9vrzh6zym7x43200c";
     };
   };
+  agda-nvim = buildVimPlugin {
+    name = "agda-nvim";
+    src = fetchFromGitHub {
+      owner = "Isti115";
+      repo = "agda.nvim";
+      rev = "8cc072938de2a3e90a42132c60764593ddbf8862";
+      sha256 = "0jiqh08gs1j2gs2igxmgar1jcbw1ij0mli4cvi5v6kdrh6fk4hc2";
+    };
+  };
 }

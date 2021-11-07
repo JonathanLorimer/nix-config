@@ -29,7 +29,7 @@
           ./modules/monitoring.nix
           ./modules/postgres.nix
           ./modules/nix.nix
-          ((import ./modules/overlays.nix) neovim-nightly-overlay)
+          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay;})
           ./modules/xdg.nix
 
           # Secrets

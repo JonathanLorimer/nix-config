@@ -11,3 +11,4 @@ set nowrap
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/nvim-cmp.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/treesitter.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/kommentary.lua
+:luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/agda-nvim.lua

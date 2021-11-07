@@ -1,4 +1,5 @@
 DIR_PATH=$1
+NEW_SESSION_NAME=$2
 
 SKIM_DIRS=$(\
   find "$DIR_PATH/" -maxdepth 1 -mindepth 1 -type d \
@@ -13,6 +14,7 @@ sanitize(){
 DESTINATION="$SKIM_DIRS"
 TMUX_DESTINATION=$(sanitize "$DESTINATION")
 
+# TODO: implement correct behaviour if user is already inside of a session called CODE
 for SESSION in $(tmux ls -F "#{session_attached}:#{session_name}:#{window_name}"); do
   IS_ATTACHED=$(awk -F: '{print $1}' <<< $SESSION)
   SESSION_NAME=$(awk -F: '{print $2}' <<< $SESSION)
@@ -25,8 +27,8 @@ for SESSION in $(tmux ls -F "#{session_attached}:#{session_name}:#{window_name}"
   fi
 done
 
-tmux new -d -s "CODE"
-tmux rename-window -t "CODE" "$TMUX_DESTINATION"
-tmux send-keys -t "CODE" "cd $DIR_PATH/$DESTINATION" C-m "clear" C-m
-tmux attach-session -t "CODE:$TMUX_DESTINATION"
+tmux new -d -s "$NEW_SESSION_NAME"
+tmux rename-window -t "$NEW_SESSION_NAME" "$TMUX_DESTINATION"
+tmux send-keys -t "$NEW_SESSION_NAME" "cd $DIR_PATH/$DESTINATION" C-m "clear" C-m
+tmux attach-session -t "$NEW_SESSION_NAME:$TMUX_DESTINATION"
 

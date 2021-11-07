@@ -65,6 +65,7 @@ in
     haskell-vim
     yesod-routes
     idris2-vim
+    agda-nvim
   ];
 }
 

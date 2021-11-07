@@ -31,6 +31,7 @@
     brave
 
     # Programming
+    agda
     gcc
     awscli
     aws-mfa

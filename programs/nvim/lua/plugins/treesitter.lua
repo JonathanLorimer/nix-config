@@ -5,8 +5,16 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 --     files = {"src/parser.c", "src/scanner.cc"}
 --   }
 -- }
+
+parser_config.agda = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-agda",
+    files = {"src/parser.c", "src/scanner.cc"}
+  }
+}
+
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"nix", "typescript", "css", "lua", "hcl", "json", "tsx", "yaml"},
+  ensure_installed = {"nix", "typescript", "css", "lua", "hcl", "json", "tsx", "yaml", "agda"},
   highlight = { enable = true },
   playground = {
     enable = true,
