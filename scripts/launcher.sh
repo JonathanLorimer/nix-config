@@ -14,21 +14,32 @@ sanitize(){
 DESTINATION="$SKIM_DIRS"
 TMUX_DESTINATION=$(sanitize "$DESTINATION")
 
-# TODO: implement correct behaviour if user is already inside of a session called CODE
+# Look for existing session with the same name
 for SESSION in $(tmux ls -F "#{session_attached}:#{session_name}:#{window_name}"); do
-  IS_ATTACHED=$(awk -F: '{print $1}' <<< $SESSION)
   SESSION_NAME=$(awk -F: '{print $2}' <<< $SESSION)
   WINDOW_NAME=$(awk -F: '{print $3}' <<< $SESSION)
-  if [ "$IS_ATTACHED" = "1" ]
+  echo $SESSION_NAME
+  echo $NEW_SESSION_NAME
+  if [ "$SESSION_NAME" = "$NEW_SESSION_NAME" ]
   then
-    tmux rename-window -t "$SESSION_NAME:$WINDOW_NAME" "$TMUX_DESTINATION"
-    tmux send-keys -t "$SESSION_NAME:$TMUX_DESTINATION" "cd $DIR_PATH/$DESTINATION" C-m "clear" C-m
+    if [ "$WINDOW_NAME" = "$TMUX_DESTINATION" ]
+    then
+      tmux attach -t "$SESSION_NAME:$TMUX_DESTINATION"
+    else
+      tmux new-window -t "$SESSION_NAME" -n "$TMUX_DESTINATION"
+      tmux send-keys -t "$SESSION_NAME:$TMUX_DESTINATION" "cd $DIR_PATH/$DESTINATION" C-m "clear" C-m
+      if [ -z $TMUX ]
+      then
+        tmux attach -t "$SESSION_NAME:$TMUX_DESTINATION"
+      fi
+    fi
     exit 0
   fi
 done
 
+# Start a new session
 tmux new -d -s "$NEW_SESSION_NAME"
 tmux rename-window -t "$NEW_SESSION_NAME" "$TMUX_DESTINATION"
 tmux send-keys -t "$NEW_SESSION_NAME" "cd $DIR_PATH/$DESTINATION" C-m "clear" C-m
-tmux attach-session -t "$NEW_SESSION_NAME:$TMUX_DESTINATION"
+tmux attach -t "$NEW_SESSION_NAME:$TMUX_DESTINATION"
 
