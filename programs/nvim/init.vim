@@ -1,5 +1,4 @@
 let mapleader = " "
-set nowrap
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/theme.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/lsp.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/settings.lua
