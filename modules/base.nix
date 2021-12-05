@@ -12,7 +12,7 @@
 
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev" ];
     shell = pkgs.zsh;
   };
 
@@ -74,6 +74,8 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+
+  hardware.keyboard.zsa.enable = true;
 
   # set the correct sound card
   boot.extraModprobeConfig = ''
