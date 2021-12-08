@@ -46,6 +46,7 @@
     nodePackages.typescript-language-server
     rnix-lsp
     haskell-language-server
+    idris2-pkgs.lsp
 
     # Terminal
     alacritty

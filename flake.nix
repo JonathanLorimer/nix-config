@@ -8,6 +8,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     sops-nix.url = "github:Mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
+    idris2-pkgs.url = "github:claymager/idris2-pkgs";
   };
   outputs =
     { home-manager
@@ -16,6 +17,7 @@
     , neovim-nightly-overlay
     , sops-nix
     , nix-colors
+    , idris2-pkgs
     , ...
     }: {
     nixosConfigurations = {
@@ -29,7 +31,7 @@
           ./modules/monitoring.nix
           ./modules/postgres.nix
           ./modules/nix.nix
-          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay;})
+          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs;})
           ./modules/xdg.nix
 
           # Secrets

@@ -10,15 +10,16 @@ in
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
     # Utils
-    kommentary
+    comment-nvim
     goyo-vim
     vim-surround
 
     # Navigation
     nvim-tree-lua
     telescope-nvim
-    plenary-nvim    # required by telescope
-    popup-nvim      # required by telescope
+    plenary-nvim                # required by telescope
+    popup-nvim                  # required by telescope
+    telescope-fzf-native-nvim   # required by telescope
     lightspeed-nvim
     {
       plugin = vim-rooter;

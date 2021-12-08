@@ -1,5 +1,6 @@
 require'nvim-web-devicons'.setup { default = true; }
 require'colorizer'.setup ({ '*'; }, { css = true; })
+require'Comment'.setup()
 require'todo-comments'.setup {}
 require'gitsigns'.setup {
   keymaps = {
