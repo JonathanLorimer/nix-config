@@ -1,5 +1,3 @@
-#!/run/current-system/sw/bin/env nix-shell
-#!nix-shell -i bash -p skim tmux
 DIR_PATH=$1
 NEW_SESSION_NAME=$2
 
@@ -10,7 +8,7 @@ SKIM_DIRS=$(\
 )
 
 sanitize(){
-  tr \"./\" \"__\" "$1"
+  echo "$1" | tr \"./\" \"__\"
 }
 
 DESTINATION="$SKIM_DIRS"
@@ -20,8 +18,6 @@ TMUX_DESTINATION=$(sanitize "$DESTINATION")
 for SESSION in $(tmux ls -F "#{session_attached}:#{session_name}:#{window_name}"); do
   SESSION_NAME=$(awk -F: '{print $2}' <<< "$SESSION")
   WINDOW_NAME=$(awk -F: '{print $3}' <<< "$SESSION")
-  echo "$SESSION_NAME"
-  echo "$NEW_SESSION_NAME"
   if [ "$SESSION_NAME" = "$NEW_SESSION_NAME" ]
   then
     if [ "$WINDOW_NAME" = "$TMUX_DESTINATION" ]
