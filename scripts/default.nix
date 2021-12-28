@@ -10,7 +10,7 @@ let
     clone = sa {
       name = "clone";
       text = (builtins.readFile ./clone.sh);
-      runtimeInputs = with pkgs; [ git ];
+      runtimeInputs = with pkgs; [ git gh ];
     };
 in [
   (s "code" "${launcher}/bin/launcher $HOME/$CODE_DIR CODE")
