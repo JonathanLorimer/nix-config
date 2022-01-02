@@ -4,7 +4,7 @@ REPO=$2
 REPO_DIR="$DIR/$(basename "$REPO").git"
 
 cd "$DIR"
-gh repo clone "$REPO" -- --bar
+gh repo clone "$REPO" -- --bare
 cd "$REPO_DIR"
 
 BRANCH=$(git branch -a | sk | tr -d "+ * ")
