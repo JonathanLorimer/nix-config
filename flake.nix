@@ -2,13 +2,19 @@
   description = "Jonathan Lorimer's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # need to set rev due to breaking change against doom emacs overly at this commit:
+    # https://github.com/NixOS/nixpkgs/commit/932ab304f0b8e3241c1311b9b731d3d330291715#diff-56c122d979843ece29fff08e6d83c47ccf8cdbfedb68e4de21dd0cae5337dcf4
+    # switch back to this after fix:
+    # nixpkgs.url = "github:nixos/nixpkgs/nix-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?rev=c52fe20e10a89f939b824de01035543085675c5d";
     home-manager.url = "github:nix-community/home-manager";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     sops-nix.url = "github:Mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
     idris2-pkgs.url = "github:claymager/idris2-pkgs";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
   outputs =
     { home-manager
@@ -18,6 +24,8 @@
     , sops-nix
     , nix-colors
     , idris2-pkgs
+    , nix-doom-emacs
+    , emacs-overlay
     , ...
     }: {
     nixosConfigurations = {
@@ -31,7 +39,7 @@
           ./modules/monitoring.nix
           ./modules/postgres.nix
           ./modules/nix.nix
-          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs;})
+          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs emacs-overlay;})
           ./modules/xdg.nix
 
           # Secrets
@@ -46,7 +54,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jonathanl = (import ./jonathanl.nix) { colours = nix-colors; };
+              home-manager.users.jonathanl = (import ./jonathanl.nix) {
+                colours = nix-colors;
+                doom-emacs = nix-doom-emacs;
+              };
             }
         ];
       };

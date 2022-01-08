@@ -4,7 +4,7 @@ NEW_SESSION_NAME=$2
 DESTINATION=$(\
   find "$DIR_PATH/" -maxdepth 1 -mindepth 1 -type d -print0\
   | xargs -0 -n 1 basename \
-  | sk --preview "echo {} | tr -d \"'\" | cat <(echo -n ""$DIR_PATH"/") - | xargs ls"\
+  | sk --preview "echo {} | tr -d \"'\" | cat <(echo -n \"$DIR_PATH/\") - | xargs ls"\
 )
 
 sanitize(){

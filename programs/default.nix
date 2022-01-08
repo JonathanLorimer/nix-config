@@ -5,6 +5,11 @@
   bat.config.theme = "Nord";
   direnv.enable = true;
   direnv.enableZshIntegration = true;
+  doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./doom.d;
+    emacsPackage = pkgs.emacsPgtkGcc;
+  };
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
