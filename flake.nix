@@ -7,14 +7,33 @@
     # switch back to this after fix:
     # nixpkgs.url = "github:nixos/nixpkgs/nix-unstable";
     nixpkgs.url = "github:nixos/nixpkgs?rev=c52fe20e10a89f939b824de01035543085675c5d";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    sops-nix.url = "github:Mic92/sops-nix";
-    nix-colors.url = "github:misterio77/nix-colors";
-    idris2-pkgs.url = "github:claymager/idris2-pkgs";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    idris2-pkgs = {
+      url = "github:claymager/idris2-pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.emacs-overlay.follows = "emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { home-manager
