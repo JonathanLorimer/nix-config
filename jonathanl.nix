@@ -1,4 +1,4 @@
- { colours }: { config, pkgs, ... }:
+ { colours, doom-emacs }: { config, pkgs, ... }:
 let
   nord = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.nord.colors;
   scripts = (import ./scripts) {inherit pkgs;};
@@ -9,7 +9,7 @@ let
     WORK_DIR = "Mercury";
   };
 in {
-  imports = [ colours.homeManagerModule ];
+  imports = [ colours.homeManagerModule doom-emacs.hmModule ];
   home = (import ./home.nix) { inherit pkgs scripts env-vars; };
   programs = (import ./programs/default.nix) { inherit pkgs nord; term-env = env-vars; };
   services = (import ./services);

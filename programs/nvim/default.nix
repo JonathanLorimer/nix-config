@@ -52,6 +52,7 @@ in
     # LSP
     lsp-status-nvim
     nvim-lspconfig
+    luasnip
 
     # Completion
     nvim-cmp

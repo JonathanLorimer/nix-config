@@ -55,6 +55,7 @@ end
 local servers = {
   tsserver = {},
   rnix = {},
+  rust_analyzer = {},
   hls = {
     settings = {
       languageServerHaskell = {
