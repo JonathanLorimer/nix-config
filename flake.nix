@@ -6,7 +6,8 @@
     # https://github.com/NixOS/nixpkgs/commit/932ab304f0b8e3241c1311b9b731d3d330291715#diff-56c122d979843ece29fff08e6d83c47ccf8cdbfedb68e4de21dd0cae5337dcf4
     # switch back to this after fix:
     # nixpkgs.url = "github:nixos/nixpkgs/nix-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs?rev=c52fe20e10a89f939b824de01035543085675c5d";
+    # nixpkgs.url = "github:nixos/nixpkgs?rev=c52fe20e10a89f939b824de01035543085675c5d";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
