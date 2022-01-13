@@ -1,4 +1,4 @@
-{nord}:
+{nord, default-font}:
 {
   enable = true;
   anchor = "top-right";
@@ -7,6 +7,6 @@
   borderColor = nord.base03;
   borderRadius = 5;
   borderSize = 2;
-  font = "PragmataPro Mono 18";
+  font = "${default-font} 18";
 }
 

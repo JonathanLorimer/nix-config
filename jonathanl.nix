@@ -8,10 +8,11 @@ let
     CODE_DIR = "Code";
     WORK_DIR = "Mercury";
   };
+  default-font = "PragmataProLiga Nerd Font";
 in {
   imports = [ colours.homeManagerModule doom-emacs.hmModule ];
   home = (import ./home.nix) { inherit pkgs scripts env-vars; };
-  programs = (import ./programs/default.nix) { inherit pkgs nord; term-env = env-vars; };
+  programs = (import ./programs/default.nix) { inherit pkgs nord default-font; term-env = env-vars; };
   services = (import ./services);
-  wayland.windowManager.sway = (import ./sway) { inherit pkgs nord; };
+  wayland.windowManager.sway = (import ./sway) { inherit pkgs nord default-font; };
 }

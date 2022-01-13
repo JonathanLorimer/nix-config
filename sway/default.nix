@@ -1,4 +1,4 @@
-{ pkgs, nord }:
+{ pkgs, nord, default-font}:
 let
   modifier = "Mod4";
   swaylock-config = pkgs.lib.cli.toGNUCommandLineShell {} {
@@ -28,7 +28,7 @@ in
   systemdIntegration = true;
   config = {
     fonts = {
-      names = [ "PragmataPro Mono" "Iosevka" "Font Awesome 5 Free" ];
+      names = [ default-font "Iosevka" "Font Awesome 5 Free" ];
       style = "Bold";
       size = 11.0;
     };
@@ -67,7 +67,7 @@ in
       "${modifier}+d" = "exec makoctl dismiss";
       "${modifier}+f" = "fullscreen";
       "${modifier}+z" = "exec zotero";
-      "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"PragmataPro Mono\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
+      "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"${default-font}\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
       "${modifier}+Escape" = "exec swaylock ${swaylock-config}";
       "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
       "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";

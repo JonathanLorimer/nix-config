@@ -1,4 +1,4 @@
-{ pkgs, nord, term-env}:
+{ pkgs, nord, term-env, default-font}:
 {
   enable = true;
   settings = {
@@ -19,22 +19,22 @@
     };
     scrolling.history = 10000;
     font.normal = {
-      family = "PragmataPro Mono";
+      family = default-font;
       style = "Regular";
     };
     font.bold = {
-      family = "PragmataPro Mono";
+      family = default-font;
       style = "Bold";
     };
     font.italic = {
-      family = "PragmataPro Mono";
+      family = default-font;
       style = "Italic";
     };
     font.bold_italic = {
-      family = "PragmataPro Mono";
+      family = default-font;
       style = "Bold Italic";
     };
-    font.size = 12.0;
+    font.size = 16.0;
     colors = {
       primary.background = nord.base00;
       primary.foreground = nord.base04;

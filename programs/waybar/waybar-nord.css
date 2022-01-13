@@ -61,8 +61,8 @@
 #waybar {
   background: @dark;
   color: @light;
-  font-family: PragmataPro, Iosevka, FiraCode, Noto Sans;
-  font-size: 10pt;
+  font-family: PragmataProLiga Nerd Font, Iosevka, FiraCode, Noto Sans;
+  font-size: 12pt;
   font-weight: bold;
 }
 

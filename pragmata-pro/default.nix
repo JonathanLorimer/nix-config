@@ -1,18 +1,18 @@
 { runCommand, requireFile, unzip }:
 
 let
-  pname = "pragmata-pro-${version}";
+  pname = "pragmata-pro-patched-${version}";
   version = "0.829";
 in
 runCommand pname
   rec {
     outputHashMode = "recursive";
     outputHashAlgo = "sha256";
-    outputHash = "GG8id7kZMqyDCDyvJLNL1CUrlaLzzL70f/b8CXYQGXE=";
+    outputHash = "HrY1lv3BUej9dgoG03sSK0Bdjr6tYQFVSu8DJIpobJM=";
     src = requireFile rec {
       url = "https://fsd.it/my-account/downloads/";
-      name = "PragmataPro${version}.zip";
-      sha256 = "0dg7h80jaf58nzjbg2kipb3j3w6fz8z5cyi4fd6sx9qlkvq8nckr";
+      name = "PragmataProPatched${version}.zip";
+      sha256 = "1530qw3q2bmxlgqz2qfqwillwi58s2fnmr0fn54wbjxcmrz450hg";
     };
     buildInputs = [ unzip ];
   } ''

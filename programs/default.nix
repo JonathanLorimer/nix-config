@@ -1,6 +1,6 @@
-{pkgs, nord, term-env}:
+{pkgs, nord, term-env, default-font}:
 {
-  alacritty = (import ./alacritty) {inherit pkgs nord term-env; };
+  alacritty = (import ./alacritty) {inherit pkgs nord term-env default-font; };
   bat.enable = true;
   bat.config.theme = "Nord";
   direnv = {
@@ -16,7 +16,7 @@
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
-  mako = (import ./mako.nix) {inherit nord; };
+  mako = (import ./mako.nix) {inherit nord default-font; };
   neovim = (import ./nvim) {inherit pkgs; };
   ssh = {
     enable = true;
