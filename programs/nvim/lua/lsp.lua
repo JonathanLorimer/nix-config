@@ -56,6 +56,7 @@ local servers = {
   tsserver = {},
   rnix = {},
   rust_analyzer = {},
+  purescriptls = {},
   hls = {
     settings = {
       languageServerHaskell = {

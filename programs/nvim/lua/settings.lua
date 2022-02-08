@@ -50,6 +50,9 @@ g.haskell_indent_let = 4
 g.haskell_indent_case = 2
 g.haskell_indent_where = 6
 
+-- Agda
+g.cornelis_use_global_binary = 1
+
 cmd [[
   filetype plugin indent on
 
@@ -68,5 +71,15 @@ cmd [[
     au BufNewFile,BufRead *.ts setlocal filetype=typescript
     au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
   augroup END
+
+  au BufRead,BufNewFile *.agda call AgdaFiletype()
+  function! AgdaFiletype()
+      nnoremap <buffer> <leader>l :CornelisLoad<CR>
+      nnoremap <buffer> <leader>r :CornelisRefine<CR>
+      nnoremap <buffer> <leader>d :CornelisMakeCase<CR>
+      nnoremap <buffer> <leader>, :CornelisTypeContext<CR>
+      nnoremap <buffer> <leader>n :CornelisSolve<CR>
+      nnoremap <buffer> gd        :CornelisGoToDefinition<CR>
+  endfunction
 ]]
 

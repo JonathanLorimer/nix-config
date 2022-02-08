@@ -35,6 +35,8 @@
       inputs.emacs-overlay.follows = "emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cornelis.url = "github:isovector/cornelis";
+    cornelis.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     { home-manager
@@ -46,6 +48,7 @@
     , idris2-pkgs
     , nix-doom-emacs
     , emacs-overlay
+    , cornelis
     , ...
     }: {
     nixosConfigurations = {
@@ -77,6 +80,8 @@
               home-manager.users.jonathanl = (import ./jonathanl.nix) {
                 colours = nix-colors;
                 doom-emacs = nix-doom-emacs;
+                cornelis = cornelis.packages."x86_64-linux".cornelis;
+                cornelis-vim = cornelis.packages."x86_64-linux".cornelis-vim;
               };
             }
         ];

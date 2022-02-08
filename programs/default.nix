@@ -1,4 +1,4 @@
-{pkgs, nord, term-env, default-font}:
+{pkgs, nord, term-env, default-font, cornelis-vim}:
 {
   alacritty = (import ./alacritty) {inherit pkgs nord term-env default-font; };
   bat.enable = true;
@@ -17,7 +17,7 @@
   gpg.enable = true;
   htop.enable = true;
   mako = (import ./mako.nix) {inherit nord default-font; };
-  neovim = (import ./nvim) {inherit pkgs; };
+  neovim = (import ./nvim) { inherit pkgs cornelis-vim; };
   ssh = {
     enable = true;
     extraConfig = ''

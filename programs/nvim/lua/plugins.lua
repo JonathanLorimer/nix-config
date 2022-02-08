@@ -26,4 +26,4 @@ require'gitsigns'.setup {
     ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
   },
 }
-vim.o.tabline = '%!v:lua.require\'luatab\'.tabline()'
+require'luatab'.setup {}

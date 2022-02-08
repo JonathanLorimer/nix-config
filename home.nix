@@ -1,4 +1,4 @@
-{ pkgs, scripts, env-vars}:
+{ pkgs, scripts, env-vars, cornelis}:
 {
   packages = with pkgs; [
     # Wayland
@@ -40,6 +40,7 @@
     cachix
     nix-prefetch-git
     gh
+    cornelis
 
     # LSP
     nodePackages.typescript-language-server

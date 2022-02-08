@@ -9,4 +9,3 @@ let mapleader = " "
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/tree-toggle.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/nvim-cmp.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/treesitter.lua
-:luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/agda-nvim.lua

@@ -1,14 +1,16 @@
-{pkgs}:
+{pkgs, cornelis-vim}:
 let
   vimPluginsOverrides = import ./plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
-    inherit (pkgs) fetchFromGitHub;
+    inherit (pkgs) fetchFromGitHub stack;
+
   };
 in
 {
   enable = true;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
+
     # Utils
     comment-nvim
     goyo-vim
@@ -43,7 +45,7 @@ in
     nord-nvim
     galaxyline-nvim
     nvim-web-devicons
-    nvim-colorizer
+    nvim-colorizer-lua
     luatab-nvim
 
     # Git
@@ -64,10 +66,15 @@ in
     # Language Support
     playground
     nvim-treesitter
+    vimtex
     haskell-vim
     yesod-routes
     idris2-vim
-    agda-nvim
+    vim-textobj-user
+    nvim-hs-vim
+    dhall-vim
+    purescript-vim
+    cornelis-vim
   ];
 }
 

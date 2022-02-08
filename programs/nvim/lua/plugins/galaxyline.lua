@@ -274,7 +274,7 @@ insert_right{
 }
 
 insert_right{
-  SpaceR2 = {
+  SpaceR3 = {
     provider = function() return '  ' end,
     condition = buffer_not_empty,
     highlight = {colors.grey, colors.grey},
@@ -287,6 +287,14 @@ insert_right{
     condition = buffer_not_empty,
     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.grey}
   },
+}
+
+insert_right{
+  SpaceR2 = {
+    provider = function() return '  ' end,
+    condition = buffer_not_empty,
+    highlight = {colors.grey, colors.grey},
+  }
 }
 
 insert_right{
