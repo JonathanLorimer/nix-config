@@ -56,11 +56,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1644271205,
-        "narHash": "sha256-rVlyqGQeQL91N2rHjx+0T74z8DVkVolubanfAbfNv88=",
+        "lastModified": 1644344409,
+        "narHash": "sha256-5WoxjgcLAylp8/yvsIAcPnd6bE2AeFDZcL3iMvPh1xQ=",
         "owner": "isovector",
         "repo": "cornelis",
-        "rev": "627a94ffcfc5995a528f896571ecaafa35ca3fb0",
+        "rev": "7b90d18cbc74f2d263e8334f6a1339df3a2ccdba",
         "type": "github"
       },
       "original": {

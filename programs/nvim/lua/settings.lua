@@ -73,8 +73,9 @@ cmd [[
   augroup END
 
   au BufRead,BufNewFile *.agda call AgdaFiletype()
+  au BufWritePost *.agda execute "normal! :CornelisLoad\<CR>"
   function! AgdaFiletype()
-      nnoremap <buffer> <leader>l :CornelisLoad<CR>
+      nnoremap <buffer> <leader>m :CornelisLoad<CR>
       nnoremap <buffer> <leader>r :CornelisRefine<CR>
       nnoremap <buffer> <leader>d :CornelisMakeCase<CR>
       nnoremap <buffer> <leader>, :CornelisTypeContext<CR>
