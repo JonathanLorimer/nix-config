@@ -4,6 +4,10 @@ if not present1 then
     return
 end
 
+local vcs = require('galaxyline.providers.vcs')
+local fileinfo = require('galaxyline.providers.fileinfo')
+local condition = require("galaxyline.condition")
+
 -- Makes galaxyline disappear for nvim-tree
 gl.short_line_list = { "NvimTree" }
 
@@ -42,13 +46,7 @@ local function insert_right(element)
   table.insert(gls.right, element)
 end
 
-local buffer_not_empty = function()
-    if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
-    return false
-end
-
 local in_git_repo = function()
-    local vcs = require('galaxyline.provider_vcs')
     local branch_name = vcs.get_git_branch()
 
     return branch_name ~= nil
@@ -245,7 +243,7 @@ insert_left {
 
 -- insert_left {
 --   LspStatus = {
---     provider = require('lsp-status').status,
+--     provider = require('galaxyline.providers.lsp').status,
 --     highlight = {colors.snow_dark,colors.light_grey},
 --   },
 -- }
@@ -268,7 +266,7 @@ insert_left{
 insert_right{
   SepR2 = {
     provider = function() return ' ' end,
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.grey, colors.dark},
   }
 }
@@ -276,7 +274,7 @@ insert_right{
 insert_right{
   SpaceR3 = {
     provider = function() return '  ' end,
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.grey, colors.grey},
   }
 }
@@ -284,15 +282,15 @@ insert_right{
 insert_right{
   LineInfo = {
     provider = 'FileIcon',
-    condition = buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.grey}
+    condition = condition.buffer_not_empty,
+    highlight = {fileinfo.get_file_icon_color, colors.grey}
   },
 }
 
 insert_right{
   SpaceR2 = {
     provider = function() return '  ' end,
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.grey, colors.grey},
   }
 }
@@ -300,14 +298,15 @@ insert_right{
 insert_right{
   FileName = {
     provider = 'FileName',
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.snow_dark,colors.grey},
   },
 }
+
 insert_right{
   SepR1a = {
     provider = function() return ' ' end,
-    condition = function() return not buffer_not_empty() end,
+    condition = function() return not condition.buffer_not_empty() end,
     highlight = {colors.dark_grey, colors.dark},
   }
 }
@@ -315,7 +314,7 @@ insert_right{
 insert_right{
   SepR1b = {
     provider = function() return ' ' end,
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.dark_grey, colors.grey},
   }
 }

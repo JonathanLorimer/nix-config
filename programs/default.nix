@@ -8,11 +8,11 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-  doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d;
-    emacsPackage = pkgs.emacsPgtkGcc;
-  };
+  # doom-emacs = {
+  #   enable = true;
+  #   doomPrivateDir = ./doom.d;
+  #   emacsPackage = pkgs.emacsPgtkGcc;
+  # };
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;

@@ -13,6 +13,7 @@
       EDITOR = "nvim";
     } // term-env;
     window = {
+      opacity = 0.8;
       padding.x = 4;
       padding.y = 4;
       gtk_theme_variant = "Dark";
@@ -61,7 +62,6 @@
         white = nord.base06;
       };
     };
-    background_opacity = 0.8;
     selection.save_to_clipboard = true;
     cursor.style = "Block";
     cursor.unfocused_hollow = true;
