@@ -15,6 +15,9 @@
     keybase
     keybase-gui
 
+    # Browser
+    firefox-wayland
+
     # Network
     openvpn
     openssl
@@ -25,10 +28,6 @@
 
     # Navigation
     bemenu
-
-    # Browsers
-    firefox-wayland
-    brave
 
     # Programming
     agda

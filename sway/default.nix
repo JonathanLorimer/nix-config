@@ -62,7 +62,7 @@ in
 
       # Shortcuts
       "${modifier}+t" = "exec alacritty";
-      "${modifier}+b" = "exec brave";
+      "${modifier}+b" = "exec firefox";
       "${modifier}+q" = "kill";
       "${modifier}+d" = "exec makoctl dismiss";
       "${modifier}+f" = "fullscreen";

@@ -7,7 +7,7 @@
     # switch back to this after fix:
     # nixpkgs.url = "github:nixos/nixpkgs/nix-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs?rev=c52fe20e10a89f939b824de01035543085675c5d";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +36,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cornelis.url = "github:isovector/cornelis";
-    cornelis.inputs.nixpkgs.follows = "nixpkgs";
+
+    helix.url = "github:helix-editor/helix";
   };
   outputs =
     { home-manager
@@ -49,11 +50,14 @@
     , nix-doom-emacs
     , emacs-overlay
     , cornelis
+    , helix
     , ...
-    }: {
+    }:
+    let system = "x86_64-linux";
+    in {
     nixosConfigurations = {
       bellerophon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         modules = [
           # Modules
           ./modules/base.nix
@@ -63,7 +67,7 @@
           ./modules/postgres.nix
           ./modules/nix.nix
           ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs emacs-overlay;})
-          ./modules/xdg.nix
+          ./modules/pipewire.nix
 
           # Secrets
           sops-nix.nixosModules.sops
@@ -78,10 +82,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jonathanl = (import ./jonathanl.nix) {
+                helix = helix.defaultPackage."${system}";
                 colours = nix-colors;
                 doom-emacs = nix-doom-emacs;
-                cornelis = cornelis.packages."x86_64-linux".cornelis;
-                cornelis-vim = cornelis.packages."x86_64-linux".cornelis-vim;
+                cornelis = cornelis.packages."${system}".cornelis;
+                cornelis-vim = cornelis.packages."${system}".cornelis-vim;
               };
             }
         ];

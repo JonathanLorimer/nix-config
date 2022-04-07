@@ -65,7 +65,7 @@
     selection.save_to_clipboard = true;
     cursor.style = "Block";
     cursor.unfocused_hollow = true;
-    url.launcher.program = "brave";
+    url.launcher.program = "firefox";
   };
 }
 

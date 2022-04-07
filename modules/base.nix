@@ -65,9 +65,6 @@
   # Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
-  # Pipewire
-  services.pipewire.enable = true;
-
   # Enable sound.
   sound.enable = true;
   hardware.bluetooth.enable = true;

@@ -1,4 +1,4 @@
- { colours, doom-emacs, cornelis, cornelis-vim}: { pkgs, ... }:
+ { colours, doom-emacs, cornelis, cornelis-vim, helix}: { pkgs, ... }:
 let
   nord = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.nord.colors;
   scripts = (import ./scripts) {inherit pkgs;};
@@ -16,7 +16,7 @@ in {
     cornelis = cornelis;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs nord default-font;
+    inherit pkgs nord default-font helix;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };
