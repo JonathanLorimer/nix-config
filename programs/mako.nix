@@ -8,5 +8,6 @@
   borderRadius = 5;
   borderSize = 2;
   font = "${default-font} 18";
+  defaultTimeout = 5000;
 }
 

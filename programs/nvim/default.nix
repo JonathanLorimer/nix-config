@@ -12,6 +12,7 @@ in
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
 
     # Utils
+    venn-nvim
     comment-nvim
     goyo-vim
     vim-surround

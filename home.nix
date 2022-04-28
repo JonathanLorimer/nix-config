@@ -31,6 +31,7 @@
 
     # Programming
     agda
+    cornelis
     gcc
     awscli
     aws-mfa
