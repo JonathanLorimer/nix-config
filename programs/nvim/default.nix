@@ -56,6 +56,7 @@ in
     lsp-status-nvim
     nvim-lspconfig
     luasnip
+    fidget-nvim
 
     # Completion
     nvim-cmp
