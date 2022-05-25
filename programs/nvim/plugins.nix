@@ -16,10 +16,10 @@
     '';
     patches = [ ./patches/0001-make-types-bold.patch ];
     src = fetchFromGitHub {
-      owner = "JonathanLorimer";
+      owner = "mcchrish";
       repo = "zenbones.nvim";
-      rev = "cc4abbb091043c7f80de0bd01134b054517debeb";
-      sha256 = "1xhwc4500gzy87p9d4nzc9bd4lvg904m4rc9vrzh6zym7x43200c";
+      rev = "e4def19944485787f5172bb952f8d46755999688";
+      sha256 = "0xpxqhmm5a4gjd8s1ixxswd3vmkngy5nll81zqfn1kd936a2dja7";
     };
   };
 }

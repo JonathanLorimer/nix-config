@@ -1,4 +1,4 @@
- { colours, doom-emacs, cornelis, cornelis-vim, helix}: { pkgs, ... }:
+ { colours, cornelis, cornelis-vim}: { pkgs, ... }:
 let
   nord = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.nord.colors;
   scripts = (import ./scripts) {inherit pkgs;};
@@ -10,13 +10,13 @@ let
   };
   default-font = "PragmataProLiga Nerd Font";
 in {
-  imports = [ colours.homeManagerModule doom-emacs.hmModule ];
+  imports = [ colours.homeManagerModule ];
   home = (import ./home.nix) {
     inherit pkgs scripts env-vars;
     cornelis = cornelis;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs nord default-font helix;
+    inherit pkgs nord default-font;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

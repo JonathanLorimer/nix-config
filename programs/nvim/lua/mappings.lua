@@ -4,6 +4,9 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Commands
+map('', '<leader>cf', ':echo expand("%:p")<CR>')
+
 -- Tabs
 map('', '<leader>H', ':-tabmove<CR>')
 map('', '<leader>L', ':+tabmove<CR>')

@@ -1,4 +1,4 @@
-{pkgs, nord, term-env, default-font, cornelis-vim, helix}:
+{pkgs, nord, term-env, default-font, cornelis-vim}:
 {
   alacritty = (import ./alacritty) {inherit pkgs nord term-env default-font; };
   bat.enable = true;
@@ -11,13 +11,6 @@
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
-  helix = {
-    enable = true;
-    package = helix;
-    settings = {
-      theme = "nord";
-    };
-  };
   mako = (import ./mako.nix) {inherit nord default-font; };
   neovim = (import ./nvim) { inherit pkgs cornelis-vim; };
   ssh = {

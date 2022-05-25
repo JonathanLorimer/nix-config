@@ -1,10 +1,6 @@
 { pkgs, ... }:
 {
   nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     trustedUsers = [ "jonathanl" "root" ];
     binaryCaches = [
       "https://cache.nixos.org"

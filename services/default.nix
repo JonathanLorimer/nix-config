@@ -1,5 +1,4 @@
 {
-  blueman-applet.enable = true;
   spotifyd.enable = true;
   gpg-agent = {
     enable = true;
