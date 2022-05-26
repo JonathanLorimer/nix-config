@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
   nix = {
+    extraOptions = ''
+      experimental-features = nix-command
+    '';
     trustedUsers = [ "jonathanl" "root" ];
     binaryCaches = [
       "https://cache.nixos.org"
