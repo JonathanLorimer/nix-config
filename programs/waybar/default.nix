@@ -2,6 +2,7 @@
   enable = true;
   style = builtins.readFile ./waybar-nord.css;
   systemd.enable = true;
+  systemd.target = "sway-session.target";
   settings = [
     {
       layer = "top";

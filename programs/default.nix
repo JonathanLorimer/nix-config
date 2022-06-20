@@ -26,6 +26,7 @@
   starship = import ./starship.nix;
   tmux = (import ./tmux) { inherit (pkgs) tmuxPlugins; };
   waybar = import ./waybar;
+  swaylock = import ./swaylock.nix { inherit nord; };
   zsh = (import ./zsh.nix) {inherit pkgs;};
 }
 

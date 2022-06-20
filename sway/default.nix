@@ -1,27 +1,6 @@
 { pkgs, nord, default-font}:
 let
   modifier = "Mod4";
-  swaylock-config = pkgs.lib.cli.toGNUCommandLineShell {} {
-    screenshots = true;
-    clock = true;
-    indicator = true;
-    show-failed-attempts = true;
-    ignore-empty-password = true;
-    effect-blur = "7x5";
-    effect-vignette = "0.6:0.6";
-    ring-color = nord.base0D;
-    ring-ver-color = nord.base0B;
-    ring-wrong-color = nord.base08;
-    key-hl-color = nord.base0A;
-    line-color = "00000000";
-    line-ver-color = "00000000";
-    line-wrong-color = "00000000";
-    inside-color = "00000000";
-    inside-ver-color = "00000000";
-    inside-wrong-color = "00000000";
-    separator-color = "00000000";
-    text-color = nord.base04;
-  };
 in
 {
   enable = true;
@@ -53,8 +32,6 @@ in
     };
     keybindings = {
       # Controls
-      "${modifier}+Control+o" = "exec amixer set Master 5%-";
-      "${modifier}+Control+p" = "exec amixer set Master 5%+";
       "${modifier}+o" = "exec light -U 5.00";
       "${modifier}+p" = "exec light -A 5.00";
       "${modifier}+Control+l" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 100";
@@ -68,7 +45,7 @@ in
       "${modifier}+f" = "fullscreen";
       "${modifier}+z" = "exec zotero";
       "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"${default-font}\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
-      "${modifier}+Escape" = "exec swaylock ${swaylock-config}";
+      "${modifier}+Escape" = "exec swaylock -f";
       "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
       "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
 
@@ -116,14 +93,6 @@ in
         command = "exec systemctl --user import-environment WAYLAND_DISPLAY";
         always = true;
       }
-      # { command = ''
-      #     swayidle -w \
-      #       timeout 300 '${swaylock-command}' \
-      #       timeout 600 'swaymsg "output * dpms off"' \
-      #             resume 'swaymsg "output * dpms on"' \
-      #   '';
-      #   always = false;
-      # }
     ];
   };
 }
