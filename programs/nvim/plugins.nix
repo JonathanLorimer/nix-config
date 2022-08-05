@@ -22,4 +22,13 @@
       sha256 = "0xpxqhmm5a4gjd8s1ixxswd3vmkngy5nll81zqfn1kd936a2dja7";
     };
   };
+  idris2-nvim = buildVimPlugin {
+    name = "idris2-nvim";
+    src = fetchFromGitHub {
+      owner = "ShinKage";
+      repo = "idris2-nvim";
+      rev = "757c5d1c99c9449f6a139d6303261f522ace46e2";
+      sha256 = "0iiy0x37j0h1h3mjklgpaznva6krvsk7353ymjywq68x4spym806";
+    };
+  };
 }

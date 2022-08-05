@@ -11,3 +11,4 @@ let g:cornelis_use_global_binary = 1
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/nvim-cmp.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/treesitter.lua
 :luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/venn-nvim.lua
+:luafile $HOME/.config/nixpkgs/programs/nvim/lua/plugins/idris2-nvim.lua

@@ -72,15 +72,17 @@ cmd [[
     au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
   augroup END
 
-  au BufRead,BufNewFile *.agda call AgdaFiletype()
-  au BufWritePost *.agda execute "normal! :CornelisLoad\<CR>"
+  au BufEnter,BufRead,BufNewFile *.agda call AgdaFiletype()
   function! AgdaFiletype()
-      nnoremap <buffer> <leader>m :CornelisLoad<CR>
+      nnoremap <buffer> <leader>a :CornelisLoad<CR>
       nnoremap <buffer> <leader>r :CornelisRefine<CR>
-      nnoremap <buffer> <leader>d :CornelisMakeCase<CR>
-      nnoremap <buffer> <leader>, :CornelisTypeContext<CR>
-      nnoremap <buffer> <leader>n :CornelisSolve<CR>
-      nnoremap <buffer> gd        :CornelisGoToDefinition<CR>
+      nnoremap <buffer> <leader>d :CornelisAuto<CR>
+      nnoremap <buffer> <leader>c :CornelisMakeCase<CR>
+      nnoremap <buffer> <leader>t :CornelisTypeContext<CR>
+      nnoremap <buffer> <leader>s :CornelisSolve<CR>
+      nnoremap <buffer> <leader>j :CornelisNextGoal<CR>
+      nnoremap <buffer> <leader>k :CornelisPrevGoal<CR>
+      nnoremap <buffer> <leader>n :CornelisNormalize<CR>
   endfunction
 ]]
 

@@ -1,6 +1,8 @@
 require'nvim-web-devicons'.setup { default = true; }
 require'colorizer'.setup ({ '*'; }, { css = true; })
 require'Comment'.setup()
+local ft = require('Comment.ft')
+ft.agda = {'--%s', '{-%s-}'}
 require'todo-comments'.setup {}
 require'gitsigns'.setup {
  on_attach = function(bufnr)

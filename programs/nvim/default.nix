@@ -71,7 +71,8 @@ in
     vimtex
     haskell-vim
     yesod-routes
-    idris2-vim
+    nui-nvim # required for idris2-nvim
+    idris2-nvim
     vim-textobj-user
     nvim-hs-vim
     dhall-vim
