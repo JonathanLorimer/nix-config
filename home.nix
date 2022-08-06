@@ -73,6 +73,8 @@
 
   ] ++ scripts;
 
+  stateVersion = "22.05";
+
   sessionVariables = {
     RTC_USE_PIPEWIRE = "true";
     MOZ_ENABLE_WAYLAND = "1";
