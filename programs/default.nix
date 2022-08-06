@@ -28,5 +28,6 @@
   waybar = import ./waybar;
   swaylock = import ./swaylock.nix { inherit nord; };
   zsh = (import ./zsh.nix) {inherit pkgs;};
+  kitty = (import ./kitty.nix) {inherit pkgs default-font term-env; };
 }
 

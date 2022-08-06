@@ -231,23 +231,6 @@ insert_left {
 }
 
 
---  Add this back when HLS is more
--- insert_left{
---   Sepa = {
---     provider = function() return ': ' end,
---     condition = in_git_repo,
---     highlight = {colors.snow_dark, colors.light_grey},
---   }
--- }
-
-
--- insert_left {
---   LspStatus = {
---     provider = require('galaxyline.providers.lsp').status,
---     highlight = {colors.snow_dark,colors.light_grey},
---   },
--- }
-
 insert_left{
   Space4 = {
     provider = function() return '  ' end,
@@ -265,7 +248,7 @@ insert_left{
 
 insert_right{
   SepR2 = {
-    provider = function() return ' ' end,
+    provider = function() return '' end,
     condition = condition.buffer_not_empty,
     highlight = {colors.grey, colors.dark},
   }
@@ -305,7 +288,7 @@ insert_right{
 
 insert_right{
   SepR1a = {
-    provider = function() return ' ' end,
+    provider = function() return '' end,
     condition = function() return not condition.buffer_not_empty() end,
     highlight = {colors.dark_grey, colors.dark},
   }
@@ -313,7 +296,7 @@ insert_right{
 
 insert_right{
   SepR1b = {
-    provider = function() return ' ' end,
+    provider = function() return '' end,
     condition = condition.buffer_not_empty,
     highlight = {colors.dark_grey, colors.grey},
   }

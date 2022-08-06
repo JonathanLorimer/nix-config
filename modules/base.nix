@@ -20,6 +20,7 @@
     (nerdfonts.override { fonts = ["Iosevka"]; })
     font-awesome
     pragmata-pro
+    pragmata-pro-patched
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -90,7 +91,7 @@
   boot.blacklistedKernelModules = [ "snd_pcsp" ];
 
   # System Version
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.05";
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;

@@ -1,23 +1,44 @@
 { runCommand, requireFile, unzip }:
 
 let
-  pname = "pragmata-pro-patched-${version}";
   version = "0.829";
 in
-runCommand pname
-  rec {
-    outputHashMode = "recursive";
-    outputHashAlgo = "sha256";
-    outputHash = "HrY1lv3BUej9dgoG03sSK0Bdjr6tYQFVSu8DJIpobJM=";
-    src = requireFile rec {
-      url = "https://fsd.it/my-account/downloads/";
-      name = "PragmataProPatched${version}.zip";
-      sha256 = "1530qw3q2bmxlgqz2qfqwillwi58s2fnmr0fn54wbjxcmrz450hg";
-    };
-    buildInputs = [ unzip ];
-  } ''
-    unzip $src
-    install_path=$out/share/fonts/truetype/pragmatapro
-    mkdir -p $install_path
-    find -name "PragmataPro*.ttf" -exec mv {} $install_path \;
-  ''
+{
+  patched =
+    runCommand "pragmata-pro-patched-${version}"
+      rec {
+        outputHashMode = "recursive";
+        outputHashAlgo = "sha256";
+        outputHash = "HrY1lv3BUej9dgoG03sSK0Bdjr6tYQFVSu8DJIpobJM=";
+        src = requireFile rec {
+          url = "https://fsd.it/my-account/downloads/";
+          name = "PragmataProPatched${version}.zip";
+          sha256 = "1pp7aymyjfi3dq7bc0n740qhgfb44dzz285j3lf8amfdwbpyr8vv";
+        };
+        buildInputs = [ unzip ];
+      } ''
+        unzip $src
+        install_path=$out/share/fonts/truetype/pragmatapro
+        mkdir -p $install_path
+        find -name "PragmataPro*.ttf" -exec mv {} $install_path \;
+      '';
+
+  unpatched =
+    runCommand "pragmata-pro-${version}"
+      rec {
+        outputHashMode = "recursive";
+        outputHashAlgo = "sha256";
+        outputHash = "GG8id7kZMqyDCDyvJLNL1CUrlaLzzL70f/b8CXYQGXE=";
+        src = requireFile rec {
+          url = "https://fsd.it/my-account/downloads/";
+          name = "PragmataPro${version}.zip";
+          sha256 = "0q9lyg7j8nfnl6z3nw0bb15whk1hk6h4hxkwa5fnbg62cw04jg2m";
+        };
+        buildInputs = [ unzip ];
+      } ''
+        unzip $src
+        install_path=$out/share/fonts/truetype/pragmatapro
+        mkdir -p $install_path
+        find -name "PragmataPro*.ttf" -exec mv {} $install_path \;
+      '';
+}

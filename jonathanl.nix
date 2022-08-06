@@ -1,4 +1,4 @@
- { colours, cornelis, cornelis-vim}: { pkgs, ... }:
+ { colours, cornelis, cornelis-vim }: { pkgs, ... }:
 let
   nord = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.nord.colors;
   scripts = (import ./scripts) {inherit pkgs;};
@@ -8,7 +8,7 @@ let
     CODE_DIR = "Code";
     WORK_DIR = "Mercury";
   };
-  default-font = "PragmataProLiga Nerd Font";
+  default-font = "PragmataProMonoLiga Nerd Font Mono";
 in {
   imports = [ colours.homeManagerModule ];
   home = (import ./home.nix) {
