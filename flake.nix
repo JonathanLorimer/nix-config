@@ -49,6 +49,7 @@
           ./modules/vpn.nix
           ./modules/postgres.nix
           ./modules/nix.nix
+          ((import ./modules/channels.nix) {inherit nixpkgs;})
           ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs;})
           ./modules/pipewire.nix
 
@@ -65,6 +66,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jonathanl = (import ./jonathanl.nix) {
+                inherit nixpkgs;
                 colours = nix-colors;
                 cornelis = cornelis.packages."${system}".cornelis;
                 cornelis-vim = cornelis.packages."${system}".cornelis-vim;
