@@ -5,6 +5,7 @@
   extraConfig = {
     init.defaultBranch = "main";
     pull.rebase = true;
+    push.autoSetupRemote = true;
     merge = {
       tool = "vimdiff";
       conflictstyle = "diff3";
