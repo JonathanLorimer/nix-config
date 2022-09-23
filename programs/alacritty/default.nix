@@ -13,7 +13,7 @@
       EDITOR = "nvim";
     } // term-env;
     window = {
-      opacity = 0.8;
+      opacity = 0.87;
       padding.x = 4;
       padding.y = 4;
       gtk_theme_variant = "Dark";
