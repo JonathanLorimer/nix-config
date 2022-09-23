@@ -45,3 +45,4 @@ require'gitsigns'.setup {
 }
 require'luatab'.setup {}
 require'fidget'.setup {}
+require'crates'.setup()

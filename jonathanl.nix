@@ -13,8 +13,11 @@ let
 in {
   imports = [ colours.homeManagerModule ];
   nix.registry.nixpkgs.flake = nixpkgs;
-  xdg.configFile."nix/inputs/nixpkgs".source = nixpkgs.outPath;
-  home = (import ./home.nix) {
+  xdg.configFile = {
+    "nix/inputs/nixpkgs".source = nixpkgs.outPath;
+    "nvim/lua".source = ./programs/nvim/lua;
+  };
+  home = (import ./base.nix) {
     inherit pkgs scripts env-vars;
     cornelis = cornelis;
   };

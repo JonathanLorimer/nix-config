@@ -3,6 +3,14 @@ local set = vim.opt
 local g = vim.g
 local w = vim.wo
 
+g.mapleader = " "
+g.cornelis_use_global_binary = 1
+g.rooter_patterns = {"Makefile", "package.yaml", "package.json", ".git", "src"}
+g.CoolTotalMatches = 1
+
+-- GUI
+set.guifont = "PragmataProMonoLiga Nerd Font Mono"
+
 -- Rulers
 set.hidden = true
 set.pumheight = 10

@@ -1,83 +1,73 @@
 {pkgs, cornelis-vim}:
-let
-  vimPluginsOverrides = import ./plugins.nix {
-    buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
-    inherit (pkgs) fetchFromGitHub stack;
-
-  };
-in
 {
-  enable = true;
-  extraConfig = builtins.readFile ./init.vim;
-  plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
+  lua-source = ./lua;
+  program =
+    let
+      vimPluginsOverrides = import ./plugins.nix {
+        buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
+        inherit (pkgs) fetchFromGitHub stack;
 
-    # Utils
-    venn-nvim
-    comment-nvim
-    goyo-vim
-    vim-surround
-
-    # Navigation
-    nvim-tree-lua
-    telescope-nvim
-    plenary-nvim                # required by telescope
-    popup-nvim                  # required by telescope
-    telescope-fzf-native-nvim   # required by telescope
-    lightspeed-nvim
+      };
+    in
     {
-      plugin = vim-rooter;
-      config = ''
-        let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
-      '';
-    }
+      enable = true;
+      generatedConfigs.lua = builtins.readFile ./init.lua;
+      plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
 
-    # Search
-    todo-comments-nvim
-    {
-      plugin = vim-cool;
-      config = ''
-        let g:CoolTotalMatches = 1
-      '';
-    }
+        # Utils
+        venn-nvim
+        comment-nvim
+        vim-surround
 
-    # Themeing
-    lush-nvim
-    zenbones-nvim
-    nord-nvim
-    galaxyline-nvim
-    nvim-web-devicons
-    nvim-colorizer-lua
-    luatab-nvim
+        # Navigation
+        nvim-tree-lua
+        telescope-nvim
+        plenary-nvim                # required by telescope
+        popup-nvim                  # required by telescope
+        telescope-fzf-native-nvim   # required by telescope
+        lightspeed-nvim
+        vim-rooter
 
-    # Git
-    gitsigns-nvim
+        # Search
+        todo-comments-nvim
+        vim-cool
 
-    # LSP
-    lsp-status-nvim
-    nvim-lspconfig
-    luasnip
-    fidget-nvim
+        # Themeing
+        lush-nvim
+        zenbones-nvim
+        galaxyline-nvim
+        luatab-nvim
+        nvim-web-devicons
+        nvim-colorizer-lua
 
-    # Completion
-    nvim-cmp
-    cmp-buffer
-    cmp-nvim-lsp
-    cmp-path
-    lspkind-nvim
+        # Git
+        gitsigns-nvim
 
-    # Language Support
-    playground
-    nvim-treesitter
-    vimtex
-    haskell-vim
-    yesod-routes
-    nui-nvim # required for idris2-nvim
-    idris2-nvim
-    vim-textobj-user
-    nvim-hs-vim
-    dhall-vim
-    purescript-vim
-    cornelis-vim
-  ];
+        # LSP
+        nvim-lspconfig
+        fidget-nvim
+
+        # Completion
+        nvim-cmp
+        cmp-buffer
+        cmp-nvim-lsp
+        cmp-path
+        lspkind-nvim
+
+        # Language Support
+        nvim-treesitter
+        trouble-nvim
+        vimtex
+        haskell-vim
+        nui-nvim # required for idris2-nvim
+        idris2-nvim
+        vim-textobj-user
+        nvim-hs-vim
+        cornelis-vim
+        dhall-vim
+        purescript-vim
+        crates-nvim
+      ];
+    };
 }
 
