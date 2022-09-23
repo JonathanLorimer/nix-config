@@ -23,7 +23,7 @@
 #waybar {
   background: @background;
   color: @foreground;
-  opacity: 0.90;
+  opacity: 0.95;
   font-family: PragmataProLiga Nerd Font, Iosevka, FiraCode, Noto Sans;
   font-size: 16px;
   font-weight: bold;

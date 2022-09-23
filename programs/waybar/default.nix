@@ -26,10 +26,12 @@
         interval = 1;
         states = {
           warning = 30;
-          critical = 15;
+          critical = 10;
         };
         format = "↑{capacity}%";
         format-discharging = "{capacity}%";
+        format-warning = "*{capacity}%";
+        format-critical = "!{capacity}%";
         tooltip= false;
       };
 

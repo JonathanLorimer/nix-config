@@ -1,4 +1,4 @@
-map = require'utils'.map
+local map = require'utils'.map
 
 -- Commands
 map('', '<leader>cf', ':echo expand("%:p")<CR>')
