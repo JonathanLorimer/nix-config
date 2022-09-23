@@ -6,3 +6,7 @@ vim.cmd [[
   hi ColorColumn guifg=NONE guibg=#262626
 ]]
 
+vim.g.zenwritten = {
+  darkness = "stark"
+}
+

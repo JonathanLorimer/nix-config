@@ -34,7 +34,7 @@ in
     lush-nvim
     zenbones-nvim
     galaxyline-nvim
-    luatab-nvim
+    barbar-nvim
     nvim-web-devicons
     nvim-colorizer-lua
 
@@ -58,8 +58,8 @@ in
     trouble-nvim
     vimtex
     haskell-vim
-    nui-nvim # required for idris2-nvim
-    idris2-nvim
+    # nui-nvim # required for idris2-nvim
+    # idris2-nvim
     vim-textobj-user
     nvim-hs-vim
     cornelis-vim

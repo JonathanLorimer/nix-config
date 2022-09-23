@@ -1,4 +1,4 @@
-{ pkgs, nord, term-env, default-font}:
+{ pkgs, colorscheme, term-env, default-font}:
 {
   enable = true;
   settings = {
@@ -37,29 +37,29 @@
     };
     font.size = 16.0;
     colors = {
-      primary.background = nord.base00;
-      primary.foreground = nord.base04;
-      cursor.text = nord.base00;
-      cursor.cursor = nord.base04;
+      primary.background = colorscheme.base00;
+      primary.foreground = colorscheme.base06;
+      cursor.text = colorscheme.base00;
+      cursor.cursor = colorscheme.base06;
       normal = {
-        black = nord.base01;
-        red = nord.base08;
-        green = nord.base0B;
-        yellow = nord.base0A;
-        blue = nord.base0D;
-        magenta = nord.base0E;
-        cyan = nord.base0C;
-        white = nord.base05;
+        black = colorscheme.base01;
+        red = colorscheme.base08;
+        green = colorscheme.base0B;
+        yellow = colorscheme.base0A;
+        blue = colorscheme.base0D;
+        magenta = colorscheme.base0E;
+        cyan = colorscheme.base0C;
+        white = colorscheme.base05;
       };
       bright = {
-        black = nord.base03;
-        red = nord.base08;
-        green = nord.base0B;
-        yellow = nord.base0A;
-        blue = nord.base0D;
-        magenta = nord.base0E;
-        cyan = nord.base0C;
-        white = nord.base06;
+        black = colorscheme.base03;
+        red = colorscheme.base08;
+        green = colorscheme.base0B;
+        yellow = colorscheme.base0A;
+        blue = colorscheme.base0D;
+        magenta = colorscheme.base0E;
+        cyan = colorscheme.base0C;
+        white = colorscheme.base06;
       };
     };
     selection.save_to_clipboard = true;

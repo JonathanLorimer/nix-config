@@ -1,4 +1,4 @@
-{ pkgs, nord, default-font}:
+{ pkgs, colorscheme, default-font}:
 let
   modifier = "Mod4";
 in
@@ -27,7 +27,7 @@ in
     };
     output = {
       "*" = {
-        bg = "${../backgrounds/nord-landscape.jpeg} fill";
+        bg = "${../backgrounds/utagawa-hiroshige.jpg} fill";
       };
     };
     keybindings = {

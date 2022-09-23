@@ -7,30 +7,18 @@
     {
       layer = "top";
       position = "top";
-      height = 21;
+      height = 26;
 
       modules-left= [
         "sway/workspaces"
-        "custom/arrow9"
-        "sway/window"
       ];
 
+      modules-center = [ "sway/window" ];
+
       modules-right= [
-        "custom/arrow1"
-        "custom/alsa"
-        "custom/arrow2"
-        "network"
-        "custom/arrow3"
-        "memory"
-        "custom/arrow4"
-        "cpu"
-        "custom/arrow5"
-        "temperature"
-        "custom/arrow6"
         "battery"
-        "custom/arrow7"
+        "network"
         "clock#date"
-        "custom/arrow8"
         "clock#time"
       ];
 
@@ -40,15 +28,8 @@
           warning = 30;
           critical = 15;
         };
-        format = " {capacity}%"; ## Icon bolt
-        format-discharging = "{icon} {capacity}%";
-        format-icons = [
-          "" ## Icon= battery-full
-          "" ## Icon= battery-three-quarters
-          "" ## Icon= battery-half
-          "" ## Icon= battery-quarter
-          ""  ## Icon= battery-empty
-        ];
+        format = "↑{capacity}%";
+        format-discharging = "{capacity}%";
         tooltip= false;
       };
 
@@ -64,31 +45,12 @@
         tooltip = false;
       };
 
-      cpu = {
-        interval = 5;
-        tooltip = false;
-        format = " {usage}%"; ## Icon: microchip
-        states = {
-          warning = 70;
-          critical = 90;
-        };
-      };
-
-      memory= {
-        interval = 5;
-        format = " {}%"; ## Icon: memory
-        states = {
-          warning = 70;
-          critical = 90;
-        };
-      };
-
       network = {
         interval = 1;
-        format-wifi = " {essid} ({signalStrength}%)"; ## Icon: wifi
-        format-ethernet = " {ifname}";
-        format-disconnected = "Disconnected";
-        tooltip-format = "{ifname}: {ipaddr}";
+        format-wifi = "●"; ## Icon: wifi
+        format-ethernet = "●";
+        format-disconnected = "⭘";
+        tooltip-format = "{essid}:{ifname}:{ipaddr}";
         tooltip = true;
       };
 
@@ -98,73 +60,8 @@
         tooltip = false;
       };
 
-      temperature= {
-        critical-threshold = 90;
-        interval = 5;
-        format = "{icon} {temperatureC}°";
-        format-icons = [
-          "" ## Icon= temperature-empty
-          "" ## Icon= temperature-quarter
-          "" ## Icon= temperature-half
-          "" ## Icon= temperature-three-quarters
-          "" ## Icon= temperature-full
-        ];
-        tooltip = false;
-      };
-
-      "custom/alsa" = {
-        exec = "amixer get Master | sed -nre 's/.*\\[off\\].*/ muted/p; s/.*\\[(.*%)\\].*/ \\1/p'";
-        on-click = "amixer set Master toggle; pkill -x -RTMIN+11 waybar";
-        on-scroll-up = "amixer set Master 1+; pkill -x -RTMIN+11 waybar";
-        on-scroll-down = "amixer set Master 1-; pkill -x -RTMIN+11 waybar";
-        signal = 11;
-        interval = 10;
-        tooltip = false;
-      };
-
-      "custom/arrow1" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow2" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow3" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow4" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow5" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow6" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow7" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow8" = {
-        format = "";
-        tooltip = false;
-      };
-
-      "custom/arrow9" = {
-        format = "";
-        tooltip = false;
+      "sway/workspaces"= {
+        format = "{}";
       };
     }
   ];

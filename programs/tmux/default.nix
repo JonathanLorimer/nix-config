@@ -6,7 +6,6 @@
   plugins = with tmuxPlugins; [
     cpu
     battery
-    nord
   ];
   keyMode = "vi";
   shortcut = "a";
@@ -36,11 +35,6 @@
     bind -T copy-mode    C-c send -X copy-pipe-no-clear "wl-copy"
     bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "wl-copy"
 
-    # styling
-    set -g status-bg default
-    set -g status-fg white
-    set -g status-style fg=white,bg=default
-
     set -g status-left ${"''"}
     set -g status-right ${"''"}
     set -g status-justify centre
@@ -50,8 +44,10 @@
     set -g pane-border-style fg=default
 
     set -g window-status-separator '  '
-    set -g window-status-current-format "#[fg=black]#[bg=cyan] #I #[bg=brightblack]#[fg=white] #W "
-    set -g window-status-format "#[fg=black]#[bg=magenta] #I #[bg=brightblack]#[fg=white] #W "
+    set -g window-status-current-format "#[fg=black]#[bg=cyan] #I #[bg=black]#[fg=white] #W "
+    set -g window-status-format "#[fg=black]#[bg=magenta] #I #[bg=black]#[fg=white] #W "
+    set -g status-bg default
+    set-option -g status-style bg=default
   '';
 }
 

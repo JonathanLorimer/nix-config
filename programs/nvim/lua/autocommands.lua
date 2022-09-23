@@ -1,5 +1,5 @@
 local api = vim.api
-local map = require'utils'.map
+local bmap = require'utils'.buf_map
 
 local yankGrp = api.nvim_create_augroup("YankHighlight", { clear = true })
 api.nvim_create_autocmd("TextYankPost", {
@@ -13,15 +13,15 @@ api.nvim_create_autocmd(
 )
 
 local function set_agda_mappings()
-  map('', '<leader>a', ':CornelisLoad<CR>', true)
-  map('', '<leader>r', ':CornelisRefine<CR>', true)
-  map('', '<leader>d', ':CornelisAuto<CR>', true)
-  map('', '<leader>c', ':CornelisMakeCase<CR>', true)
-  map('', '<leader>t', ':CornelisTypeContext<CR>', true)
-  map('', '<leader>s', ':CornelisSolve<CR>', true)
-  map('', '<leader>j', ':CornelisNextGoal<CR>', true)
-  map('', '<leader>k', ':CornelisPrevGoal<CR>', true)
-  map('', '<leader>n', ':CornelisNormalize<CR>', true)
+  bmap('', '<leader>a', ':CornelisLoad<CR>')
+  bmap('', '<leader>r', ':CornelisRefine<CR>')
+  bmap('', '<leader>d', ':CornelisAuto<CR>')
+  bmap('', '<leader>c', ':CornelisMakeCase<CR>')
+  bmap('', '<leader>t', ':CornelisTypeContext<CR>')
+  bmap('', '<leader>s', ':CornelisSolve<CR>')
+  bmap('', '<leader>j', ':CornelisNextGoal<CR>')
+  bmap('', '<leader>k', ':CornelisPrevGoal<CR>')
+  bmap('', '<leader>n', ':CornelisNormalize<CR>')
 end
 
 api.nvim_create_autocmd(

@@ -1,6 +1,7 @@
  { colours, cornelis, cornelis-vim, nixpkgs }: { pkgs, config, ... }:
 let
-  nord = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.nord.colors;
+  # colorscheme = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.zenburn.colors;
+  colorscheme = (import ./colors.nix).zenwritten-desat;
   scripts = (import ./scripts) {inherit pkgs;};
   env-vars = {
     EDITOR = "nvim";
@@ -22,10 +23,10 @@ in {
     cornelis = cornelis;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs nord default-font;
+    inherit pkgs colorscheme default-font;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };
   services = (import ./services);
-  wayland.windowManager.sway = (import ./sway) { inherit pkgs nord default-font; };
+  wayland.windowManager.sway = (import ./sway) { inherit pkgs colorscheme default-font; };
 }

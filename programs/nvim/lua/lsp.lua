@@ -3,7 +3,6 @@ lsp_status.register_progress()
 
 local lsp = vim.lsp
 local api = vim.api
-local cmd = vim.cmd
 
 -- LSP
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
@@ -31,9 +30,9 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>sdc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader>sdf', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>sh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<leader>sdc', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>sdf', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>sh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<leader>si', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>ss', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<leader>srn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
@@ -99,14 +98,14 @@ for k, v in pairs(lsp_status.capabilities) do client_capabilities[k] = v end
 local capabilities = cmp_lsp.update_capabilities(client_capabilities)
 
 -- Setup semantic highlight groups
-cmd [[highlight link LspSemantic_type Include]] -- Type constructors
-cmd [[highlight link LspSemantic_function Identifier]] -- Functions names
-cmd [[highlight link LspSemantic_enumMember Number]] -- Data constructors
-cmd [[highlight LspSemantic_variable guifg=gray]] -- Bound variables
-cmd [[highlight link LspSemantic_keyword Structure]] -- Keywords
-cmd [[highlight link LspSemantic_namespace Identifier]] -- Explicit namespaces
-cmd [[highlight link LspSemantic_postulate Define]] -- Postulates
-cmd [[highlight link LspSemantic_module Identifier]] -- Module identifiers
+vim.cmd [[highlight link LspSemantic_type Include]] -- Type constructors
+vim.cmd [[highlight link LspSemantic_function Identifier]] -- Functions names
+vim.cmd [[highlight link LspSemantic_enumMember Number]] -- Data constructors
+vim.cmd [[highlight LspSemantic_variable guifg=gray]] -- Bound variables
+vim.cmd [[highlight link LspSemantic_keyword Structure]] -- Keywords
+vim.cmd [[highlight link LspSemantic_namespace Identifier]] -- Explicit namespaces
+vim.cmd [[highlight link LspSemantic_postulate Define]] -- Postulates
+vim.cmd [[highlight link LspSemantic_module Identifier]] -- Module identifiers
 
 -- Setup server configs
 for server, settings in pairs(servers) do

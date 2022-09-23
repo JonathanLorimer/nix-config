@@ -1,6 +1,6 @@
-{pkgs, nord, term-env, default-font, cornelis-vim}:
+{pkgs, colorscheme, term-env, default-font, cornelis-vim}:
 {
-  alacritty = (import ./alacritty) {inherit pkgs nord term-env default-font; };
+  alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font; };
   bat.enable = true;
   bat.config.theme = "Nord";
   direnv = {
@@ -11,7 +11,7 @@
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
-  mako = (import ./mako.nix) {inherit nord default-font; };
+  mako = (import ./mako.nix) {inherit colorscheme default-font; };
   neovim = (import ./nvim) { inherit pkgs cornelis-vim; };
   ssh = {
     enable = true;
@@ -26,7 +26,7 @@
   starship = import ./starship.nix;
   tmux = (import ./tmux) { inherit (pkgs) tmuxPlugins; };
   waybar = import ./waybar;
-  swaylock = import ./swaylock.nix { inherit nord; };
+  swaylock = import ./swaylock.nix { inherit colorscheme; };
   zsh = (import ./zsh.nix) {inherit pkgs;};
   kitty = (import ./kitty.nix) {inherit pkgs default-font term-env; };
 }
