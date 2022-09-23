@@ -1,4 +1,6 @@
+pcall(require, "impatient")
 require'settings'
+require'autocommands'
 require'theme'
 require'lsp'
 require'mappings'

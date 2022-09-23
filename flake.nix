@@ -2,29 +2,14 @@
   description = "Jonathan Lorimer's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    idris2-pkgs = {
-      url = "github:claymager/idris2-pkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    cornelis.url = "github:isovector/cornelis";
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    home-manager.url = github:nix-community/home-manager;
+    nixos-hardware.url = github:NixOS/nixos-hardware/master;
+    neovim-nightly-overlay.url = github:nix-community/neovim-nightly-overlay;
+    sops-nix.url = github:Mic92/sops-nix;
+    nix-colors.url = github:misterio77/nix-colors;
+    idris2-pkgs.url = github:claymager/idris2-pkgs;
+    cornelis.url = github:isovector/cornelis;
   };
   outputs =
     { home-manager
