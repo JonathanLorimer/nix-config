@@ -11,6 +11,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map('', '<leader>tt', ':NvimTreeToggle<CR>')
+map('', '<leader>tt', ':lua require"nvim-tree".toggle()<CR>', {silent = true, noremap = true})
 map('', '<leader>tr', ':NvimTreeRefresh<CR>')
 

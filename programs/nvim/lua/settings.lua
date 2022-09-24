@@ -1,6 +1,7 @@
 local set = vim.opt
 local g = vim.g
 local w = vim.wo
+local o = vim.o
 
 g.mapleader = " "
 

@@ -10,7 +10,6 @@ in
   enable = true;
   extraConfig = "lua require'init-homemanager'";
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
-
     # Utils
     impatient-nvim
     venn-nvim
@@ -33,7 +32,7 @@ in
     # Themeing
     lush-nvim
     zenbones-nvim
-    galaxyline-nvim
+    # galaxyline-nvim
     barbar-nvim
     nvim-web-devicons
     nvim-colorizer-lua
@@ -55,7 +54,6 @@ in
 
     # Language Support
     nvim-treesitter
-    trouble-nvim
     vimtex
     haskell-vim
     # nui-nvim # required for idris2-nvim

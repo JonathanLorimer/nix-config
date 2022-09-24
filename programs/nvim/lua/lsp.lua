@@ -22,7 +22,6 @@ lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) api.nvim_buf_set_keymap(bufnr, ...) end
-
   local function buf_set_option(...) api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -40,6 +39,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>sk', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>sj', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap("n", "<leader>sf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+
+  buf_set_keymap("n", "<leader>sl", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+  buf_set_keymap("n", "<leader>sq", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
+  buf_set_keymap("n", "<leader>si", "<cmd>LspInfo<CR>", opts)
 
   -- Setup hover augroup
   local lsp_document_show_line_diagnostics = api.nvim_create_augroup("lsp_document_show_line_diagnostics",

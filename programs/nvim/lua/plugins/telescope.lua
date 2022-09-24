@@ -14,6 +14,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+map('', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>')
 map('', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
 map('', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true })<cr>')
 map('', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')

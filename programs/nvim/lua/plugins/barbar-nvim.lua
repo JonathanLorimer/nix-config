@@ -8,6 +8,8 @@ require'bufferline'.setup {
   clickable = false,
   icons = true,
   icon_close_tab = '',
+  icon_separator_active = '',
+  icon_separator_inactive = '',
 }
 
 vim.api.nvim_create_autocmd('BufWinEnter', {
@@ -28,13 +30,12 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
   end
 })
 
--- map('', '<C-n>', ':lua require"tree".toggle()<CR>', {silent = true})
-
 local nvim_tree_events = require('nvim-tree.events')
+local nvim_tree_view = require('nvim-tree.view')
 local bufferline_state = require('bufferline.state')
 
 local function get_tree_size()
-  return require'nvim-tree.view'.View.width
+  return nvim_tree_view.View.width
 end
 
 nvim_tree_events.subscribe('TreeOpen', function()
@@ -48,3 +49,11 @@ end)
 nvim_tree_events.subscribe('TreeClose', function()
   bufferline_state.set_offset(0)
 end)
+
+local opts = { noremap = true, silent = true }
+-- Tabs
+map('', '<leader>H', '<Cmd>BufferMovePrevious<CR>', opts)
+map('', '<leader>L', '<Cmd>BufferMoveNext<CR>', opts)
+map('', '<leader>h', '<Cmd>BufferPrevious<CR>', opts)
+map('', '<leader>l', '<Cmd>BufferNext<CR>', opts)
+map('', '<leader>td', ':tab split<CR>', opts)

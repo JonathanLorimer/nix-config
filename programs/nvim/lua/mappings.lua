@@ -3,13 +3,6 @@ local map = require'utils'.map
 -- Commands
 map('', '<leader>cf', ':echo expand("%:p")<CR>')
 
--- Tabs
-map('', '<leader>H', ':-tabmove<CR>')
-map('', '<leader>L', ':+tabmove<CR>')
-map('', '<leader>h', 'gT')
-map('', '<leader>l', 'gt')
-map('', '<leader>td', ':tab split<CR>')
-
 -- Yank
 map('', '<leader>yy', '"+y')
 map('', '<leader>p', '"+p')

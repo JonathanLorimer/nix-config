@@ -16,8 +16,8 @@
       modules-center = [ "sway/window" ];
 
       modules-right= [
-        "battery"
         "network"
+        "battery"
         "clock#date"
         "clock#time"
       ];
@@ -29,9 +29,9 @@
           critical = 10;
         };
         format = "↑{capacity}%";
-        format-discharging = "{capacity}%";
-        format-warning = "*{capacity}%";
-        format-critical = "!{capacity}%";
+        format-discharging = " {capacity}%";
+        format-discharging-warning = "*{capacity}%";
+        format-discharging-critical = "!{capacity}%";
         tooltip= false;
       };
 
