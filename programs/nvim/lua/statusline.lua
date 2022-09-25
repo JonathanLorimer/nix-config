@@ -89,7 +89,7 @@ end
 
 local status_line_group = api.nvim_create_augroup("StatusLine", { clear = true })
 api.nvim_create_autocmd(
-  {"BufEnter", "WinEnter"},
+  {"BufEnter", "WinEnter", "VimEnter"},
   {
     pattern = "*",
     callback = function()

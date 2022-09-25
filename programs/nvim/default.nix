@@ -32,7 +32,6 @@ in
     # Themeing
     lush-nvim
     zenbones-nvim
-    # galaxyline-nvim
     barbar-nvim
     nvim-web-devicons
     nvim-colorizer-lua
