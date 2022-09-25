@@ -1,25 +1,16 @@
 {stack, buildVimPlugin, fetchFromGitHub}:
 {
-  yesod-routes = buildVimPlugin {
-    name = "yesod-routes";
-    src = fetchFromGitHub {
-      owner = "5outh";
-      repo = "yesod-routes.vim";
-      rev = "e00eaafe22aa33e2cf4a67d83dad4bc8ccdebbc5";
-      sha256 = "1pamk9qxdpqig876vlg822symyhy0lq5krhcfhmr3k9bac7cpwyn";
-    };
-  };
   zenbones-nvim = buildVimPlugin {
     name = "zenbones-nvim";
     preConfigure = ''
       rm makefile
     '';
-    patches = [ ./patches/0001-make-types-bold.patch ];
+    # patches = [ ./patches/0001-make-types-bold.patch ];
     src = fetchFromGitHub {
       owner = "mcchrish";
       repo = "zenbones.nvim";
-      rev = "e2ac0557a3df217e5d82b7e580af75c244602a33";
-      sha256 = "0i6s608gq08sbqk8hmz8879lfz8j489v333qr9cnr5d4d43nnwpb";
+      rev = "e608ef16b1a636e653a471f36c869193ed4b5e9d";
+      sha256 = "sha256-VooPRuj64o92sPs1pqqYRazPYteX0HEsEQ9Re8YI6oE=";
     };
   };
   idris2-nvim = buildVimPlugin {

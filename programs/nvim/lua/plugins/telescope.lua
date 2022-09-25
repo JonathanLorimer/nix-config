@@ -1,3 +1,5 @@
+local map = require'utils'.map
+
 require'telescope'.setup({
   defaults = {
     prompt_prefix = "🔍 ",
@@ -8,12 +10,7 @@ require'telescope'.setup({
 
 require('telescope').load_extension('fzf')
 
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
+map('', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>')
 map('', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
 map('', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true })<cr>')
 map('', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')

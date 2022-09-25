@@ -8,13 +8,12 @@ let
 in
 {
   enable = true;
-  extraConfig = builtins.readFile ./init.vim;
+  extraConfig = "lua require'init-homemanager'";
   plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
-
     # Utils
+    impatient-nvim
     venn-nvim
     comment-nvim
-    goyo-vim
     vim-surround
 
     # Navigation
@@ -24,30 +23,18 @@ in
     popup-nvim                  # required by telescope
     telescope-fzf-native-nvim   # required by telescope
     lightspeed-nvim
-    {
-      plugin = vim-rooter;
-      config = ''
-        let g:rooter_patterns = ['Makefile', 'package.yaml', 'package.json', '.git', 'src']
-      '';
-    }
+    vim-rooter
 
     # Search
     todo-comments-nvim
-    {
-      plugin = vim-cool;
-      config = ''
-        let g:CoolTotalMatches = 1
-      '';
-    }
+    vim-cool
 
     # Themeing
     lush-nvim
     zenbones-nvim
-    nord-nvim
-    galaxyline-nvim
+    barbar-nvim
     nvim-web-devicons
     nvim-colorizer-lua
-    luatab-nvim
 
     # Git
     gitsigns-nvim
@@ -55,7 +42,6 @@ in
     # LSP
     lsp-status-nvim
     nvim-lspconfig
-    luasnip
     fidget-nvim
 
     # Completion
@@ -66,18 +52,17 @@ in
     lspkind-nvim
 
     # Language Support
-    playground
     nvim-treesitter
     vimtex
     haskell-vim
-    yesod-routes
-    nui-nvim # required for idris2-nvim
-    idris2-nvim
+    # nui-nvim # required for idris2-nvim
+    # idris2-nvim
     vim-textobj-user
     nvim-hs-vim
+    cornelis-vim
     dhall-vim
     purescript-vim
-    cornelis-vim
+    crates-nvim
   ];
 }
 

@@ -1,18 +1,7 @@
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local map = require'utils'.map
 
 -- Commands
 map('', '<leader>cf', ':echo expand("%:p")<CR>')
-
--- Tabs
-map('', '<leader>H', ':-tabmove<CR>')
-map('', '<leader>L', ':+tabmove<CR>')
-map('', '<leader>h', 'gT')
-map('', '<leader>l', 'gt')
-map('', '<leader>td', ':tab split<CR>')
 
 -- Yank
 map('', '<leader>yy', '"+y')

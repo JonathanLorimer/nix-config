@@ -1,7 +1,40 @@
-local cmd = vim.cmd
 local set = vim.opt
 local g = vim.g
 local w = vim.wo
+local o = vim.o
+
+g.mapleader = " "
+
+-- Plugin config
+g.rooter_patterns = {"Makefile", "package.yaml", "package.json", ".git", "src"}
+g.CoolTotalMatches = 1
+
+-- Disable distribution plugins
+g.loaded_gzip = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_matchit = 1
+g.loaded_matchparen = 1
+g.loaded_2html_plugin = 1
+g.loaded_logiPat = 1
+g.loaded_rrhelper = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_netrwFileHandlers = 1
+
+-- Opt out of filetyp.vim
+g.do_filetype_lua = 1
+g.did_load_filetypes = 0
+
+-- GUI
+set.guifont = "PragmataProMonoLiga Nerd Font Mono"
 
 -- Rulers
 set.hidden = true
@@ -52,37 +85,3 @@ g.haskell_indent_where = 6
 
 -- Agda
 g.cornelis_use_global_binary = 1
-
-cmd [[
-  filetype plugin indent on
-
-  fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-  endfun
-
-  augroup BASE_GROUP
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-    autocmd FileType haskell setlocal commentstring=--\ %s
-
-    au BufNewFile,BufRead *.ts setlocal filetype=typescript
-    au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-  augroup END
-
-  au BufEnter,BufRead,BufNewFile *.agda call AgdaFiletype()
-  function! AgdaFiletype()
-      nnoremap <buffer> <leader>a :CornelisLoad<CR>
-      nnoremap <buffer> <leader>r :CornelisRefine<CR>
-      nnoremap <buffer> <leader>d :CornelisAuto<CR>
-      nnoremap <buffer> <leader>c :CornelisMakeCase<CR>
-      nnoremap <buffer> <leader>t :CornelisTypeContext<CR>
-      nnoremap <buffer> <leader>s :CornelisSolve<CR>
-      nnoremap <buffer> <leader>j :CornelisNextGoal<CR>
-      nnoremap <buffer> <leader>k :CornelisPrevGoal<CR>
-      nnoremap <buffer> <leader>n :CornelisNormalize<CR>
-  endfunction
-]]
-

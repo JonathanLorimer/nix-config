@@ -1,5 +1,7 @@
+local map = require'utils'.map
+
 require'nvim-web-devicons'.setup { default = true; }
-require'colorizer'.setup ({ '*'; }, { css = true; })
+require'colorizer'.setup { user_default_options = { css = true, }, }
 require'Comment'.setup()
 local ft = require('Comment.ft')
 ft.agda = {'--%s', '{-%s-}'}
@@ -7,12 +9,6 @@ require'todo-comments'.setup {}
 require'gitsigns'.setup {
  on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
 
     -- Navigation
     map('n', '<leader>gj', function()
@@ -43,5 +39,5 @@ require'gitsigns'.setup {
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-require'luatab'.setup {}
 require'fidget'.setup {}
+require'crates'.setup()
