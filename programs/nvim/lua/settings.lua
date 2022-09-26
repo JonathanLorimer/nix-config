@@ -6,7 +6,6 @@ local o = vim.o
 g.mapleader = " "
 
 -- Plugin config
-g.rooter_patterns = {"Makefile", "package.yaml", "package.json", ".git", "src"}
 g.CoolTotalMatches = 1
 
 -- Disable distribution plugins

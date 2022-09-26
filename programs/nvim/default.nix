@@ -15,6 +15,7 @@ in
     venn-nvim
     comment-nvim
     vim-surround
+    nvim-rooter
 
     # Navigation
     nvim-tree-lua
@@ -23,7 +24,6 @@ in
     popup-nvim                  # required by telescope
     telescope-fzf-native-nvim   # required by telescope
     lightspeed-nvim
-    vim-rooter
 
     # Search
     todo-comments-nvim
