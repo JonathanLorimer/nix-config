@@ -15,8 +15,8 @@ require'gitsigns'.setup {
       return '<Ignore>'
     end, {expr=true})
 
-    map('n', '<leader>gh', function()
-      if vim.wo.diff then return '<leader>gh' end
+    map('n', '<leader>gk', function()
+      if vim.wo.diff then return '<leader>gk' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
     end, {expr=true})

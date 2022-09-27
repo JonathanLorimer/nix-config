@@ -44,6 +44,7 @@
 
     # LSP
     nodePackages.typescript-language-server
+    nodePackages.vscode-json-languageserver
     rnix-lsp
     sumneko-lua-language-server
     (idris2-pkgs.lsp.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
