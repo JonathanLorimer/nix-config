@@ -73,9 +73,10 @@ local servers = {
   rust_analyzer = {},
   purescriptls = {},
   sumneko_lua = {},
-  jsonls = {
-    cmd = { "vscode-json-languageserver", "--stdio" }
-  },
+  jsonls = {},
+  cssls = {},
+  eslint = {},
+  html = {},
   hls = {
     settings = {
       languageServerHaskell = {
