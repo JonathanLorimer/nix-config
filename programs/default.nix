@@ -29,5 +29,6 @@
   swaylock = import ./swaylock.nix { inherit colorscheme; };
   zsh = (import ./zsh.nix) {inherit pkgs;};
   kitty = (import ./kitty.nix) {inherit pkgs default-font term-env; };
+  taskwarrior.enable = true;
 }
 

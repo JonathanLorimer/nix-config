@@ -3,6 +3,10 @@
   gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    enableZshIntegration = true;
+    defaultCacheTtl = 5 * 60;
+    pinentryFlavor = "tty";
+    verbose = true;
   };
   swayidle = {
     enable = true;

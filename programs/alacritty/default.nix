@@ -16,7 +16,7 @@
       opacity = 0.87;
       padding.x = 4;
       padding.y = 4;
-      gtk_theme_variant = "Dark";
+      decorations_theme_variant = "Dark";
     };
     scrolling.history = 10000;
     font.normal = {

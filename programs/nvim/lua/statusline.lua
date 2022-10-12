@@ -65,20 +65,21 @@ Statusline = {}
 function Statusline.active()
   local mode = '%#Bold#  '..modes[api.nvim_get_mode().mode]
   local branch = "(λ #"..get_git_branch()..")"
-  local ft = "%#NormalNC#"..vim.bo.filetype
+  local ft = "%#NormalNC#"..vim.bo.filetype..' '
   local diagnostics = get_diagnostics()
   local lsp_status = get_lsp_status()
+  local filename = ' %#Comment#~'..string.sub(vim.api.nvim_buf_get_name(0), 1 + string.len(vim.loop.cwd(), -1))
 
   return table.concat({
     mode,
-    ' %#Comment#%F',
+    filename,
     '%#Normal#',
     branch,
     lsp_status,
     diagnostics,
     '%=',
     ft,
-    '%l:%c '
+    '%l:%c ',
   }, ' ')
 end
 

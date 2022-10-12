@@ -4,10 +4,10 @@
 
   programs = {
     sway.enable = true;
-    gnupg.agent = {
-      enable = true;
-      pinentryFlavor = "curses";
-    };
+    #gnupg.agent = {
+    #  enable = true;
+    #  pinentryFlavor = "curses";
+    #};
   };
 
   users.users.jonathanl = {
