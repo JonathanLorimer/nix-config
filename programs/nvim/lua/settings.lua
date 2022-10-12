@@ -27,10 +27,6 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
--- Opt out of filetyp.vim
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
-
 -- GUI
 set.guifont = "PragmataProMonoLiga Nerd Font Mono"
 
