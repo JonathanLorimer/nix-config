@@ -4,7 +4,7 @@
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
-    defaultCacheTtl = 5 * 60;
+    defaultCacheTtl = 15 * 60;
     pinentryFlavor = "tty";
     verbose = true;
   };
