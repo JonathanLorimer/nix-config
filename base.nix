@@ -47,8 +47,8 @@
     nodePackages.vscode-langservers-extracted
     rnix-lsp
     sumneko-lua-language-server
-    (idris2-pkgs.lsp.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
-    (idris2-pkgs.idris2.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
+    # (idris2-pkgs.lsp.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
+    # (idris2-pkgs.idris2.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
 
     # Terminal
     alacritty

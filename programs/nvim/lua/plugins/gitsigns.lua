@@ -9,19 +9,21 @@ require'gitsigns'.setup {
     end
 
     -- Navigation
-    map('n', '<leader>gj', function()
-      if vim.wo.diff then return '<leader>gj' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-
-    map('n', '<leader>gk', function()
-      if vim.wo.diff then return '<leader>gk' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+    -- map('n', '<leader>gj', function()
+    --   if vim.wo.diff then return '<leader>gj' end
+    --   vim.schedule(function() gs.next_hunk() end)
+    --   return '<Ignore>'
+    -- end, {expr=true})
+    --
+    -- map('n', '<leader>gk', function()
+    --   if vim.wo.diff then return '<leader>gk' end
+    --   vim.schedule(function() gs.prev_hunk() end)
+    --   return '<Ignore>'
+    -- end, {expr=true})
 
     -- Actions
+    map('n', '<leader>gj',  ':Gitsigns next_hunk<CR>')
+    map('n', '<leader>gk', ':Gitsigns prev_hunk<CR>')
     map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>')
     map({'n', 'v'}, '<leader>gr', ':Gitsigns reset_hunk<CR>')
     map('n', '<leader>gS', gs.stage_buffer)

@@ -7,7 +7,7 @@ let
     EDITOR = "nvim";
     TERMINAL = "alacritty";
     CODE_DIR = "Code";
-    WORK_DIR = "Mercury";
+    WORK_DIR = "Holdings";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
   default-font = "PragmataProMonoLiga Nerd Font Mono";

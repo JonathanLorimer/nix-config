@@ -8,6 +8,7 @@ map('', '<leader>yy', '"+y')
 map('', '<leader>p', '"+p')
 map('v', '<leader>d', '"_dP')
 map('v', '<leader>y', '"+y')
+map('', '<leader>q', ':bdelete<CR>')
 
 -- Goyo
 map('', '<leader>go', ':Goyo<CR>')

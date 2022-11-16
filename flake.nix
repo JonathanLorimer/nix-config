@@ -8,7 +8,6 @@
     neovim-nightly-overlay.url = github:nix-community/neovim-nightly-overlay;
     sops-nix.url = github:Mic92/sops-nix;
     nix-colors.url = github:misterio77/nix-colors;
-    idris2-pkgs.url = github:claymager/idris2-pkgs;
     cornelis.url = github:isovector/cornelis;
   };
   outputs =
@@ -18,7 +17,6 @@
     , neovim-nightly-overlay
     , sops-nix
     , nix-colors
-    , idris2-pkgs
     , cornelis
     , ...
     }:
@@ -35,7 +33,7 @@
           ./modules/postgres.nix
           ./modules/nix.nix
           ((import ./modules/channels.nix) {inherit nixpkgs;})
-          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay idris2-pkgs;})
+          ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay;})
           ./modules/pipewire.nix
 
           # Secrets

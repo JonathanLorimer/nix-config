@@ -3,7 +3,6 @@ local map = require'utils'.map
 require'bufferline'.setup {
   animation = false,
   auto_hide = true,
-  hide = { inactive = true },
   tabpages = true,
   closable = false,
   clickable = false,

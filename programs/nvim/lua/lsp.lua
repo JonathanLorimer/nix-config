@@ -77,6 +77,7 @@ local servers = {
   cssls = {},
   eslint = {},
   html = {},
+  terraformls = {},
   hls = {
     settings = {
       languageServerHaskell = {
@@ -102,7 +103,7 @@ local cmp_lsp = require('cmp_nvim_lsp')
 -- Setup capabilities
 local client_capabilities = lsp.protocol.make_client_capabilities()
 for k, v in pairs(lsp_status.capabilities) do client_capabilities[k] = v end
-local capabilities = cmp_lsp.update_capabilities(client_capabilities)
+local capabilities = cmp_lsp.default_capabilities(client_capabilities)
 
 -- Setup semantic highlight groups
 vim.cmd [[highlight link LspSemantic_type Include]] -- Type constructors

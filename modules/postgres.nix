@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   services.postgresql = {
-    package = pkgs.postgresql_13;
+    package = pkgs.postgresql_15;
     enable = true;
     enableTCPIP = false;
     authentication = ''

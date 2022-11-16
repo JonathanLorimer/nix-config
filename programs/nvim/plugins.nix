@@ -35,8 +35,8 @@
     src = fetchFromGitHub {
       owner = "romgrk";
       repo = "barbar.nvim";
-      rev = "61424a6211431a42458bc755b3e7e982e671c438";
-      sha256 = "1xg7wm3prq2vj0jg2knb96lc7mlh7l6fw6c23s0i9vqrbz4b8jr2";
+      rev = "f827ad6d48d0278423ee1b45e3f2b94a3ac3d42d";
+      sha256 = "1lwi04ch6d0zfkflal73y1j8g284jxm92ssj91dk3grm4y70y0n4";
     };
   };
 }
