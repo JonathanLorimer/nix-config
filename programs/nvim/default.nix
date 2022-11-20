@@ -16,6 +16,7 @@ in
     comment-nvim
     vim-surround
     nvim-rooter
+    spaceless-nvim
 
     # Navigation
     nvim-tree-lua

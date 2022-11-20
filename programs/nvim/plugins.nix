@@ -30,13 +30,13 @@
       sha256 = "1x1bl1iijd1x5292yl2ngr0h1f0hrv82pvad9ydk4w9pzw7ljkzl";
     };
   };
-  barbar-nvim = buildVimPlugin {
-    name = "barbar-nvim";
+  spaceless-nvim = buildVimPlugin {
+    name = "spacless.nvim";
     src = fetchFromGitHub {
-      owner = "romgrk";
-      repo = "barbar.nvim";
-      rev = "f827ad6d48d0278423ee1b45e3f2b94a3ac3d42d";
-      sha256 = "1lwi04ch6d0zfkflal73y1j8g284jxm92ssj91dk3grm4y70y0n4";
+      owner = "lewis6991";
+      repo = "spaceless.nvim";
+      rev = "4012c778cf8973379cc4e7e52d2260b15d390462";
+      sha256 = "1d677f8v20k1fw4gs1a9zbhfjgn142i6gnjlf89jmv00fyj1l9ji";
     };
   };
 }

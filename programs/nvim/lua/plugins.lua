@@ -6,3 +6,4 @@ ft.agda = { '--%s', '{-%s-}' }
 require 'todo-comments'.setup {}
 require 'fidget'.setup {}
 require 'crates'.setup()
+require 'spaceless'.setup()
