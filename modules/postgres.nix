@@ -18,4 +18,9 @@
       full_page_writes = false;
     };
   };
+  # services.pgadmin = {
+  #   enable = true;
+  #   initialEmail = "jonathan_lorimer@mac.com";
+  #   initialPasswordFile = "${config.sops.secrets.pg-admin-password.path}";
+  # };
 }

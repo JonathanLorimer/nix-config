@@ -28,8 +28,8 @@
         modules = [
           # Modules
           ./modules/base.nix
+          ./modules/sops.nix
           ./modules/hardware-configuration.nix
-          ./modules/vpn.nix
           ./modules/postgres.nix
           ./modules/nix.nix
           ((import ./modules/channels.nix) {inherit nixpkgs;})

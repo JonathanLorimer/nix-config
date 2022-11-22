@@ -78,6 +78,9 @@ local servers = {
   eslint = {},
   html = {},
   terraformls = {},
+  elixirls = {
+    cmd = {"elixir-ls"},
+  },
   hls = {
     settings = {
       languageServerHaskell = {

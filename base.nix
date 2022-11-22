@@ -17,6 +17,7 @@
 
     # Browser
     firefox-wayland
+    chromium
 
     # Network
     openvpn
