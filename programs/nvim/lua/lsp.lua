@@ -16,12 +16,13 @@ lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
   -- delay update diagnostics
   update_in_insert = false,
   underline = true,
-  }
+}
 )
 
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -44,14 +45,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>sq", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
   buf_set_keymap("n", "<leader>si", "<cmd>LspInfo<CR>", opts)
 
-  -- Setup hover augroup
+  -- Setup hover diagnostic on hover
   local lsp_document_show_line_diagnostics = api.nvim_create_augroup("lsp_document_show_line_diagnostics",
     { clear = true })
   api.nvim_create_autocmd(
     "CursorHold",
     {
       pattern = "<buffer>",
-      callback = function() vim.diagnostic.open_float(0, {scope = "line"}) end,
+      callback = function() vim.diagnostic.open_float(0, { scope = "line" }) end,
       group = lsp_document_show_line_diagnostics
     }
   )
@@ -63,6 +64,23 @@ local on_attach = function(client, bufnr)
       group = lsp_document_show_line_diagnostics
     }
   )
+
+  if client.name == "rnix" then
+    client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+  end
+
+  -- Setup autoformat on save
+  if client.server_capabilities.documentFormattingProvider then
+    local lsp_format_on_save = api.nvim_create_augroup("lsp_format_on_save",
+      { clear = true })
+    api.nvim_create_autocmd('BufWritePre', {
+      pattern = '<buffer>',
+      group = lsp_format_on_save,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end
 end
 
 -- Use a loop to conveniently both setup defined servers
@@ -70,7 +88,15 @@ end
 local servers = {
   tsserver = {},
   rnix = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy"
+        }
+      }
+    }
+  },
   purescriptls = {},
   sumneko_lua = {},
   jsonls = {},
@@ -79,7 +105,7 @@ local servers = {
   html = {},
   terraformls = {},
   elixirls = {
-    cmd = {"elixir-ls"},
+    cmd = { "elixir-ls" },
   },
   hls = {
     settings = {
