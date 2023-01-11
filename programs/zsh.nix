@@ -29,6 +29,7 @@ in
     ga = "git add";
     gp = "git push";
     gr = "git remote add";
+    cd = "z";
     wl = "nmcli d wifi list";
     wc = "nmcli d wifi connect";
     wd = "nmcli con down id";
