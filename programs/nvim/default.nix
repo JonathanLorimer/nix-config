@@ -52,6 +52,9 @@ in
     cmp-path
     lspkind-nvim
 
+    # Formatting
+    formatter-nvim
+
     # Language Support
     nvim-treesitter
     vimtex

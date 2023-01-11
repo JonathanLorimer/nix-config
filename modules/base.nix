@@ -2,17 +2,12 @@
 {
   sops.defaultSopsFile = ../sops/secrets.yaml;
 
-  programs = {
-    sway.enable = true;
-    #gnupg.agent = {
-    #  enable = true;
-    #  pinentryFlavor = "curses";
-    #};
-  };
+  programs.sway.enable = true;
 
+  users.groups.docker = {};
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev" ];
+    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev" "docker"];
     shell = pkgs.zsh;
   };
 

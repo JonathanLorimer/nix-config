@@ -1,5 +1,5 @@
 local api = vim.api
-local bmap = require'utils'.buf_map
+local bmap = require 'utils'.buf_map
 
 local yankGrp = api.nvim_create_augroup("YankHighlight", { clear = true })
 api.nvim_create_autocmd("TextYankPost", {
@@ -22,10 +22,12 @@ local function set_agda_mappings()
   bmap('', '<leader>j', ':CornelisNextGoal<CR>')
   bmap('', '<leader>k', ':CornelisPrevGoal<CR>')
   bmap('', '<leader>n', ':CornelisNormalize<CR>')
+  bmap('i', '\\step', "≡⟨ ? ⟩<CR>?")
+  bmap('i', '\\beg', 'begin<CR>?<CR>≡⟨ ? ⟩<CR>?<CR>∎<Esc>V4k>><Esc>j^')
 end
 
 api.nvim_create_autocmd(
-  {"BufEnter", "BufRead", "BufNewFile"},
+  { "BufEnter", "BufRead", "BufNewFile" },
   {
     pattern = "*.agda",
     callback = set_agda_mappings

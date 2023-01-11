@@ -65,7 +65,7 @@ local on_attach = function(client, bufnr)
     }
   )
 
-  if client.name == "rnix" then
+  if client.name == "rnix" or client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
@@ -86,7 +86,8 @@ end
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-  tsserver = {},
+  tsserver = {
+  },
   rnix = {},
   rust_analyzer = {
     settings = {

@@ -30,5 +30,6 @@
   zsh = (import ./zsh.nix) {inherit pkgs;};
   taskwarrior.enable = true;
   zathura.enable = true;
+  zellij = (import ./zellij) {inherit colorscheme; };
 }
 
