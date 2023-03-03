@@ -13,7 +13,6 @@
         "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
-        "holdings-cache.cachix.org-1:hdzBWaVQlatpmaV30c8jDQTBaM0VwmYsx4LOQewMOjo="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];

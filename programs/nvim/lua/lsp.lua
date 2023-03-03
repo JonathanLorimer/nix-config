@@ -30,6 +30,12 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>sc', '<cmd>lua vim.lsp.codelens.run()<CR>', opts)
+  buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>sa', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>sdc', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<leader>sdf', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', '<leader>sh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -65,12 +71,23 @@ local on_attach = function(client, bufnr)
     }
   )
 
+  -- Refresh code lenses
+  if client.server_capabilities.codeLensProvider then
+    local lsp_code_lens_refresh = api.nvim_create_augroup("lsp_code_lens_refresh",
+      { clear = true })
+    api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+      group = lsp_code_lens_refresh,
+      pattern = "<buffer>",
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+
   if client.name == "rnix" or client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
   -- Setup autoformat on save
-  if client.server_capabilities.documentFormattingProvider then
+  if client.server_capabilities.code_lens then
     local lsp_format_on_save = api.nvim_create_augroup("lsp_format_on_save",
       { clear = true })
     api.nvim_create_autocmd('BufWritePre', {
@@ -90,13 +107,7 @@ local servers = {
   },
   rnix = {},
   rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          command = "clippy"
-        }
-      }
-    }
+    root_dir = require 'lspconfig.util'.root_pattern('Cargo.lock'),
   },
   purescriptls = {},
   sumneko_lua = {},

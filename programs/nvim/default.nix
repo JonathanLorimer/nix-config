@@ -24,7 +24,6 @@ in
     plenary-nvim                # required by telescope
     popup-nvim                  # required by telescope
     telescope-fzf-native-nvim   # required by telescope
-    lightspeed-nvim
 
     # Search
     todo-comments-nvim
