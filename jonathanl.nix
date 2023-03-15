@@ -6,6 +6,7 @@ let
   env-vars = {
     EDITOR = "nvim";
     TERMINAL = "alacritty";
+    BROWSER = "firefox";
     CODE_DIR = "Code";
     WORK_DIR = "Holdings";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";

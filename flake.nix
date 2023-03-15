@@ -35,7 +35,7 @@
           ((import ./modules/channels.nix) {inherit nixpkgs;})
           ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay;})
           ./modules/pipewire.nix
-          ./modules/docker.nix
+          # ./modules/docker.nix
 
           # Secrets
           sops-nix.nixosModules.sops

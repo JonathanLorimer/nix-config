@@ -4,7 +4,7 @@
 
   programs.sway.enable = true;
 
-  users.groups.docker = {};
+  # users.groups.docker = {};
   users.users.jonathanl = {
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev" "docker"];
