@@ -110,7 +110,7 @@ local servers = {
     root_dir = require 'lspconfig.util'.root_pattern('Cargo.lock'),
   },
   purescriptls = {},
-  sumneko_lua = {},
+  lua_ls = {},
   jsonls = {},
   cssls = {},
   eslint = {},

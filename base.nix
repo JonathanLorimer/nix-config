@@ -10,6 +10,7 @@
     wl-clipboard
     wf-recorder
     grim
+    kooha
 
     # Messaging
     keybase

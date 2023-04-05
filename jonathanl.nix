@@ -28,6 +28,8 @@ in {
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };
-  services = (import ./services);
+  services = (import ./services) {
+    inherit colorscheme default-font;
+  };
   wayland.windowManager.sway = (import ./sway) { inherit pkgs colorscheme default-font; };
 }

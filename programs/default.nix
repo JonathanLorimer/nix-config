@@ -13,7 +13,6 @@
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
-  mako = (import ./mako.nix) {inherit colorscheme default-font; };
   neovim = (import ./nvim) { inherit pkgs cornelis-vim; };
   skim = import ./skim.nix;
   ssh = {

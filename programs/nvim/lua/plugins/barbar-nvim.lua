@@ -4,12 +4,15 @@ require'bufferline'.setup {
   animation = false,
   auto_hide = true,
   tabpages = true,
-  closable = false,
   clickable = false,
-  icons = true,
-  icon_close_tab = '',
-  icon_separator_active = '',
-  icon_separator_inactive = '',
+  icons = {
+    filetype = { enbaled = true },
+    inactive = {left = '', right = '', button = ''},
+    active = {left = '', right = '' },
+    button = '',
+    modified = {button = ''},
+    pinned = {button = ''},
+  },
 }
 
 vim.api.nvim_create_autocmd('BufWinEnter', {

@@ -1,4 +1,4 @@
-{
+{colorscheme, default-font}: {
   spotifyd.enable = true;
   gpg-agent = {
     enable = true;
@@ -20,6 +20,7 @@
       }
     ];
   };
+  mako = (import ./mako.nix) {inherit colorscheme default-font; };
   kanshi = {
     enable = true;
     profiles = {

@@ -3,6 +3,7 @@
   sops.defaultSopsFile = ../sops/secrets.yaml;
 
   programs.sway.enable = true;
+  programs.zsh.enable = true;
 
   # users.groups.docker = {};
   users.users.jonathanl = {
@@ -41,7 +42,6 @@
   ];
 
   # Nixpkgs
-  nixpkgs.config.pulseaudio = true;
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
     "discord"
     "obsidian"
@@ -64,8 +64,8 @@
   # Enable sound.
   sound.enable = true;
   hardware.bluetooth.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  # hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   hardware.keyboard.zsa.enable = true;
 
