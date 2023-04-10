@@ -25,6 +25,7 @@
     openssl
 
     # Sound
+    pw-volume
     pavucontrol
     spotify-tui
 

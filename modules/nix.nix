@@ -3,8 +3,11 @@
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      warn-dirty = false
     '';
     settings = {
+      auto-optimise-store = true;
       max-jobs = pkgs.lib.mkDefault 12;
       trusted-users = [ "jonathanl" "root" ];
       substituters = [
