@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 {
-  sops.defaultSopsFile = ../sops/secrets.yaml;
-
   programs.sway.enable = true;
   programs.zsh.enable = true;
 

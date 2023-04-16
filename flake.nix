@@ -21,28 +21,17 @@
     , ...
     }:
     let system = "x86_64-linux";
-    in {
-    nixosConfigurations = {
-      bellerophon = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
+        commonModules = [
           # Modules
           ./modules/base.nix
-          ./modules/sops.nix
-          ./modules/hardware-configuration.nix
           ./modules/postgres.nix
           ./modules/nix.nix
           ((import ./modules/channels.nix) {inherit nixpkgs;})
           ((import ./modules/overlays.nix) { inherit neovim-nightly-overlay;})
           ./modules/pipewire.nix
-          # ./modules/docker.nix
 
           # Secrets
           sops-nix.nixosModules.sops
-
-          # Hardware
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
-          nixpkgs.nixosModules.notDetected
 
           # Home Manager
           home-manager.nixosModules.home-manager
@@ -56,6 +45,26 @@
                 cornelis-vim = cornelis.packages."${system}".cornelis-vim;
               };
             }
+        ];
+    in {
+    nixosConfigurations = {
+      bellerophon = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = commonModules ++ [
+          ./modules/bellerophon/hardware-configuration.nix
+          ./modules/bellerophon/sops
+
+          # Hardware
+          nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+          nixpkgs.nixosModules.notDetected
+        ];
+      };
+      daedalus = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = commonModules ++ [
+          # Hardware
+          nixos-hardware.nixosModules.lenovo-thinkpad-t14s
+          nixpkgs.nixosModules.notDetected
         ];
       };
     };

@@ -120,19 +120,14 @@ local servers = {
     cmd = { "elixir-ls" },
   },
   hls = {
+    filetypes = { 'haskell', 'lhaskell', 'cabal' },
     settings = {
-      languageServerHaskell = {
+      haskell = {
         formattingProvider = "fourmolu",
+        cabalFormattingProvider = "cabalfmt",
         formatOnImportOn = true,
         completionSnippetOn = true,
         hlintOn = true,
-        plugin = {
-          tactics = {
-            config = {
-              features = "QrfgehpgNyy/HfrQngnPba/ErsvarUbyr/XabjaZbabvq"
-            }
-          }
-        }
       }
     }
   },
