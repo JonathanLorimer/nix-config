@@ -3,18 +3,17 @@
   programs.sway.enable = true;
   programs.zsh.enable = true;
 
-  # users.groups.docker = {};
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev" "docker"];
+    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev"];
     shell = pkgs.zsh;
   };
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["Iosevka"]; })
     font-awesome
-    pragmata-pro
-    pragmata-pro-patched
+    # pragmata-pro
+    # pragmata-pro-patched
   ];
 
   # Use the systemd-boot EFI boot loader.
