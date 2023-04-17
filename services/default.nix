@@ -2,31 +2,8 @@
   colorscheme,
   default-font,
   configurationName,
-}: let
-  configScreenSpec = {
-    bellerophon = let
-      xOffset = "1920";
-    in {
-      inherit xOffset;
-      output = {
-        criteria = "eDP-1";
-        mode = "${xOffset}x1080";
-        position = "0,0";
-      };
-    };
-    daedalus = let
-      xOffset = "3840";
-    in {
-      inherit xOffset;
-      output = {
-        criteria = "eDP-1";
-        mode = "${xOffset}x2160@60.000Hz";
-        position = "0,0";
-        scale = 2.0;
-      };
-    };
-  };
-in {
+}:
+{
   spotifyd.enable = true;
   gpg-agent = {
     enable = true;
@@ -51,20 +28,5 @@ in {
     ];
   };
   mako = (import ./mako.nix) {inherit colorscheme default-font;};
-  kanshi = {
-    enable = true;
-    profiles = {
-      mobile.outputs = [
-        configScreenSpec.${configurationName}.output
-      ];
-      workstation.outputs = [
-        configScreenSpec.${configurationName}.output
-        {
-          criteria = "HDMI-A-1";
-          mode = "3440x1440";
-          position = "${configScreenSpec.${configurationName}.xOffset},0";
-        }
-      ];
-    };
-  };
+  kanshi = (import ./kanshi.nix) {inherit configurationName;};
 }
