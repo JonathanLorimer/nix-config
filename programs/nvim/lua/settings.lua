@@ -28,7 +28,7 @@ g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
 -- GUI
-set.guifont = "PragmataProMonoLiga Nerd Font Mono"
+set.guifont = "PragmataProMonoLiga Nerd Font"
 
 -- Rulers
 set.hidden = true

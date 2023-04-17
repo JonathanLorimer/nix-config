@@ -21,7 +21,7 @@
     };
   };
   signing = {
-    key = "FC71 14BD A311 3C17 05BA  2B67 708C 5C31 E69E D543";
+    key = null;
     signByDefault = true;
   };
   delta = {

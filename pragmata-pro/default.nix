@@ -9,7 +9,7 @@ in
       rec {
         outputHashMode = "recursive";
         outputHashAlgo = "sha256";
-        outputHash = "HrY1lv3BUej9dgoG03sSK0Bdjr6tYQFVSu8DJIpobJM=";
+        outputHash = "ogGgX0/yMRO//K1ZgrOTMPMK06lokqByQR/BxL9MxYg=";
         src = requireFile rec {
           url = "https://fsd.it/my-account/downloads/";
           name = "PragmataProPatched${version}.zip";

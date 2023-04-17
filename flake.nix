@@ -62,6 +62,7 @@
       daedalus = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = commonModules ++ [
+          ./modules/daedalus/hardware-configuration.nix
           # Hardware
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s
           nixpkgs.nixosModules.notDetected

@@ -12,8 +12,8 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["Iosevka"]; })
     font-awesome
-    # pragmata-pro
-    # pragmata-pro-patched
+    pragmata-pro
+    pragmata-pro-patched
   ];
 
   # Use the systemd-boot EFI boot loader.

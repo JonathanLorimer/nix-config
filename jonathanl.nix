@@ -11,7 +11,7 @@ let
     WORK_DIR = "Holdings";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
-  default-font = "PragmataProMonoLiga Nerd Font Mono";
+  default-font = "PragmataProMonoLiga Nerd Font";
 in {
   imports = [ colours.homeManagerModule ];
   nix.registry.nixpkgs.flake = nixpkgs;
