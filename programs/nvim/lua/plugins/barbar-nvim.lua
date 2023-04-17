@@ -6,12 +6,15 @@ require'bufferline'.setup {
   tabpages = true,
   clickable = false,
   icons = {
-    filetype = { enbaled = true },
-    inactive = {left = '', right = '', button = ''},
-    active = {left = '', right = '' },
+    buffer_index = false,
+    buffer_number = false,
+    filetype = { enabled = true },
+    inactive = {separator = {left = '', right = '' }, button = ''},
+    active = {separator = {left = '', right = ''}},
     button = '',
     modified = {button = ''},
-    pinned = {button = ''},
+    pinned = {button = '' },
+    separator = { left = '', right = ''},
   },
 }
 
