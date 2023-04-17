@@ -21,7 +21,7 @@
     , ...
     }:
     let system = "x86_64-linux";
-        commonModules = [
+        commonModules = configurationName: [
           # Modules
           ./modules/base.nix
           ./modules/postgres.nix
@@ -39,7 +39,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jonathanl = (import ./jonathanl.nix) {
-                inherit nixpkgs;
+                inherit nixpkgs configurationName;
                 colours = nix-colors;
                 cornelis = cornelis.packages."${system}".cornelis;
                 cornelis-vim = cornelis.packages."${system}".cornelis-vim;
@@ -47,10 +47,11 @@
             }
         ];
     in {
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
     nixosConfigurations = {
       bellerophon = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = commonModules ++ [
+        modules = (commonModules "bellerophon") ++ [
           ./modules/bellerophon/hardware-configuration.nix
           ./modules/bellerophon/sops
 
@@ -61,7 +62,7 @@
       };
       daedalus = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = commonModules ++ [
+        modules = (commonModules "daedalus") ++ [
           ./modules/daedalus/hardware-configuration.nix
           # Hardware
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s

@@ -1,6 +1,11 @@
- { colours, cornelis, cornelis-vim, nixpkgs }: { pkgs, config, ... }:
+ {
+   colours,
+   cornelis,
+   cornelis-vim,
+   nixpkgs,
+   configurationName
+ }: { pkgs, config, ... }:
 let
-  # colorscheme = with builtins; mapAttrs (_: value: "#${value}") colours.colorSchemes.zenburn.colors;
   colorscheme = (import ./colors.nix).zenwritten-desat;
   scripts = (import ./scripts) {inherit pkgs;};
   env-vars = {
@@ -29,7 +34,7 @@ in {
     term-env = env-vars;
   };
   services = (import ./services) {
-    inherit colorscheme default-font;
+    inherit colorscheme default-font configurationName;
   };
   wayland.windowManager.sway = (import ./sway) { inherit pkgs colorscheme default-font; };
 }
