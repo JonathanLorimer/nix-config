@@ -1,16 +1,19 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.sway.enable = true;
   programs.zsh.enable = true;
 
   users.users.jonathanl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "sway" "networkmanager" "plugdev"];
+    extraGroups = ["wheel" "audio" "video" "sway" "networkmanager" "plugdev"];
     shell = pkgs.zsh;
   };
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["Iosevka"]; })
+    (nerdfonts.override {fonts = ["Iosevka"];})
     font-awesome
     pragmata-pro
     pragmata-pro-patched
@@ -39,12 +42,13 @@
   ];
 
   # Nixpkgs
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "discord"
-    "obsidian"
-    "vscode"
-    "postman"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "discord"
+      "obsidian"
+      "vscode"
+      "postman"
+    ];
 
   # Enable Light
   programs.light.enable = true;
@@ -56,7 +60,7 @@
   services.printing.enable = true;
 
   # Yubikey
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [pkgs.yubikey-personalization];
 
   # Enable sound.
   sound.enable = true;
@@ -80,7 +84,7 @@
     config.boot.kernelPackages.v4l2loopback
   ];
 
-  boot.blacklistedKernelModules = [ "snd_pcsp" ];
+  boot.blacklistedKernelModules = ["snd_pcsp"];
 
   # System Version
   system.stateVersion = "22.05";
@@ -88,4 +92,3 @@
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
 }
-

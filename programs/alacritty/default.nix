@@ -1,17 +1,24 @@
-{ pkgs, colorscheme, term-env, default-font}:
 {
+  pkgs,
+  colorscheme,
+  term-env,
+  default-font,
+}: {
   enable = true;
   settings = {
     shell = {
       program = "${pkgs.zsh}/bin/zsh";
-      args = [ "-c"
+      args = [
+        "-c"
         "echo; neofetch; echo; zsh"
       ];
     };
-    env = {
-      TERM = "alacritty";
-      EDITOR = "nvim";
-    } // term-env;
+    env =
+      {
+        TERM = "alacritty";
+        EDITOR = "nvim";
+      }
+      // term-env;
     window = {
       opacity = 0.87;
       padding.x = 4;
@@ -68,4 +75,3 @@
     url.launcher.program = "firefox";
   };
 }
-

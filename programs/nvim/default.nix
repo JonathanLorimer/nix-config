@@ -1,15 +1,15 @@
-{pkgs, cornelis-vim}:
-let
+{
+  pkgs,
+  cornelis-vim,
+}: let
   vimPluginsOverrides = import ./plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
     inherit (pkgs) fetchFromGitHub stack;
-
   };
-in
-{
+in {
   enable = true;
   extraConfig = "lua require'init-homemanager'";
-  plugins = with pkgs.vimPlugins // vimPluginsOverrides ; [
+  plugins = with pkgs.vimPlugins // vimPluginsOverrides; [
     # Utils
     impatient-nvim
     venn-nvim
@@ -21,9 +21,9 @@ in
     # Navigation
     nvim-tree-lua
     telescope-nvim
-    plenary-nvim                # required by telescope
-    popup-nvim                  # required by telescope
-    telescope-fzf-native-nvim   # required by telescope
+    plenary-nvim # required by telescope
+    popup-nvim # required by telescope
+    telescope-fzf-native-nvim # required by telescope
 
     # Search
     todo-comments-nvim
@@ -68,4 +68,3 @@ in
     crates-nvim
   ];
 }
-

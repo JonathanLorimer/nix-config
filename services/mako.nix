@@ -1,5 +1,7 @@
-{colorscheme, default-font}:
 {
+  colorscheme,
+  default-font,
+}: {
   enable = true;
   anchor = "top-right";
   backgroundColor = colorscheme.base00;
@@ -10,4 +12,3 @@
   font = "${default-font} 18";
   defaultTimeout = 5000;
 }
-

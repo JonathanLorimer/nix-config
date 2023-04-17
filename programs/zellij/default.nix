@@ -1,4 +1,4 @@
-{ colorscheme }: {
+{colorscheme}: {
   enable = true;
   settings = {
     simplified_ui = true;

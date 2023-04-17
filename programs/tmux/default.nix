@@ -1,5 +1,4 @@
-{ tmuxPlugins }:
-{
+{tmuxPlugins}: {
   enable = true;
   baseIndex = 1;
   historyLimit = 5000;
@@ -50,4 +49,3 @@
     set-option -g status-style bg=default
   '';
 }
-

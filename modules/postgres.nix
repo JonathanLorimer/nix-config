@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.postgresql = {
     package = pkgs.postgresql_15;
     enable = true;

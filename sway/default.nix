@@ -1,13 +1,15 @@
-{ pkgs, colorscheme, default-font}:
-let
-  modifier = "Mod4";
-in
 {
+  pkgs,
+  colorscheme,
+  default-font,
+}: let
+  modifier = "Mod4";
+in {
   enable = true;
   systemdIntegration = true;
   config = {
     fonts = {
-      names = [ default-font "Iosevka" "Font Awesome 5 Free" ];
+      names = [default-font "Iosevka" "Font Awesome 5 Free"];
       style = "Bold";
       size = 11.0;
     };
@@ -62,7 +64,7 @@ in
       "${modifier}+Shift+l" = "move right";
 
       "${modifier}+Shift+s" = "split vertical";
-      "${modifier}+s"       = "split horizontal";
+      "${modifier}+s" = "split horizontal";
 
       "${modifier}+1" = "workspace number 1";
       "${modifier}+2" = "workspace number 2";
@@ -98,4 +100,3 @@ in
     ];
   };
 }
-

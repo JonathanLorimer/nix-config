@@ -1,5 +1,8 @@
-{stack, buildVimPlugin, fetchFromGitHub}:
 {
+  stack,
+  buildVimPlugin,
+  fetchFromGitHub,
+}: {
   zenbones-nvim = buildVimPlugin {
     name = "zenbones-nvim";
     preConfigure = ''

@@ -8,4 +8,3 @@
     git_branch.symbol = " ";
   };
 }
-

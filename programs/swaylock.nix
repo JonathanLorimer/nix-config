@@ -1,5 +1,4 @@
-{ colorscheme }:
-{
+{colorscheme}: {
   settings = {
     screenshots = true;
     clock = true;

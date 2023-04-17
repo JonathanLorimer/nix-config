@@ -9,13 +9,13 @@
       position = "top";
       height = 26;
 
-      modules-left= [
+      modules-left = [
         "sway/workspaces"
       ];
 
-      modules-center = [ "sway/window" ];
+      modules-center = ["sway/window"];
 
-      modules-right= [
+      modules-right = [
         "network"
         "battery"
         "clock#date"
@@ -32,10 +32,10 @@
         format-discharging = "{capacity}%";
         format-discharging-warning = "*{capacity}%";
         format-discharging-critical = "!{capacity}%";
-        tooltip= false;
+        tooltip = false;
       };
 
-      "clock#time"= {
+      "clock#time" = {
         interval = 10;
         format = "{:%H:%M}";
         tooltip = false;
@@ -56,13 +56,13 @@
         tooltip = true;
       };
 
-      "sway/window"= {
+      "sway/window" = {
         format = "{}";
         max-length = 70;
         tooltip = false;
       };
 
-      "sway/workspaces"= {
+      "sway/workspaces" = {
         format = "{}";
       };
     }

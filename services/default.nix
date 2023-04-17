@@ -1,16 +1,20 @@
-{colorscheme, default-font, configurationName}:
-let configScreenSpec = {
-      bellerophon = {
-        criteria = "eDP-1";
-        mode = "1920x1080";
-        position = "0,0";
-      };
-      daedalus = {
-        criteria = "eDP-1";
-        mode = "3840x2160";
-        position = "0,0";
-      };
+{
+  colorscheme,
+  default-font,
+  configurationName,
+}: let
+  configScreenSpec = {
+    bellerophon = {
+      criteria = "eDP-1";
+      mode = "1920x1080";
+      position = "0,0";
     };
+    daedalus = {
+      criteria = "eDP-1";
+      mode = "3840x2160";
+      position = "0,0";
+    };
+  };
 in {
   spotifyd.enable = true;
   gpg-agent = {
@@ -24,16 +28,18 @@ in {
   swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 300;
+      {
+        timeout = 300;
         command = "swaylock -f";
       }
-      { timeout = 600;
+      {
+        timeout = 600;
         command = "swaymsg 'output * dpms off'";
         resumeCommand = "swaymsg 'output * dpms on'";
       }
     ];
   };
-  mako = (import ./mako.nix) {inherit colorscheme default-font; };
+  mako = (import ./mako.nix) {inherit colorscheme default-font;};
   kanshi = {
     enable = true;
     profiles = {

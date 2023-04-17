@@ -1,6 +1,11 @@
-{pkgs, colorscheme, term-env, default-font, cornelis-vim}:
 {
-  alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font; };
+  pkgs,
+  colorscheme,
+  term-env,
+  default-font,
+  cornelis-vim,
+}: {
+  alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
   bat.config.theme = "Nord";
   bat.enable = true;
   direnv = {
@@ -13,7 +18,7 @@
   git = import ./git.nix;
   gpg.enable = true;
   htop.enable = true;
-  neovim = (import ./nvim) { inherit pkgs cornelis-vim; };
+  neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   skim = import ./skim.nix;
   ssh = {
     enable = true;
@@ -25,14 +30,13 @@
     '';
   };
   starship = import ./starship.nix;
-  swaylock = import ./swaylock.nix { inherit colorscheme; };
+  swaylock = import ./swaylock.nix {inherit colorscheme;};
   taskwarrior.enable = true;
-  tmux = (import ./tmux) { inherit (pkgs) tmuxPlugins; };
+  tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   waybar = import ./waybar;
   zathura.enable = true;
-  zellij = (import ./zellij) {inherit colorscheme; };
+  zellij = (import ./zellij) {inherit colorscheme;};
   zoxide.enable = true;
   zoxide.enableZshIntegration = true;
   zsh = (import ./zsh.nix) {inherit pkgs;};
 }
-

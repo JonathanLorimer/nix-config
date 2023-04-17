@@ -1,11 +1,14 @@
- {
-   colours,
-   cornelis,
-   cornelis-vim,
-   nixpkgs,
-   configurationName
- }: { pkgs, config, ... }:
-let
+{
+  colours,
+  cornelis,
+  cornelis-vim,
+  nixpkgs,
+  configurationName,
+}: {
+  pkgs,
+  config,
+  ...
+}: let
   colorscheme = (import ./colors.nix).zenwritten-desat;
   scripts = (import ./scripts) {inherit pkgs;};
   env-vars = {
@@ -18,7 +21,7 @@ let
   };
   default-font = "PragmataProMonoLiga Nerd Font";
 in {
-  imports = [ colours.homeManagerModule ];
+  imports = [colours.homeManagerModule];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {
     "nix/inputs/nixpkgs".source = nixpkgs.outPath;
@@ -36,5 +39,5 @@ in {
   services = (import ./services) {
     inherit colorscheme default-font configurationName;
   };
-  wayland.windowManager.sway = (import ./sway) { inherit pkgs colorscheme default-font; };
+  wayland.windowManager.sway = (import ./sway) {inherit pkgs colorscheme default-font;};
 }
