@@ -9,6 +9,7 @@
     sops-nix.url = github:Mic92/sops-nix;
     nix-colors.url = github:misterio77/nix-colors;
     cornelis.url = github:isovector/cornelis;
+    mercury.url = "git+ssh://git@github.com/mercurytechnologies/nixos-configuration.git?ref=main";
   };
   outputs = {
     home-manager,
@@ -18,6 +19,7 @@
     sops-nix,
     nix-colors,
     cornelis,
+    mercury,
     ...
   }: let
     system = "x86_64-linux";
@@ -29,6 +31,18 @@
       ((import ./modules/channels.nix) {inherit nixpkgs;})
       ((import ./modules/overlays.nix) {inherit neovim-nightly-overlay;})
       ./modules/pipewire.nix
+      ./modules/tailscale.nix
+
+      # Mercury Stuff
+      mercury.nixosModules
+      ({...}: {
+        mercury = {
+          internalCertificateAuthority.enable = true;
+          mwbDevelopment.enable = false;
+          nixCache.enable = false;
+          vpn.enable = false;
+        };
+      })
 
       # Secrets
       sops-nix.nixosModules.sops
