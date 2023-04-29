@@ -32,17 +32,7 @@
       ((import ./modules/overlays.nix) {inherit neovim-nightly-overlay;})
       ./modules/pipewire.nix
       ./modules/tailscale.nix
-
-      # Mercury Stuff
-      mercury.nixosModules
-      ({...}: {
-        mercury = {
-          internalCertificateAuthority.enable = true;
-          mwbDevelopment.enable = false;
-          nixCache.enable = false;
-          vpn.enable = false;
-        };
-      })
+      ./modules/certs
 
       # Secrets
       sops-nix.nixosModules.sops
