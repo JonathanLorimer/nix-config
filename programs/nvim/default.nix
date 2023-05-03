@@ -24,6 +24,7 @@ in {
     plenary-nvim # required by telescope
     popup-nvim # required by telescope
     telescope-fzf-native-nvim # required by telescope
+    harpoon
 
     # Search
     todo-comments-nvim

@@ -28,6 +28,9 @@
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  # See https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   networking.useDHCP = false;
   networking.interfaces.wlan0.useDHCP = true;

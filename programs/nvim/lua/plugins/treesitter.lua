@@ -9,7 +9,7 @@ parser_config.agda = {
 
 vim.opt.runtimepath:append("$HOME/.local/share/nvim/site/parser/")
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "nix", "typescript", "css", "lua", "json", "tsx", "haskell", "rust" },
+  ensure_installed = { "agda", "nix", "typescript", "css", "lua", "json", "tsx", "haskell", "rust" },
   sync_install = false,
   auto_install = false,
   highlight = { enable = true },
