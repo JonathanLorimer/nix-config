@@ -8,6 +8,12 @@
   alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
   bat.config.theme = "Nord";
   bat.enable = true;
+  btop = {
+    enable = true;
+    settings = {
+      "vim_keys" = true;
+    };
+  };
   direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -27,10 +33,14 @@
         User jonathanl
         IdentityFile ~/.ssh/id_rsa
         AddKeysToAgent yes
+      Host *
+        User jonathanl
+        IdentityFile ~/.ssh/id_ed25519
+        AddKeysToAgent yes
     '';
   };
   starship = import ./starship.nix;
-  swaylock = import ./swaylock.nix {inherit colorscheme;};
+  swaylock = import ./swaylock.nix {inherit colorscheme pkgs;};
   taskwarrior.enable = true;
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   waybar = import ./waybar;

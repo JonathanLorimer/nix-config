@@ -37,7 +37,7 @@ in {
     term-env = env-vars;
   };
   services = (import ./services) {
-    inherit colorscheme default-font configurationName;
+    inherit colorscheme default-font configurationName pkgs;
   };
   wayland.windowManager.sway = (import ./sway) {inherit pkgs colorscheme default-font;};
 }

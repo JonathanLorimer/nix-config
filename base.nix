@@ -14,7 +14,7 @@
     [
       # Wayland
       xwayland
-      swaylock-effects
+      # swaylock-effects
 
       # Sway Utils
       slurp

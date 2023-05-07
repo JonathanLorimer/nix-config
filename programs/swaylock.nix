@@ -1,4 +1,5 @@
-{colorscheme}: {
+{colorscheme, pkgs}: {
+  package = pkgs.swaylock-effects;
   settings = {
     screenshots = true;
     clock = true;

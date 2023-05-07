@@ -2,6 +2,7 @@
   colorscheme,
   default-font,
   configurationName,
+  pkgs,
 }:
 {
   spotifyd.enable = true;
@@ -18,12 +19,12 @@
     timeouts = [
       {
         timeout = 300;
-        command = "swaylock -f";
+        command = "${pkgs.swaylock-effects}/bin/swaylock -f";
       }
       {
         timeout = 600;
-        command = "swaymsg 'output * dpms off'";
-        resumeCommand = "swaymsg 'output * dpms on'";
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
       }
     ];
   };
