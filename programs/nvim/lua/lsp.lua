@@ -96,12 +96,21 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local haskell_cmd
+if os.getenv('USE_HALFSP') then
+    haskell_cmd = {'halfsp'}
+elseif os.getenv('USE_STATICLS') then
+    haskell_cmd = {'static-ls'}
+else
+    haskell_cmd = {'haskell-language-server-wrapper', '--lsp'}
+end
+
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
   tsserver = {
   },
-  rnix = {},
+  nil_ls = {},
   rust_analyzer = {
     root_dir = require 'lspconfig.util'.root_pattern('Cargo.lock'),
   },
@@ -116,6 +125,7 @@ local servers = {
     cmd = { "elixir-ls" },
   },
   hls = {
+    cmd = haskell_cmd,
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
     settings = {
       haskell = {

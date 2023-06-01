@@ -18,11 +18,11 @@
     enable = true;
     timeouts = [
       {
-        timeout = 300;
+        timeout = 900;
         command = "${pkgs.swaylock-effects}/bin/swaylock -f";
       }
       {
-        timeout = 600;
+        timeout = 1500;
         command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
         resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
       }
