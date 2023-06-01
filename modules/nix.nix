@@ -8,7 +8,6 @@
     settings = {
       accept-flake-config = true;
       auto-optimise-store = true;
-      max-jobs = pkgs.lib.mkDefault 24;
       trusted-users = ["jonathanl" "root"];
       substituters = [
         "https://cache.nixos.org"

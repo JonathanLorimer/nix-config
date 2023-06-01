@@ -72,6 +72,7 @@
           (commonModules "daedalus")
           ++ [
             ./modules/daedalus/hardware-configuration.nix
+            ./modules/daedalus/nix.nix
             # Hardware
             nixos-hardware.nixosModules.lenovo-thinkpad-t14s
             nixpkgs.nixosModules.notDetected
