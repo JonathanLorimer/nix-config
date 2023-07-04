@@ -22,15 +22,19 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl."fs.inotify.max_user_watches" = "1048576";
+  boot.kernel.sysctl = {
+      "fs.inotify.max_user_watches"   = 1048576;   # default:  8192
+      "fs.inotify.max_user_instances" =    1024;   # default:   128
+      "fs.inotify.max_queued_events"  =   32768;   # default: 16384
+    };
 
   # Networking
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
   # See https://github.com/NixOS/nixpkgs/issues/180175
-  systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
-  systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
+  # systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
+  # systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   networking.useDHCP = false;
   networking.interfaces.wlan0.useDHCP = true;
