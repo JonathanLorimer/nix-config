@@ -100,22 +100,6 @@
         "type": "github"
       }
     },
-    "mercury": {
-      "locked": {
-        "lastModified": 1682345790,
-        "narHash": "sha256-3bngtvqKB3MmxyYztSzHiDLEOkp4pYT6yw5uOU1owq8=",
-        "ref": "main",
-        "rev": "f6cfad098d775590f7c4dcf760bf85fdb9520f63",
-        "revCount": 50,
-        "type": "git",
-        "url": "ssh://git@github.com/mercurytechnologies/nixos-configuration.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/mercurytechnologies/nixos-configuration.git"
-      }
-    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -291,7 +275,6 @@
       "inputs": {
         "cornelis": "cornelis",
         "home-manager": "home-manager",
-        "mercury": "mercury",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",

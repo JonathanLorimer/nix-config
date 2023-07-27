@@ -55,6 +55,9 @@
       "obsidian"
       "vscode"
       "postman"
+      "steam-run"
+      "steam-original"
+      "steam"
     ];
 
   # Enable Light

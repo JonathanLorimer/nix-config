@@ -2,14 +2,13 @@
   description = "Jonathan Lorimer's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    home-manager.url = github:nix-community/home-manager;
-    nixos-hardware.url = github:NixOS/nixos-hardware/master;
-    neovim-nightly-overlay.url = github:nix-community/neovim-nightly-overlay;
-    sops-nix.url = github:Mic92/sops-nix;
-    nix-colors.url = github:misterio77/nix-colors;
-    cornelis.url = github:isovector/cornelis;
-    mercury.url = "git+ssh://git@github.com/mercurytechnologies/nixos-configuration.git?ref=main";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    sops-nix.url = "github:Mic92/sops-nix";
+    nix-colors.url = "github:misterio77/nix-colors";
+    cornelis.url = "github:isovector/cornelis";
   };
   outputs = {
     home-manager,
@@ -19,7 +18,6 @@
     sops-nix,
     nix-colors,
     cornelis,
-    mercury,
     ...
   }: let
     system = "x86_64-linux";
@@ -33,6 +31,7 @@
       ./modules/pipewire.nix
       ./modules/tailscale.nix
       ./modules/certs
+      ./modules/gaming.nix
 
       # Secrets
       sops-nix.nixosModules.sops
