@@ -14,7 +14,6 @@
     [
       # Wayland
       xwayland
-      # swaylock-effects
 
       # Sway Utils
       slurp
@@ -56,6 +55,7 @@
       gh
       cornelis
       insomnia
+      tree-sitter
 
       # LSP
       nodePackages.typescript-language-server
