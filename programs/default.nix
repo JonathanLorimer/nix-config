@@ -24,6 +24,10 @@
   fzf.enableZshIntegration = true;
   git = import ./git.nix;
   gpg.enable = true;
+  # TODO: figure out a way to add this to gpg conf
+  # extraConfig = ''
+  #   keyserver hkps://keys.openpgp.org
+  # '';
   htop.enable = true;
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   skim = import ./skim.nix;
