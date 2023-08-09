@@ -12,7 +12,7 @@
     shell = pkgs.zsh;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Iosevka"];})
     font-awesome
     pragmata-pro
@@ -33,7 +33,11 @@
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
   # See https://github.com/NixOS/nixpkgs/issues/180175
-  # systemd.services.NetworkManager-wait-online.enable = pkgs.lib.mkForce false;
+  systemd.services.NetworkManager-wait-online = {  
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
   # systemd.services.systemd-networkd-wait-online.enable = pkgs.lib.mkForce false;
 
   networking.useDHCP = false;

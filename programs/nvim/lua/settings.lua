@@ -43,8 +43,8 @@ set.tabstop = 2
 set.softtabstop = 2
 set.shiftwidth = 2
 set.smarttab = true
-set.smartindent = true
-set.autoindent = true
+set.smartindent = false
+set.autoindent = false
 
 -- Search
 set.hlsearch = true
@@ -54,28 +54,20 @@ set.inccommand = "nosplit"
 -- General
 w.wrap = false
 set.scrolloff = 8
-set.backspace = {"indent","eol","start" }
+set.backspace = { "indent", "eol", "start" }
 set.nu = true
 set.rnu = true
 
 -- Lsp
-set.updatetime=800
+set.updatetime = 800
 
 -- Completion
 set.inccommand = "nosplit"
-set.completeopt = { "menu", "menuone","noselect" }
+set.completeopt = { "menu", "menuone", "noselect" }
 set.shortmess = vim.o.shortmess .. "c"
 
 -- don't let plugins map leader bindings
 g.no_plugin_maps = 1
-
--- Haskell Rules
-g.haskell_indent_do = 3
-g.haskell_indent_if = 3
-g.haskell_indent_in = 1
-g.haskell_indent_let = 4
-g.haskell_indent_case = 2
-g.haskell_indent_where = 6
 
 -- Agda
 g.cornelis_use_global_binary = 1

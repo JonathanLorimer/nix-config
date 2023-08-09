@@ -7,16 +7,16 @@ local api = vim.api
 -- LSP
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
   lsp.diagnostic.on_publish_diagnostics, {
-  -- disable virtual text
-  virtual_text = false,
+    -- disable virtual text
+    virtual_text = false,
 
-  -- show signs
-  signs = true,
+    -- show signs
+    signs = true,
 
-  -- delay update diagnostics
-  update_in_insert = false,
-  underline = true,
-}
+    -- delay update diagnostics
+    update_in_insert = false,
+    underline = true,
+  }
 )
 
 local nvim_lsp = require('lspconfig')
@@ -78,31 +78,31 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  if client.name == "rnix" or client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-  end
-
-  -- Setup autoformat on save
-  if client.server_capabilities.code_lens then
-    local lsp_format_on_save = api.nvim_create_augroup("lsp_format_on_save",
-      { clear = true })
-    api.nvim_create_autocmd('BufWritePre', {
-      pattern = '<buffer>',
-      group = lsp_format_on_save,
-      callback = function()
-        vim.lsp.buf.format({ async = false })
-      end,
-    })
-  end
+  -- if client.name == "rnix" or client.name == "tsserver" then
+  --   client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+  -- end
+  --
+  -- -- Setup autoformat on save
+  -- if client.server_capabilities.documentFormattingProvider then
+  --   local lsp_format_on_save = api.nvim_create_augroup("lsp_format_on_save",
+  --     { clear = true })
+  --   api.nvim_create_autocmd('BufWritePre', {
+  --     pattern = '<buffer>',
+  --     group = lsp_format_on_save,
+  --     callback = function()
+  --       vim.lsp.buf.format({ async = false })
+  --     end,
+  --   })
+  -- end
 end
 
 local haskell_cmd
 if os.getenv('USE_HALFSP') then
-    haskell_cmd = {'halfsp'}
+  haskell_cmd = { 'halfsp' }
 elseif os.getenv('USE_STATICLS') then
-    haskell_cmd = {'static-ls'}
+  haskell_cmd = { 'static-ls' }
 else
-    haskell_cmd = {'haskell-language-server-wrapper', '--lsp'}
+  haskell_cmd = { 'haskell-language-server-wrapper', '--lsp' }
 end
 
 -- Use a loop to conveniently both setup defined servers
@@ -130,9 +130,6 @@ local servers = {
     settings = {
       haskell = {
         formattingProvider = "fourmolu",
-        cabalFormattingProvider = "cabalfmt",
-        formatOnImportOn = true,
-        completionSnippetOn = true,
         hlintOn = true,
       }
     }
@@ -148,14 +145,14 @@ for k, v in pairs(lsp_status.capabilities) do client_capabilities[k] = v end
 local capabilities = cmp_lsp.default_capabilities(client_capabilities)
 
 -- Setup semantic highlight groups
-vim.cmd [[highlight link LspSemantic_type Include]] -- Type constructors
-vim.cmd [[highlight link LspSemantic_function Identifier]] -- Functions names
-vim.cmd [[highlight link LspSemantic_enumMember Number]] -- Data constructors
-vim.cmd [[highlight LspSemantic_variable guifg=gray]] -- Bound variables
-vim.cmd [[highlight link LspSemantic_keyword Structure]] -- Keywords
+vim.cmd [[highlight link LspSemantic_type Include]]         -- Type constructors
+vim.cmd [[highlight link LspSemantic_function Identifier]]  -- Functions names
+vim.cmd [[highlight link LspSemantic_enumMember Number]]    -- Data constructors
+vim.cmd [[highlight LspSemantic_variable guifg=gray]]       -- Bound variables
+vim.cmd [[highlight link LspSemantic_keyword Structure]]    -- Keywords
 vim.cmd [[highlight link LspSemantic_namespace Identifier]] -- Explicit namespaces
-vim.cmd [[highlight link LspSemantic_postulate Define]] -- Postulates
-vim.cmd [[highlight link LspSemantic_module Identifier]] -- Module identifiers
+vim.cmd [[highlight link LspSemantic_postulate Define]]     -- Postulates
+vim.cmd [[highlight link LspSemantic_module Identifier]]    -- Module identifiers
 
 -- Setup server configs
 for server, settings in pairs(servers) do

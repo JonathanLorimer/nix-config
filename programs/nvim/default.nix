@@ -58,9 +58,6 @@ in {
     # Language Support
     nvim-treesitter
     vimtex
-    haskell-vim
-    # nui-nvim # required for idris2-nvim
-    # idris2-nvim
     vim-textobj-user
     nvim-hs-vim
     cornelis-vim

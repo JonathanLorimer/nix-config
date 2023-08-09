@@ -6,7 +6,7 @@
   modifier = "Mod4";
 in {
   enable = true;
-  systemdIntegration = true;
+  systemd.enable = true;
   config = {
     fonts = {
       names = [default-font "Iosevka" "Font Awesome 5 Free"];
