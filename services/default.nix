@@ -11,7 +11,7 @@
     enableSshSupport = true;
     enableZshIntegration = true;
     defaultCacheTtl = 15 * 60;
-    # pinentryFlavor = "tty";
+    pinentryFlavor = "tty";
     verbose = true;
   };
   swayidle = {
