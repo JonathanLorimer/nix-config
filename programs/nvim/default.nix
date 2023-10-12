@@ -56,7 +56,7 @@ in {
     formatter-nvim
 
     # Language Support
-    nvim-treesitter
+    nvim-treesitter.withAllGrammars
     vimtex
     vim-textobj-user
     nvim-hs-vim

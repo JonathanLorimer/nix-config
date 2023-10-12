@@ -121,6 +121,7 @@ local servers = {
   eslint = {},
   html = {},
   terraformls = {},
+  elmls = {},
   elixirls = {
     cmd = { "elixir-ls" },
   },

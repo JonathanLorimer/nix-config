@@ -50,7 +50,7 @@ in {
       "${modifier}+z" = "exec zotero";
       "${modifier}+m" = "exec bemenu-run -p 'λ' -b --fn \"${default-font}\" --tb=#4c566a --tf=#81a1c1 --fb=#3b4252 --ff=#d8dee9 --nb=#3b4252 --nf=#d8dee9 --ab=#3b4252 --af=#d8dee9 --hb=#4c566a --hf=#ebcb8b --sb=#4c566a --sf=#ebcb8b";
       "${modifier}+Escape" = "exec swaylock -f";
-      "${modifier}+g" = "exec grim $(echo $HOME)/Pictures/$(date +'%s_grim.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')";
+      "${modifier}+g" = "exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
       "${modifier}+Shift+g" = "exec grim -g \"$(slurp)\" $(echo $HOME)/Pictures/$(date +'%s_grim.png')";
 
       # Workspace Commands
