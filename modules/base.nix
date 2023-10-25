@@ -62,6 +62,7 @@
       "steam-run"
       "steam-original"
       "steam"
+      "tabnine"
     ];
 
   # Enable Light

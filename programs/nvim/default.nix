@@ -4,7 +4,7 @@
 }: let
   vimPluginsOverrides = import ./plugins.nix {
     buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
-    inherit (pkgs) fetchFromGitHub stack;
+    inherit (pkgs) fetchFromGitHub stack lib;
   };
 in {
   enable = true;
@@ -51,6 +51,9 @@ in {
     cmp-nvim-lsp
     cmp-path
     lspkind-nvim
+    tabnine-nvim
+    # Required by tabnine
+    YouCompleteMe
 
     # Formatting
     formatter-nvim

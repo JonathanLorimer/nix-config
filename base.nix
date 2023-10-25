@@ -56,6 +56,7 @@
       cornelis
       insomnia
       tree-sitter
+      tabnine
 
       # LSP
       nodePackages.typescript-language-server

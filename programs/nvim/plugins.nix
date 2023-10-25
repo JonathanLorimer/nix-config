@@ -2,6 +2,7 @@
   stack,
   buildVimPlugin,
   fetchFromGitHub,
+  lib,
 }: {
   zenbones-nvim = buildVimPlugin {
     name = "zenbones-nvim";
@@ -40,6 +41,16 @@
       repo = "spaceless.nvim";
       rev = "4012c778cf8973379cc4e7e52d2260b15d390462";
       sha256 = "1d677f8v20k1fw4gs1a9zbhfjgn142i6gnjlf89jmv00fyj1l9ji";
+    };
+  };
+  tabnine-nvim = buildVimPlugin {
+    name = "tabnine-nvim";
+    src = fetchFromGitHub {
+      owner = "JonathanLorimer";
+      repo = "tabnine-nvim";
+      rev = "6db805376b0b17985b41705005f9e2f4af1a2f71";
+      sha256 = "sha256-uCeH73uliFXrc8c66jKRsRDo5+xPP/m+J3Nayj4n2r0=";
+      fetchSubmodules = true;
     };
   };
 }
