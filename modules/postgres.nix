@@ -14,6 +14,7 @@
     '';
     extraPlugins = [config.services.postgresql.package.pkgs.postgis];
     settings = {
+      shared_preload_libraries = "pg_stat_statements";
       timezone = "UTC";
       log_timezone = "UTC";
       shared_buffers = 128;

@@ -51,9 +51,7 @@ in {
     cmp-nvim-lsp
     cmp-path
     lspkind-nvim
-    tabnine-nvim
-    # Required by tabnine
-    YouCompleteMe
+    # tabnine-nvim
 
     # Formatting
     formatter-nvim
