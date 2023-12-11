@@ -120,7 +120,9 @@ local servers = {
   cssls = {},
   eslint = {},
   html = {},
-  terraformls = {},
+  terraformls = {
+    filetypes = { 'terraform', 'terraform-vars', 'tf' }
+  },
   elmls = {},
   elixirls = {
     cmd = { "elixir-ls" },

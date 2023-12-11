@@ -20,7 +20,6 @@
       wl-clipboard
       wf-recorder
       grim
-      kooha
 
       # Messaging
       keybase
@@ -57,6 +56,7 @@
       insomnia
       tree-sitter
       tabnine
+      dbeaver
 
       # LSP
       nodePackages.typescript-language-server
