@@ -108,7 +108,4 @@
 
   # System Version
   system.stateVersion = "22.05";
-
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
 }
