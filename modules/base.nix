@@ -108,4 +108,8 @@
 
   # System Version
   system.stateVersion = "22.05";
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
 }

@@ -15,10 +15,10 @@ in {
   enableAutosuggestions = true;
   enableCompletion = true;
   shellAliases = {
-    ll = "exa -l";
-    l = "exa -lah";
-    ls = "exa";
-    lt = "exa --long --tree";
+    ll = "eza -l";
+    l = "eza -lah";
+    ls = "eza";
+    lt = "eza --long --tree";
     cfg = "nvim $HOME/.config/nixpkgs/home.nix";
     n = "nvim";
     ns = "nvim $(sk)";

@@ -12,8 +12,8 @@
     src = fetchFromGitHub {
       owner = "mcchrish";
       repo = "zenbones.nvim";
-      rev = "e608ef16b1a636e653a471f36c869193ed4b5e9d";
-      sha256 = "sha256-VooPRuj64o92sPs1pqqYRazPYteX0HEsEQ9Re8YI6oE=";
+      rev = "v4.0.2";
+      sha256 = "sha256-KVN/Xbo92ob72Ix3jw6D8GDDX7aNBMsj90bm2YA5TCo="; 
     };
   };
   idris2-nvim = buildVimPlugin {

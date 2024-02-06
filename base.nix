@@ -77,7 +77,7 @@
       jq
       ripgrep
       ruplacer
-      exa
+      eza
       duf
       tokei
       tealdeer
