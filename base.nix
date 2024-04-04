@@ -21,6 +21,10 @@
       wf-recorder
       grim
 
+      # Video
+      vlc
+      ffmpeg
+
       # Messaging
       keybase
       keybase-gui
