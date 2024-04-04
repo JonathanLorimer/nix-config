@@ -134,6 +134,11 @@ local servers = {
       haskell = {
         formattingProvider = "fourmolu",
         hlintOn = true,
+        plugin = {
+          stan = {
+            globalOn = false,
+          }
+        }
       }
     }
   },

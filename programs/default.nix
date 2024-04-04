@@ -30,6 +30,7 @@
   # '';
   htop.enable = true;
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
+  obs-studio = (import ./obs-studio.nix) { inherit pkgs; };
   skim = import ./skim.nix;
   ssh = {
     enable = true;
