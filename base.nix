@@ -41,6 +41,7 @@
       pw-volume
       pavucontrol
       spotify-tui
+      pulseaudio
 
       # Navigation
       bemenu
