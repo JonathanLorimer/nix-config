@@ -61,7 +61,6 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "discord"
-      "obsidian"
       "vscode"
       "postman"
       "steam-run"

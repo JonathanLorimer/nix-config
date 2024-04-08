@@ -20,8 +20,6 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-  fzf.enable = true;
-  fzf.enableZshIntegration = true;
   git = import ./git.nix;
   gpg.enable = true;
   # TODO: figure out a way to add this to gpg conf

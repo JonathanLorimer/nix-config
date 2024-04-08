@@ -40,7 +40,6 @@
       # Sound
       pw-volume
       pavucontrol
-      spotify-tui
       pulseaudio
 
       # Navigation
@@ -91,7 +90,6 @@
       highlight
 
       # Knowledge Management
-      obsidian
       zotero
     ]
     ++ scripts;
