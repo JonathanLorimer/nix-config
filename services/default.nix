@@ -10,8 +10,8 @@
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
-    defaultCacheTtl = 15 * 60;
-    pinentryPackage = pkgs.pinentry;
+    defaultCacheTtl = 1 * 60 * 60;
+    pinentryPackage = pkgs.pinentry-tty;
     verbose = true;
   };
   swayidle = {
