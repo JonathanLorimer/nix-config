@@ -27,6 +27,7 @@
   #   keyserver hkps://keys.openpgp.org
   # '';
   htop.enable = true;
+  jujutsu = (import ./jujutsu) { inherit (pkgs) delta; };
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   obs-studio = (import ./obs-studio.nix) { inherit pkgs; };
   skim = import ./skim.nix;

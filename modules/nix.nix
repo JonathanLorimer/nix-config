@@ -4,6 +4,7 @@
       experimental-features = nix-command flakes
       keep-outputs = true
       warn-dirty = false
+      allow-import-from-derivation = true
     '';
     settings = {
       accept-flake-config = true;
