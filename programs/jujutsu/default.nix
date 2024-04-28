@@ -1,4 +1,4 @@
-{ delta }:
+{ delta, meld }:
 let 
   email = "jonathan_lorimer@mac.com";
 in {
@@ -14,11 +14,25 @@ in {
       backend = "gpg";
       key = email;
     };
+
+    template-aliases = {
+      "format_timestamp(timestamp)" = "timestamp.ago()";
+      "format_short_signature(signature)" = "signature.name()";
+    };
+
+    core.fsmonitor = "watchman";
+
+    colors = {
+      "author name" = "yellow";
+    };
   
     ui = {
       default-command = "status";
       pager = "${delta}/bin/delta";
-      diff.format = "git";
+      diff-editor = "${meld}/bin/meld";
+      diff = { 
+        format = "git";
+      };
     };
   };
 }
