@@ -11,6 +11,7 @@
     enableSshSupport = true;
     enableZshIntegration = true;
     defaultCacheTtl = 1 * 60 * 60;
+    maxCacheTtl = 1 * 60 * 60 * 24;
     pinentryPackage = pkgs.pinentry-tty;
     verbose = true;
   };
