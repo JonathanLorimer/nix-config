@@ -33,4 +33,5 @@
       syntax-theme = "Nord";
     };
   };
+  ignores = [".jj"];
 }
