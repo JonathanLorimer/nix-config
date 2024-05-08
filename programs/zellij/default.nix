@@ -1,6 +1,16 @@
 {colorscheme}: {
   enable = true;
   settings = {
+    ## TODO: Should look into setting up better keybindings, doing this from
+    ## nix kinda sucks, which is why I have put this off for so long
+    ## See: https://github.com/nix-community/home-manager/pull/4465
+
+    keybinds = {
+      unbind = "Ctrl q";
+      shared = {
+        "bind \"Ctrl k\"" = { "Quit ;" = []; };
+      };
+    };
     simplified_ui = true;
     pane_frames = false;
     theme = "default";
