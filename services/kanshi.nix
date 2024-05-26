@@ -49,5 +49,5 @@ let
 in
 {
   enable = true;
-  profiles = configurationProfiles.${configurationName};
+  settings = configurationProfiles.${configurationName};
 }

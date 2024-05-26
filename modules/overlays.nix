@@ -7,12 +7,7 @@
 # neovim-nightly overlay from flake.nix and still get a nixos module function.
 {neovim-nightly-overlay}: {pkgs, ...}: {
   nixpkgs.overlays = [
-    neovim-nightly-overlay.overlay
-
-    # home manager uses neovim-unwrapped
-    (final: prev: {
-      neovim-unwrapped = final.neovim-nightly;
-    })
+    neovim-nightly-overlay.overlays.default
 
     # get access to my font
     (final: prev: {

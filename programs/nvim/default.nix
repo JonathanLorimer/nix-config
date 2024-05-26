@@ -8,6 +8,7 @@
   };
 in {
   enable = true;
+  package = pkgs.neovim;
   extraConfig = "lua require'init-homemanager'";
   plugins = with pkgs.vimPlugins // vimPluginsOverrides; [
     # Utils

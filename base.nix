@@ -60,7 +60,7 @@
       insomnia
       tree-sitter
       tabnine
-      dbeaver
+      dbeaver-bin
 
       # LSP
       nodePackages.typescript-language-server

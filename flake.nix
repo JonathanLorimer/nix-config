@@ -21,13 +21,14 @@
     ...
   }: let
     system = "x86_64-linux";
+    overlays = import ./modules/overlays.nix {inherit neovim-nightly-overlay;};
     commonModules = configurationName: [
       # Modules
       ./modules/base.nix
       ./modules/postgres.nix
       ./modules/nix.nix
       ((import ./modules/channels.nix) {inherit nixpkgs;})
-      ((import ./modules/overlays.nix) {inherit neovim-nightly-overlay;})
+      overlays
       ./modules/pipewire.nix
       ./modules/tailscale.nix
       ./modules/certs
@@ -42,7 +43,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
-          inherit nixpkgs configurationName;
+          inherit nixpkgs configurationName overlays;
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;

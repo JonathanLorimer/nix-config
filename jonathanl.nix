@@ -4,6 +4,7 @@
   cornelis-vim,
   nixpkgs,
   configurationName,
+  overlays
 }: {
   pkgs,
   config,
@@ -21,7 +22,10 @@
   };
   default-font = "PragmataProMonoLiga Nerd Font";
 in {
-  imports = [colours.homeManagerModule];
+  imports = [
+    colours.homeManagerModule
+    overlays
+  ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {
     "nix/inputs/nixpkgs".source = nixpkgs.outPath;
