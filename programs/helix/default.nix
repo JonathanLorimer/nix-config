@@ -5,6 +5,7 @@
   settings = { 
     theme = "zenwritten";
     editor = {
+      gutters = ["spacer" "diagnostics" "line-numbers" "spacer" "diff"];
       color-modes = true;
       line-number = "relative";
       cursor-shape = {

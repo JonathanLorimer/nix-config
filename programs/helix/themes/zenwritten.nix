@@ -15,7 +15,7 @@ let
     blue = colorscheme.base0D;
 in
   {
-    "type" = fgBright;
+    "type" = fgDim;
     "constant" = fg;
     "constant.numeric" = magenta;
     "string" = { fg = green; modifiers = ["italic"]; };
@@ -25,13 +25,13 @@ in
     "label" = fg;
     "punctuation" = fgDim;
     "keyword" = { fg = fgBright; modifiers = [ "bold" ]; };
-    "operator" = fgBright;
+    "operator" = { fg = fgBright; modifiers = [ "bold"]; };
     "function" = fgBright;
     "tag" = { fg = fgBright; modifiers = ["bold"]; };
-    "namespace" = fg;
+    "namespace" = { fg = fg; modifiers = ["bold" "italic"]; };
     "attribute" = fg;
     "constructor" = { fg = fg; modifiers = [ "bold"]; };
-    "module" = { fg = fgBright; modifiers = ["bold" "italic"]; };
+    "module" = { fg = fg; modifiers = ["bold" "italic"]; };
     "special" = magenta;
 
     "markup.heading.marker" = fgDim;
