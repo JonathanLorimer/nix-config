@@ -26,6 +26,7 @@
   # extraConfig = ''
   #   keyserver hkps://keys.openpgp.org
   # '';
+  helix = (import ./helix) { inherit colorscheme; };
   htop.enable = true;
   jujutsu = (import ./jujutsu) { inherit (pkgs) delta meld; };
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};

@@ -1,8 +1,8 @@
 {
   zenwritten-desat = {
     base00 = "#191919";
-    base01 = "#404040";
-    base02 = "#606060";
+    base01 = "#292929";
+    base02 = "#404040";
     base03 = "#6f6f6f";
     base04 = "#808080";
     base05 = "#dcdccc";
