@@ -2,7 +2,23 @@
 {
   enable = true;
   defaultEditor = true;
-  languages = {};
+  languages = {
+    language = [
+      {
+        name = "nix";
+        scope = "source.nix";
+        injection-regex = "nix";
+        file-types = ["nix"];
+        shebangs = [];
+        comment-token = "#";
+        language-servers = [ "nil" ];
+        indent = { tab-width = 2; unit = "  "; };  
+        formatter = {
+          command = "alejandra";
+        };
+      }  
+    ];
+  };
   settings = { 
     theme = "zenwritten";
     editor = {

@@ -58,16 +58,15 @@
   ];
 
   # Nixpkgs
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "discord"
-      "vscode"
-      "postman"
-      "steam-run"
-      "steam-original"
-      "steam"
-      "tabnine"
-    ];
+  nixpkgs.allowUnfreePackages = [
+    "discord"
+    "vscode"
+    "postman"
+    "steam-run"
+    "steam-original"
+    "steam"
+    "tabnine"
+  ];
 
   # Enable Light
   programs.light.enable = true;
