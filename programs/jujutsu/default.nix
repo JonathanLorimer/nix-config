@@ -25,9 +25,15 @@ in {
     colors = {
       "author name" = "yellow";
     };
+
+    aliases = {
+      l = ["log" "-l" "10"];
+      lm = ["log" "-r" "(trunk()..@):: | (trunk()..@)-"];
+      s = ["status"];
+    };
   
     ui = {
-      default-command = "status";
+      default-command = "l";
       pager = "${delta}/bin/delta";
       diff-editor = "${meld}/bin/meld";
       diff = { 
