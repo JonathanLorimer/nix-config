@@ -13,11 +13,9 @@
   colorscheme = (import ./colors.nix).zenwritten-desat;
   scripts = (import ./scripts) {inherit pkgs;};
   env-vars = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     TERMINAL = "alacritty";
     BROWSER = "firefox";
-    CODE_DIR = "Code";
-    WORK_DIR = "Holdings";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
   default-font = "PragmataProMonoLiga Nerd Font";

@@ -16,7 +16,7 @@
     env =
       {
         TERM = "alacritty";
-        EDITOR = "nvim";
+        EDITOR = "hx";
       }
       // term-env;
     window = {

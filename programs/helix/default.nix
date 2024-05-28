@@ -1,6 +1,7 @@
 { colorscheme }:
 {
   enable = true;
+  defaultEditor = true;
   languages = {};
   settings = { 
     theme = "zenwritten";
