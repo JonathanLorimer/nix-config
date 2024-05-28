@@ -26,11 +26,11 @@
   # extraConfig = ''
   #   keyserver hkps://keys.openpgp.org
   # '';
-  helix = (import ./helix) { inherit colorscheme; };
+  helix = (import ./helix) {inherit colorscheme pkgs;};
   htop.enable = true;
-  jujutsu = (import ./jujutsu) { inherit (pkgs) delta meld; };
+  jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
-  obs-studio = (import ./obs-studio.nix) { inherit pkgs; };
+  obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
   skim = import ./skim.nix;
   ssh = {
     enable = true;

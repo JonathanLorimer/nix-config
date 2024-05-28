@@ -1,32 +1,39 @@
-{ colorscheme }:
 {
+  colorscheme,
+  pkgs,
+}: {
   enable = true;
   defaultEditor = true;
   languages = {
     language = [
       {
         name = "nix";
-        scope = "source.nix";
-        injection-regex = "nix";
-        file-types = ["nix"];
-        shebangs = [];
-        comment-token = "#";
-        language-servers = [ "nil" ];
-        indent = { tab-width = 2; unit = "  "; };  
         formatter = {
           command = "alejandra";
         };
-      }  
+        auto-format = true;
+      }
+      {
+        name = "typescript";
+        formatter = {
+          command = "${pkgs.nodePackages_latest.prettier}/bin/prettier";
+          args = ["--parser" "typescript"];
+        };
+        auto-format = true;
+      }
     ];
   };
-  settings = { 
+  settings = {
     theme = "zenwritten";
     editor = {
+      idle-timeout = 50;
+      completion-timeout = 50;
+      completion-trigger-len = 0;
       gutters = ["spacer" "diagnostics" "line-numbers" "spacer" "diff"];
       color-modes = true;
       line-number = "relative";
       cursor-shape = {
-        insert = "bar"; 
+        insert = "bar";
         normal = "block";
         select = "underline";
       };
@@ -44,10 +51,11 @@
         h = "hover";
         r = "rename_symbol";
         f = ":format";
+        d = "goto_definition";
       };
     };
   };
   themes = {
-    zenwritten = (import ./themes/zenwritten.nix) { inherit colorscheme; };
+    zenwritten = (import ./themes/zenwritten.nix) {inherit colorscheme;};
   };
 }

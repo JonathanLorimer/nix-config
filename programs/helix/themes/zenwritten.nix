@@ -77,6 +77,7 @@ in
     "ui.virtual.whitespace" = { fg = bgDim; };
     "ui.virtual.indent-guide" = { fg = bgDim; };
     "ui.virtual.ruler" = { bg = bgDim; };
+    "ui.virtual.jump-label" = { fg = magenta; bg = bgDim; };
 
     "hint" = blue;
     "info" = green;
