@@ -30,8 +30,8 @@ in {
       bases = "present(branches(base)) | trunk()";
       working_lineage = "bases::@ | @::";
       base_branches = "bases:: & branches() & mine()";
-      base_heads = "heads(bases::)";
-      base_roots = "roots(bases:: ~ bases)";
+      base_heads = "heads(bases::) & mine()";
+      base_roots = "roots(bases:: ~ bases) & mine()";
     };
 
     core.fsmonitor = "watchman";
