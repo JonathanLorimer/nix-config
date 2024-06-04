@@ -67,15 +67,9 @@
 
       # Command Line Utils
       jq
-      ripgrep
       ruplacer
-      eza
       duf
       tokei
-      tealdeer
-      hyperfine
-      xh
-      highlight
 
       # Knowledge Management
       zotero

@@ -20,6 +20,11 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+  eza = {
+    enable = true;
+    enableZshIntegration = true;
+    git = true;
+  };
   git = import ./git.nix;
   gpg.enable = true;
   # TODO: figure out a way to add this to gpg conf
@@ -31,6 +36,7 @@
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
+  ripgrep.enable = true;
   skim = import ./skim.nix;
   ssh = {
     enable = true;
