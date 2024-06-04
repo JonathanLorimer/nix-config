@@ -57,9 +57,6 @@
   # Enable Light
   programs.light.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
