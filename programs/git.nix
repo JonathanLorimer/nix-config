@@ -3,6 +3,7 @@
   userName = "Jonathan Lorimer";
   userEmail = "jonathan_lorimer@mac.com";
   extraConfig = {
+    safe.directory = "/persist/nix-config";
     init.defaultBranch = "main";
     pull.rebase = true;
     rerere.enabled = true;

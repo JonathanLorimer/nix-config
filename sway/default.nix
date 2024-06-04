@@ -8,6 +8,8 @@ in {
   enable = true;
   systemd.enable = true;
   config = {
+    floating.titlebar = false;
+    window.titlebar = false;
     fonts = {
       names = [default-font "Iosevka" "Font Awesome 5 Free"];
       style = "Bold";

@@ -25,16 +25,11 @@
       vlc
       ffmpeg
 
-      # Messaging
-      keybase
-      keybase-gui
-
       # Browser
       firefox-wayland
       chromium
 
       # Network
-      openvpn
       openssl
 
       # Sound
@@ -56,27 +51,19 @@
       cachix
       nix-prefetch-git
       gh
-      cornelis
       insomnia
       tree-sitter
-      tabnine
       dbeaver-bin
 
       # LSP
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nil
-      alejandra 
-      sumneko-lua-language-server
-      # (idris2-pkgs.lsp.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
-      # (idris2-pkgs.idris2.withSources (ps: [ ps.comonad ps.contrib ps.test ps.idris2 ]))
+      alejandra
 
       # Terminal
-      alacritty
       neofetch
       asciinema
-      rlwrap
-      tmate
 
       # Command Line Utils
       jq
@@ -95,7 +82,7 @@
     ]
     ++ scripts;
 
-  stateVersion = "22.05";
+  stateVersion = "24.11";
 
   sessionVariables =
     {

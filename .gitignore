@@ -12,7 +12,6 @@ pritunl.ovpn
 
 */**/secrets-unencrypted.yaml
 
-*/**/PragmataPro0.829.zip
-*/**/PragmataProPatched0.829.zip
+*/**/PragmataPro*
 
 result/

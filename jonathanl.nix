@@ -4,7 +4,6 @@
   cornelis-vim,
   nixpkgs,
   configurationName,
-  overlays
 }: {
   pkgs,
   config,
@@ -22,7 +21,6 @@
 in {
   imports = [
     colours.homeManagerModule
-    overlays
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {

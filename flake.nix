@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     sops-nix.url = "github:Mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
     cornelis.url = "github:isovector/cornelis";
@@ -18,7 +17,6 @@
     home-manager,
     nixpkgs,
     nixos-hardware,
-    neovim-nightly-overlay,
     sops-nix,
     nix-colors,
     cornelis,
@@ -26,14 +24,13 @@
     ...
   }: let
     system = "x86_64-linux";
-    overlays = import ./modules/overlays.nix {inherit neovim-nightly-overlay;};
     commonModules = configurationName: [
       # Modules
       ./modules/base.nix
       ./modules/postgres.nix
       ./modules/nix.nix
       ((import ./modules/channels.nix) {inherit nixpkgs;})
-      overlays
+      ./modules/overlays.nix
       ./modules/pipewire.nix
       ./modules/tailscale.nix
       ./modules/certs
@@ -49,7 +46,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
-          inherit nixpkgs configurationName overlays;
+          inherit nixpkgs configurationName;
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
@@ -79,6 +76,12 @@
           ++ [
             ./modules/daedalus/hardware-configuration.nix
             ./modules/daedalus/nix.nix
+            ./modules/daedalus/encryption.nix
+            ./modules/daedalus/host.nix
+            ./modules/daedalus/impermanence.nix
+            ./modules/daedalus/users.nix
+            ./modules/daedalus/state-version.nix
+
             # Hardware
             nixos-hardware.nixosModules.lenovo-thinkpad-t14s
             nixpkgs.nixosModules.notDetected

@@ -3,18 +3,18 @@
   requireFile,
   unzip,
 }: let
-  version = "0.829";
+  version = "0.830";
 in {
   patched =
     runCommand "pragmata-pro-patched-${version}"
     {
       outputHashMode = "recursive";
       outputHashAlgo = "sha256";
-      outputHash = "ogGgX0/yMRO//K1ZgrOTMPMK06lokqByQR/BxL9MxYg=";
+      outputHash = "3gtaBUipdV+5yQog1iREd+XOzpDKbMl0lwzMNFVv+Ks=";
       src = requireFile {
         url = "https://fsd.it/my-account/downloads/";
         name = "PragmataProPatched${version}.zip";
-        sha256 = "1pp7aymyjfi3dq7bc0n740qhgfb44dzz285j3lf8amfdwbpyr8vv";
+        sha256 = "0r6221r73df69cvdj66g9f5pbkyypncx4d2d627cnhfxr7czxfjd";
       };
       buildInputs = [unzip];
     } ''
@@ -29,11 +29,11 @@ in {
     {
       outputHashMode = "recursive";
       outputHashAlgo = "sha256";
-      outputHash = "GG8id7kZMqyDCDyvJLNL1CUrlaLzzL70f/b8CXYQGXE=";
+      outputHash = "NL8nPkmtTyqDhf0PrAbnwrmttN+IxVsDHvygprk0k+c=";
       src = requireFile {
         url = "https://fsd.it/my-account/downloads/";
         name = "PragmataPro${version}.zip";
-        sha256 = "0q9lyg7j8nfnl6z3nw0bb15whk1hk6h4hxkwa5fnbg62cw04jg2m";
+        sha256 = "0yg2gljyqzlnj1mkx6qn5xzp02l8d98hla979gklnlmxm4vzzbsc";
       };
       buildInputs = [unzip];
     } ''
