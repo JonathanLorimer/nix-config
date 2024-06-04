@@ -4,6 +4,7 @@
   ...
 }: {
   boot.supportedFilesystems = ["zfs"];
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     zfs rollback -r rpool/local/root@blank
   '';
