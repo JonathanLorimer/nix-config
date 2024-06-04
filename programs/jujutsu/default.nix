@@ -47,6 +47,10 @@ in {
       n = ["new" "-r" "base"];
       f = ["git" "fetch"];
 
+      # Cleanup: has a long name because it is desctructive. Abandon
+      # all empty descendents of 'bases'
+      cleanup = ["abandon" "bases:: ~ bases & empty()"];
+
       rb = ["rebase" "-s" "base" "-d" "trunk()"];
 
       # Log Mine: Non-graph view of the head of the 10 most recent changesets
