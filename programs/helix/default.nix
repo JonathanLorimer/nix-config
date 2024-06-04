@@ -49,7 +49,8 @@
         k = "goto_prev_diag";
         a = "code_action";
         h = "hover";
-        r = "rename_symbol";
+        s = "rename_symbol";
+        r = "goto_reference";
         f = ":format";
         d = "goto_definition";
       };
