@@ -13,4 +13,8 @@
   environment.etc."NetworkManager/system-connections" = {
     source = "/persist/etc/NetworkManager/system-connections/";
   };
+
+  systemd.tmpfiles.rules = [
+    "L /var/lib/postgres - - - - /persist/var/lib/postgres"
+  ];
 }

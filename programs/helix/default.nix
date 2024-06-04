@@ -23,11 +23,12 @@
       }
     ];
   };
+
   settings = {
     theme = "zenwritten";
     editor = {
-      idle-timeout = 50;
-      completion-timeout = 50;
+      idle-timeout = 200;
+      completion-timeout = 200;
       completion-trigger-len = 0;
       gutters = ["spacer" "diagnostics" "line-numbers" "spacer" "diff"];
       color-modes = true;
