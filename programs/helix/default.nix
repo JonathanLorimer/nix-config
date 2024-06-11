@@ -45,6 +45,10 @@
       };
     };
     keys = {
+      normal = {
+        "{" = "goto_prev_paragraph";
+        "}" = "goto_next_paragraph";
+      };
       normal."C-l" = {
         j = "goto_next_diag";
         k = "goto_prev_diag";
