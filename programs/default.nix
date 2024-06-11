@@ -56,6 +56,7 @@
   taskwarrior.enable = true;
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   waybar = import ./waybar;
+  yazi.enable = true;
   zathura.enable = true;
   zellij = (import ./zellij) {inherit colorscheme;};
   zoxide.enable = true;

@@ -34,6 +34,8 @@
   # Networking
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.interfaces.wlan0.useDHCP = true;
+  networking.wireless.interfaces = ["wlan0"];
 
   # Set your time zone.
   time.timeZone = "Canada/Eastern";

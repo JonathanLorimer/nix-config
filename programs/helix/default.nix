@@ -48,6 +48,10 @@
       normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
+        "C-;" = "flip_selections";
+      };
+      select = {
+        "C-;" = "flip_selections";
       };
       normal."C-l" = {
         j = "goto_next_diag";
