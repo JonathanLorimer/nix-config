@@ -63,6 +63,12 @@
         f = ":format";
         d = "goto_definition";
       };
+      normal."C-j" = {
+        s = "save_selection";
+        l = "jump_forward";
+        h = "jump_backward";
+        j = "jumplist_picker";
+      };
     };
   };
   themes = {

@@ -17,4 +17,6 @@
   systemd.tmpfiles.rules = [
     "L /var/lib/postgres - - - - /persist/var/lib/postgres"
   ];
+
+  systemd.services.tailscaled.serviceConfig.BindPaths = "/persist/var/lib/tailscale:/var/lib/tailscale";
 }

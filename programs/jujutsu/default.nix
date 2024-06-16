@@ -32,6 +32,7 @@ in {
       base_branches = "bases:: & branches() & mine()";
       base_heads = "heads(bases::) & mine()";
       base_roots = "roots(bases:: ~ bases) & mine()";
+      "base_to_branch(target)" = "bases::branches(target) ~ bases";
     };
 
     core.fsmonitor = "watchman";
