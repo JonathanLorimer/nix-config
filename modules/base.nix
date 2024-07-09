@@ -19,7 +19,6 @@
   hardware.opengl.enable = true;
 
   # Use the systemd-boot EFI boot loader.
-  console.packages = [pkgs.termsyn];
   boot.loader.grub = {
     enable = true;
     device = "nodev";

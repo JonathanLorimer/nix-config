@@ -27,9 +27,11 @@
   settings = {
     theme = "zenwritten";
     editor = {
+      auto-pairs = false;
+      smart-tab.enable = false;
       idle-timeout = 200;
       completion-timeout = 200;
-      completion-trigger-len = 0;
+      completion-trigger-len = 1;
       gutters = ["spacer" "diagnostics" "line-numbers" "spacer" "diff"];
       color-modes = true;
       line-number = "relative";
