@@ -19,10 +19,13 @@
   hardware.opengl.enable = true;
 
   # Use the systemd-boot EFI boot loader.
+  console.packages = [pkgs.termsyn];
   boot.loader.grub = {
-    gfxmodeEfi = "3440x1440";
-    font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-    fontSize = 36;
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    font = "${pkgs.pragmata-pro-console}/share/fonts/consolefont/pragmatapro/ppr32.pf2";
+    fontSize = 32;
   };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl = {
@@ -32,10 +35,16 @@
   };
 
   # Networking
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
   networking.interfaces.wlan0.useDHCP = true;
-  networking.wireless.interfaces = ["wlan0"];
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General.UseDefaultInterface = false;
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Canada/Eastern";

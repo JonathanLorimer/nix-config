@@ -36,6 +36,7 @@
       ./modules/certs
       ./modules/gaming.nix
       ./modules/unfreePackages.nix
+      ./modules/login.nix
 
       # Secrets
       sops-nix.nixosModules.sops
