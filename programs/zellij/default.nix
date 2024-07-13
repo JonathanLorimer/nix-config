@@ -7,9 +7,6 @@
 
     keybinds = {
       unbind = "Ctrl q";
-      shared = {
-        "bind \"Ctrl k\"" = { "Quit ;" = []; };
-      };
     };
     simplified_ui = true;
     pane_frames = false;

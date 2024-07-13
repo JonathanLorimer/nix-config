@@ -12,6 +12,10 @@
       url = "github:kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     home-manager,
@@ -21,11 +25,12 @@
     nix-colors,
     cornelis,
     kolide,
+    lix-module,
     ...
   }: let
     system = "x86_64-linux";
     commonModules = configurationName: [
-      # Modules
+      # Personal Modules
       ./modules/base.nix
       ./modules/postgres.nix
       ./modules/nix.nix
@@ -37,6 +42,9 @@
       ./modules/gaming.nix
       ./modules/unfreePackages.nix
       ./modules/login.nix
+
+      # External Modules
+      lix-module.nixosModules.default
 
       # Secrets
       sops-nix.nixosModules.sops
