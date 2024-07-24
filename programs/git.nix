@@ -23,7 +23,7 @@
     };
   };
   signing = {
-    key = null;
+    key = "223976DB";
     signByDefault = true;
   };
   delta = {

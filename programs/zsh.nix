@@ -5,8 +5,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "chisui";
       repo = "zsh-nix-shell";
-      rev = "v0.4.0";
-      sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
+      rev = "v0.8.0";
+      sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
     };
   };
 in {
@@ -29,9 +29,7 @@ in {
     gp = "git push";
     gr = "git remote add";
     cd = "z";
-    wl = "nmcli d wifi list";
-    wc = "nmcli d wifi connect";
-    wd = "nmcli con down id";
+    w = "iwctl";
   };
   history.expireDuplicatesFirst = true;
   history.ignoreDups = true;
