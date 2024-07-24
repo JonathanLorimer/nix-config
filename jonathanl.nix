@@ -27,7 +27,7 @@ in {
     "nix/inputs/nixpkgs".source = nixpkgs.outPath;
     "nvim/lua".source = ./programs/nvim/lua;
   };
-  home = (import ./base.nix) {
+  home = (import ./home.nix) {
     inherit pkgs scripts env-vars;
     cornelis = cornelis;
   };
