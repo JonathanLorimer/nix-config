@@ -48,6 +48,8 @@
     };
     keys = {
       normal = {
+        g.k = "goto_prev_change";
+        g.j = "goto_next_change";
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
         "C-;" = "flip_selections";

@@ -24,6 +24,7 @@
       # Video
       vlc
       ffmpeg
+      kooha
 
       # Browser
       firefox-wayland
