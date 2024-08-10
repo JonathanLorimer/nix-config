@@ -4,13 +4,13 @@
   cornelis-vim,
   nixpkgs,
   configurationName,
+  impala,
 }: {
   pkgs,
   config,
   ...
 }: let
   colorscheme = (import ./colors.nix).zenwritten-desat;
-  scripts = (import ./scripts) {inherit pkgs;};
   env-vars = {
     EDITOR = "hx";
     TERMINAL = "alacritty";
@@ -28,8 +28,7 @@ in {
     "nvim/lua".source = ./programs/nvim/lua;
   };
   home = (import ./home.nix) {
-    inherit pkgs scripts env-vars;
-    cornelis = cornelis;
+    inherit pkgs env-vars cornelis impala;
   };
   programs = (import ./programs/default.nix) {
     inherit pkgs colorscheme default-font;

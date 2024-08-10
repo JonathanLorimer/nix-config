@@ -53,8 +53,8 @@
   };
   starship = import ./starship.nix;
   swaylock = import ./swaylock.nix {inherit colorscheme pkgs;};
-  taskwarrior.enable = true;
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
+  vscode.enable = true;
   waybar = import ./waybar;
   yazi.enable = true;
   zathura.enable = true;

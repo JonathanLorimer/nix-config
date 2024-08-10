@@ -150,6 +150,25 @@
         "type": "github"
       }
     },
+    "impala": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1722030187,
+        "narHash": "sha256-x3ljLMf4a8mMSXrO/jvmLl8Pov3+Vn7qG2XMfWB2iVE=",
+        "owner": "Samuel-Martineau",
+        "repo": "impala",
+        "rev": "e7a93811c4997884680ec434650333be9f0c0144",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Samuel-Martineau",
+        "ref": "package-for-nixos",
+        "repo": "impala",
+        "type": "github"
+      }
+    },
     "kolide": {
       "inputs": {
         "nixpkgs": [
@@ -287,6 +306,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1721949857,
+        "narHash": "sha256-DID446r8KsmJhbCzx4el8d9SnPiE8qa6+eEQOJ40vR0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a1cc729dcbc31d9b0d11d86dc7436163548a9665",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1716715802,
         "narHash": "sha256-usk0vE7VlxPX8jOavrtpOqphdfqEQpf9lgedlY/r66c=",
         "owner": "nixos",
@@ -301,7 +336,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1682109806,
         "narHash": "sha256-d9g7RKNShMLboTWwukM+RObDWWpHKaqTYXB48clBWXI=",
@@ -321,17 +356,18 @@
       "inputs": {
         "cornelis": "cornelis",
         "home-manager": "home-manager",
+        "impala": "impala",
         "kolide": "kolide",
         "lix-module": "lix-module",
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {

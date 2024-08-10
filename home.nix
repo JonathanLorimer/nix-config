@@ -1,8 +1,8 @@
 {
   pkgs,
-  scripts,
   env-vars,
   cornelis,
+  impala,
 }: {
   pointerCursor = {
     gtk.enable = true;
@@ -10,72 +10,71 @@
     name = "Bibata-Modern-Ice";
     size = 32;
   };
-  packages = with pkgs;
-    [
-      # Wayland
-      xwayland
+  packages = with pkgs; [
+    # Wayland
+    xwayland
 
-      # Sway Utils
-      slurp
-      wl-clipboard
-      wf-recorder
-      grim
+    # Sway Utils
+    slurp
+    wl-clipboard
+    wf-recorder
+    grim
 
-      # Video
-      vlc
-      ffmpeg
-      kooha
+    # Video
+    vlc
+    ffmpeg
+    kooha
 
-      # Browser
-      firefox-wayland
-      chromium
+    # Browser
+    firefox-wayland
+    chromium
 
-      # Network
-      openssl
+    # Network
+    openssl
+    impala
 
-      # Sound
-      pw-volume
-      pavucontrol
-      pulseaudio
+    # Sound
+    pw-volume
+    pavucontrol
+    pulseaudio
 
-      # Navigation
-      bemenu
+    # Navigation
+    bemenu
 
-      # Programming
-      agda
-      cornelis
-      gcc
-      awscli
-      aws-mfa
-      stack
-      exercism
-      cachix
-      nix-prefetch-git
-      gh
-      insomnia
-      tree-sitter
-      dbeaver-bin
+    # Programming
+    agda
+    cornelis
+    gcc
+    awscli
+    aws-mfa
+    stack
+    exercism
+    cachix
+    nix-prefetch-git
+    gh
+    insomnia
+    tree-sitter
+    dbeaver-bin
 
-      # LSP
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nil
-      alejandra
+    # LSP
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nil
+    alejandra
 
-      # Terminal
-      neofetch
-      asciinema
+    # Terminal
+    neofetch
+    asciinema
 
-      # Command Line Utils
-      jq
-      ruplacer
-      duf
-      tokei
+    # Command Line Utils
+    jq
+    ruplacer
+    duf
+    tokei
 
-      # Knowledge Management
-      zotero
-    ]
-    ++ scripts;
+    # Knowledge Management
+    zotero
+  ];
 
   stateVersion = "24.11";
 

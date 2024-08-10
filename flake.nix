@@ -16,6 +16,7 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
   };
   outputs = {
     home-manager,
@@ -26,6 +27,7 @@
     cornelis,
     kolide,
     lix-module,
+    impala,
     ...
   }: let
     system = "x86_64-linux";
@@ -59,6 +61,7 @@
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
+          impala = impala.packages."${system}".impala;
         };
       }
     ];
