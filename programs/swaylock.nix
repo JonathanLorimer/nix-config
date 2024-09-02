@@ -1,24 +1,14 @@
-{colorscheme, pkgs}: {
-  package = pkgs.swaylock-effects;
+{
+  colorscheme,
+  pkgs,
+}: {
+  enable = true;
   settings = {
-    screenshots = true;
-    clock = true;
-    indicator = true;
+    color = "171d22";
+    font-size = 24;
+    indicator-idle-visible = true;
+    indicator-radius = 100;
+    line-color = "ffffff";
     show-failed-attempts = true;
-    ignore-empty-password = true;
-    effect-blur = "7x5";
-    effect-vignette = "0.6:0.6";
-    ring-color = colorscheme.base0D;
-    ring-ver-color = colorscheme.base0B;
-    ring-wrong-color = colorscheme.base08;
-    key-hl-color = colorscheme.base0A;
-    line-color = "00000000";
-    line-ver-color = "00000000";
-    line-wrong-color = "00000000";
-    inside-color = "00000000";
-    inside-ver-color = "00000000";
-    inside-wrong-color = "00000000";
-    separator-color = "00000000";
-    text-color = colorscheme.base04;
   };
 }

@@ -16,7 +16,7 @@
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Graphics
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub = {
@@ -75,7 +75,6 @@
   services.udev.packages = [pkgs.yubikey-personalization];
 
   # Enable sound.
-  sound.enable = true;
   hardware.bluetooth.enable = true;
 
   hardware.keyboard.zsa.enable = true;

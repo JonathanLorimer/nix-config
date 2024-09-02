@@ -3,8 +3,7 @@
   default-font,
   configurationName,
   pkgs,
-}:
-{
+}: {
   spotifyd.enable = true;
   gpg-agent = {
     enable = true;
@@ -20,7 +19,7 @@
     timeouts = [
       {
         timeout = 900;
-        command = "${pkgs.swaylock-effects}/bin/swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         timeout = 1500;
