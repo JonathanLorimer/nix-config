@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
+    nur.url = "github:nix-community/NUR";
   };
   outputs = {
     home-manager,
@@ -28,6 +29,7 @@
     kolide,
     lix-module,
     impala,
+    nur,
     ...
   }: let
     system = "x86_64-linux";
@@ -37,7 +39,7 @@
       ./modules/postgres.nix
       ./modules/nix.nix
       ((import ./modules/channels.nix) {inherit nixpkgs;})
-      ./modules/overlays.nix
+      ((import ./modules/overlays.nix) {inherit nur;})
       ./modules/pipewire.nix
       ./modules/tailscale.nix
       ./modules/certs
@@ -48,6 +50,7 @@
 
       # External Modules
       lix-module.nixosModules.default
+      nur.nixosModules.nur
 
       # Secrets
       sops-nix.nixosModules.sops
@@ -57,6 +60,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
           inherit nixpkgs configurationName;
           colours = nix-colors;

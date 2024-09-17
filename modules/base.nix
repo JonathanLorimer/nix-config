@@ -63,6 +63,7 @@
     "steam-original"
     "steam"
     "tabnine"
+    "onepassword-password-manager"
   ];
 
   # Enable Light

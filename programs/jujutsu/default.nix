@@ -44,9 +44,11 @@ in {
     aliases = {
       l = ["log"];
       ll = ["log" "-r" "all()" "-l" "10"];
+      lc = ["log" "-r" "::@" "-l" "10"];
       s = ["status"];
       n = ["new" "-r" "base"];
       f = ["git" "fetch"];
+      back = ["edit" "-r" "@-"];
 
       # Cleanup: has a long name because it is desctructive. Abandon
       # all empty descendents of 'bases'

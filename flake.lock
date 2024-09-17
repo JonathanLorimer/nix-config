@@ -352,6 +352,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1725381339,
+        "narHash": "sha256-R2QrBQDg3PzZWYfnpu8x+65CpqE/jVxNGYX1C0zSzms=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "89f1914bb56bc44fdae5ef8fb51a5e1e48223b8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cornelis": "cornelis",
@@ -362,6 +377,7 @@
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "nur": "nur",
         "sops-nix": "sops-nix"
       }
     },

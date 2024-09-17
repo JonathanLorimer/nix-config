@@ -26,7 +26,6 @@
     kooha
 
     # Browser
-    firefox-wayland
     chromium
 
     # Network

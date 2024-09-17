@@ -25,6 +25,7 @@
     enableZshIntegration = true;
     git = true;
   };
+  firefox = (import ./firefox.nix) {inherit pkgs;};
   git = import ./git.nix;
   gpg.enable = true;
   # TODO: figure out a way to add this to gpg conf
