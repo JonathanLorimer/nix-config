@@ -30,6 +30,7 @@ in {
     gr = "git remote add";
     cd = "z";
     w = "iwctl";
+    jjinit = "jj git init --colocate && jj new && jj describe -m \"∅\" && jj branch create base";
   };
   history.expireDuplicatesFirst = true;
   history.ignoreDups = true;

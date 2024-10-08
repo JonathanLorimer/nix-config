@@ -4,6 +4,7 @@
   term-env,
   default-font,
   cornelis-vim,
+  helix,
 }: {
   alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
   bat.config.theme = "Nord";
@@ -32,7 +33,7 @@
   # extraConfig = ''
   #   keyserver hkps://keys.openpgp.org
   # '';
-  helix = (import ./helix) {inherit colorscheme pkgs;};
+  helix = (import ./helix) {inherit colorscheme pkgs helix;};
   htop.enable = true;
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   # neovim = (import ./nvim) {inherit pkgs cornelis-vim;};

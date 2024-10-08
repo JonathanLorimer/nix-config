@@ -18,6 +18,9 @@
     };
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
     nur.url = "github:nix-community/NUR";
+
+    # https://github.com/helix-editor/helix/pull/11164
+    helix.url = "github:helix-editor/helix/c0666d1219a82cd4e850a30ca1a7f18294c58e9a";
   };
   outputs = {
     home-manager,
@@ -30,6 +33,7 @@
     lix-module,
     impala,
     nur,
+    helix,
     ...
   }: let
     system = "x86_64-linux";
@@ -67,6 +71,7 @@
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
           impala = impala.packages."${system}".impala;
+          helix = helix.packages."${system}".helix;
         };
       }
     ];

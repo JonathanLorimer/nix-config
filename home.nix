@@ -11,6 +11,9 @@
     size = 32;
   };
   packages = with pkgs; [
+    # Proffesional
+    slack
+
     # Wayland
     xwayland
 

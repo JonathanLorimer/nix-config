@@ -56,6 +56,7 @@
 
   # Nixpkgs
   nixpkgs.allowUnfreePackages = [
+    "slack"
     "discord"
     "vscode"
     "postman"
@@ -83,7 +84,7 @@
   # set the correct sound card
   boot.extraModprobeConfig = ''
     options v4l2loopback exclusive_caps=1
-    options snd-hda-intel index=1,0 model=auto,dell-headset-multi
+    options snd-hda-intel model=dell-headset-multi
   '';
 
   boot.kernelModules = [

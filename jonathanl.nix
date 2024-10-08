@@ -5,6 +5,7 @@
   nixpkgs,
   configurationName,
   impala,
+  helix,
 }: {
   pkgs,
   config,
@@ -31,7 +32,7 @@ in {
     inherit pkgs env-vars cornelis impala;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font;
+    inherit pkgs colorscheme default-font helix;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

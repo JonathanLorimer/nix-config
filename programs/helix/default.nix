@@ -1,10 +1,18 @@
 {
   colorscheme,
   pkgs,
+  helix,
 }: {
   enable = true;
+  package = helix;
   defaultEditor = true;
   languages = {
+    language-server = {
+      vtsls = {
+        command = "vtsls";
+        args = ["--stdio"];
+      };
+    };
     language = [
       {
         name = "nix";
@@ -19,6 +27,20 @@
           command = "${pkgs.nodePackages_latest.prettier}/bin/prettier";
           args = ["--parser" "typescript"];
         };
+        language-servers = [
+          {name = "vtsls";}
+        ];
+        auto-format = true;
+      }
+      {
+        name = "tsx";
+        formatter = {
+          command = "${pkgs.nodePackages_latest.prettier}/bin/prettier";
+          args = ["--parser" "typescript"];
+        };
+        language-servers = [
+          {name = "vtsls";}
+        ];
         auto-format = true;
       }
     ];
@@ -57,6 +79,12 @@
       select = {
         "C-;" = "flip_selections";
       };
+      normal."C-t" = {
+        e = "expand_selection";
+        s = "shrink_selection";
+        k = "select_prev_sibling";
+        j = "select_next_sibling";
+      };
       normal."C-l" = {
         j = "goto_next_diag";
         k = "goto_prev_diag";
@@ -72,6 +100,9 @@
         l = "jump_forward";
         h = "jump_backward";
         j = "jumplist_picker";
+      };
+      normal."C-x" = {
+        b = ":sh zellij action new-pane -- git blame %{filename:git_rel}";
       };
     };
   };
