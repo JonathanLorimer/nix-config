@@ -63,6 +63,7 @@
     "steam-run"
     "steam-original"
     "steam"
+    "steam-unwrapped"
     "tabnine"
     "onepassword-password-manager"
   ];

@@ -6,7 +6,7 @@
 }: {
   enable = true;
   settings = {
-    shell = {
+    terminal.shell = {
       program = "${pkgs.zsh}/bin/zsh";
       args = [
         "-c"

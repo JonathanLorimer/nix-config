@@ -27,12 +27,12 @@ in {
     };
 
     revset-aliases = {
-      bases = "present(branches(base)) | trunk()";
+      bases = "present(bookmarks(base)) | trunk()";
       working_lineage = "bases::@ | @::";
-      base_branches = "bases:: & branches() & mine()";
+      base_branches = "bases:: & bookmarks() & mine()";
       base_heads = "heads(bases::) & mine()";
       base_roots = "roots(bases:: ~ bases) & mine()";
-      "base_to_branch(target)" = "bases::branches(target) ~ bases";
+      "base_to_branch(target)" = "bases::bookmarks(target) ~ bases";
     };
 
     core.fsmonitor = "watchman";
