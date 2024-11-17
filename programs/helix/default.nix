@@ -102,7 +102,18 @@
         j = "jumplist_picker";
       };
       normal."C-x" = {
-        b = ":sh zellij action new-pane -- git blame %{filename:git_rel}";
+        b = let
+          gitBlameZellij = pkgs.writeShellScriptBin "git-blame-zellij" ''
+            if [[ -v ZELLIJ ]]; then
+              zellij action new-pane -- jj file annotate $1
+            else
+              echo "Not in a zellij session, this command opens commit annotations in a separate pane"
+            fi
+          '';
+        in {
+          f = ":sh ${gitBlameZellij}/bin/git-blame-zellij %{filename:git_rel}";
+          l = ":sh git blame %{filename:git_rel} -L %{linenumber}";
+        };
       };
     };
   };

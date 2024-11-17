@@ -17,6 +17,14 @@ in {
       key = email;
     };
 
+    templates = {
+      annotate_commit_summary = let
+        commit = "change_id.shortest(8)";
+        username = "pad_end(16, truncate_end(16, author.name()))";
+        commitDateAgo = "pad_end(13, truncate_end(13, committer.timestamp().local().ago()))";
+      in "separate(\" \", ${commit}, ${username}, ${commitDateAgo})";
+    };
+
     template-aliases = {
       "format_timestamp(timestamp)" = "timestamp.ago()";
       "format_short_signature(signature)" = "signature.name()";
