@@ -7,7 +7,6 @@
   programs.zsh.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Iosevka"];})
     font-awesome
     pragmata-pro
     pragmata-pro-patched
@@ -34,6 +33,7 @@
   };
 
   # Networking
+  networking.firewall.enable = false;
   networking.interfaces.wlan0.useDHCP = true;
   networking.wireless.iwd = {
     enable = true;
@@ -53,6 +53,8 @@
     pkgs.vim
     pkgs.linuxPackages.v4l2loopback
   ];
+
+  environment.pathsToLink = ["/share/zsh"];
 
   # Nixpkgs
   nixpkgs.allowUnfreePackages = [

@@ -6,6 +6,8 @@
   configurationName,
   impala,
   helix,
+  ghostty,
+  ghosttyHM,
 }: {
   pkgs,
   config,
@@ -22,6 +24,7 @@
 in {
   imports = [
     colours.homeManagerModule
+    ghosttyHM.homeModules.default
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {
@@ -32,7 +35,7 @@ in {
     inherit pkgs env-vars cornelis impala;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font helix;
+    inherit pkgs colorscheme default-font helix ghostty;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

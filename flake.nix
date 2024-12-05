@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
@@ -21,6 +21,16 @@
 
     # https://github.com/helix-editor/helix/pull/11164
     helix.url = "github:helix-editor/helix/c0666d1219a82cd4e850a30ca1a7f18294c58e9a";
+
+    ghosttyHM.url = "github:clo4/ghostty-hm-module";
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+
+      # NOTE: The below 2 lines are only required on nixos-unstable,
+      # if you're on stable, they may break your build
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+    };
   };
   outputs = {
     home-manager,
@@ -34,6 +44,8 @@
     impala,
     nur,
     helix,
+    ghosttyHM,
+    ghostty,
     ...
   }: let
     system = "x86_64-linux";
@@ -51,6 +63,7 @@
       ./modules/unfreePackages.nix
       ./modules/login.nix
       ./modules/miniflux.nix
+      ./modules/docker.nix
 
       # External Modules
       lix-module.nixosModules.default
@@ -66,12 +79,13 @@
         home-manager.useUserPackages = true;
         home-manager.backupFileExtension = "backup";
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
-          inherit nixpkgs configurationName;
+          inherit nixpkgs configurationName ghosttyHM;
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
           impala = impala.packages."${system}".impala;
           helix = helix.packages."${system}".helix;
+          ghostty = ghostty.packages."${system}".default;
         };
       }
     ];

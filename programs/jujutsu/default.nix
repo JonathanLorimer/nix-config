@@ -51,8 +51,8 @@ in {
 
     aliases = {
       l = ["log"];
-      ll = ["log" "-r" "all()" "-l" "10"];
-      lc = ["log" "-r" "::@" "-l" "10"];
+      ll = ["log" "-r" "all()" "-n" "10"];
+      lc = ["log" "-r" "::@" "-n" "10"];
       s = ["status"];
       n = ["new" "-r" "base"];
       f = ["git" "fetch"];
@@ -66,7 +66,9 @@ in {
 
       # Log Mine: Non-graph view of the head of the 10 most recent changesets
       # that are mine
-      lm = ["log" "-r" "heads(mine())" "--no-graph" "-l" "10"];
+      lm = ["log" "-r" "heads(mine())" "--no-graph" "-n" "10"];
+
+      nil = ["describe" "-m" "\"∅\""];
     };
 
     ui = {

@@ -12,6 +12,10 @@
         command = "vtsls";
         args = ["--stdio"];
       };
+      svelteserver = {
+        command = "${pkgs.svelte-language-server}/bin/svelteserver";
+        args = ["--stdio"];
+      };
     };
     language = [
       {
@@ -42,6 +46,12 @@
           {name = "vtsls";}
         ];
         auto-format = true;
+      }
+      {
+        name = "svelte";
+        auto-format = false;
+        language-servers = ["svelteserver"];
+        # formatter = { command = "prettier", args = ["--parser", "html"]}
       }
     ];
   };
@@ -113,6 +123,7 @@
         in {
           f = ":sh ${gitBlameZellij}/bin/git-blame-zellij %{filename:git_rel}";
           l = ":sh git blame %{filename:git_rel} -L %{linenumber}";
+          h = ":sh gh browse %{filename:git_rel}:%{linenumber}";
         };
       };
     };

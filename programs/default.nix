@@ -5,6 +5,7 @@
   default-font,
   cornelis-vim,
   helix,
+  ghostty,
 }: {
   alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
   bat.config.theme = "Nord";
@@ -27,6 +28,10 @@
     git = true;
   };
   firefox = (import ./firefox.nix) {inherit pkgs;};
+  ghostty = {
+    enable = true;
+    package = ghostty;
+  };
   git = import ./git.nix;
   gpg.enable = true;
   # TODO: figure out a way to add this to gpg conf
@@ -63,5 +68,5 @@
   zellij = (import ./zellij) {inherit colorscheme;};
   zoxide.enable = true;
   zoxide.enableZshIntegration = true;
-  zsh = (import ./zsh.nix) {inherit pkgs;};
+  zsh = (import ./zsh) {inherit pkgs;};
 }

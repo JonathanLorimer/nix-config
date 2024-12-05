@@ -41,4 +41,7 @@ in {
     enable = true;
     plugins = ["git" "sudo" "ssh-agent"];
   };
+  envExtra = ''
+    ${builtins.readFile ./jj_autocomplete.sh}
+  '';
 }
