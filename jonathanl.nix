@@ -8,6 +8,7 @@
   helix,
   ghostty,
   ghosttyHM,
+  scls,
 }: {
   pkgs,
   config,
@@ -30,12 +31,13 @@ in {
   xdg.configFile = {
     "nix/inputs/nixpkgs".source = nixpkgs.outPath;
     "nvim/lua".source = ./programs/nvim/lua;
+    "helix/unicode-input/base.toml".source = ./programs/helix/unicode.toml;
   };
   home = (import ./home.nix) {
     inherit pkgs env-vars cornelis impala;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font helix ghostty;
+    inherit pkgs colorscheme default-font helix ghostty scls;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

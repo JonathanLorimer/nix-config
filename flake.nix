@@ -31,6 +31,7 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
+    scls.url = "github:estin/simple-completion-language-server";
   };
   outputs = {
     home-manager,
@@ -46,6 +47,7 @@
     helix,
     ghosttyHM,
     ghostty,
+    scls,
     ...
   }: let
     system = "x86_64-linux";
@@ -86,6 +88,7 @@
           impala = impala.packages."${system}".impala;
           helix = helix.packages."${system}".helix;
           ghostty = ghostty.packages."${system}".default;
+          scls = scls.defaultPackage."${system}";
         };
       }
     ];

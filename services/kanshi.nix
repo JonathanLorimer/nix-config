@@ -51,6 +51,7 @@
           {
             criteria = "HDMI-A-1";
             mode = "3440x1440";
+            scale = 1.0;
             position = "1920,0";
           }
         ];

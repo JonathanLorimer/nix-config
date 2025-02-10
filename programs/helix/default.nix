@@ -2,6 +2,7 @@
   colorscheme,
   pkgs,
   helix,
+  scls,
 }: {
   enable = true;
   package = helix;
@@ -15,6 +16,19 @@
       svelteserver = {
         command = "${pkgs.svelte-language-server}/bin/svelteserver";
         args = ["--stdio"];
+      };
+      scls = {
+        command = "${scls}/bin/simple-completion-language-server";
+        config = {
+          max_completion_items = 3; # set max completion results len for each group: words, snippets, unicode-input
+          feature_words = false; # enable completion by word
+          feature_snippets = false; # enable snippets
+          snippets_first = true; # completions will return before snippets by default
+          snippets_inline_by_word_tail = false; # suggest snippets by WORD tail, for example text `xsq|` become `x^2|` when snippet `sq` has body `^2`
+          feature_unicode_input = true; # enable "unicode input"
+          feature_paths = true; # enable path completion
+          feature_citations = false; # enable citation completion (only on `citation` feature enabled)
+        };
       };
     };
     language = [
@@ -52,6 +66,25 @@
         auto-format = false;
         language-servers = ["svelteserver"];
         # formatter = { command = "prettier", args = ["--parser", "html"]}
+      }
+      {
+        name = "lean";
+        scope = "source.lean";
+        injection-regex = "lean";
+        file-types = ["lean"];
+        roots = ["lakefile.lean"];
+        comment-token = "--";
+        block-comment-tokens = {
+          start = "/-";
+          end = "-/";
+        };
+        indent = {
+          tab-width = 2;
+          unit = "  ";
+        };
+        rulers = [101];
+        text-width = 100;
+        language-servers = ["lean" "scls"];
       }
     ];
   };
