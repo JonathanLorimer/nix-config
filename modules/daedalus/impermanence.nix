@@ -9,11 +9,20 @@
     source = "/persist/etc/NetworkManager/system-connections/";
   };
 
-  systemd.tmpfiles.rules = [
-    "L /var/lib/postgresql - - - - /persist/var/lib/postgresql"
-    "L /var/lib/iwd - - - - /persist/var/lib/iwd"
-    "L /var/kolide-k2 - - - - /persist/var/kolide-k2"
-  ];
+  fileSystems = {
+    "/var/lib/postgresql" = {
+      device = "/persist/var/lib/postgresql";
+      options = ["bind"];
+    };
+    "/var/lib/iwd" = {
+      device = "/persist/var/lib/iwd";
+      options = ["bind"];
+    };
+    "/var/lib/kolide-k2" = {
+      device = "/persist/var/lib/kolide-k2";
+      options = ["bind"];
+    };
+  };
 
   systemd.services.tailscaled.serviceConfig.BindPaths = "/persist/var/lib/tailscale:/var/lib/tailscale";
 }
