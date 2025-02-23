@@ -11,8 +11,13 @@ in {
       email = email;
     };
 
+    git = {
+      subprocess = true;
+      sign-on-push = true;
+      push-new-bookmarks = true;
+    };
+
     signing = {
-      sign-all = true;
       backend = "gpg";
       key = email;
     };
