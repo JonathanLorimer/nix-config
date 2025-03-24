@@ -6,8 +6,6 @@
   configurationName,
   impala,
   helix,
-  ghostty,
-  ghosttyHM,
   scls,
 }: {
   pkgs,
@@ -17,7 +15,7 @@
   colorscheme = (import ./colors.nix).zenwritten-desat;
   env-vars = {
     EDITOR = "hx";
-    TERMINAL = "alacritty";
+    TERMINAL = "ghostty";
     BROWSER = "firefox";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
@@ -25,7 +23,6 @@
 in {
   imports = [
     colours.homeManagerModule
-    ghosttyHM.homeModules.default
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {
@@ -37,7 +34,7 @@ in {
     inherit pkgs env-vars cornelis impala;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font helix ghostty scls;
+    inherit pkgs colorscheme default-font helix scls;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

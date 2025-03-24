@@ -5,7 +5,6 @@
   default-font,
   cornelis-vim,
   helix,
-  ghostty,
   scls,
 }: {
   alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
@@ -29,16 +28,9 @@
     git = true;
   };
   firefox = (import ./firefox.nix) {inherit pkgs;};
-  ghostty = {
-    enable = true;
-    package = ghostty;
-  };
+  ghostty = (import ./ghostty.nix) {inherit colorscheme default-font pkgs;};
   git = import ./git.nix;
   gpg.enable = true;
-  # TODO: figure out a way to add this to gpg conf
-  # extraConfig = ''
-  #   keyserver hkps://keys.openpgp.org
-  # '';
   helix = (import ./helix) {inherit colorscheme pkgs helix scls;};
   htop.enable = true;
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};

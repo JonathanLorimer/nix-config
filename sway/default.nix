@@ -44,7 +44,7 @@ in {
       "${modifier}+Control+k" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 0";
 
       # Shortcuts
-      "${modifier}+t" = "exec alacritty";
+      "${modifier}+t" = "exec ghostty";
       "${modifier}+b" = "exec firefox";
       "${modifier}+q" = "kill";
       "${modifier}+d" = "exec makoctl dismiss";
