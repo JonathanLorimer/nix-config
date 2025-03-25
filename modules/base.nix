@@ -9,7 +9,6 @@
   fonts.packages = with pkgs; [
     font-awesome
     pragmata-pro
-    pragmata-pro-patched
   ];
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];

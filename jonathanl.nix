@@ -19,7 +19,7 @@
     BROWSER = "firefox";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
-  default-font = "PragmataProMonoLiga Nerd Font";
+  default-font = "PragmataPro Mono Liga";
 in {
   imports = [
     colours.homeManagerModule
