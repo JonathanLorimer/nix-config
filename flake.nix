@@ -15,8 +15,8 @@
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
     nur.url = "github:nix-community/NUR";
 
-    # https://github.com/helix-editor/helix/pull/11164
-    helix.url = "github:helix-editor/helix/c0666d1219a82cd4e850a30ca1a7f18294c58e9a";
+    helix.url = "github:helix-editor/helix/master";
+    helix.inputs.nixpkgs.follows = "nixpkgs";
 
     scls.url = "github:estin/simple-completion-language-server";
   };

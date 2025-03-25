@@ -110,6 +110,8 @@
         mode.insert = "I";
         mode.select = "V";
       };
+      end-of-line-diagnostics = "hint";
+      inline-diagnostics.cursor-line = "error";
     };
     keys = {
       normal = {
@@ -144,20 +146,18 @@
         h = "jump_backward";
         j = "jumplist_picker";
       };
-      normal."C-x" = {
-        b = let
-          gitBlameZellij = pkgs.writeShellScriptBin "git-blame-zellij" ''
-            if [[ -v ZELLIJ ]]; then
-              zellij action new-pane -- jj file annotate $1
-            else
-              echo "Not in a zellij session, this command opens commit annotations in a separate pane"
-            fi
-          '';
-        in {
-          f = ":sh ${gitBlameZellij}/bin/git-blame-zellij %{filename:git_rel}";
-          l = ":sh git blame %{filename:git_rel} -L %{linenumber}";
-          h = ":sh gh browse %{filename:git_rel}:%{linenumber}";
-        };
+      normal."C-f" = let
+        gitBlameZellij = pkgs.writeShellScriptBin "git-blame-zellij" ''
+          if [[ -v ZELLIJ ]]; then
+            zellij action new-pane -- jj file annotate $1
+          else
+            echo "Not in a zellij session, this command opens commit annotations in a separate pane"
+          fi
+        '';
+      in {
+        l = ":sh git blame %{buffer_name} -L %{cursor_line}";
+        L = ":sh ${gitBlameZellij}/bin/git-blame-zellij %{buffer_name}";
+        b = ":sh gh browse '%{buffer_name}:%{cursor_line}' -c";
       };
     };
   };
