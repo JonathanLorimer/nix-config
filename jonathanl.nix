@@ -29,6 +29,7 @@ in {
     "nix/inputs/nixpkgs".source = nixpkgs.outPath;
     "nvim/lua".source = ./programs/nvim/lua;
     "helix/unicode-input/base.toml".source = ./programs/helix/unicode.toml;
+    "zellij/config.kdl".source = ./programs/zellij/config.kdl;
   };
   home = (import ./home.nix) {
     inherit pkgs env-vars cornelis impala;

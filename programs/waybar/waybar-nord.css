@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------- */
 
 /* Nord */
-@define-color foreground-shade  #404040;
+@define-color foreground-shade #404040;
 @define-color foreground #191919;
 @define-color background #dcdccc;
 /* -----------------------------------------------------------------------------
@@ -12,11 +12,11 @@
 
 /* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* The whole bar */
@@ -24,7 +24,7 @@
   background: @background;
   color: @foreground;
   opacity: 0.95;
-  font-family: PragmataProLiga Nerd Font, Iosevka, FiraCode, Noto Sans;
+  font-family: PragmataPro Mono Liga, Iosevka, FiraCode, Noto Sans;
   font-size: 16px;
   font-weight: bold;
 }

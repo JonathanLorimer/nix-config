@@ -4,7 +4,7 @@
   ...
 }: {
   services.postgresql = {
-    package = pkgs.postgresql_15;
+    package = pkgs.postgresql_16;
     enable = true;
     enableTCPIP = true;
     authentication = pkgs.lib.mkForce ''

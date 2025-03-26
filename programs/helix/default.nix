@@ -92,6 +92,8 @@
   settings = {
     theme = "zenwritten";
     editor = {
+      trim-trailing-whitespace = true;
+      trim-final-newlines = true;
       auto-pairs = false;
       smart-tab.enable = false;
       idle-timeout = 200;
