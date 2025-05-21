@@ -12,7 +12,6 @@ in {
     };
 
     git = {
-      subprocess = true;
       sign-on-push = true;
       push-new-bookmarks = false;
     };

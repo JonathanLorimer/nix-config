@@ -37,7 +37,7 @@
   networking.wireless.iwd = {
     enable = true;
     settings = {
-      General.UseDefaultInterface = false;
+      # General.UseDefaultInterface = false;
       Settings = {
         AutoConnect = true;
       };
@@ -65,8 +65,8 @@
     "steam-original"
     "steam"
     "steam-unwrapped"
-    "tabnine"
     "onepassword-password-manager"
+    "claude-code"
   ];
 
   # Enable Light

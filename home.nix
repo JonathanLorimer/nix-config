@@ -57,6 +57,7 @@
     insomnia
     tree-sitter
     dbeaver-bin
+    claude-code
 
     # LSP
     nodePackages.typescript-language-server
