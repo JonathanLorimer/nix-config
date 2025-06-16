@@ -11,7 +11,7 @@
     enableZshIntegration = true;
     defaultCacheTtl = 1 * 60 * 60;
     maxCacheTtl = 1 * 60 * 60 * 24;
-    pinentryPackage = pkgs.pinentry-tty;
+    pinentry.package = pkgs.pinentry-tty;
     verbose = true;
   };
   swayidle = {

@@ -79,9 +79,7 @@ in {
       default-command = "l";
       pager = "${delta}/bin/delta";
       diff-editor = "${meld}/bin/meld";
-      diff = {
-        format = "git";
-      };
+      diff-formatter = ":git";
     };
   };
 }
