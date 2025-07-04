@@ -23,6 +23,7 @@
 in {
   imports = [
     colours.homeManagerModule
+    ./home/claude-code
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg.configFile = {

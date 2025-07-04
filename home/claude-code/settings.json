@@ -1,0 +1,27 @@
+{
+  "model": "opus",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu --stdin ~/.claude/hooks/checkpoint.nu"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu --stdin ~/.claude/hooks/notify.nu"
+          }
+        ]
+      }
+    ]
+  }
+}
