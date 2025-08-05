@@ -14,6 +14,7 @@ in {
     git = {
       sign-on-push = true;
       push-new-bookmarks = false;
+      # private-commits = "description(glob:'∅') | description(glob:'private:*') | bookmarks(base)";
     };
 
     signing = {
@@ -39,7 +40,7 @@ in {
     };
 
     revset-aliases = {
-      bases = "present(bookmarks(base)) | trunk()";
+      bases = "present(bookmarks(exact:base)) | trunk()";
       working_lineage = "bases::@ | @::";
       base_branches = "bases:: & bookmarks() & mine()";
       base_heads = "heads(bases::) & mine()";
@@ -47,7 +48,7 @@ in {
       "base_to_branch(target)" = "bases::bookmarks(target) ~ bases";
     };
 
-    core.fsmonitor = "watchman";
+    fsmonitor.backend = "watchman";
 
     colors = {
       "author name" = "yellow";

@@ -1,5 +1,28 @@
 {
-  "model": "opus",
+  "model": "sonnet",
+  "mcpServers": {
+    "linear": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.linear.app/sse"
+      ]
+    },
+    "Notion": {
+      "url": "https://mcp.notion.com/mcp"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(jj log:*)",
+      "Bash(jj diff:*)",
+      "Bash(jj show:*)"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
@@ -7,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu --stdin ~/.claude/hooks/checkpoint.nu"
+            "command": "jj debug snapshot"
           }
         ]
       }

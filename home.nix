@@ -11,7 +11,7 @@
     size = 32;
   };
   packages = with pkgs; [
-    # Proffesional
+    # Professional
     slack
 
     # Wayland
@@ -24,9 +24,13 @@
     grim
 
     # Video
+    # openshot-qt
     vlc
     ffmpeg
     kooha
+
+    # Keyboard
+    keymapp
 
     # Browser
     chromium
@@ -44,6 +48,7 @@
     bemenu
 
     # Programming
+    gnumake
     agda
     cornelis
     gcc
@@ -58,6 +63,7 @@
     tree-sitter
     dbeaver-bin
     claude-code
+    nodejs_24
 
     # LSP
     nodePackages.typescript-language-server

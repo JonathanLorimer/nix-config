@@ -1,4 +1,7 @@
-- Update pragmata pro run command to automatically patch the fonts
-- Audit whether we actually need nix colors
+- Fix walker
+- Customize walker
+- Customize zellij
 - refactor to use flake parts and module system
-- Switch to hyprland
+- Upgrade pragmata pro
+- look at way-displays
+- Audit whether we actually need nix colors

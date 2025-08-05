@@ -22,6 +22,15 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+  delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      line-numbers = true;
+      side-by-side = true;
+      syntax-theme = "Nord";
+    };
+  };
   eza = {
     enable = true;
     enableZshIntegration = true;
@@ -40,6 +49,8 @@
   skim = import ./skim.nix;
   ssh = {
     enable = true;
+    matchBlocks."*".addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     extraConfig = ''
       Host *
         User jonathanl

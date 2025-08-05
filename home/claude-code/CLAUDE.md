@@ -59,6 +59,16 @@ Say: "I'll spawn agents to tackle different aspects of this problem" whenever a 
 - ? Feature works end-to-end
 - ? Old code is deleted
 
+### Comments
+It is very tempting to add imperative comments that literally describe what the
+code is doing. Instead comments should be used to describe why something is implemented
+the way it is, what the higher level / more abstract motivation is, or invisible invariants
+that should be considered.
+
+In general use comments sparingly, and mostly on top level entities (i.e.
+functions definitions and data types). Only add comments in the body of
+functions when there is complex logic that needs explaining
+
 ## Problem-Solving Together
 
 When you're stuck or confused:

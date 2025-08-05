@@ -19,15 +19,6 @@ in {
     l = "eza -lah";
     ls = "eza";
     lt = "eza --long --tree";
-    cfg = "nvim $HOME/.config/nixpkgs/home.nix";
-    n = "nvim";
-    ns = "nvim $(sk)";
-    ne = "nvim $(git status --porcelain | awk '{print $2}' | sk)";
-    gs = "git status";
-    gc = "git commit";
-    ga = "git add";
-    gp = "git push";
-    gr = "git remote add";
     cd = "z";
     w = "iwctl";
     jjinit = "jj git init --colocate && jj new && jj describe -m \"∅\" && jj branch create base";
@@ -41,7 +32,4 @@ in {
     enable = true;
     plugins = ["git" "sudo" "ssh-agent"];
   };
-  envExtra = ''
-    ${builtins.readFile ./jj_autocomplete.sh}
-  '';
 }

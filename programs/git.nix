@@ -1,8 +1,10 @@
 {
   enable = true;
-  userName = "Jonathan Lorimer";
-  userEmail = "jonathan_lorimer@mac.com";
-  extraConfig = {
+  settings = {
+    user = {
+      name = "Jonathan Lorimer";
+      email = "jonathan_lorimer@mac.com";
+    };
     safe.directory = "/persist/nix-config";
     init.defaultBranch = "main";
     pull.rebase = true;
@@ -25,14 +27,6 @@
   signing = {
     key = "223976DB";
     signByDefault = true;
-  };
-  delta = {
-    enable = true;
-    options = {
-      line-numbers = true;
-      side-by-side = true;
-      syntax-theme = "Nord";
-    };
   };
   ignores = [".jj"];
 }

@@ -67,6 +67,8 @@
     "steam-unwrapped"
     "onepassword-password-manager"
     "claude-code"
+    "davinci-resolve"
+    "keymapp"
   ];
 
   # Enable Light
