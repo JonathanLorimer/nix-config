@@ -31,6 +31,7 @@
       syntax-theme = "Nord";
     };
   };
+  emacs = (import ./emacs.nix) {inherit pkgs;};
   eza = {
     enable = true;
     enableZshIntegration = true;
