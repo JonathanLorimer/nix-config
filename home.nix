@@ -3,6 +3,7 @@
   env-vars,
   cornelis,
   impala,
+  fzf-scripts,
 }: {
   pointerCursor = {
     gtk.enable = true;
@@ -10,7 +11,7 @@
     name = "Bibata-Modern-Ice";
     size = 32;
   };
-  packages = with pkgs; [
+  packages = fzf-scripts ++ (with pkgs; [
     # Professional
     slack
 
@@ -83,7 +84,7 @@
 
     # Knowledge Management
     zotero
-  ];
+  ]);
 
   stateVersion = "24.11";
 

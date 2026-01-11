@@ -6,7 +6,9 @@
   cornelis-vim,
   helix,
   scls,
-}: {
+}: let
+  fzf-module = (import ./fzf) {inherit pkgs colorscheme;};
+in {
   alacritty = (import ./alacritty) {inherit pkgs colorscheme term-env default-font;};
   bat.config.theme = "Nord";
   bat.enable = true;
@@ -47,7 +49,7 @@
   # neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
   ripgrep.enable = true;
-  skim = import ./skim.nix;
+  fzf = fzf-module.config;
   ssh = {
     enable = true;
     matchBlocks."*".addKeysToAgent = "yes";

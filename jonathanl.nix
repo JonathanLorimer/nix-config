@@ -20,6 +20,7 @@
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
   default-font = "PragmataPro Mono Liga";
+  fzf-scripts = ((import ./programs/fzf) {inherit pkgs colorscheme;}).scripts;
 in {
   imports = [
     colours.homeManagerModule
@@ -28,7 +29,7 @@ in {
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg = (import ./xdg) {inherit pkgs nixpkgs;};
   home = (import ./home.nix) {
-    inherit pkgs env-vars cornelis impala;
+    inherit pkgs env-vars cornelis impala fzf-scripts;
   };
   programs = (import ./programs/default.nix) {
     inherit pkgs colorscheme default-font helix scls;

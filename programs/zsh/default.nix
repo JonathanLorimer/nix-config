@@ -22,6 +22,11 @@ in {
     cd = "z";
     w = "iwctl";
     jjinit = "jj git init --colocate && jj new && jj describe -m \"∅\" && jj branch create base";
+
+    # fzf aliases
+    cdf = "cd $(fzf-cd)";
+    jof = "jj-op-snapshot";
+    jbf = "jj-my-branches";
   };
   history.expireDuplicatesFirst = true;
   history.ignoreDups = true;
