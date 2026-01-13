@@ -24,18 +24,21 @@
       | ${pkgs.fzf}/bin/fzf --preview '${pkgs.eza}/bin/eza -la --color=always {}'
   '';
 
-  # Browse jj operation log snapshots and diff with difftastic
+  # Browse jj operation log snapshots and diff between operations
   jj-op-snapshot = pkgs.writeShellScriptBin "jj-op-snapshot" ''
     set -euo pipefail
 
-    # Get snapshot operations (filter by description containing "snapshot")
+    # Get snapshot operations with format: op_id parent_id time description
+    # This allows diffing between an operation and its parent
     selected=$(jj op log --no-graph \
-      -T 'if(description.contains("snapshot"), id.short() ++ " " ++ time.start().ago() ++ " " ++ description ++ "\n")' \
-      | ${pkgs.fzf}/bin/fzf --preview 'jj op show {1}' \
-      | ${pkgs.gawk}/bin/awk '{print $1}')
+      -T 'if(description.contains("snapshot"), id.short() ++ " " ++ parents.map(|p| p.id().short()).join(",") ++ " " ++ time.start().ago() ++ " " ++ description ++ "\n")' \
+      | ${pkgs.fzf}/bin/fzf --preview 'jj op diff --from {2} --to {1} --stat' \
+      | ${pkgs.gawk}/bin/awk '{print $1, $2}')
 
     if [[ -n "$selected" ]]; then
-      jj diff --at-op "$selected"
+      op_id=$(echo "$selected" | ${pkgs.gawk}/bin/awk '{print $1}')
+      parent_id=$(echo "$selected" | ${pkgs.gawk}/bin/awk '{print $2}')
+      jj op diff --from "$parent_id" --to "$op_id" -p
     fi
   '';
 
