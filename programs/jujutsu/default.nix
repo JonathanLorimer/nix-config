@@ -62,6 +62,7 @@ in {
       n = ["new" "-r" "base"];
       f = ["git" "fetch"];
       back = ["edit" "-r" "@-"];
+      next = ["edit" "-r" "@+"];
 
       # Cleanup: has a long name because it is desctructive. Abandon
       # all empty descendents of 'bases'

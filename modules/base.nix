@@ -69,6 +69,7 @@
     "claude-code"
     "davinci-resolve"
     "keymapp"
+    "roomeqwizard"
   ];
 
   # Enable Light

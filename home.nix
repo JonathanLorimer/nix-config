@@ -11,80 +11,85 @@
     name = "Bibata-Modern-Ice";
     size = 32;
   };
-  packages = fzf-scripts ++ (with pkgs; [
-    # Professional
-    slack
+  packages =
+    fzf-scripts
+    ++ (with pkgs; [
+      # Professional
+      slack
 
-    # Wayland
-    xwayland
+      # Wayland
+      xwayland
 
-    # Sway Utils
-    slurp
-    wl-clipboard
-    wf-recorder
-    grim
+      # Sway Utils
+      slurp
+      wl-clipboard
+      wf-recorder
+      grim
 
-    # Video
-    # openshot-qt
-    vlc
-    ffmpeg
-    kooha
+      # Video
+      # openshot-qt
+      vlc
+      ffmpeg
+      kooha
 
-    # Keyboard
-    keymapp
+      # Keyboard
+      keymapp
 
-    # Browser
-    chromium
+      # Browser
+      chromium
 
-    # Network
-    openssl
-    impala
+      # Network
+      openssl
+      impala
 
-    # Sound
-    pw-volume
-    pavucontrol
-    pulseaudio
+      # Sound
+      pw-volume
+      pavucontrol
+      pulseaudio
 
-    # Navigation
-    bemenu
+      # Audio
+      roomeqwizard
 
-    # Programming
-    gnumake
-    agda
-    cornelis
-    gcc
-    awscli
-    aws-mfa
-    stack
-    exercism
-    cachix
-    nix-prefetch-git
-    gh
-    insomnia
-    tree-sitter
-    dbeaver-bin
-    claude-code
-    nodejs_24
+      # Navigation
+      bemenu
 
-    # LSP
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nil
-    alejandra
+      # Programming
+      gnumake
+      agda
+      cornelis
+      gcc
+      awscli
+      aws-mfa
+      stack
+      exercism
+      cachix
+      nix-prefetch-git
+      gh
+      insomnia
+      tree-sitter
+      dbeaver-bin
+      claude-code
+      nodejs_24
 
-    # Terminal
-    neofetch
-    asciinema
+      # LSP
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nil
+      alejandra
 
-    # Command Line Utils
-    jq
-    ruplacer
-    duf
-    tokei
+      # Terminal
+      neofetch
+      asciinema
 
-    # Knowledge Management
-    zotero
-  ]);
+      # Command Line Utils
+      jq
+      ruplacer
+      duf
+      tokei
+
+      # Knowledge Management
+      zotero
+    ]);
 
   stateVersion = "24.11";
 

@@ -35,6 +35,6 @@ in {
   ];
   oh-my-zsh = {
     enable = true;
-    plugins = ["git" "sudo" "ssh-agent"];
+    plugins = ["sudo" "ssh-agent"];
   };
 }
