@@ -102,9 +102,6 @@
 
   boot.blacklistedKernelModules = ["snd_pcsp"];
 
-  # System Version
-  system.stateVersion = "24.11";
-
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
