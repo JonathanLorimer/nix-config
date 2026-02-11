@@ -77,6 +77,13 @@
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
     nixosConfigurations = {
+      # Installation ISO with ZFS support
+      installer = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./image.nix
+        ];
+      };
       bellerophon = nixpkgs.lib.nixosSystem {
         inherit system;
         modules =
@@ -105,6 +112,35 @@
 
             # Hardware
             nixos-hardware.nixosModules.lenovo-thinkpad-t14s
+            nixpkgs.nixosModules.notDetected
+
+            # Kolide for Mercury
+            kolide.nixosModules.kolide-launcher
+            {
+              nixpkgs.allowUnfreePackages = ["kolide-launcher"];
+              services.kolide-launcher.enable = true;
+              environment.etc."kolide-k2/secret" = {
+                mode = "0600";
+                text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWtvbmUiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MDUxMTgwMzYiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.vCMoj_pnDjEG3Ji9y8elRzN10QfFOwGxZrJAQcJWP41SmDN1PsLQusKucX7lwUTlfgm6-9mKLnaJ9uhA-2j0G2_J2TCP9KxyvZ2M2jH4x_5muf1kV99RgwJhhjlFbZU_9ri8ZZc-fOlaaFZi6hKg5GwaaLSNTex2HKzfcx3PVdDjaXoAKc-THHgtQ9-j_4P_co7JkxxCgnsqpMw13qm2nNZ5PAE2wOuU1_MdVeNam4MnLt1BBgxbeclCHfKjrcg-H9UDcQtwiYxllsfDSpmgfNDr2b69Y064UqKAjqWyvE33c-7hBx_R2HC9glXulmdijgPgGABT1Ad6zhA6QS8xTg";
+              };
+            }
+          ];
+      };
+      erymanthian = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules =
+          (commonModules "erymanthian")
+          ++ [
+            ./modules/erymanthian/hardware-configuration.nix
+            ./modules/erymanthian/nix.nix
+            ./modules/erymanthian/encryption.nix
+            ./modules/erymanthian/host.nix
+            ./modules/erymanthian/impermanence.nix
+            ./modules/erymanthian/users.nix
+            ./modules/erymanthian/state-version.nix
+
+            # Hardware - generic ThinkPad (P16 Gen 2 not in nixos-hardware yet)
+            nixos-hardware.nixosModules.lenovo-thinkpad
             nixpkgs.nixosModules.notDetected
 
             # Kolide for Mercury
