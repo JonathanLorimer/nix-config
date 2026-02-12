@@ -54,6 +54,7 @@
       bemenu
 
       # Programming
+      pciutils
       gnumake
       agda
       cornelis

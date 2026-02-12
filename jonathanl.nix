@@ -7,6 +7,7 @@
   impala,
   helix,
   scls,
+  default-font,
 }: {
   pkgs,
   config,
@@ -19,7 +20,6 @@
     BROWSER = "firefox";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
-  default-font = "PragmataPro Mono Liga";
   fzf-scripts = ((import ./programs/fzf) {inherit pkgs colorscheme;}).scripts;
 in {
   imports = [

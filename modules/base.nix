@@ -8,7 +8,6 @@
 
   fonts.packages = with pkgs; [
     font-awesome
-    pragmata-pro
   ];
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
@@ -19,10 +18,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub = {
     enable = true;
-    device = "nodev";
-    efiSupport = true;
-    font = "${pkgs.pragmata-pro-console}/share/fonts/consolefont/pragmatapro/ppr32.pf2";
-    fontSize = 32;
+    theme = pkgs.minimal-grub-theme;
   };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl = {
