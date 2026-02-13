@@ -137,6 +137,7 @@
             ./modules/erymanthian/users.nix
             ./modules/erymanthian/state-version.nix
             ./modules/erymanthian/gpu.nix
+            ./modules/erymanthian/sway.nix
 
             # Hardware - generic ThinkPad (P16 Gen 2 not in nixos-hardware yet)
             nixos-hardware.nixosModules.lenovo-thinkpad
