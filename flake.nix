@@ -15,9 +15,6 @@
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
     nur.url = "github:nix-community/NUR";
 
-    helix.url = "github:helix-editor/helix/master";
-    helix.inputs.nixpkgs.follows = "nixpkgs";
-
     scls.url = "github:estin/simple-completion-language-server";
   };
   outputs = {
@@ -30,7 +27,6 @@
     kolide,
     impala,
     nur,
-    helix,
     scls,
     ...
   }: let
@@ -72,7 +68,6 @@
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
           impala = impala.packages."${system}".impala;
-          helix = helix.packages."${system}".helix;
           scls = scls.defaultPackage."${system}";
         };
       }

@@ -4,7 +4,6 @@
   term-env,
   default-font,
   cornelis-vim,
-  helix,
   scls,
 }: let
   fzf-module = (import ./fzf) {inherit pkgs colorscheme;};
@@ -43,7 +42,7 @@ in {
   ghostty = (import ./ghostty.nix) {inherit colorscheme default-font pkgs;};
   git = import ./git.nix;
   gpg.enable = true;
-  helix = (import ./helix) {inherit colorscheme pkgs helix scls;};
+  helix = (import ./helix) {inherit colorscheme pkgs scls;};
   htop.enable = true;
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};

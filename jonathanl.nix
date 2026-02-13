@@ -5,7 +5,6 @@
   nixpkgs,
   configurationName,
   impala,
-  helix,
   scls,
   default-font,
 }: {
@@ -32,7 +31,7 @@ in {
     inherit pkgs env-vars cornelis impala fzf-scripts;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font helix scls;
+    inherit pkgs colorscheme default-font scls;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };
