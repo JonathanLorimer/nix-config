@@ -46,7 +46,6 @@ in {
   helix = (import ./helix) {inherit colorscheme pkgs helix scls;};
   htop.enable = true;
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
-  # neovim = (import ./nvim) {inherit pkgs cornelis-vim;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
   ripgrep.enable = true;
   fzf = fzf-module.config;

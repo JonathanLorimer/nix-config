@@ -19,10 +19,6 @@
     mergetool = {
       keepBackup = false;
     };
-    "mergetool \"vimdiff\"" = {
-      cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
-      keepBackup = false;
-    };
   };
   signing = {
     key = "223976DB";
