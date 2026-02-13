@@ -1,11 +1,9 @@
 {
   colorscheme,
   pkgs,
-  helix,
   scls,
 }: {
   enable = true;
-  package = helix;
   defaultEditor = true;
   languages = {
     language-server = {

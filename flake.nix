@@ -15,9 +15,6 @@
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
     nur.url = "github:nix-community/NUR";
 
-    helix.url = "github:helix-editor/helix/master";
-    helix.inputs.nixpkgs.follows = "nixpkgs";
-
     scls.url = "github:estin/simple-completion-language-server";
   };
   outputs = {
@@ -30,11 +27,11 @@
     kolide,
     impala,
     nur,
-    helix,
     scls,
     ...
   }: let
     system = "x86_64-linux";
+    font = import ./font {usePragmata = true;};
     commonModules = configurationName: [
       # Personal Modules
       ./modules/base.nix
@@ -50,6 +47,7 @@
       ./modules/login.nix
       ./modules/miniflux.nix
       ./modules/docker.nix
+      font.module
 
       # External Modules
       nur.nixosModules.nur
@@ -65,11 +63,11 @@
         home-manager.backupFileExtension = "backup";
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
           inherit nixpkgs configurationName;
+          inherit (font) default-font;
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
           impala = impala.packages."${system}".impala;
-          helix = helix.packages."${system}".helix;
           scls = scls.defaultPackage."${system}";
         };
       }
@@ -138,6 +136,7 @@
             ./modules/erymanthian/impermanence.nix
             ./modules/erymanthian/users.nix
             ./modules/erymanthian/state-version.nix
+            ./modules/erymanthian/gpu.nix
 
             # Hardware - generic ThinkPad (P16 Gen 2 not in nixos-hardware yet)
             nixos-hardware.nixosModules.lenovo-thinkpad

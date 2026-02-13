@@ -59,10 +59,9 @@ in {
       ll = ["log" "-r" "all()" "-n" "10"];
       lc = ["log" "-r" "::@" "-n" "10"];
       s = ["status"];
-      n = ["new" "-r" "base"];
       f = ["git" "fetch"];
-      back = ["edit" "-r" "@-"];
-      next = ["edit" "-r" "@+"];
+      b = ["edit" "-r" "@-"];
+      n = ["edit" "-r" "@+"];
 
       # Cleanup: has a long name because it is desctructive. Abandon
       # all empty descendents of 'bases'

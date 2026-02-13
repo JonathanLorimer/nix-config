@@ -5,8 +5,8 @@
   nixpkgs,
   configurationName,
   impala,
-  helix,
   scls,
+  default-font,
 }: {
   pkgs,
   config,
@@ -19,7 +19,6 @@
     BROWSER = "firefox";
     NIX_PATH = "nixpkgs=${config.xdg.configHome}/nix/inputs/nixpkgs";
   };
-  default-font = "PragmataPro Mono Liga";
   fzf-scripts = ((import ./programs/fzf) {inherit pkgs colorscheme;}).scripts;
 in {
   imports = [
@@ -32,7 +31,7 @@ in {
     inherit pkgs env-vars cornelis impala fzf-scripts;
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font helix scls;
+    inherit pkgs colorscheme default-font scls;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

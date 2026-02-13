@@ -8,8 +8,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = {
     root = {
-      # Get UUID with: blkid -s UUID -o value /dev/nvme0n1p2
-      device = "/dev/disk/by-uuid/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
+      device = "/dev/disk/by-uuid/8a9701b4-8665-4ca7-b8f8-2bc5ec8dc754";
       preLVM = true;
     };
   };
