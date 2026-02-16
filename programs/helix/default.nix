@@ -120,9 +120,18 @@
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
         "C-;" = "flip_selections";
+        ## Remove alt commands so as not to conflict with zellij
+        "A-n" = "no_op";
+        "A-p" = "no_op";
+        "A-s" = "no_op";
+        "A-o" = "no_op";
+        "A-b" = "no_op";
+        "A-i" = "no_op";
+        "A-e" = "no_op";
       };
       select = {
         "C-;" = "flip_selections";
+        "S" = "split_selection_on_newline";
       };
       normal."C-t" = {
         e = "expand_selection";

@@ -22,6 +22,10 @@ in {
     w = "iwctl";
     jjinit = "jj git init --colocate && jj new && jj describe -m \"∅\" && jj branch create base";
 
+    # zellij aliases
+    zw = "zellij --layout work";
+    zjc = "zellij delete-all-sessions -y";
+
     # fzf aliases
     cdf = "cd $(fzf-cd)";
     jof = "jj-op-snapshot";
