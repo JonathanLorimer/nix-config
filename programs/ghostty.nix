@@ -43,5 +43,10 @@
     command = "${pkgs.zsh}/bin/zsh";
     cursor-style = "block";
     term = "ghostty";
+    keybind = [
+      "ctrl+shift+equal=increase_font_size:1"
+      "ctrl+minus=decrease_font_size:1"
+      "ctrl+equal=reset_font_size"
+    ];
   };
 }

@@ -39,6 +39,7 @@ in {
     git = true;
   };
   firefox = (import ./firefox.nix) {inherit pkgs;};
+  fzf = fzf-module.config;
   ghostty = (import ./ghostty.nix) {inherit colorscheme default-font pkgs;};
   git = import ./git.nix;
   gpg.enable = true;
@@ -47,8 +48,8 @@ in {
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
   opencode = import ./opencode;
+  obsidian.enable = true;
   ripgrep.enable = true;
-  fzf = fzf-module.config;
   ssh = {
     enable = true;
     matchBlocks."*".addKeysToAgent = "yes";

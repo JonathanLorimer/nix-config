@@ -77,6 +77,7 @@
       nodePackages.vscode-langservers-extracted
       nil
       alejandra
+      marksman
 
       # Terminal
       neofetch

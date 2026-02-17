@@ -37,7 +37,7 @@ in {
     keybindings = {
       # Controls
       "${modifier}+o" = "exec light -U 5.00";
-      "${modifier}+Shift+o" = "exec light -S 0.01";
+      "${modifier}+Shift+o" = "exec light -S 1";
       "${modifier}+p" = "exec light -A 5.00";
       "${modifier}+Shift+p" = "exec light -S 100";
       "${modifier}+Control+l" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 100";

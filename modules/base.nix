@@ -66,6 +66,7 @@
     "davinci-resolve"
     "keymapp"
     "roomeqwizard"
+    "obsidian"
   ];
 
   # Enable Light
