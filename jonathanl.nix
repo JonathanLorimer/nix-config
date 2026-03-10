@@ -24,6 +24,11 @@ in {
   imports = [
     colours.homeManagerModule
     ./home/claude-code
+    {
+      home.file = {
+        ".config/opencode/skills/".source = ./programs/opencode/skills;
+      };
+    }
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg = (import ./xdg) {inherit pkgs nixpkgs;};
