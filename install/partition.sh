@@ -24,10 +24,12 @@ fi
 # Derive partition names (handles both nvme and sda style)
 if [[ "$DISK" == *"nvme"* ]]; then
     BOOT_PART="${DISK}p1"
-    ROOT_PART="${DISK}p2"
+    SWAP_PART="${DISK}p2"
+    ROOT_PART="${DISK}p3"
 else
     BOOT_PART="${DISK}1"
-    ROOT_PART="${DISK}2"
+    SWAP_PART="${DISK}2"
+    ROOT_PART="${DISK}3"
 fi
 
 CRYPT_NAME="cryptroot"
@@ -40,6 +42,7 @@ echo "============================================"
 echo ""
 echo "Target disk: $DISK"
 echo "Boot partition: $BOOT_PART (2GB EFI)"
+echo "Swap partition: $SWAP_PART (4GB)"
 echo "Root partition: $ROOT_PART (LUKS + ZFS)"
 echo ""
 echo "WARNING: This will DESTROY all data on $DISK"
@@ -56,15 +59,20 @@ echo ">>> Step 1: Partitioning disk..."
 parted "$DISK" -- mklabel gpt
 parted "$DISK" -- mkpart ESP fat32 1MiB 2GiB
 parted "$DISK" -- set 1 esp on
-parted "$DISK" -- mkpart primary 2GiB 100%
+parted "$DISK" -- mkpart primary linux-swap 2GiB 6GiB
+parted "$DISK" -- mkpart primary 6GiB 100%
 
 echo ""
 echo "--- Partition table:"
 parted "$DISK" print
 
 echo ""
-echo ">>> Step 2: Formatting boot partition..."
+echo ">>> Step 2a: Formatting boot partition..."
 mkfs.fat -F 32 -n BOOT "$BOOT_PART"
+
+echo ""
+echo ">>> Step 2b: Formatting swap partition..."
+mkswap -L SWAP "$SWAP_PART"
 
 echo ""
 echo "--- Filesystem info:"
