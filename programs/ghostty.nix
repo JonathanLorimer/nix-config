@@ -38,7 +38,7 @@
     window-padding-x = 4;
     window-padding-y = 4;
     window-decoration = false;
-    initial-command = "${pkgs.zsh}/bin/zsh -c echo; neofetch; echo; zsh";
+    initial-command = "${pkgs.zsh}/bin/zsh -c echo; fastfetch; echo; zsh";
     shell-integration-features = ["no-cursor"];
     command = "${pkgs.zsh}/bin/zsh";
     cursor-style = "block";

@@ -32,6 +32,9 @@
       ffmpeg
       kooha
 
+      # Hardware
+      brightnessctl
+
       # Keyboard
       keymapp
 
@@ -80,7 +83,7 @@
       marksman
 
       # Terminal
-      neofetch
+      fastfetch
       asciinema
 
       # Command Line Utils

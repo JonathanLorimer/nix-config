@@ -36,10 +36,10 @@ in {
     };
     keybindings = {
       # Controls
-      "${modifier}+o" = "exec light -U 5.00";
-      "${modifier}+Shift+o" = "exec light -S 1";
-      "${modifier}+p" = "exec light -A 5.00";
-      "${modifier}+Shift+p" = "exec light -S 100";
+      "${modifier}+o" = "exec brightnessctl set 5%-";
+      "${modifier}+Shift+o" = "exec brightnessctl set 1%";
+      "${modifier}+p" = "exec brightnessctl set +5%";
+      "${modifier}+Shift+p" = "exec brightnessctl set 100%";
       "${modifier}+Control+l" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 100";
       "${modifier}+Control+k" = "exec light -Ss \"sysfs/leds/tpacpi::kbd_backlight\" 0";
 
