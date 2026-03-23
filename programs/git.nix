@@ -24,5 +24,8 @@
     key = "223976DB";
     signByDefault = true;
   };
-  ignores = [".jj"];
+  ignores = [
+    ".jj"
+    "tenants/"
+  ];
 }
