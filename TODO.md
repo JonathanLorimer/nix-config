@@ -1,7 +1,0 @@
-- Fix walker
-- Customize walker
-- Customize zellij
-- refactor to use flake parts and module system
-- Upgrade pragmata pro
-- look at way-displays
-- Audit whether we actually need nix colors

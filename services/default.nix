@@ -16,6 +16,9 @@
   };
   swayidle = {
     enable = true;
+    events = {
+      before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
+    };
     timeouts = [
       {
         timeout = 900;

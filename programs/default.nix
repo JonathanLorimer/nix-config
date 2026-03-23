@@ -70,7 +70,10 @@ in {
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   vscode.enable = true;
   waybar = import ./waybar;
-  yazi.enable = true;
+  yazi = {
+    enable = true;
+    shellWrapperName = "y";
+  };
   zathura.enable = true;
   zellij = (import ./zellij) {inherit colorscheme;};
   zoxide.enable = true;

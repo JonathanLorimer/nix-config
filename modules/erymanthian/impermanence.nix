@@ -26,7 +26,7 @@
 
   # Ensure all user processes are killed when the session ends during shutdown,
   # preventing lingering processes from holding /home open and blocking ZFS unmount.
-  services.logind.killUserProcesses = true;
+  services.logind.settings.Login.KillUserProcesses = true;
 
   # Swap is configured as a ZFS zvol (rpool/swap).
   # Future installs use a dedicated swap partition instead (see install/partition.sh).
