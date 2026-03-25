@@ -51,6 +51,8 @@
       | ${pkgs.coreutils}/bin/sort -u \
       | ${pkgs.fzf}/bin/fzf --preview 'jj log -r {}'
   '';
+
+  tdown = pkgs.writeShellScriptBin "tdown" (builtins.readFile ../../scripts/tdown.sh);
 in {
   # fzf program configuration
   config = {
@@ -86,5 +88,5 @@ in {
   };
 
   # Scripts to add to home.packages
-  scripts = [fzf-cd jj-op-snapshot jj-my-branches];
+  scripts = [fzf-cd jj-op-snapshot jj-my-branches tdown];
 }

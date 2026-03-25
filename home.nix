@@ -3,7 +3,7 @@
   env-vars,
   cornelis,
   impala,
-  fzf-scripts,
+  scripts,
 }: {
   pointerCursor = {
     gtk.enable = true;
@@ -12,7 +12,7 @@
     size = 32;
   };
   packages =
-    fzf-scripts
+    scripts
     ++ (with pkgs; [
       # Professional
       slack

@@ -33,7 +33,12 @@ in {
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg = (import ./xdg) {inherit pkgs nixpkgs;};
   home = (import ./home.nix) {
-    inherit pkgs env-vars cornelis impala fzf-scripts;
+    inherit pkgs env-vars cornelis impala;
+    scripts =
+      fzf-scripts
+      ++ [
+        (pkgs.writeShellScriptBin "tspawn" (builtins.readFile ./scripts/tspawn.sh))
+      ];
   };
   programs = (import ./programs/default.nix) {
     inherit pkgs colorscheme default-font scls;
