@@ -1,6 +1,9 @@
-{
+{pkgs}: {
   enable = true;
   settings = {
+    plugin = [
+      pkgs.opencode-claude-auth
+    ];
     autoupdate = true;
     mcp = {
       linear = {

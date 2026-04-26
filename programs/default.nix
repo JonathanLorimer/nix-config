@@ -47,7 +47,7 @@ in {
   htop.enable = true;
   jujutsu = (import ./jujutsu) {inherit (pkgs) delta meld;};
   obs-studio = (import ./obs-studio.nix) {inherit pkgs;};
-  opencode = import ./opencode;
+  opencode = (import ./opencode) {inherit pkgs;};
   obsidian.enable = true;
   ripgrep.enable = true;
   ssh = {

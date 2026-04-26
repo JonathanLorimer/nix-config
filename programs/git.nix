@@ -21,6 +21,7 @@
     };
   };
   signing = {
+    format = "openpgp";
     key = "223976DB";
     signByDefault = true;
   };

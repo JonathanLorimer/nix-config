@@ -96,7 +96,7 @@
       zotero
     ]);
 
-  stateVersion = "24.11";
+  stateVersion = "26.05";
 
   sessionVariables =
     {
