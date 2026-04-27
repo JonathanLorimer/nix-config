@@ -40,7 +40,7 @@
       {
         name = "typescript";
         formatter = {
-          command = "${pkgs.nodePackages_latest.prettier}/bin/prettier";
+          command = "${pkgs.prettier}/bin/prettier";
           args = ["--parser" "typescript"];
         };
         language-servers = [
@@ -51,7 +51,7 @@
       {
         name = "tsx";
         formatter = {
-          command = "${pkgs.nodePackages_latest.prettier}/bin/prettier";
+          command = "${pkgs.prettier}/bin/prettier";
           args = ["--parser" "typescript"];
         };
         language-servers = [

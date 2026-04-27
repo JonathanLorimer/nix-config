@@ -1,18 +1,5 @@
 {
   "model": "sonnet",
-  "mcpServers": {
-    "linear": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.linear.app/sse"
-      ]
-    },
-    "Notion": {
-      "url": "https://mcp.notion.com/mcp"
-    }
-  },
   "permissions": {
     "allow": [
       "Bash(git log:*)",

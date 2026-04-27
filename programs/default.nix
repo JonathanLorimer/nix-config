@@ -67,6 +67,7 @@ in {
   };
   starship = import ./starship.nix;
   swaylock = import ./swaylock.nix {inherit colorscheme pkgs;};
+  tau = import ./tau {inherit pkgs;};
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   vscode.enable = true;
   waybar = import ./waybar;

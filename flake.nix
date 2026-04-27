@@ -8,6 +8,10 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nix-colors.url = "github:misterio77/nix-colors";
     cornelis.url = "github:isovector/cornelis";
+    tau = {
+      url = "github:JonathanLorimer/tau";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     kolide = {
       url = "github:kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +32,7 @@
     impala,
     nur,
     scls,
+    tau,
     ...
   }: let
     system = "x86_64-linux";
@@ -51,6 +56,13 @@
 
       # External Modules
       nur.nixosModules.nur
+      tau.nixosModules.default
+      {
+        programs.tau = {
+          enable = true;
+          enforce = true;
+        };
+      }
 
       # Secrets
       sops-nix.nixosModules.sops
@@ -64,6 +76,7 @@
         home-manager.users.jonathanl = (import ./jonathanl.nix) {
           inherit nixpkgs configurationName;
           inherit (font) default-font;
+          tauModule = tau.homeManagerModules.default;
           colours = nix-colors;
           cornelis = cornelis.packages."${system}".cornelis;
           cornelis-vim = cornelis.packages."${system}".cornelis-vim;
@@ -140,6 +153,19 @@
               environment.etc."kolide-k2/secret" = {
                 mode = "0600";
                 text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWtvbmUiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MDUxMTgwMzYiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.vCMoj_pnDjEG3Ji9y8elRzN10QfFOwGxZrJAQcJWP41SmDN1PsLQusKucX7lwUTlfgm6-9mKLnaJ9uhA-2j0G2_J2TCP9KxyvZ2M2jH4x_5muf1kV99RgwJhhjlFbZU_9ri8ZZc-fOlaaFZi6hKg5GwaaLSNTex2HKzfcx3PVdDjaXoAKc-THHgtQ9-j_4P_co7JkxxCgnsqpMw13qm2nNZ5PAE2wOuU1_MdVeNam4MnLt1BBgxbeclCHfKjrcg-H9UDcQtwiYxllsfDSpmgfNDr2b69Y064UqKAjqWyvE33c-7hBx_R2HC9glXulmdijgPgGABT1Ad6zhA6QS8xTg";
+              };
+              environment.etc."kolide-k2/launcher.flags" = {
+                text = ''
+                  autoupdate
+                  transport jsonrpc
+                  hostname k2device.kolide.com
+                  root_directory /var/kolide-k2/k2device.kolide.com
+                  enroll_secret_path /etc/kolide-k2/secret
+                  update_channel stable
+                '';
+                mode = "0600";
+                user = "root";
+                group = "root";
               };
             }
           ];

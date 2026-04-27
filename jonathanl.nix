@@ -7,6 +7,7 @@
   impala,
   scls,
   default-font,
+  tauModule,
 }: {
   pkgs,
   config,
@@ -29,6 +30,7 @@ in {
         ".config/opencode/skills/".source = ./programs/opencode/skills;
       };
     }
+    tauModule
   ];
   nix.registry.nixpkgs.flake = nixpkgs;
   xdg = (import ./xdg) {inherit pkgs nixpkgs;};

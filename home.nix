@@ -16,6 +16,8 @@
     ++ (with pkgs; [
       # Professional
       slack
+      temporal-cli
+      cargo
 
       # Wayland
       xwayland
@@ -76,8 +78,8 @@
       nodejs_24
 
       # LSP
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
+      typescript-language-server
+      vscode-langservers-extracted
       nil
       alejandra
       marksman
