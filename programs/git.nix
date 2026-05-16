@@ -36,7 +36,7 @@
         user = {
           name = "Jonathan Lorimer";
           email = "jonathan@mercury.com";
-          signingKey = "1957 0D3E F6B6 D3F9 C1FE  E34B 5E27 4FC2 7BEE 7A20";
+          signingKey = "B31E 6621 3F0B FEE5 A10B  141F 1699 F323 1DCD 307C";
         };
         commit.gpgSign = true;
       };

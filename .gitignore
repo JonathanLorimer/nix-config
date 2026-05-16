@@ -16,3 +16,4 @@ pritunl.ovpn
 
 result/
 .claude/
+secrets/age/*

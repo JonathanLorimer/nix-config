@@ -18,8 +18,8 @@
     };
     impala.url = "github:Samuel-Martineau/impala/package-for-nixos";
     nur.url = "github:nix-community/NUR";
-
     scls.url = "github:estin/simple-completion-language-server";
+    sentinelone.url = "github:devusb/sentinelone-nix";
   };
   outputs = {
     home-manager,
@@ -33,6 +33,7 @@
     nur,
     scls,
     tau,
+    sentinelone,
     ...
   }: let
     system = "x86_64-linux";
@@ -43,7 +44,7 @@
       ./modules/postgres.nix
       ./modules/nix.nix
       ((import ./modules/channels.nix) {inherit nixpkgs;})
-      ((import ./modules/overlays.nix) {inherit nur;})
+      ((import ./modules/overlays.nix) {inherit nur sentinelone;})
       ./modules/pipewire.nix
       ./modules/tailscale.nix
       ./modules/certs
@@ -140,12 +141,30 @@
             ./modules/erymanthian/state-version.nix
             ./modules/erymanthian/gpu.nix
             ./modules/erymanthian/sway.nix
+            ./modules/erymanthian/sops.nix
 
             # Hardware - generic ThinkPad (P16 Gen 2 not in nixos-hardware yet)
             nixos-hardware.nixosModules.lenovo-thinkpad
             nixpkgs.nixosModules.notDetected
 
-            # Kolide for Mercury
+            # Mercury
+            sentinelone.nixosModules.sentinelone
+            ({
+              pkgs,
+              config,
+              ...
+            }: {
+              services.sentinelone = {
+                enable = true;
+                sentinelOneManagementTokenPath = config.sops.secrets.s1_mgmt_token.path; # Point to the file with the enrollment key
+                customerId = "jonathan@mercury.com-erymanthian"; # USE: emailAddress-hostname
+                package = pkgs.sentinelone.overrideAttrs (old: {
+                  pname = "sentinelagent";
+                  version = "25.4.1.24"; # Match the package version
+                  src = ./SentinelAgent_linux_x86_64_v25_4_1_24.deb; # Point to the package you've downloaded
+                });
+              };
+            })
             kolide.nixosModules.kolide-launcher
             {
               nixpkgs.allowUnfreePackages = ["kolide-launcher"];
