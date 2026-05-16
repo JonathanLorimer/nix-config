@@ -29,4 +29,17 @@
     ".jj"
     "tenants/"
   ];
+  includes = [
+    {
+      condition = "gitdir:~/mercury/";
+      contents = {
+        user = {
+          name = "Jonathan Lorimer";
+          email = "jonathan@mercury.com";
+          signingKey = "1957 0D3E F6B6 D3F9 C1FE  E34B 5E27 4FC2 7BEE 7A20";
+        };
+        commit.gpgSign = true;
+      };
+    }
+  ];
 }

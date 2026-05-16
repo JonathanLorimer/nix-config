@@ -28,6 +28,8 @@ in {
     {
       home.file = {
         ".config/opencode/skills/".source = ./programs/opencode/skills;
+        ".pi/agent/agents/".source = ./programs/tau/subagents;
+        ".pi/agent/themes/zenwritten-desat.json".source = import ./programs/tau/pi-theme.nix {inherit pkgs colorscheme;};
       };
     }
     tauModule
@@ -43,7 +45,7 @@ in {
       ];
   };
   programs = (import ./programs/default.nix) {
-    inherit pkgs colorscheme default-font scls;
+    inherit pkgs colorscheme default-font scls config;
     cornelis-vim = cornelis-vim;
     term-env = env-vars;
   };

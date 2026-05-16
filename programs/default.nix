@@ -5,6 +5,7 @@
   default-font,
   cornelis-vim,
   scls,
+  config,
 }: let
   fzf-module = (import ./fzf) {inherit pkgs colorscheme;};
 in {
@@ -67,7 +68,7 @@ in {
   };
   starship = import ./starship.nix;
   swaylock = import ./swaylock.nix {inherit colorscheme pkgs;};
-  tau = import ./tau {inherit pkgs;};
+  tau = import ./tau {inherit pkgs config;};
   tmux = (import ./tmux) {inherit (pkgs) tmuxPlugins;};
   vscode.enable = true;
   waybar = import ./waybar;

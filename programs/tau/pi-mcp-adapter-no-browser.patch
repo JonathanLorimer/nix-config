@@ -1,0 +1,28 @@
+--- a/mcp-auth-flow.ts
++++ b/mcp-auth-flow.ts
+@@ -188,17 +188,14 @@
+     // Register the callback BEFORE opening the browser
+     const callbackPromise = waitForCallback(oauthState)
+
+     try {
+-      // Open browser
+-      console.log(`MCP Auth: Opening browser for ${serverName}`)
+-      try {
+-        await open(authorizationUrl)
+-      } catch (error) {
+-        console.warn(`MCP Auth: Failed to open browser for ${serverName}`, { error })
+-        throw new Error(
+-          `Could not open browser. Please open this URL manually: ${authorizationUrl}`,
+-          { cause: error },
+-        )
+-      }
++      // Always print the URL so it's visible in environments without a display
++      console.log(`MCP Auth: Please open this URL in your browser: ${authorizationUrl}`)
++      // Best-effort browser open; a 5s timeout prevents hanging in sandboxed
++      // environments where xdg-open has no display to talk to
++      await Promise.race([
++        open(authorizationUrl).catch(() => {}),
++        new Promise<void>(resolve => setTimeout(resolve, 5000)),
++      ])
+
+       // Wait for callback

@@ -10,13 +10,15 @@ pkgs.stdenv.mkDerivation {
     hash = "sha256-An8T5HCzofCZ0iNDaUPu8NDk+8ndPgAm+owm6F9kmYM=";
   };
 
+  patches = [./pi-mcp-adapter-no-browser.patch];
+
   nativeBuildInputs = [pkgs.bun];
 
   # FOD: bun install requires network to download packages.
   # The lock file is stored alongside this derivation to pin exact versions.
   outputHashAlgo = "sha256";
   outputHashMode = "recursive";
-  outputHash = "sha256-vENTkpKXL5osA2wdkV+QQcpfDJHFyoBsC0LJsm98SGg=";
+  outputHash = "sha256-gzrARasCJ/ouVkYXjOXuOPRuAeoO2vpS0PFBdyRnhrE=";
 
   buildPhase = ''
     export HOME=$TMPDIR
