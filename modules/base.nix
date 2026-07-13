@@ -62,6 +62,7 @@
     "steam"
     "steam-unwrapped"
     "onepassword-password-manager"
+    "1password-cli"
     "claude-code"
     "davinci-resolve"
     "keymapp"

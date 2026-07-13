@@ -18,6 +18,11 @@
       slack
       temporal-cli
       cargo
+      _1password-cli
+      mcp-grafana
+      (pkgs.writeShellScriptBin "slack-cli" ''
+        exec ${pkgs.slack-cli}/bin/slack "$@"
+      '')
 
       # Wayland
       xwayland

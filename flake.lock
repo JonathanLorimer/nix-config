@@ -542,11 +542,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1779670332,
-        "narHash": "sha256-v0Na5FnOVj10c/kVFdXYjX0N/1Fgcen0HcSjy+YutBY=",
+        "lastModified": 1784213131,
+        "narHash": "sha256-uQGT2S2OOVi03cMHk84C2nIikruiNTqm2ujngKcN4Og=",
         "owner": "JonathanLorimer",
         "repo": "tau",
-        "rev": "e2af1993a8bb4d441597fe88dac7a5bd46120b15",
+        "rev": "c45fc0e21804e6f5e2968a023e85cac4a0f9e883",
         "type": "github"
       },
       "original": {
