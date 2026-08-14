@@ -1,8 +1,19 @@
-{lib, ...}: {
+{pkgs, ...}: {
   boot.supportedFilesystems = ["zfs"];
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zfs rollback -r rpool/local/root@blank
-  '';
+  boot.zfs.forceImportRoot = false;
+
+  # Rollback Logic
+  boot.initrd.systemd.services.rollback = {
+    description = "Rollback ZFS root to blank snapshot";
+    wantedBy = ["initrd.target"];
+    after = ["zfs-import-rpool.service"];
+    before = ["sysroot.mount"];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.zfs}/bin/zfs rollback -r rpool/local/root@blank";
+    };
+  };
 
   # State files
   environment.etc."NetworkManager/system-connections" = {

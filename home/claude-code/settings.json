@@ -1,5 +1,6 @@
 {
   "model": "sonnet",
+  "outputStyle": "minimal",
   "permissions": {
     "allow": [
       "Bash(git log:*)",
